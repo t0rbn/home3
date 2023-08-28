@@ -1,0 +1,24 @@
+{
+  "name": "home3-server",
+  "version": "0.0.1",
+  "description": "smart home dashboard - api",
+  "type": "module",
+  "main": "build/index.js",
+  "author": "t0rbn",
+  "license": "WTFPL",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "cd dist && node Server.js"
+  },
+  "dependencies": {
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/node": "latest",
+    "body-parser": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "node-tradfri-client": "latest",
+    "typescript": "latest"
+  }
+}
