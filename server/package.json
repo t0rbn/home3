@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "cd dist && node Server.js"
+    "start": "cd build && node index.js"
   },
   "dependencies": {
     "@types/cors": "latest",
