@@ -1,7 +1,7 @@
 import * as fs from 'fs';
-import { AccessoryTypes, discoverGateway, TradfriClient } from 'node-tradfri-client';
 import Logger from '../utils/Logger';
 import config from '../Config.js';
+import { AccessoryTypes, discoverGateway, TradfriClient } from "node-tradfri-client";
 export default class TradfriService {
     connection;
     scenes = [];
@@ -178,3 +178,4 @@ export default class TradfriService {
         }, true);
     }
 }
+//# sourceMappingURL=TradfriService.js.map

@@ -4,3 +4,4 @@ export default class StaticContentController {
         app.use(express.static('../client/build'));
     }
 }
+//# sourceMappingURL=StaticContentController.js.map

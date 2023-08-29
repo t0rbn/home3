@@ -1,11 +1,11 @@
 import * as fs from 'fs'
-import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient} from 'node-tradfri-client'
 import Logger from '../utils/Logger'
 import config from '../Config.js'
 // @ts-ignore
 import {ApiScene} from '../../../shared/types/Scenes';
 // @ts-ignore
 import {ApiLight, ApiLightsGroup} from '../../../shared/types/Light';
+import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient} from "node-tradfri-client";
 
 
 export default class TradfriService {

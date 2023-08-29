@@ -2,7 +2,7 @@
   "name": "home3-server",
   "version": "0.0.1",
   "description": "smart home dashboard - api",
-  "type": "module",
+  "type": "commonjs",
   "main": "build/index.js",
   "author": "t0rbn",
   "license": "WTFPL",
@@ -12,13 +12,19 @@
     "start": "cd build && node index.js"
   },
   "dependencies": {
-    "@types/cors": "latest",
-    "@types/express": "latest",
-    "@types/node": "latest",
     "body-parser": "latest",
     "cors": "latest",
     "express": "latest",
-    "node-tradfri-client": "latest",
-    "typescript": "latest"
+    "node-tradfri-client": "latest"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "latest",
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "@types/node": "latest",
+    "ts-loader": "^9.4.4",
+    "typescript": "latest",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   }
 }

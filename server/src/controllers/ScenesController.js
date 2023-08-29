@@ -15,3 +15,4 @@ export default class ScenesController {
         });
     }
 }
+//# sourceMappingURL=ScenesController.js.map

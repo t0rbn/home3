@@ -1,0 +1,1 @@
+{"version":3,"file":"StaticContentController.js","sourceRoot":"","sources":["StaticContentController.ts"],"names":[],"mappings":"AACA,OAAO,OAAsB,MAAM,SAAS,CAAC;AAE7C,MAAM,CAAC,OAAO,OAAO,uBAAuB;IACxC,iBAAiB,CAAC,GAAgB;QAC9B,GAAG,CAAC,GAAG,CAAC,OAAO,CAAC,MAAM,CAAC,iBAAiB,CAAC,CAAC,CAAA;IAC9C,CAAC;CAEJ"}

@@ -12,3 +12,4 @@ export default {
         'scene': 10
     }
 };
+//# sourceMappingURL=Config.js.map

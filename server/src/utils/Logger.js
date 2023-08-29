@@ -15,3 +15,4 @@ export default class Logger {
         this.printString('!', `\x1b[31m${text}\x1b[0m`);
     }
 }
+//# sourceMappingURL=Logger.js.map

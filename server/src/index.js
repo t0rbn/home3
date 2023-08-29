@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import StaticContentController from "./controllers/StaticContentController";
+import StaticContentController from './controllers/StaticContentController';
 const controllers = [
     new StaticContentController()
 ];
@@ -23,3 +23,4 @@ function start() {
     app.listen(4321, () => console.log('running'));
 }
 start();
+//# sourceMappingURL=index.js.map

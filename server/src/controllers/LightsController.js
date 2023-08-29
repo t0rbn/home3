@@ -21,3 +21,4 @@ export default class LightsController {
         });
     }
 }
+//# sourceMappingURL=LightsController.js.map

@@ -1,8 +1,8 @@
 import express from "express"
 import bodyParser from "body-parser";
 import cors from "cors";
-import Controller from "./controllers/Controller";
-import StaticContentController from "./controllers/StaticContentController";
+import Controller from './controllers/Controller';
+import StaticContentController from './controllers/StaticContentController';
 
 const controllers: Controller[] = [
     new StaticContentController()
