@@ -1,8 +1,13 @@
-import TradfriService from "../tradfri/TradfriService";
-export default class LightsController {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const TradfriService_1 = __importDefault(require("../tradfri/TradfriService"));
+class LightsController {
     tradfriService;
     constructor() {
-        this.tradfriService = new TradfriService();
+        this.tradfriService = new TradfriService_1.default();
     }
     registerEndpoints(app) {
         app.get('api/lights/groups', async (_req, res) => res.send(this.tradfriService.getGroups()));
@@ -21,4 +26,5 @@ export default class LightsController {
         });
     }
 }
+exports.default = LightsController;
 //# sourceMappingURL=LightsController.js.map

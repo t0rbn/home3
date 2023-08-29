@@ -3,6 +3,7 @@ import {Application} from "express";
 import TradfriService from "../tradfri/TradfriService";
 // @ts-ignore
 import {ApiSceneAction} from "../../../shared/types/Scenes";
+import config from '../../../shared/config.json'
 
 export default class ScenesController implements Controller {
     private tradfriService;
@@ -11,10 +12,9 @@ export default class ScenesController implements Controller {
         this.tradfriService = new TradfriService()
     }
 
-
     registerEndpoints(app: Application): void {
-        app.get('api/scenes', async (_req, res) => res.send(this.tradfriService.getScenes()))
-        app.post('api/scenes/action', async (req, res) => {
+        app.get(`${config.api.scenes}`, async (_req, res) => res.send(this.tradfriService.getScenes()))
+        app.post(`${config.api.scenes}/action`, async (req, res) => {
             const action = req.body as ApiSceneAction
             if (action.type === 'trigger-scene') {
                 await this.tradfriService.setScene(action.sceneId)

@@ -1,4 +1,6 @@
-export default class Logger {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class Logger {
     static maxUnitNameLength = 0;
     unitName;
     constructor(unitName = '') {
@@ -15,4 +17,5 @@ export default class Logger {
         this.printString('!', `\x1b[31m${text}\x1b[0m`);
     }
 }
+exports.default = Logger;
 //# sourceMappingURL=Logger.js.map

@@ -1,0 +1,39 @@
+{
+  "server": {
+    "port": 8000
+  },
+  "api": {
+    "lights": "/api/lights",
+    "scenes": "/api/scenes",
+    "climate": "/api/climate"
+  },
+  "tradfri": {
+    "connection": {
+      "securityId": "WqupW3ys67g1PUeh",
+      "credentialsFileLocation": "tradfri_credentials.json"
+    },
+    "transitionTimeMs": 1000,
+    "colors": {
+      "whiteTemperatures": [
+        "#f5faf6",
+        "#f1e0b5",
+        "#efd275"
+      ],
+      "rgb": [
+        "#ffffff",
+        "#ff8080",
+        "#ff4b00",
+        "#ff0000",
+        "#80ff80",
+        "#00ff00",
+        "#7300ff",
+        "#0000ff",
+        "#C175FF",
+        "#ae00ff",
+        "#ff00ff"
+      ]
+    },
+    "actionResponseWaitTimeMs": 2000
+  }
+}
+

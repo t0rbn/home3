@@ -2,13 +2,20 @@ import express from "express"
 import bodyParser from "body-parser";
 import cors from "cors";
 import Controller from './controllers/Controller';
-import StaticContentController from './controllers/StaticContentController';
+import ScenesController from "./controllers/ScenesController";
+import LightsController from "./controllers/LightsController";
+import Logger from "./utils/Logger";
+import config from '../../shared/config.json'
+import StaticContentController from "./controllers/StaticContentController";
 
 const controllers: Controller[] = [
+    new LightsController(),
+    new ScenesController(),
     new StaticContentController()
 ]
 
 function start() {
+    const logger = new Logger("App")
     const app = express()
     app.use(bodyParser.text())
     app.use(cors())
@@ -18,15 +25,16 @@ function start() {
         next()
     })
 
+    logger.log("registering API endpoints")
     controllers.forEach(c => c.registerEndpoints(app))
-
     app._router.stack.forEach((layer: any) => {
         if (layer.route?.path) {
-            console.log(`registered path ${layer.route.path}`)
+            logger.log(`mapped path ${layer.route.path}`)
         }
     })
 
-    app.listen(4321, () => console.log('running'))
+    const port = config.server.port
+    app.listen(port, () => logger.log(`Started on port ${port}`))
 }
 
 start();

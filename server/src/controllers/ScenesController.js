@@ -1,8 +1,13 @@
-import TradfriService from "../tradfri/TradfriService";
-export default class ScenesController {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const TradfriService_1 = __importDefault(require("../tradfri/TradfriService"));
+class ScenesController {
     tradfriService;
     constructor() {
-        this.tradfriService = new TradfriService();
+        this.tradfriService = new TradfriService_1.default();
     }
     registerEndpoints(app) {
         app.get('api/scenes', async (_req, res) => res.send(this.tradfriService.getScenes()));
@@ -15,4 +20,5 @@ export default class ScenesController {
         });
     }
 }
+exports.default = ScenesController;
 //# sourceMappingURL=ScenesController.js.map

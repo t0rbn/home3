@@ -1,14 +1,42 @@
-import * as fs from 'fs';
-import Logger from '../utils/Logger';
-import config from '../Config.js';
-import { AccessoryTypes, discoverGateway, TradfriClient } from "node-tradfri-client";
-export default class TradfriService {
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs = __importStar(require("fs"));
+const Logger_1 = __importDefault(require("../utils/Logger"));
+const Config_js_1 = __importDefault(require("../Config.js"));
+const node_tradfri_client_1 = require("node-tradfri-client");
+class TradfriService {
     connection;
     scenes = [];
     lights = [];
     groupLightsMap = new Map();
     superGroup;
-    logger = new Logger('TradfriService');
+    logger = new Logger_1.default('TradfriService');
     constructor() {
         this.initConnection().then(() => this.initDataAndListeners()).catch();
     }
@@ -16,7 +44,7 @@ export default class TradfriService {
         this.logger.log('discovering tradfri gateway');
         let gateway;
         try {
-            gateway = await discoverGateway();
+            gateway = await (0, node_tradfri_client_1.discoverGateway)();
         }
         catch (e) {
             this.logger.alert('Cannot discover gateway');
@@ -26,21 +54,21 @@ export default class TradfriService {
             return;
         }
         this.logger.log('got gateway ' + gateway.name);
-        this.connection = new TradfriClient(gateway.name);
+        this.connection = new node_tradfri_client_1.TradfriClient(gateway.name);
         let identity;
         let psk;
         try {
             this.logger.log('reading credentials from file');
-            let credsFile = JSON.parse(fs.readFileSync(config.tradfri.credentialsFileLocation, 'utf-8'));
+            let credsFile = JSON.parse(fs.readFileSync(Config_js_1.default.tradfri.credentialsFileLocation, 'utf-8'));
             identity = credsFile.identity;
             psk = credsFile.psk;
         }
         catch (e) {
             this.logger.alert('failed to read credentials from file, will reauthenticate');
-            const response = await this.connection.authenticate(config.tradfri.securityId);
+            const response = await this.connection.authenticate(Config_js_1.default.tradfri.securityId);
             identity = response.identity;
             psk = response.psk;
-            fs.writeFile(config.tradfri.credentialsFileLocation, JSON.stringify({ identity, psk }), () => this.logger.log(`wrote new credentials to ${config.tradfri.credentialsFileLocation}`));
+            fs.writeFile(Config_js_1.default.tradfri.credentialsFileLocation, JSON.stringify({ identity, psk }), () => this.logger.log(`wrote new credentials to ${Config_js_1.default.tradfri.credentialsFileLocation}`));
         }
         await this.connection.connect(identity, psk);
     }
@@ -61,7 +89,7 @@ export default class TradfriService {
         };
         const addOrUpdateLight = (device) => {
             deleteLight(device.instanceId);
-            if (device.type === AccessoryTypes.lightbulb) {
+            if (device.type === node_tradfri_client_1.AccessoryTypes.lightbulb) {
                 this.logger.log(`retrieved information for lightbulb ${device.name}`);
                 this.lights.push(device);
             }
@@ -133,7 +161,7 @@ export default class TradfriService {
             throw 'unknown lightbulb';
         }
         const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)));
-        await light.lightList[0].setBrightness(newBrightness, config.transitionTime.brightness);
+        await light.lightList[0].setBrightness(newBrightness, Config_js_1.default.transitionTime.brightness);
     }
     async setLightColor(lightId, hexColor) {
         const light = this.lights.filter(light => `${light.instanceId}` === lightId)[0];
@@ -146,7 +174,7 @@ export default class TradfriService {
             this.logger.alert('color operation not supported by spectrum');
             throw 'color operation not supported';
         }
-        await light.lightList[0].setColor(hexColor.replace('#', ''), config.transitionTime.color);
+        await light.lightList[0].setColor(hexColor.replace('#', ''), Config_js_1.default.transitionTime.color);
     }
     async setLightWhiteTemperature(lightId, temmperature) {
         const light = this.lights.filter(light => `${light.instanceId}` === lightId)[0];
@@ -160,7 +188,7 @@ export default class TradfriService {
             throw 'color operation not supported';
         }
         const prepTemp = Math.max(0, Math.min(100, temmperature * 100));
-        await light.lightList[0].setColorTemperature(prepTemp, config.transitionTime.color);
+        await light.lightList[0].setColorTemperature(prepTemp, Config_js_1.default.transitionTime.color);
     }
     getScenes() {
         return this.scenes.map((scene) => ({
@@ -174,8 +202,9 @@ export default class TradfriService {
         }
         await this.connection?.operateGroup(this.superGroup, {
             sceneId: Number.parseInt(sceneId),
-            transitionTime: config.transitionTime.scene
+            transitionTime: Config_js_1.default.transitionTime.scene
         }, true);
     }
 }
+exports.default = TradfriService;
 //# sourceMappingURL=TradfriService.js.map
