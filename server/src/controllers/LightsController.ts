@@ -16,7 +16,7 @@ export default class LightsController implements Controller {
      registerEndpoints(app: Application): void {
         app.get(`${config.api.lights}/groups`, async (_req, res) => res.send(this.tradfriService.getGroups()))
         app.post(`${config.api.lights}/action`, async (req, res) => {
-            const action = req.body as ApiLightAction
+            const action = JSON.parse(req.body) as ApiLightAction
 
             if (action.type === 'set-brightness') {
                 await this.tradfriService.setLightBrightness(action.lightId, typeof action.value === 'number' ? action.value : Number.parseFloat(action.value))

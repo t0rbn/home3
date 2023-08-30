@@ -1,7 +1,7 @@
 "use client";
 
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
-import config from "../../../shared/config.json"
+import config from "../shared/config.json"
 import {ApiScene, ApiSceneAction} from "../../../shared/types/Scenes";
 import {useLightGroupsContext} from "../lights/LightGroupsContext";
 

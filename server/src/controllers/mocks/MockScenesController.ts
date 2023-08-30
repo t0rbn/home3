@@ -20,7 +20,7 @@ export default class MockScenesController implements Controller {
         ]))
 
         app.post(`${config.api.scenes}/action`, async (req, res) => {
-            this.logger.warn("Receiverd Action " + req.body)
+            this.logger.log("Receiverd Action " + req.body)
             await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
             res.sendStatus(200)
         })

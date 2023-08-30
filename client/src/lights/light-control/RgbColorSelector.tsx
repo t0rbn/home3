@@ -1,35 +1,26 @@
-import './ColorSelector.scss'
-import PrimaryButton from "../../../globals/PrimaryButton/PrimaryButton";
 import {useRef} from "react";
-import GridLayout from "../../../globals/layouts/Grid/GridLayout";
+import config from "../../shared/config.json"
 
 interface ColorSelectorProps {
-    colors: string[]
-    onColorSelected: (color: string) => void
-    allowCustomHexColor?: boolean;
+    onSelected: (color: string) => void
 }
 
-function ColorSelector(props: ColorSelectorProps) {
-    const colorSelector = useRef(null);
+function RgbColorSelector(props: ColorSelectorProps) {
+    const colors = config.tradfri.colors.rgb
 
+    const colorSelector = useRef(null);
     const openCustomSelector = () => {
         (colorSelector.current as any).click();
     }
 
     return (
-        <div className="color-selector">
-            <GridLayout cols={4}>
-                {props.colors.map(c => <PrimaryButton className="color-selector-button" onClick={() => props.onColorSelected(c)} style={{backgroundColor: c}} key={c}>&nbsp;</PrimaryButton>)}
-                {props.allowCustomHexColor && (<PrimaryButton onClick={openCustomSelector} type="double"><i className="fas fa-palette"></i></PrimaryButton>)}
-                <input type="color" ref={colorSelector} onChange={e => props.onColorSelected(e.target.value)}/>
-            </GridLayout>
-
+        <div>
+            {colors.map(c => <button onClick={() => props.onSelected(c)} style={{backgroundColor: c}}
+                                     key={c}>{c}</button>)}
+            <button onClick={openCustomSelector}>custom</button>
+            <input type="color" ref={colorSelector} onChange={e => props.onSelected(e.target.value)}/>
         </div>
     )
 }
 
-ColorSelector.defaultProps = {
-    allowCustomHexColor: false
-}
-
-export default ColorSelector
+export default RgbColorSelector

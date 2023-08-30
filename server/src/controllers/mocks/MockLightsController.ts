@@ -68,7 +68,7 @@ export default class MockLightsController implements Controller {
             } as ApiLightsGroup
         ]))
         app.post(`${config.api.lights}/action`, async (req, res) => {
-            this.logger.warn("Receiverd Action " + req.body)
+            this.logger.log("Receiverd Action " + req.body)
             await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
             res.sendStatus(200)
         })

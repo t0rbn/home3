@@ -1,5 +1,3 @@
-import './BrightnessSelector.scss'
-import PrimaryButton from "../../../globals/PrimaryButton/PrimaryButton";
 import {useEffect, useState} from "react";
 
 interface BrightnessSelectorProps {
@@ -19,8 +17,8 @@ function BrightnessSelector(props: BrightnessSelectorProps) {
     }
 
     return (
-        <div className="brightness-selector">
-            <PrimaryButton type="double" onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}><i className="fa-solid fa-power-off power-icon"></i></PrimaryButton>
+        <div>
+            <button onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}>ON/OFF</button>
             <input
                 type="range"
                 min="1"

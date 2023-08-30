@@ -164,7 +164,8 @@ export default class TradfriService {
         }
 
         const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)))
-        await light.lightList[0].setBrightness(newBrightness, config.tradfri.transitionTimeMs)
+        console.log("setting " + newBrightness)
+        await light.lightList[0].setBrightness(newBrightness)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -180,7 +181,7 @@ export default class TradfriService {
             this.logger.warn('color operation not supported by spectrum')
             throw 'color operation not supported'
         }
-        await light.lightList[0].setColor(hexColor.replace('#', ''), config.tradfri.transitionTimeMs)
+        await light.lightList[0].setColor(hexColor.replace('#', ''))
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -197,7 +198,7 @@ export default class TradfriService {
             throw 'color operation not supported'
         }
         const prepTemp = Math.max(0, Math.min(100, temmperature * 100))
-        await light.lightList[0].setColorTemperature(prepTemp, config.tradfri.transitionTimeMs)
+        await light.lightList[0].setColorTemperature(prepTemp)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -214,10 +215,7 @@ export default class TradfriService {
             return
         }
         this.logger.log("setting scene " + sceneId)
-        await TradfriService.connection?.operateGroup(TradfriService.superGroup, {
-            sceneId: Number.parseInt(sceneId),
-            transitionTime: config.tradfri.transitionTimeMs
-        }, true)
+        await TradfriService.connection?.operateGroup(TradfriService.superGroup, {sceneId: Number.parseInt(sceneId),}, true)
 
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }

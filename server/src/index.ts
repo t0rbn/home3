@@ -31,6 +31,7 @@ function start() {
 
     logger.log("registering API endpoints")
     controllers.forEach(c => c.registerEndpoints(app))
+
     app._router.stack.forEach((layer: any) => {
         if (layer.route?.path) {
             logger.log(`mapped path ${layer.route.path}`)

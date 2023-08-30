@@ -8,15 +8,14 @@
     "climate": "/api/climate"
   },
   "mocks": {
-    "lights": true,
-    "scenes": true,
+    "lights": false,
+    "scenes": false,
     "climate": true
   },
   "tradfri": {
     "connection": {
       "securityId": "WqupW3ys67g1PUeh"
     },
-    "transitionTimeMs": 1000,
     "colors": {
       "whiteTemperatures": [
         "#f5faf6",

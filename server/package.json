@@ -22,7 +22,7 @@
     "@types/cors": "latest",
     "@types/express": "latest",
     "@types/node": "latest",
-    "ts-loader": "^9.4.4",
+    "ts-loader": "latest",
     "typescript": "latest"
   }
 }

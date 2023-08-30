@@ -1,8 +1,8 @@
 export type ApiLight = {
     name: string;
     id: string;
-    brightness?: number;
-    readonly spectrum: 'none';
+    brightness: number;
+    readonly spectrum: 'none' | 'white' | 'rgb';
 };
 export type ApiWhiteSpectrumiLight = ApiLight & {
     whiteTemperature: number;
