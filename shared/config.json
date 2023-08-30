@@ -7,6 +7,11 @@
     "scenes": "/api/scenes",
     "climate": "/api/climate"
   },
+  "mocks": {
+    "lights": true,
+    "scenes": true,
+    "climate": true
+  },
   "tradfri": {
     "connection": {
       "securityId": "WqupW3ys67g1PUeh"

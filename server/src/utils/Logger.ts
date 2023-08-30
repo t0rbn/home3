@@ -16,7 +16,7 @@ export default class Logger {
         this.printString(' ', text)
     }
 
-    alert(text: string): void {
+    warn(text: string): void {
         this.printString('!', `\x1b[31m${text}\x1b[0m`)
     }
 }

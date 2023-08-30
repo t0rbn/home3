@@ -30,7 +30,6 @@ export default class LightsController implements Controller {
                 await this.tradfriService.setLightWhiteTemperature(action.lightId, typeof action.value === 'number' ? action.value : Number.parseFloat(action.value))
             }
 
-            await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
             res.sendStatus(200)
         })
     }

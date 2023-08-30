@@ -7,10 +7,14 @@ import LightsController from "./controllers/LightsController";
 import Logger from "./utils/Logger";
 import config from '../../shared/config.json'
 import StaticContentController from "./controllers/StaticContentController";
+import MockLightsController from "./controllers/mocks/MockLightsController";
+import MockScenesController from "./controllers/mocks/MockScenesController";
+import MockClimateController from "./controllers/mocks/MockClimateController";
 
 const controllers: Controller[] = [
-    new LightsController(),
-    new ScenesController(),
+    config.mocks.lights ? new MockLightsController() : new LightsController(),
+    config.mocks.scenes ? new MockScenesController() : new ScenesController(),
+    config.mocks.climate ? new MockClimateController() : {} as Controller, // TODO implement Climate Controller
     new StaticContentController()
 ]
 

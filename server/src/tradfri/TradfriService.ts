@@ -37,7 +37,7 @@ export default class TradfriService {
         try {
             gateway = await discoverGateway()
         } catch (e) {
-            logger.alert('Cannot discover gateway')
+            logger.warn('Cannot discover gateway')
             console.log(e)
         }
         if (!gateway) {
@@ -159,43 +159,46 @@ export default class TradfriService {
     async setLightBrightness(lightId: string, brightness: number): Promise<void> {
         const light = TradfriService.lights.filter(light => `${light.instanceId}` === lightId)[0]
         if (!light) {
-            this.logger.alert('cannot set brightness for unknown bulb')
+            this.logger.warn('cannot set brightness for unknown bulb')
             throw 'unknown lightbulb'
         }
 
         const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)))
         await light.lightList[0].setBrightness(newBrightness, config.tradfri.transitionTimeMs)
+        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
     async setLightColor(lightId: string, hexColor: string): Promise<void> {
         const light = TradfriService.lights.filter(light => `${light.instanceId}` === lightId)[0]
         if (!light) {
-            this.logger.alert('cannot set color for unknown bulb')
+            this.logger.warn('cannot set color for unknown bulb')
             throw 'unknown lightbulb'
         }
 
         const spectrum = light.lightList[0]?.spectrum
         if (spectrum === 'none') {
-            this.logger.alert('color operation not supported by spectrum')
+            this.logger.warn('color operation not supported by spectrum')
             throw 'color operation not supported'
         }
         await light.lightList[0].setColor(hexColor.replace('#', ''), config.tradfri.transitionTimeMs)
+        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
     async setLightWhiteTemperature(lightId: string, temmperature: number): Promise<void> {
         const light = TradfriService.lights.filter(light => `${light.instanceId}` === lightId)[0]
         if (!light) {
-            this.logger.alert('cannot set temperature for unknown bulb')
+            this.logger.warn('cannot set temperature for unknown bulb')
             throw 'unknown lightbulb'
         }
 
         const spectrum = light.lightList[0]?.spectrum
         if (spectrum !== 'white') {
-            this.logger.alert('color operation not supported by spectrum')
+            this.logger.warn('color operation not supported by spectrum')
             throw 'color operation not supported'
         }
         const prepTemp = Math.max(0, Math.min(100, temmperature * 100))
         await light.lightList[0].setColorTemperature(prepTemp, config.tradfri.transitionTimeMs)
+        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
     getScenes(): Array<ApiScene> {
@@ -207,7 +210,7 @@ export default class TradfriService {
 
     async setScene(sceneId: string): Promise<void> {
         if (!TradfriService.superGroup) {
-            this.logger.alert("Cannot set scene: no super group")
+            this.logger.warn("Cannot set scene: no super group")
             return
         }
         this.logger.log("setting scene " + sceneId)
