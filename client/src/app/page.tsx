@@ -1,14 +1,18 @@
-"use client";
 
-// import Image from 'next/image'
-import dynamic from "next/dynamic";
 
-const Scenes = dynamic(() => import("@/app/scenes/Scenes"), {ssr: false})
+import Scenes from "@/app/scenes/Scenes";
+import {LightGroupsProvider} from "@/app/lights/LightGroupsContext";
+import {ScenesProvider} from "@/app/scenes/ScenesContext";
+import LightGroupsFloorplan from "@/app/lights/groups/LightGroupsFloorplan";
 
 export default function Home() {
     return (
-        <main>
+        <LightGroupsProvider>
+            <ScenesProvider>
                 <Scenes/>
-        </main>
+                <LightGroupsFloorplan />
+            </ScenesProvider>
+        </LightGroupsProvider>
+
     )
 }

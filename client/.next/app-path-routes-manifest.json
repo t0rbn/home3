@@ -1,4 +1,5 @@
 {
   "/favicon.ico/route": "/favicon.ico",
-  "/page": "/"
+  "/page": "/",
+  "/lights/groups/eh/page": "/lights/groups/eh"
 }

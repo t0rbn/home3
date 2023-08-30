@@ -1,4 +1,3 @@
-import * as fs from 'fs'
 import Logger from '../utils/Logger'
 
 // @ts-ignore
@@ -51,23 +50,13 @@ export default class TradfriService {
         let identity: string
         let psk: string
 
-        try {
-            logger.log('reading credentials from file')
-            let credsFile = JSON.parse(fs.readFileSync(config.tradfri.connection.credentialsFileLocation, 'utf-8'))
-            identity = credsFile.identity
-            psk = credsFile.psk
-        } catch (e) {
-            logger.alert('failed to read credentials from file, will reauthenticate')
-            const response = await TradfriService.connection.authenticate(config.tradfri.connection.securityId)
-            identity = response.identity
-            psk = response.psk
-            fs.writeFile(
-                config.tradfri.connection.credentialsFileLocation,
-                JSON.stringify({identity, psk}),
-                () => logger.log(`wrote new credentials to ${config.tradfri.connection.credentialsFileLocation}`)
-            )
-        }
+        logger.log('authenticating with gateway')
+        const response = await TradfriService.connection.authenticate(config.tradfri.connection.securityId)
+        identity = response.identity
+        psk = response.psk
+
         await TradfriService.connection.connect(identity, psk)
+        logger.log("connected to gateway")
     }
 
     async initDataAndListeners(): Promise<void> {
@@ -212,17 +201,21 @@ export default class TradfriService {
     getScenes(): Array<ApiScene> {
         return TradfriService.scenes.map((scene: Scene) => ({
             name: scene.name,
-            id: scene.instanceId
+            id: `${scene.instanceId}`
         }))
     }
 
     async setScene(sceneId: string): Promise<void> {
         if (!TradfriService.superGroup) {
+            this.logger.alert("Cannot set scene: no super group")
             return
         }
+        this.logger.log("setting scene " + sceneId)
         await TradfriService.connection?.operateGroup(TradfriService.superGroup, {
             sceneId: Number.parseInt(sceneId),
             transitionTime: config.tradfri.transitionTimeMs
         }, true)
+
+        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 }

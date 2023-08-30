@@ -9,8 +9,7 @@
   },
   "tradfri": {
     "connection": {
-      "securityId": "WqupW3ys67g1PUeh",
-      "credentialsFileLocation": "tradfri_credentials.json"
+      "securityId": "WqupW3ys67g1PUeh"
     },
     "transitionTimeMs": 1000,
     "colors": {

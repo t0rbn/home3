@@ -1,6 +1,6 @@
 export type ApiScene = {
     name: string,
-    id: number
+    id: string
 }
 
 export type ApiSceneAction = {

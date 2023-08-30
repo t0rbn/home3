@@ -1,3 +1,5 @@
+"use client";
+
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
 import {ApiLightAction, ApiLightsGroup} from "../../../../shared/types/Light";
 import config from "../../../../shared/config.json"
@@ -15,23 +17,11 @@ function LightGroupsProvider(props: PropsWithChildren) {
     const updateGroups = async (): Promise<void> => {
         const groupsResponse = await fetch(`${config.api.lights}/groups`)
         const groupsJson = await groupsResponse.json()
-        const groups = groupsJson.map((group: any) => ({
-            name: group.name,
-            lights: group.lights.map((light: any) => {
-                return {
-                    id: light.id,
-                    name: light.name,
-                    spectrum: light.spectrum,
-                    color: light.color,
-                    brightness: light.brightness,
-                }
-            })
-        }))
-        setGroups(groups)
+        setGroups(groupsJson)
     }
 
     const setLightBrightness = async (id: string, brightness: number): Promise<void> => {
-        await fetch(`${config.api.lights}/actionns`, {
+        await fetch(`${config.api.lights}/actions`, {
             method: 'post',
             headers: {'Content-Type': 'text/plain;charset=UTF-8'},
             body: JSON.stringify({

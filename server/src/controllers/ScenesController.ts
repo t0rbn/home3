@@ -15,10 +15,12 @@ export default class ScenesController implements Controller {
     registerEndpoints(app: Application): void {
         app.get(`${config.api.scenes}`, async (_req, res) => res.send(this.tradfriService.getScenes()))
         app.post(`${config.api.scenes}/action`, async (req, res) => {
-            const action = req.body as ApiSceneAction
+            const action = JSON.parse(req.body) as ApiSceneAction
+
             if (action.type === 'trigger-scene') {
                 await this.tradfriService.setScene(action.sceneId)
             }
+
             res.sendStatus(200)
         })
     }
