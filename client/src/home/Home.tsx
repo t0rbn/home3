@@ -1,14 +1,15 @@
 import Scenes from "../scenes/Scenes";
 import React from "react";
-import {Link} from "react-router-dom";
+import Climate from "../climate/Climate";
+import LightsHomeHero from "../lights/lights-home-hero/LightsHomeHero";
+import AppLayout from "../globals/layouts/app-layout/AppLayout";
 
 export default function Home() {
     return (
-        <div>
-            <Scenes />
-            <div>
-                <Link to="/lights">Lights</Link>
-            </div>
-        </div>
+        <AppLayout name="Home" header={false}>
+            <Scenes/>
+            <LightsHomeHero/>
+            <Climate></Climate>
+        </AppLayout>
     )
 }

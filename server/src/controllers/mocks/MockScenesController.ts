@@ -15,8 +15,10 @@ export default class MockScenesController implements Controller {
         this.logger.warn("Activating scenes api mock endpoint")
 
         app.get(`${config.api.scenes}`, async (_req, res) => res.send([
-            {id: 'id-1', name: 'Scene One',} as ApiScene,
-            {id: 'id-2', name: 'Another Scene',} as ApiScene
+            {id: 'id-1', name: 'Scene 1',} as ApiScene,
+            {id: 'id-2', name: 'Another Scene',} as ApiScene,
+            {id: 'id-3', name: 'Third Scene',} as ApiScene,
+            {id: 'id-4', name: 'Scene IV (Roman Numeral)',} as ApiScene
         ]))
 
         app.post(`${config.api.scenes}/action`, async (req, res) => {

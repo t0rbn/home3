@@ -118,12 +118,13 @@ export default class TradfriService {
             return null
         }
 
+        const light = accesory.lightList[0] ?? {}
         const generalData = {
             id: accesory.instanceId + '',
-            name: accesory.name
+            name: accesory.name,
+            brightness: light.dimmer / 100
         }
 
-        const light = accesory.lightList[0] ?? {}
         let spectrumData: any = {spectrum: 'none'}
 
         if (light.spectrum === 'rgb') {
@@ -164,8 +165,7 @@ export default class TradfriService {
         }
 
         const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)))
-        console.log("setting " + newBrightness)
-        await light.lightList[0].setBrightness(newBrightness)
+        await light.lightList[0].setBrightness(newBrightness, 0)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -181,7 +181,7 @@ export default class TradfriService {
             this.logger.warn('color operation not supported by spectrum')
             throw 'color operation not supported'
         }
-        await light.lightList[0].setColor(hexColor.replace('#', ''))
+        await light.lightList[0].setColor(hexColor.replace('#', ''), 0)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -198,7 +198,7 @@ export default class TradfriService {
             throw 'color operation not supported'
         }
         const prepTemp = Math.max(0, Math.min(100, temmperature * 100))
-        await light.lightList[0].setColorTemperature(prepTemp)
+        await light.lightList[0].setColorTemperature(prepTemp, 0)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 

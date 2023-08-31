@@ -28,15 +28,15 @@ export default class MockLightsController implements Controller {
                         id: 'id-2',
                         name: 'White Spectrum  Bulb',
                         spectrum: 'white',
-                        brightness: 0,
+                        brightness: 0.5,
                         whiteTemperature: 0.23,
                     } as ApiWhiteSpectrumiLight,
                     {
                         id: 'id-3',
-                        name: 'Single Color Bulb',
+                        name: 'RGB Bulb',
                         spectrum: 'rgb',
                         color: '#00ff42',
-                        brightness: 0,
+                        brightness: 1,
                     } as ApiRgbLight
                 ]
             } as ApiLightsGroup,
@@ -48,7 +48,7 @@ export default class MockLightsController implements Controller {
                         id: 'id-1',
                         name: 'Single Color Bulb',
                         spectrum: 'none',
-                        brightness: 0,
+                        brightness: .4,
                     } as ApiLight,
                     {
                         id: 'id-2',
@@ -59,7 +59,7 @@ export default class MockLightsController implements Controller {
                     } as ApiWhiteSpectrumiLight,
                     {
                         id: 'id-3',
-                        name: 'Single Color Bulb',
+                        name: 'RGB Bulb',
                         spectrum: 'rgb',
                         color: '#00ff42',
                         brightness: 0,

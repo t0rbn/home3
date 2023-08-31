@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import PrimaryButton from "../../../globals/primary-button/PrimaryButton";
 
 interface BrightnessSelectorProps {
     current: number;
@@ -10,7 +11,7 @@ function BrightnessSelector(props: BrightnessSelectorProps) {
 
     useEffect(() => {
         setCurrentValue(props.current * 100)
-    }, [props.current])
+    }, [props])
 
     const submitValue = () => {
         props.onSelected(currentValue / 100)
@@ -18,7 +19,7 @@ function BrightnessSelector(props: BrightnessSelectorProps) {
 
     return (
         <div>
-            <button onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}>ON/OFF</button>
+            <PrimaryButton onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}>ON/OFF</PrimaryButton>
             <input
                 type="range"
                 min="1"

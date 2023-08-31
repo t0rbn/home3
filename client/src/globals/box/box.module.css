@@ -1,0 +1,5 @@
+.box {
+    padding: var(--size-m);
+    background-color: var(--color-elevation-1);
+    border-radius: var(--border-radius-big);
+}

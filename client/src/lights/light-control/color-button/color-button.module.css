@@ -1,0 +1,9 @@
+.buttonWrapper {
+    > button {
+        background-color: hotpink;
+
+        &:hover {
+            background-color: inherit;
+        }
+    }
+}

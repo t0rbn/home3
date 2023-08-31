@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
 import {ApiLightsGroup} from "../../../shared/types/Light";
 import {useLightGroupsContext} from "./LightGroupsContext";
-import SubPageLayout from "../globals/SubPageLayout";
-import {Link} from "react-router-dom";
+import AppLayout from "../globals/layouts/app-layout/AppLayout";
+import Box from "../globals/box/Box";
+import PrimaryButton from "../globals/primary-button/PrimaryButton";
+import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
 
 export default function LightsOverview() {
     const [groups, setGroups] = useState<Array<ApiLightsGroup>>([])
@@ -18,16 +20,18 @@ export default function LightsOverview() {
 
     const lightsGroup = (group: ApiLightsGroup) => {
         return (
-            <div>
+            <Box>
                 <h1>{group.name}</h1>
-                {group.lights.map(l => (<Link to={'/lights/' + l.id}>{l.name}</Link>))}
-            </div>
+                <ContentGridLayout>
+                    {group.lights.map(l => (<PrimaryButton href={'/lights/' + l.id}>{l.name}</PrimaryButton>))}
+                </ContentGridLayout>
+            </Box>
         )
     }
 
     return (
-        <SubPageLayout>
-            {groups.map(g =>  lightsGroup(g) )}
-        </SubPageLayout>
+        <AppLayout name="Lights">
+            {groups.map(g => lightsGroup(g))}
+        </AppLayout>
     )
 }

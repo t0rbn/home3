@@ -1,0 +1,65 @@
+:root {
+    --color-elevation-0: hsl(0, 0%, 0%);
+    --color-elevation-1: hsl(0, 0%, 20%);
+    --color-elevation-2: hsl(0, 0%, 40%);
+    --color-elevation-highlight: hsl(0, 0%, 60%);
+
+    --color-text-base: hsl(0, 0%, 80%);
+    --color-text-highlight: hsl(0, 0%, 100%);
+
+    --size-unit: 1rem;
+    --size-xs: calc(0.25 * var(--size-unit));
+    --size-s: calc(0.5 * var(--size-unit));
+    --size-m: calc(1 * var(--size-unit));
+    --size-l: calc(1.5 * var(--size-unit));
+    --size-xl: calc(2 * var(--size-unit));
+    --size-breakpoint: calc(30 * var(--size-unit));
+
+    --border-radius-default: 0;
+    --border-radius-big: 0;
+
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-elevation-0: hsl(0, 0%, 100%);
+        --color-elevation-1: hsl(0, 0%, 90%);
+        --color-elevation-2: hsl(0, 0%, 80%);
+        --color-elevation-highlight: hsl(0, 0%, 70%);
+
+        --color-text-base: hsl(0, 0%, 20%);
+        --color-text-highlight: hsl(0, 0%, 0%);
+    }
+}
+
+h1,h2,h3,h4,h5 {
+    padding: 0;
+    margin: 0 0 var(--size-m);
+    color: var(--color-text-highlight);
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: var(--size-xl);
+    line-height: var(--size-xl);
+    font-weight: bold;
+}
+
+h2 {
+    font-size: var(--size-l);
+    line-height: var(--size-l);
+    font-weight: bold;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-elevation-0);
+    font-size: var(--size-m);
+    line-height: var(--size-m);
+    color: var(--color-text-base);
+}

@@ -1,11 +1,12 @@
-import SubPageLayout from "../../globals/SubPageLayout";
+import AppLayout from "../../globals/layouts/app-layout/AppLayout";
 import {useParams} from "react-router-dom";
 import {useLightGroupsContext} from "../LightGroupsContext";
 import {useEffect, useState} from "react";
-import {ApiLight, ApiRgbLight, ApiWhiteSpectrumiLight} from "../../../../shared/types/Light";
-import BrightnessSelector from "./BrightnessSelector";
-import WhiteTemperatureSelector from "./WhiteTemperatureSelector";
-import RgbColorSelector from "./RgbColorSelector";
+import {ApiLight, ApiWhiteSpectrumiLight} from "../../../../shared/types/Light";
+import BrightnessSelector from "./brightness-selector/BrightnessSelector";
+import WhiteTemperatureSelector from "./white-temperature-selector/WhiteTemperatureSelector";
+import RgbColorSelector from "./rgb-color-selector/RgbColorSelector";
+import Box from "../../globals/box/Box";
 
 export default function LightControl() {
     const lightId = useParams().id;
@@ -14,7 +15,7 @@ export default function LightControl() {
 
     useEffect(() => {
         setLight(context.lightGroups.map(g => g.lights).flat().find(l => l.id === lightId) ?? undefined)
-    }, [context.lightGroups])
+    }, [context.lightGroups, lightId])
 
     const setColor = (hexColor: string) => {
         context.setLightColor(light!.id, hexColor)
@@ -36,22 +37,35 @@ export default function LightControl() {
         if (light?.spectrum !== 'white') {
             return null
         }
-        return <WhiteTemperatureSelector onSelected={(v) => setWhiteTemperature(v)} current={(light as ApiWhiteSpectrumiLight).whiteTemperature} />
+        return (
+            <Box>
+                <h1>Color Temperature</h1>
+                <WhiteTemperatureSelector onSelected={(v) => setWhiteTemperature(v)}
+                                          current={(light as ApiWhiteSpectrumiLight).whiteTemperature}/>
+            </Box>
+        )
     }
 
     const conditionalRgbColorSelector = () => {
         if (light?.spectrum !== 'rgb') {
             return null
         }
-        return <RgbColorSelector onSelected={(v) => setColor(v)} />
+        return (
+            <Box>
+                <h1>Color</h1>
+                <RgbColorSelector onSelected={(v) => setColor(v)}/>
+            </Box>
+        )
     }
 
     return (
-        <SubPageLayout>
-            <h1>{light.name}</h1>
-            <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
+        <AppLayout name={light.name}>
+            <Box>
+                <h1>Brightness</h1>
+                <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
+            </Box>
             {conditionalColorTemperatureSelector()}
             {conditionalRgbColorSelector()}
-        </SubPageLayout>
+        </AppLayout>
     )
 }

@@ -8,8 +8,8 @@
     "climate": "/api/climate"
   },
   "mocks": {
-    "lights": false,
-    "scenes": false,
+    "lights": true,
+    "scenes": true,
     "climate": true
   },
   "tradfri": {
@@ -24,7 +24,9 @@
       ],
       "rgb": [
         "#ffffff",
-        "#ff8080",
+        "#f5faf6",
+        "#f1e0b5",
+        "#efd275",
         "#ff4b00",
         "#ff0000",
         "#80ff80",
@@ -37,6 +39,9 @@
       ]
     },
     "actionResponseWaitTimeMs": 2000
+  },
+  "climate": {
+    "measurementCacheTimeS": 60,
+    "refreshIntervalS": 60
   }
 }
-
