@@ -1,6 +1,7 @@
 import {PropsWithChildren} from "react";
 import styles from './primary-button.module.css'
 import {useNavigate} from "react-router-dom";
+import {classNames} from "../../utils";
 
 interface PrimaryButtonProps {
     onClick?: () => any;
@@ -23,7 +24,7 @@ export default function PrimaryButton(props: PropsWithChildren<PrimaryButtonProp
     }
 
     return (
-        <button className={styles.button + ' ' + props.className} onClick={handle} style={props.style}>
+        <button className={classNames(styles.button, props.className)} onClick={handle} style={props.style}>
             {props.children}
         </button>
     )

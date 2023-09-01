@@ -1,18 +1,15 @@
 import {PropsWithChildren} from "react";
-import styles from './content-grid-layout.module.css'
+import styles from './list-layout.module.css'
 import {classNames, conditionalClassName} from "../../../utils";
 
-interface ContentGridLayoutProps {
+interface ListLayoutProps {
     space?: 'default' | 'big'
-    variant?: 'default' | 'small-items'
-
 }
 
-export default function ContentGridLayout(props: PropsWithChildren<ContentGridLayoutProps>) {
+export default function ListLayout(props: PropsWithChildren<ListLayoutProps>) {
     const classes = [
         styles.layout,
         conditionalClassName(props.space === 'big', styles.big),
-        conditionalClassName(props.variant === 'small-items', styles.many)
     ]
     return <div className={classNames(...classes)}>{props.children}</div>
 }

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import PrimaryButton from "../../../globals/primary-button/PrimaryButton";
+import styles from './brightness-selector.module.css'
 
 interface BrightnessSelectorProps {
     current: number;
@@ -18,8 +18,8 @@ function BrightnessSelector(props: BrightnessSelectorProps) {
     }
 
     return (
-        <div>
-            <PrimaryButton onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}>ON/OFF</PrimaryButton>
+        <div className={styles.brightnessSelector}>
+            {/*<PrimaryButton onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}><FaIcon icon="power-off"></FaIcon></PrimaryButton>*/}
             <input
                 type="range"
                 min="1"

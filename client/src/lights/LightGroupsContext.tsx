@@ -3,6 +3,7 @@
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
 import {ApiLightAction, ApiLightsGroup} from "../../../shared/types/Light";
 import config from "../shared/config.json"
+import {resolveApi} from "../utils";
 
 const LightGroupsContext = createContext({
     lightGroups: [] as ApiLightsGroup[],
@@ -16,13 +17,13 @@ function LightGroupsProvider(props: PropsWithChildren) {
     const [groups, setGroups] = useState<ApiLightsGroup[]>([]);
 
     const updateGroups = async (): Promise<void> => {
-        const groupsResponse = await fetch(`${config.api.lights}/groups`)
+        const groupsResponse = await fetch(resolveApi(config.api.lights ,'groups'))
         const groupsJson = await groupsResponse.json()
         setGroups(groupsJson)
     }
 
     const setLightBrightness = async (id: string, brightness: number): Promise<void> => {
-        await fetch(`${config.api.lights}/action`, {
+        await fetch(resolveApi(config.api.lights ,'action'), {
             method: 'post',
             headers: {'Content-Type': 'text/plain;charset=UTF-8'},
             body: JSON.stringify({
@@ -35,7 +36,7 @@ function LightGroupsProvider(props: PropsWithChildren) {
     }
 
     const setLightColor = async (id: string, hexColor: string): Promise<void> => {
-        await fetch(`${config.api.lights}/action`, {
+        await fetch(resolveApi(config.api.lights, 'action'), {
             method: 'post',
             headers: {'Content-Type': 'text/plain;charset=UTF-8'},
             body: JSON.stringify({
@@ -48,7 +49,7 @@ function LightGroupsProvider(props: PropsWithChildren) {
     }
 
     const setLightWhiteTemperature = async (id: string, value: number): Promise<void> => {
-        await fetch(`${config.api.lights}/action`, {
+        await fetch(resolveApi(config.api.lights ,'/action'), {
             method: 'post',
             headers: {'Content-Type': 'text/plain;charset=UTF-8'},
             body: JSON.stringify({

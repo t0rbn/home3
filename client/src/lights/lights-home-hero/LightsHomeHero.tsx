@@ -1,24 +1,29 @@
 import {useLightGroupsContext} from "../LightGroupsContext";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import PrimaryButton from "../../globals/primary-button/PrimaryButton";
 import Box from "../../globals/box/Box";
+import {ApiLightsGroup} from "../../../../shared/types/Light";
+import ContentGridLayout from "../../globals/layouts/content-grid-layout/ContentGridLayout";
+import Spinner from "../../globals/spinner/Spinner";
 
 export default function LightsHomeHero() {
-    const lightsContext = useLightGroupsContext();
-    const [activeLightsCount, setActiveLightsCount] = useState(0);
+    const context = useLightGroupsContext();
+    const [groups, setGroups] = useState<Array<ApiLightsGroup>>([]);
 
     useEffect(() => {
-        if (lightsContext.lightGroups.length === 0) {
-            setActiveLightsCount(0)
-            return
-        }
-        setActiveLightsCount(lightsContext.lightGroups.map(g => g.lights.filter(l => l.brightness > 0).length).reduce((a, b) => a + b))
-    }, [lightsContext.lightGroups]);
+        setGroups(context.lightGroups)
+    }, [context.lightGroups]);
+
+    if (!groups?.length) {
+        return <Box><Spinner /></Box>
+    }
 
     return (
         <Box>
             <h1>Lights</h1>
-            <PrimaryButton href='/lights'>{activeLightsCount ? activeLightsCount : 'no'} lights active</PrimaryButton>
+            <ContentGridLayout variant="small-items">
+                {groups.map(g => <PrimaryButton href={'/lights/groups/' + g.id}>{g.name}</PrimaryButton>)}
+            </ContentGridLayout>
         </Box>
     )
 }

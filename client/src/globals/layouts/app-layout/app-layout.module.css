@@ -6,6 +6,7 @@
     > header {
         background-color: var(--color-elevation-1);
         position: relative;
+        box-shadow: var(--shadown-default);
 
         .linkContainer {
             position: absolute;
@@ -21,7 +22,7 @@
 
         > h2 {
             text-align: center;
-            padding: var(--size-s) 0;
+            padding: var(--size-m) 0;
             margin: 0;
         }
     }
@@ -35,9 +36,8 @@
             width: 100%;
             max-width: var(--size-breakpoint);
             margin: 0 auto;
-            > * {
-                margin-top: var(--size-l);
-            }
+            padding: var(--size-grid-space-big);
+            box-sizing: border-box;
         }
     }
 }

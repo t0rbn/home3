@@ -1,6 +1,8 @@
 import React, {PropsWithChildren} from "react";
-import {Link} from "react-router-dom";
 import styles from './app-layout.module.css'
+import PrimaryButton from "../../primary-button/PrimaryButton";
+import FaIcon from "../../fa-icon/FaIcon";
+import ListLayout from "../list-layout/ListLayout";
 
 interface AppLayoutProps {
     name: string;
@@ -11,9 +13,9 @@ export default function AppLayout(props: PropsWithChildren<AppLayoutProps>) {
     return (
         <div className={styles.layout}>
             {props.header !== false ? (
-                <header>
+                <header className="animation-slide-down">
                     <div className={styles.linkContainer}>
-                        <Link to="/">back</Link>
+                        <PrimaryButton href="/"><FaIcon icon="chevron-left"/> back</PrimaryButton>
                     </div>
                     <h2>{props.name}</h2>
                 </header>
@@ -21,7 +23,9 @@ export default function AppLayout(props: PropsWithChildren<AppLayoutProps>) {
 
             <div className={styles.contentWrapper}>
                 <main className={styles.content}>
-                    {props.children}
+                    <ListLayout space="big">
+                        {props.children}
+                    </ListLayout>
                 </main>
             </div>
         </div>

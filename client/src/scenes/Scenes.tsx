@@ -1,9 +1,10 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ApiScene} from "../../../shared/types/Scenes";
 import {useScenesContext} from "./ScenesContext";
 import Box from "../globals/box/Box";
-import PrimaryButton from "../globals/primary-button/PrimaryButton";
 import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
+import ImageButton from "../globals/image-button/ImageButton";
+import Spinner from "../globals/spinner/Spinner";
 
 export default function Scenes() {
     const [scenes, setScenes] = useState<Array<ApiScene>>([]);
@@ -14,13 +15,13 @@ export default function Scenes() {
     }, [context.scenes]);
 
     if (!scenes.length) {
-        return <div>Loading...</div>
+        return <Box><Spinner /></Box>
     }
     return (
         <Box>
             <h1>Scenes</h1>
             <ContentGridLayout>
-                {scenes.map(s => <PrimaryButton key={s.id} onClick={() => context.activateSceneById(s.id)}>{s.name}</PrimaryButton>)}
+                {scenes.map(s => <ImageButton image={`/scenes/${s.name.replaceAll(' ', '%20')}.jpg`} key={s.id} onClick={() => context.activateSceneById(s.id)} label={s.name}/>)}
             </ContentGridLayout>
         </Box>
     )

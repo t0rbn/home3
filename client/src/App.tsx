@@ -15,8 +15,7 @@ function App() {
                     <Routes>
                         <Route index element={<Navigate replace to="/home"/>}/>
                         <Route path="/home" element={<Home/>}></Route>
-                        <Route path="/lights" element={<LightsOverview/>}></Route>
-                        <Route path="/lights/:id" element={<LightControl/>}></Route>
+                        <Route path="/lights/groups/:id" element={<LightsOverview/>}></Route>
                     </Routes>
                 </div>
             </BrowserRouter>

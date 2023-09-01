@@ -1,5 +1,3 @@
-import AppLayout from "../../globals/layouts/app-layout/AppLayout";
-import {useParams} from "react-router-dom";
 import {useLightGroupsContext} from "../LightGroupsContext";
 import {useEffect, useState} from "react";
 import {ApiLight, ApiWhiteSpectrumiLight} from "../../../../shared/types/Light";
@@ -7,15 +5,20 @@ import BrightnessSelector from "./brightness-selector/BrightnessSelector";
 import WhiteTemperatureSelector from "./white-temperature-selector/WhiteTemperatureSelector";
 import RgbColorSelector from "./rgb-color-selector/RgbColorSelector";
 import Box from "../../globals/box/Box";
+import LightsOverview from "../LightsOverview";
+import ListLayout from "../../globals/layouts/list-layout/ListLayout";
 
-export default function LightControl() {
-    const lightId = useParams().id;
+interface LightControlProps {
+    id: string;
+}
+
+export default function LightControl(props: LightControlProps) {
     const context = useLightGroupsContext();
     const [light, setLight] = useState<ApiLight | undefined>(undefined);
 
     useEffect(() => {
-        setLight(context.lightGroups.map(g => g.lights).flat().find(l => l.id === lightId) ?? undefined)
-    }, [context.lightGroups, lightId])
+        setLight(context.lightGroups.map(g => g.lights).flat().find(l => l.id === props.id) ?? undefined)
+    }, [context.lightGroups, props.id])
 
     const setColor = (hexColor: string) => {
         context.setLightColor(light!.id, hexColor)
@@ -38,11 +41,11 @@ export default function LightControl() {
             return null
         }
         return (
-            <Box>
-                <h1>Color Temperature</h1>
+            // <div>
+            //     <h1>Color Temperature</h1>
                 <WhiteTemperatureSelector onSelected={(v) => setWhiteTemperature(v)}
                                           current={(light as ApiWhiteSpectrumiLight).whiteTemperature}/>
-            </Box>
+            // </div>
         )
     }
 
@@ -51,21 +54,21 @@ export default function LightControl() {
             return null
         }
         return (
-            <Box>
-                <h1>Color</h1>
+            // <div>
+            //     <h1>Color</h1>
                 <RgbColorSelector onSelected={(v) => setColor(v)}/>
-            </Box>
+            // </div>
         )
     }
 
     return (
-        <AppLayout name={light.name}>
-            <Box>
-                <h1>Brightness</h1>
-                <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
-            </Box>
+        <Box>
+            <ListLayout space="big">
+            <h1>{light.name}</h1>
+            <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
             {conditionalColorTemperatureSelector()}
             {conditionalRgbColorSelector()}
-        </AppLayout>
+            </ListLayout>
+        </Box>
     )
 }

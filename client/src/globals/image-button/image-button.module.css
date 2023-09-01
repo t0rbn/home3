@@ -1,0 +1,13 @@
+button.imageButton {
+    padding-top: var(--size-xl);
+    padding-bottom: var(--size-xl);
+    text-align: left;
+    background-size: cover;
+    background-position: center;
+    border: none;
+    /*border-radius: var(--border-radius-default);*/
+}
+
+button.imageButton h3 {
+    margin: 0
+}

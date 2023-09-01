@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ApiClimateData} from "../../../shared/types/Climate";
 import {useClimateContext} from "./ClimateContext";
 import Box from "../globals/box/Box";
+import Spinner from "../globals/spinner/Spinner";
 
 export default function Climate() {
     const [data, setData] = useState<ApiClimateData | null>();
@@ -12,7 +13,7 @@ export default function Climate() {
     }, [context.data])
 
     if (!data) {
-        return "Loading..."
+        return <Box><Spinner /></Box>
     }
 
     return (

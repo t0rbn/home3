@@ -1,23 +1,32 @@
 :root {
     --color-elevation-0: hsl(0, 0%, 0%);
-    --color-elevation-1: hsl(0, 0%, 20%);
-    --color-elevation-2: hsl(0, 0%, 40%);
-    --color-elevation-highlight: hsl(0, 0%, 60%);
+    --color-elevation-1: hsl(0, 0%, 10%);
+    --color-elevation-2: hsl(0, 0%, 20%);
+
+    --color-elevation-interactive: hsl(0, 0%, 30%);
+    --color-elevation-highlight: hsl(0, 0%, 50%);
 
     --color-text-base: hsl(0, 0%, 80%);
     --color-text-highlight: hsl(0, 0%, 100%);
 
     --size-unit: 1rem;
+    --size-xxs: calc(0.125 * var(--size-unit));
     --size-xs: calc(0.25 * var(--size-unit));
     --size-s: calc(0.5 * var(--size-unit));
     --size-m: calc(1 * var(--size-unit));
     --size-l: calc(1.5 * var(--size-unit));
     --size-xl: calc(2 * var(--size-unit));
-    --size-breakpoint: calc(30 * var(--size-unit));
 
-    --border-radius-default: 0;
-    --border-radius-big: 0;
+    --size-breakpoint: calc(50 * var(--size-unit));
+    --size-grid-space-default: var(--size-s);
+    --size-grid-space-big: var(--size-l);
 
+    --border-radius-default: var(--size-s);
+    --border-radius-big: var(--size-l);
+    --border-radius-full: 100vmax;
+
+    --shadown-default: none;
+    --shadown-interactive: 0 0 var(--size-s) hsla(0, 0%, 0%, 50%) !important;
 }
 
 @media (prefers-color-scheme: light) {
@@ -25,7 +34,9 @@
         --color-elevation-0: hsl(0, 0%, 100%);
         --color-elevation-1: hsl(0, 0%, 90%);
         --color-elevation-2: hsl(0, 0%, 80%);
-        --color-elevation-highlight: hsl(0, 0%, 70%);
+
+        --color-elevation-interactive: hsl(0, 0%, 60%);
+        --color-elevation-highlight: hsl(0, 0%, 50%);
 
         --color-text-base: hsl(0, 0%, 20%);
         --color-text-highlight: hsl(0, 0%, 0%);
@@ -62,4 +73,34 @@ html, body {
     font-size: var(--size-m);
     line-height: var(--size-m);
     color: var(--color-text-base);
+}
+
+input[type="range"] {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    background-color: transparent;
+    margin: 0;
+
+    &::-webkit-slider-thumb {
+        background-color: var(--color-elevation-interactive);
+        -webkit-appearance: none;
+        margin-top: calc(-.5 * (var(--size-l) - var(--size-m)));
+        height: var(--size-l);
+        aspect-ratio: 1;
+        border-radius: var(--border-radius-full);
+        cursor: pointer;
+    }
+
+    &::-webkit-slider-thumb:hover {
+        background-color: var(--color-elevation-highlight);
+        box-shadow: var(--shadown-interactive);
+    }
+
+
+    &::-webkit-slider-runnable-track {
+        height: var(--size-m);
+        background-color: var(--color-elevation-2);
+        -webkit-appearance: none;
+        border-radius: var(--border-radius-full);
+    }
 }

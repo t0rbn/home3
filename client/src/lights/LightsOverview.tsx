@@ -2,36 +2,26 @@ import {useEffect, useState} from "react";
 import {ApiLightsGroup} from "../../../shared/types/Light";
 import {useLightGroupsContext} from "./LightGroupsContext";
 import AppLayout from "../globals/layouts/app-layout/AppLayout";
-import Box from "../globals/box/Box";
-import PrimaryButton from "../globals/primary-button/PrimaryButton";
-import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
+import {useParams} from "react-router-dom";
+import LightControl from "./light-control/LightControl";
 
 export default function LightsOverview() {
-    const [groups, setGroups] = useState<Array<ApiLightsGroup>>([])
+    const groupId = useParams().id;
+
+    const [group, setGroup] = useState<ApiLightsGroup>()
     const context = useLightGroupsContext();
 
     useEffect(() => {
-        setGroups(context.lightGroups)
+        setGroup(context.lightGroups.find(g => g.id === groupId))
     }, [context.lightGroups]);
 
-    if (!groups?.length) {
+    if (!group) {
         return <div>Loading...</div>
     }
 
-    const lightsGroup = (group: ApiLightsGroup) => {
-        return (
-            <Box>
-                <h1>{group.name}</h1>
-                <ContentGridLayout>
-                    {group.lights.map(l => (<PrimaryButton href={'/lights/' + l.id}>{l.name}</PrimaryButton>))}
-                </ContentGridLayout>
-            </Box>
-        )
-    }
-
     return (
-        <AppLayout name="Lights">
-            {groups.map(g => lightsGroup(g))}
+        <AppLayout name={group.name}>
+            {group.lights.map(l => (<LightControl id={l.id}/>))}
         </AppLayout>
     )
 }
