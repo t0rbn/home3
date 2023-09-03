@@ -5,6 +5,7 @@ import Box from "../globals/box/Box";
 import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
 import ImageButton from "../globals/image-button/ImageButton";
 import Spinner from "../globals/spinner/Spinner";
+import ListLayout from "../globals/layouts/list-layout/ListLayout";
 
 export default function Scenes() {
     const [scenes, setScenes] = useState<Array<ApiScene>>([]);
@@ -15,14 +16,16 @@ export default function Scenes() {
     }, [context.scenes]);
 
     if (!scenes.length) {
-        return <Box><Spinner /></Box>
+        return <Box><Spinner/></Box>
     }
     return (
         <Box>
-            <h1>Scenes</h1>
-            <ContentGridLayout>
-                {scenes.map(s => <ImageButton image={`/scenes/${s.name.replaceAll(' ', '%20')}.jpg`} key={s.id} onClick={() => context.activateSceneById(s.id)} label={s.name}/>)}
-            </ContentGridLayout>
+            <ListLayout space="big">
+                <h1>Scenes</h1>
+                <ContentGridLayout>
+                    {scenes.map(s => <ImageButton image={`/scenes/${s.name.replaceAll(' ', '%20')}.jpg`} key={s.id} onClick={() => context.activateSceneById(s.id)} label={s.name}/>)}
+                </ContentGridLayout>
+            </ListLayout>
         </Box>
     )
 }

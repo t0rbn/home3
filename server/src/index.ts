@@ -10,11 +10,12 @@ import StaticContentController from "./controllers/StaticContentController";
 import MockLightsController from "./controllers/mocks/MockLightsController";
 import MockScenesController from "./controllers/mocks/MockScenesController";
 import MockClimateController from "./controllers/mocks/MockClimateController";
+import ClimateController from "./controllers/ClimateController";
 
 const controllers: Controller[] = [
     config.mocks.lights ? new MockLightsController() : new LightsController(),
     config.mocks.scenes ? new MockScenesController() : new ScenesController(),
-    config.mocks.climate ? new MockClimateController() : {} as Controller, // TODO implement Climate Controller
+    config.mocks.climate ? new MockClimateController() : new ClimateController(),
     new StaticContentController()
 ]
 

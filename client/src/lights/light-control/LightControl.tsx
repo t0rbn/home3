@@ -5,7 +5,6 @@ import BrightnessSelector from "./brightness-selector/BrightnessSelector";
 import WhiteTemperatureSelector from "./white-temperature-selector/WhiteTemperatureSelector";
 import RgbColorSelector from "./rgb-color-selector/RgbColorSelector";
 import Box from "../../globals/box/Box";
-import LightsOverview from "../LightsOverview";
 import ListLayout from "../../globals/layouts/list-layout/ListLayout";
 
 interface LightControlProps {
@@ -41,11 +40,8 @@ export default function LightControl(props: LightControlProps) {
             return null
         }
         return (
-            // <div>
-            //     <h1>Color Temperature</h1>
-                <WhiteTemperatureSelector onSelected={(v) => setWhiteTemperature(v)}
-                                          current={(light as ApiWhiteSpectrumiLight).whiteTemperature}/>
-            // </div>
+            <WhiteTemperatureSelector onSelected={(v) => setWhiteTemperature(v)}
+                                      current={(light as ApiWhiteSpectrumiLight).whiteTemperature}/>
         )
     }
 
@@ -54,20 +50,17 @@ export default function LightControl(props: LightControlProps) {
             return null
         }
         return (
-            // <div>
-            //     <h1>Color</h1>
-                <RgbColorSelector onSelected={(v) => setColor(v)}/>
-            // </div>
+            <RgbColorSelector onSelected={(v) => setColor(v)}/>
         )
     }
 
     return (
         <Box>
             <ListLayout space="big">
-            <h1>{light.name}</h1>
-            <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
-            {conditionalColorTemperatureSelector()}
-            {conditionalRgbColorSelector()}
+                <h1>{light.name}</h1>
+                <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
+                {conditionalColorTemperatureSelector()}
+                {conditionalRgbColorSelector()}
             </ListLayout>
         </Box>
     )

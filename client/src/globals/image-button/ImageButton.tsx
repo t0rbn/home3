@@ -19,9 +19,7 @@ export default function ImageButton(props: ImageButtonProps) {
             style={bgStyle}
             className={styles.imageButton}
         >
-            <h3>
-                {props.label}
-            </h3>
+            {props.label}
         </PrimaryButton>
     )
 }

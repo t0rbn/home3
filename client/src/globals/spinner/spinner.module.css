@@ -1,0 +1,40 @@
+@keyframes spinner {
+    0% {
+        left: 0;
+        right: 100%;
+    }
+    50% {
+        left: 0;
+        right: 0;
+    }
+    100% {
+        left: 100%;
+        right: 0
+    }
+}
+
+.spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--size-grid-space-big);
+
+    .spinnerWrapper {
+        background-color: var(--color-elevation-2);
+        position: relative;
+        width: 50%;
+        border-radius: var(--border-radius-full);
+        height: var(--size-xl);
+
+        .spinnerContent {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            background-color: var(--color-elevation-interactive);
+            animation: calc(10 * var(--animation-duration-default)) ease-in-out both spinner;
+            border-radius: var(--border-radius-full);
+            animation-iteration-count: infinite;
+        }
+    }
+}

@@ -4,8 +4,6 @@ import Climate from "../climate/Climate";
 import LightsHomeHero from "../lights/lights-home-hero/LightsHomeHero";
 import AppLayout from "../globals/layouts/app-layout/AppLayout";
 import ListLayout from "../globals/layouts/list-layout/ListLayout";
-import Spinner from "../globals/spinner/Spinner";
-import Box from "../globals/box/Box";
 
 export default function Home() {
     return (
@@ -14,9 +12,6 @@ export default function Home() {
                 <Scenes/>
                 <LightsHomeHero/>
                 <Climate></Climate>
-                <Box>
-                    <Spinner></Spinner>
-                </Box>
             </ListLayout>
         </AppLayout>
     )

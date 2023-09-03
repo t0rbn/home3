@@ -122,7 +122,7 @@ export default class TradfriService {
         const generalData = {
             id: accesory.instanceId + '',
             name: accesory.name,
-            brightness: light.dimmer / 100
+            brightness: light.onOff ? (light.dimmer / 100) : 0
         }
 
         let spectrumData: any = {spectrum: 'none'}

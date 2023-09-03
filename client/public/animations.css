@@ -5,34 +5,37 @@
     --animation-easing: ease-out;
 }
 
-@keyframes slide-from-left {
+@keyframes fade-in {
     from {
-        transform: translateX(var(--size-xl));
         opacity: 0;
     }
     to {
-        transform: initial;
         opacity: 1;
     }
 }
 
+@keyframes slide-from-left {
+    from {
+        transform: translateX(var(--size-xl));
+    }
+    to {
+        transform: initial;
+    }
+}
 .animation-slide-in {
-    animation: var(--animation-duration-default) var(--animation-easing) both slide-from-left;
+    animation: var(--animation-duration-default) ease-out both slide-from-left, var(--animation-duration-default) linear both fade-in;
 }
 
 @keyframes slide-down {
     from {
         transform: translateY(-100%);
-        opacity: 0;
     }
     to {
         transform: initial;
-        opacity: 1;
     }
 }
-
 .animation-slide-down {
-    animation: var(--animation-duration-default) var(--animation-easing) both slide-down;
+    animation: var(--animation-duration-default) var(--animation-easing) both slide-down, var(--animation-duration-default) linear both fade-in;
 }
 
 .animation-sequential-delay {

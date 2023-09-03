@@ -1,14 +1,12 @@
 button.button {
-    border: var(--size-xxs) solid var(--color-elevation-interactive);
-    border-radius: var(--border-radius-default);
+    border: none;
+    border-radius: var(--border-radius-full);
     padding: var(--size-s) var(--size-l);
-    /*background-color: var(--color-elevation-interactive);*/
-    background-color: transparent;
+    background-color: var(--color-elevation-interactive);
     cursor: pointer;
-    color: var(--color-text-base);
+    color: var(--shadown-interactive);
 
     &:hover {
         background-color: var(--color-elevation-highlight);
-        box-shadow: var(--shadown-interactive);
     }
 }

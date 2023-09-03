@@ -1,7 +1,5 @@
-import config from './shared/config.json'
-
 export function resolveApi(endpoint: string, resource?: string): string {
-    return `http://${config.server.host}:${config.server.port}${endpoint}${resource ? (`/${resource}`) : ``}`;
+    return `${endpoint}${resource ? (`/${resource}`) : ``}`;
 }
 
 export function classNames(...classes: Array<string | null | undefined>): string {

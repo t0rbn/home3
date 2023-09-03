@@ -4,26 +4,24 @@
     max-height: 100vh;
 
     > header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         background-color: var(--color-elevation-1);
-        position: relative;
-        box-shadow: var(--shadown-default);
-
-        .linkContainer {
-            position: absolute;
-            left: var(--size-s);
-            top: 0;
-            bottom: 0;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
 
         > h2 {
-            text-align: center;
-            padding: var(--size-m) 0;
+            flex-grow: 1;
             margin: 0;
+            text-align: center;
+        }
+
+        .linkContainer {
+            margin: var(--size-grid-space-big);
+        }
+
+        .linkContainerHidden {
+            opacity: 0;
         }
     }
 

@@ -15,13 +15,15 @@
     "body-parser": "latest",
     "cors": "latest",
     "express": "latest",
-    "node-tradfri-client": "latest"
+    "node-tradfri-client": "latest",
+    "node-dht-sensor": "latest"
   },
   "devDependencies": {
     "@tsconfig/node20": "latest",
     "@types/cors": "latest",
     "@types/express": "latest",
     "@types/node": "latest",
+    "@types/node-dht-sensor": "latest",
     "ts-loader": "latest",
     "typescript": "latest"
   }

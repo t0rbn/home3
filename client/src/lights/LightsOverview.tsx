@@ -13,7 +13,7 @@ export default function LightsOverview() {
 
     useEffect(() => {
         setGroup(context.lightGroups.find(g => g.id === groupId))
-    }, [context.lightGroups]);
+    }, [context.lightGroups, groupId]);
 
     if (!group) {
         return <div>Loading...</div>

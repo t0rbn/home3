@@ -1,13 +1,20 @@
 button.imageButton {
-    padding-top: var(--size-xl);
-    padding-bottom: var(--size-xl);
+    padding: var(--size-m);
+    aspect-ratio: 3;
     text-align: left;
-    background-size: cover;
+    background-size: 100%;
     background-position: center;
     border: none;
-    /*border-radius: var(--border-radius-default);*/
+    border-radius: var(--border-radius-default);
+
+    &:hover {
+        background-size: 110%;
+    }
 }
 
-button.imageButton h3 {
-    margin: 0
+
+button.imageButton {
+    font-size: var(--size-m);
+    line-height: var(--size-m);
+    font-weight: normal;
 }

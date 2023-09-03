@@ -1,3 +1,7 @@
 button.button {
     border: none;
+
+    &:hover {
+        filter: brightness(110%);
+    }
 }

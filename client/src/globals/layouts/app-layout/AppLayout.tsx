@@ -3,6 +3,7 @@ import styles from './app-layout.module.css'
 import PrimaryButton from "../../primary-button/PrimaryButton";
 import FaIcon from "../../fa-icon/FaIcon";
 import ListLayout from "../list-layout/ListLayout";
+import {classNames} from "../../../utils";
 
 interface AppLayoutProps {
     name: string;
@@ -17,7 +18,10 @@ export default function AppLayout(props: PropsWithChildren<AppLayoutProps>) {
                     <div className={styles.linkContainer}>
                         <PrimaryButton href="/"><FaIcon icon="chevron-left"/> back</PrimaryButton>
                     </div>
-                    <h2>{props.name}</h2>
+                        <h2>{props.name}</h2>
+                    <div className={classNames(styles.linkContainer, styles.linkContainerHidden)}>
+                        <PrimaryButton><FaIcon icon="chevron-left"/> back</PrimaryButton>
+                    </div>
                 </header>
             ) : null}
 

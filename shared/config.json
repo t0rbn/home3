@@ -1,6 +1,5 @@
 {
   "server": {
-    "host": "localhost",
     "port": 8000
   },
   "api": {
@@ -9,9 +8,9 @@
     "climate": "/api/climate"
   },
   "mocks": {
-    "lights": true,
-    "scenes": true,
-    "climate": true
+    "lights": false,
+    "scenes": false,
+    "climate": false
   },
   "tradfri": {
     "connection": {
@@ -42,7 +41,14 @@
     "actionResponseWaitTimeMs": 2000
   },
   "climate": {
-    "measurementCacheTimeS": 60,
-    "refreshIntervalS": 60
+    "refreshIntervalS": 60,
+    "dht11": {
+      "pin": 18,
+      "offsets": {
+        "tempC": -2,
+        "humidity": 0
+      },
+      "readingTimeoutS": 10
+    }
   }
 }
