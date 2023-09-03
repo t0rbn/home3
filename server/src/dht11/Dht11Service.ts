@@ -15,16 +15,16 @@ export default class Dht11Service {
 
     private isDataExpired(): boolean {
         if (!Dht11Service.currentData?.measuredAt) {
-            return false;
+            return true;
         }
         const now = Date.now();
         const readNeededAfter = new Date(Dht11Service.currentData.measuredAt).getTime() + (config.climate.dht11.readingTimeoutS * 1000)
         return now > readNeededAfter
     }
 
-    private async updateCurrentData(): Promise<void> {
+    private updateCurrentData(): void {
         try {
-            const reading = await sensor.read(11, config.climate.dht11.pin);
+            const reading = sensor.read(11, config.climate.dht11.pin);
             Dht11Service.currentData = {
                 humidity: reading.humidity + config.climate.dht11.offsets.humidity,
                 tempC: reading.temperature +  config.climate.dht11.offsets.tempC,
@@ -35,9 +35,9 @@ export default class Dht11Service {
         }
     }
 
-    public async getData(): Promise<ApiClimateData> {
+    public getData(): ApiClimateData {
         if (this.isDataExpired()) {
-            await this.updateCurrentData();
+            this.updateCurrentData();
         }
 
         if (!Dht11Service.currentData) {

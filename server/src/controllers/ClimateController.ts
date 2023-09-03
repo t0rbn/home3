@@ -13,9 +13,11 @@ export default class ClimateController implements Controller {
 
     registerEndpoints(app: Application): void {
         app.get(`${config.api.climate}`, async (_req, res) => {
-            this.dht11Service.getData()
-                .then(data => res.send(data))
-                .catch(() => res.sendStatus(500))
+            try {
+                res.send(this.dht11Service.getData())
+            } catch (e) {
+                res.sendStatus(500)
+            }
         })
     }
 
