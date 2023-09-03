@@ -15,4 +15,4 @@ cp ..
 sudo cp home3.service /etc/systemd/system
 sudo systemctl daemon-reload
 sudo systemctl enable home3.service
-sudo systemctl start home3.service
+sudo systemctl restart home3.service
