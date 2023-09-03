@@ -1,13 +1,13 @@
 import {useLightGroupsContext} from "../LightGroupsContext";
 import React, {useEffect, useState} from "react";
 import PrimaryButton from "../../globals/primary-button/PrimaryButton";
-import Box from "../../globals/box/Box";
 import {ApiLightsGroup} from "../../../../shared/types/Light";
 import ContentGridLayout from "../../globals/layouts/content-grid-layout/ContentGridLayout";
-import Spinner from "../../globals/spinner/Spinner";
+import SpinnerBox from "../../globals/spinner/SpinnerBox";
+import Box from "../../globals/box/Box";
 import ListLayout from "../../globals/layouts/list-layout/ListLayout";
 
-export default function LightsHomeHero() {
+export default function LightGroups() {
     const context = useLightGroupsContext();
     const [groups, setGroups] = useState<Array<ApiLightsGroup>>([]);
 
@@ -16,7 +16,7 @@ export default function LightsHomeHero() {
     }, [context.lightGroups]);
 
     if (!groups?.length) {
-        return <Box><Spinner/></Box>
+        return <SpinnerBox/>
     }
 
     return (

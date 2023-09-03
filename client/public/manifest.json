@@ -1,29 +1,29 @@
 {
-  "short_name": "Home",
-  "name": "Home",
+  "short_name": "home",
+  "name": "home",
   "icons": [
     {
-      "src": "assets/icons/icon.svg",
+      "src": "icons/icon.svg",
       "type": "image/svg"
     },
     {
-      "src": "assets/icons/icon_64.png",
+      "src": "icons/icon_64.png",
       "type": "image/png",
       "sizes": "64x64"
     },
     {
-      "src": "assets/icons/icon_192.png",
+      "src": "icons/icon_192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "assets/icons/icon_512.png",
+      "src": "icons/icon_512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#1a1a1a",
-  "background_color": "#1a1a1a"
+  "theme_color": "#242424",
+  "background_color": "#242424"
 }

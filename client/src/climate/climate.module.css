@@ -1,8 +1,0 @@
-.climate {
-    display: flex;
-    flex-direction: row;
-
-    > section {
-        flex-grow: 1;
-    }
-}

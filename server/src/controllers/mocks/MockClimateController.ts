@@ -16,7 +16,8 @@ export default class MockClimateController implements Controller {
         this.logger.warn("Activating climate api mock endpoint")
         app.get(`${config.api.climate}`, async (_req, res) => res.send({
             tempC: 23,
-            humidity: 0.42
+            humidity: 0.42,
+            measuredAt: new Date().toISOString()
         } as ApiClimateData))
     }
 }

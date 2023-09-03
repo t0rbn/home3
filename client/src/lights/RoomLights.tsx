@@ -5,7 +5,7 @@ import AppLayout from "../globals/layouts/app-layout/AppLayout";
 import {useParams} from "react-router-dom";
 import LightControl from "./light-control/LightControl";
 
-export default function LightsOverview() {
+export default function RoomLights() {
     const groupId = useParams().id;
 
     const [group, setGroup] = useState<ApiLightsGroup>()

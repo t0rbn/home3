@@ -10,7 +10,7 @@
   "mocks": {
     "lights": false,
     "scenes": false,
-    "climate": false
+    "climate": true
   },
   "tradfri": {
     "connection": {

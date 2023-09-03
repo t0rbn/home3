@@ -1,16 +1,21 @@
 :root {
-    --color-elevation-0: hsl(0, 0%, 5%);
-    --color-elevation-1: hsl(0, 0%, 10%);
-    --color-elevation-2: hsl(0, 0%, 15%);
+    --theme-hue-primary: 213;
+    --theme-saturation-primary: 0%;
 
-    --color-elevation-interactive: hsl(222, 0%, 20%);
-    --color-elevation-highlight: hsl(222, 0%, 25%);
+    --theme-hue-interactive: 200;
+    --theme-saturation-interactive: 0%;
 
-    --color-text-base: hsl(0, 0%, 75%);
-    --color-text-highlight: hsl(0, 0%, 100%);
+    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 7%);
+    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 14%);
+
+    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 21%);
+    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 24.5%);
+
+    --color-text-base: hsl(0, 0%, 77%);
+    --color-text-highlight: hsl(0, 0%, 91%);
 
     --size-unit: 1rem;
-    --size-xxs: calc(0.125 * var(--size-unit));
+    --size-xxs: 1px;
     --size-xs: calc(0.25 * var(--size-unit));
     --size-s: calc(0.5 * var(--size-unit));
     --size-m: calc(1 * var(--size-unit));
@@ -25,23 +30,25 @@
     --border-radius-big: var(--size-l);
     --border-radius-full: 100vmax;
 
-    --shadown-default: none;
-    --shadown-interactive: 0 0 var(--size-s) hsla(0, 0%, 0%, 50%) !important;
+    --shadow-default: none;
+    --shadow-interactive: 0 0 var(--size-s) hsla(0, 0%, 0%, 25%);
 
     --transform-hover: scale(105%);
 }
 
 @media (prefers-color-scheme: light) {
     :root {
-        --color-elevation-0: hsl(0, 0%, 95%);
-        --color-elevation-1: hsl(0, 0%, 90%);
-        --color-elevation-2: hsl(0, 0%, 85%);
+        --theme-saturation-primary: 25%;
+        --theme-saturation-interactive: 25%;
 
-        --color-elevation-interactive: hsl(222, 0%, 80%);
-        --color-elevation-highlight: hsl(222, 0%, 75%);
+        --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 100%);
+        --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 93%);
 
-        --color-text-base: hsl(0, 0%, 25%);
-        --color-text-highlight: hsl(0, 0%, 10%);
+        --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 86%);
+        --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 82.5%);
+
+        --color-text-base: hsl(0, 0%, 21%);
+        --color-text-highlight: hsl(0, 0%, 14%);
     }
 }
 
@@ -50,7 +57,7 @@
     font-family: "Open Sans";
 }
 
-h1,h2,h3,h4,h5 {
+h1, h2, h3, h4, h5 {
     padding: 0;
     margin: 0;
     color: var(--color-text-highlight);
@@ -93,8 +100,8 @@ input[type="range"] {
     &::-webkit-slider-thumb {
         background-color: var(--color-elevation-interactive);
         -webkit-appearance: none;
-        margin-top: calc(-.5 * (var(--size-l) - var(--size-m)));
-        height: var(--size-l);
+        margin-top: calc(-.5 * (var(--size-xl) - var(--size-s)));
+        height: var(--size-xl);
         aspect-ratio: 1;
         border-radius: var(--border-radius-full);
         cursor: pointer;
@@ -102,13 +109,13 @@ input[type="range"] {
 
     &::-webkit-slider-thumb:hover {
         background-color: var(--color-elevation-highlight);
-        box-shadow: var(--shadown-interactive);
+        box-shadow: var(--shadow-interactive);
     }
 
 
     &::-webkit-slider-runnable-track {
-        height: var(--size-m);
-        background-color: var(--color-elevation-2);
+        height: var(--size-s);
+        background-color: var(--color-elevation-0);
         -webkit-appearance: none;
         border-radius: var(--border-radius-full);
     }

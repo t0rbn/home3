@@ -1,5 +1,5 @@
-.DS_Store
 node_modules
+build
 
 # Log files
 npm-debug.log*
@@ -7,6 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+package-lock.json
+
 # Editor directories and files
 .idea
-.vscode

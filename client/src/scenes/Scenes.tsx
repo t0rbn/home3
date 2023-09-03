@@ -4,7 +4,7 @@ import {useScenesContext} from "./ScenesContext";
 import Box from "../globals/box/Box";
 import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
 import ImageButton from "../globals/image-button/ImageButton";
-import Spinner from "../globals/spinner/Spinner";
+import SpinnerBox from "../globals/spinner/SpinnerBox";
 import ListLayout from "../globals/layouts/list-layout/ListLayout";
 
 export default function Scenes() {
@@ -15,9 +15,10 @@ export default function Scenes() {
         setScenes(context.scenes)
     }, [context.scenes]);
 
-    if (!scenes.length) {
-        return <Box><Spinner/></Box>
+    if (!context.scenes) {
+        return <SpinnerBox/>
     }
+
     return (
         <Box>
             <ListLayout space="big">

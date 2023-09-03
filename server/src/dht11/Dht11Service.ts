@@ -26,7 +26,7 @@ export default class Dht11Service {
         try {
             const reading = sensor.read(11, config.climate.dht11.pin);
             Dht11Service.currentData = {
-                humidity: reading.humidity + config.climate.dht11.offsets.humidity,
+                humidity: (reading.humidity / 100) + config.climate.dht11.offsets.humidity,
                 tempC: reading.temperature +  config.climate.dht11.offsets.tempC,
                 measuredAt: new Date().toISOString()
             }

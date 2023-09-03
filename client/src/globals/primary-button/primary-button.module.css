@@ -4,9 +4,11 @@ button.button {
     padding: var(--size-s) var(--size-l);
     background-color: var(--color-elevation-interactive);
     cursor: pointer;
-    color: var(--shadown-interactive);
+    color: var(--color-text-base);
 
     &:hover {
         background-color: var(--color-elevation-highlight);
+        box-shadow: var(--shadow-interactive);
+
     }
 }

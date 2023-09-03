@@ -10,7 +10,7 @@ interface ImageButtonProps {
 
 export default function ImageButton(props: ImageButtonProps) {
     const path = 'url(' + props.image + ')'
-    const bgStyle = {backgroundImage: 'linear-gradient(to right, var(--color-elevation-2), transparent), ' + path}
+    const bgStyle = {backgroundImage: 'linear-gradient(to right, var(--color-elevation-interactive), transparent), ' + path}
 
     return (
         <PrimaryButton

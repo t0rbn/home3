@@ -1,5 +1,5 @@
 export function resolveApi(endpoint: string, resource?: string): string {
-    return `${endpoint}${resource ? (`/${resource}`) : ``}`;
+    return `http://localhost:8000${endpoint}${resource ? (`/${resource}`) : ``}`;
 }
 
 export function classNames(...classes: Array<string | null | undefined>): string {
