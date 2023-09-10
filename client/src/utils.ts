@@ -1,5 +1,5 @@
 export function resolveApi(endpoint: string, resource?: string): string {
-    return `http://192.168.0.103:8000${endpoint}${resource ? (`/${resource}`) : ``}`;
+    return `${endpoint}${resource ? (`/${resource}`) : ``}`;
 }
 
 export function classNames(...classes: Array<string | null | undefined>): string {
