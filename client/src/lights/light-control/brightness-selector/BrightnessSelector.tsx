@@ -22,7 +22,7 @@ function BrightnessSelector(props: BrightnessSelectorProps) {
             {/*<PrimaryButton onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}><FaIcon icon="power-off"></FaIcon></PrimaryButton>*/}
             <input
                 type="range"
-                min="1"
+                min="0"
                 max="100"
                 value={currentValue}
                 onChange={(e: any) => setCurrentValue(e.target.value)}
