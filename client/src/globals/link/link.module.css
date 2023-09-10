@@ -1,0 +1,11 @@
+.link {
+    color: var(--color-text-base);
+    font: inherit;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-text-highlight);
+    }
+}

@@ -165,7 +165,11 @@ export default class TradfriService {
         }
 
         const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)))
-        await light.lightList[0].setBrightness(newBrightness, 0)
+        if (newBrightness === 0) {
+            await light.lightList[0].turnOff();
+        } else {
+            await light.lightList[0].setBrightness(newBrightness, 0)
+        }
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 

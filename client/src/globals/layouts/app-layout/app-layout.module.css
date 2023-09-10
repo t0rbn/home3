@@ -27,7 +27,8 @@
 
     .contentWrapper {
         width: 100%;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         max-height: 100%;
 
         .content {

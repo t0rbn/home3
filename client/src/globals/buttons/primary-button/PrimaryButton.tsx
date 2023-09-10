@@ -1,9 +1,9 @@
 import {PropsWithChildren} from "react";
 import styles from './primary-button.module.css'
 import {useNavigate} from "react-router-dom";
-import {classNames} from "../../utils";
+import {classNames} from "../../../utils";
 
-interface PrimaryButtonProps {
+export interface PrimaryButtonProps {
     onClick?: () => any;
     href?: string;
     style?: object;

@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from "react";
 import styles from './app-layout.module.css'
-import PrimaryButton from "../../primary-button/PrimaryButton";
+import PrimaryButton from "../../buttons/primary-button/PrimaryButton";
 import FaIcon from "../../fa-icon/FaIcon";
 import ListLayout from "../list-layout/ListLayout";
 import {classNames} from "../../../utils";

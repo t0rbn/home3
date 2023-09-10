@@ -1,6 +1,6 @@
 import {useRef} from "react";
 import config from "../../../shared/config.json";
-import PrimaryButton from "../../../globals/primary-button/PrimaryButton";
+import PrimaryButton from "../../../globals/buttons/primary-button/PrimaryButton";
 import ColorButton from "../color-button/ColorButton";
 import ContentGridLayout from "../../../globals/layouts/content-grid-layout/ContentGridLayout";
 import FaIcon from "../../../globals/fa-icon/FaIcon";

@@ -1,8 +1,8 @@
 :root {
-    --theme-hue-primary: 213;
+    --theme-hue-primary: 180;
     --theme-saturation-primary: 0%;
 
-    --theme-hue-interactive: 200;
+    --theme-hue-interactive: 180;
     --theme-saturation-interactive: 0%;
 
     --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 7%);
@@ -38,11 +38,11 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --theme-saturation-primary: 25%;
+        /*--theme-saturation-primary: 50%;*/
         --theme-saturation-interactive: 25%;
 
-        --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 100%);
-        --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 93%);
+        --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 93%);
+        --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 100%);
 
         --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 86%);
         --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 82.5%);

@@ -4,8 +4,7 @@ import Climate from "../climate/Climate";
 import LightGroups from "../lights/light-groups/LightGroups";
 import AppLayout from "../globals/layouts/app-layout/AppLayout";
 import ListLayout from "../globals/layouts/list-layout/ListLayout";
-import SpinnerBox from "../globals/spinner/SpinnerBox";
-import Box from "../globals/box/Box";
+import Link from "../globals/link/Link";
 
 export default function Home() {
     return (
@@ -13,7 +12,8 @@ export default function Home() {
             <ListLayout space="big">
                 <Scenes/>
                 <LightGroups/>
-                <Climate />
+                <Climate/>
+                <Link href="/administration">Settings</Link>
             </ListLayout>
         </AppLayout>
     )

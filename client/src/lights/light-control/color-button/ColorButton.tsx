@@ -1,4 +1,4 @@
-import PrimaryButton from "../../../globals/primary-button/PrimaryButton";
+import PrimaryButton from "../../../globals/buttons/primary-button/PrimaryButton";
 import styles from "./color-button.module.css"
 
 interface ColorButtonProps {

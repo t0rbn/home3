@@ -1,6 +1,6 @@
 import {useLightGroupsContext} from "../LightGroupsContext";
 import React, {useEffect, useState} from "react";
-import PrimaryButton from "../../globals/primary-button/PrimaryButton";
+import PrimaryButton from "../../globals/buttons/primary-button/PrimaryButton";
 import {ApiLightsGroup} from "../../../../shared/types/Light";
 import ContentGridLayout from "../../globals/layouts/content-grid-layout/ContentGridLayout";
 import SpinnerBox from "../../globals/spinner/SpinnerBox";
@@ -23,7 +23,7 @@ export default function LightGroups() {
         <Box>
             <ListLayout space="big">
                 <h1>Lights</h1>
-                <ContentGridLayout variant="small-items">
+                <ContentGridLayout>
                     {groups.map(g => <PrimaryButton href={'/lights/groups/' + g.id} key={g.id}>{g.name}</PrimaryButton>)}
                 </ContentGridLayout>
             </ListLayout>

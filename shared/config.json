@@ -5,7 +5,8 @@
   "api": {
     "lights": "/api/lights",
     "scenes": "/api/scenes",
-    "climate": "/api/climate"
+    "climate": "/api/climate",
+    "administration": "/api/administration"
   },
   "mocks": {
     "lights": false,

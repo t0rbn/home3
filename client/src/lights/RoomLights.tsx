@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {ApiLightsGroup} from "../../../shared/types/Light";
+import {ApiLight, ApiLightsGroup} from "../../../shared/types/Light";
 import {useLightGroupsContext} from "./LightGroupsContext";
 import AppLayout from "../globals/layouts/app-layout/AppLayout";
 import {useParams} from "react-router-dom";
@@ -15,13 +15,23 @@ export default function RoomLights() {
         setGroup(context.lightGroups.find(g => g.id === groupId))
     }, [context.lightGroups, groupId]);
 
+    const compareLights = (a: ApiLight, b: ApiLight) => {
+        if ((a.brightness === 0) === (b.brightness === 0)) {
+            if (a.name === b.name) {
+                return 0
+            }
+            return a.name < b.name ? -1 : 1
+        }
+        return a.brightness ? -1 : 1
+    }
+
     if (!group) {
         return <div>Loading...</div>
     }
 
     return (
         <AppLayout name={group.name}>
-            {group.lights.map(l => (<LightControl id={l.id}/>))}
+            {group.lights.sort(compareLights).map(l => (<LightControl id={l.id}/>))}
         </AppLayout>
     )
 }

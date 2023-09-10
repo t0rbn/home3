@@ -9,6 +9,6 @@ button.button {
     &:hover {
         background-color: var(--color-elevation-highlight);
         box-shadow: var(--shadow-interactive);
-
+        color: var(--color-text-highlight)
     }
 }

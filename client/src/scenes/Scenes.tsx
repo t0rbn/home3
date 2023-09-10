@@ -3,7 +3,7 @@ import {ApiScene} from "../../../shared/types/Scenes";
 import {useScenesContext} from "./ScenesContext";
 import Box from "../globals/box/Box";
 import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
-import ImageButton from "../globals/image-button/ImageButton";
+import ImageButton from "../globals/buttons/image-button/ImageButton";
 import SpinnerBox from "../globals/spinner/SpinnerBox";
 import ListLayout from "../globals/layouts/list-layout/ListLayout";
 

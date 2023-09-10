@@ -1,5 +1,5 @@
-import PrimaryButton from "../primary-button/PrimaryButton";
 import styles from './image-button.module.css'
+import PrimaryButton from "../primary-button/PrimaryButton";
 
 interface ImageButtonProps {
     onClick?: () => any;
@@ -10,7 +10,7 @@ interface ImageButtonProps {
 
 export default function ImageButton(props: ImageButtonProps) {
     const path = 'url(' + props.image + ')'
-    const bgStyle = {backgroundImage: 'linear-gradient(to right, var(--color-elevation-interactive), transparent), ' + path}
+    const bgStyle = {backgroundImage: 'linear-gradient(to right, var(--color-imagebutton-bg), transparent), ' + path}
 
     return (
         <PrimaryButton

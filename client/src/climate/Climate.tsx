@@ -13,7 +13,6 @@ export default function Climate() {
 
     useEffect(() => {
         setData(context.data);
-        console.log(context.data)
     }, [context.data])
 
     if (!data) {
