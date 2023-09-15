@@ -49,7 +49,7 @@ function LightGroupsProvider(props: PropsWithChildren) {
     }
 
     const setLightWhiteTemperature = async (id: string, value: number): Promise<void> => {
-        await fetch(resolveApi(config.api.lights ,'/action'), {
+        await fetch(resolveApi(config.api.lights ,'action'), {
             method: 'post',
             headers: {'Content-Type': 'text/plain;charset=UTF-8'},
             body: JSON.stringify({
