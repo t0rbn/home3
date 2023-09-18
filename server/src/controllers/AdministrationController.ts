@@ -19,11 +19,6 @@ export default class AdministrationController implements Controller {
                 res.sendStatus(200);
                 await this.administrationService.restartApp();
             }
-
-            if (action.type === 'restart-gateway') {
-                await this.administrationService.restartTradfriGateWay();
-                res.sendStatus(200)
-            }
         })
     }
 }
