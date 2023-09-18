@@ -9,17 +9,14 @@ interface ImageButtonProps {
 }
 
 export default function ImageButton(props: ImageButtonProps) {
-    const path = 'url(' + props.image + ')'
-    const bgStyle = {backgroundImage: 'linear-gradient(to right, var(--color-imagebutton-bg), transparent), ' + path}
-
     return (
         <PrimaryButton
             onClick={props.onClick}
             href={props.href}
-            style={bgStyle}
             className={styles.imageButton}
         >
-            {props.label}
+            <img src={props.image} alt={props.label}/>
+            <label>{props.label}</label>
         </PrimaryButton>
     )
 }

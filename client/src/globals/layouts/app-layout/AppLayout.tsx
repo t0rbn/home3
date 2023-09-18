@@ -2,7 +2,6 @@ import React, {PropsWithChildren} from "react";
 import styles from './app-layout.module.css'
 import PrimaryButton from "../../buttons/primary-button/PrimaryButton";
 import FaIcon from "../../fa-icon/FaIcon";
-import ListLayout from "../list-layout/ListLayout";
 import {classNames} from "../../../utils";
 
 interface AppLayoutProps {
@@ -18,7 +17,7 @@ export default function AppLayout(props: PropsWithChildren<AppLayoutProps>) {
                     <div className={styles.linkContainer}>
                         <PrimaryButton href="/"><FaIcon icon="chevron-left"/> back</PrimaryButton>
                     </div>
-                        <h2>{props.name}</h2>
+                    <h2>{props.name}</h2>
                     <div className={classNames(styles.linkContainer, styles.linkContainerHidden)}>
                         <PrimaryButton><FaIcon icon="chevron-left"/> back</PrimaryButton>
                     </div>
@@ -27,9 +26,7 @@ export default function AppLayout(props: PropsWithChildren<AppLayoutProps>) {
 
             <div className={styles.contentWrapper}>
                 <main className={styles.content}>
-                    <ListLayout space="big">
-                        {props.children}
-                    </ListLayout>
+                    {props.children}
                 </main>
             </div>
         </div>

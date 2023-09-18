@@ -21,7 +21,7 @@ export default function LightGroups() {
 
     return (
         <Box>
-            <ListLayout space="big">
+            <ListLayout>
                 <h1>Lights</h1>
                 <ContentGridLayout>
                     {groups.map(g => <PrimaryButton href={'/lights/groups/' + g.id} key={g.id}>{g.name}</PrimaryButton>)}

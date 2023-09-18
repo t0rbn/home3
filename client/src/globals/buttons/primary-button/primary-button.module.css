@@ -1,14 +1,19 @@
 button.button {
     border: none;
-    border-radius: var(--border-radius-full);
-    padding: var(--size-s) var(--size-l);
+    border-radius: var(--border-radius-default);
+    padding: var(--size-m) var(--size-l);
     background-color: var(--color-elevation-interactive);
     cursor: pointer;
     color: var(--color-text-base);
+    font: inherit;
 
-    &:hover {
-        background-color: var(--color-elevation-highlight);
-        box-shadow: var(--shadow-interactive);
-        color: var(--color-text-highlight)
+    @media (pointer: fine) {
+        &:hover {
+            background-color: var(--color-elevation-highlight);
+            color: var(--color-text-highlight);
+
+            transform: var(--transform-hover);
+            box-shadow: var(--shadow-hover);
+        }
     }
 }

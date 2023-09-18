@@ -1,27 +1,29 @@
 button.imageButton {
-    padding: var(--size-m);
-    aspect-ratio: 1;
-    text-align: left;
+    padding: 0;
     background-size: 100%;
     background-position: center;
     border: none;
     border-radius: var(--border-radius-default);
 
-    &:hover {
-        background-size: 110%;
-        color: var(--color-text-highlight)
-
-    }
-
-    --color-imagebutton-bg: hsla(0, 0%, 0%, 80%);
-
-    @media (prefers-color-scheme: light) {
-        --color-imagebutton-bg: hsla(0, 0%, 100%, 80%);
+    @media (pointer: fine) {
+        &:hover {
+            > img {
+                filter: brightness(110%);
+            }
+        }
     }
 
     > img {
-        height: calc(3 * var(--size-m));
-        border-radius: vaR(--border-radius-full);
+        aspect-ratio: 1;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        border-radius: var(--border-radius-default);
+    }
+
+    > label {
+        display: block;
+        padding: var(--size-grid-space);
     }
 }
 

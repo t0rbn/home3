@@ -114,7 +114,7 @@ export default class TradfriService {
 
     private getLight(id: string): ApiLight | null {
         const accesory =  TradfriService.lights.find(l => `${l.instanceId}` === id )
-        if (!accesory) {
+        if (!accesory || !accesory.alive) {
             return null
         }
 

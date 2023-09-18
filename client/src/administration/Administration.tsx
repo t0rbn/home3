@@ -14,22 +14,25 @@ export default function Administration() {
         window.location.reload();
     }
 
-    const restartServer = async () => {
-        if (!window.confirm("Restart Server?")){
-            return;
-        }
+    const performaction = async (action: ApiAdministrationAction) => {
         await fetch(resolveApi(config.api.administration, 'action'), {
             method: 'post',
             headers: {'Content-Type': 'text/plain;charset=UTF-8'},
-            body: JSON.stringify({type: 'restart-application',} as ApiAdministrationAction)
+            body: JSON.stringify(action)
         })
+    }
+    const restartServer = async () => {
+        if (!window.confirm("Restart Server?")) {
+            return;
+        }
+        await performaction({type: 'restart-application'})
         refresh();
     }
 
     return (
         <AppLayout name="Administration">
             <Box>
-                <ListLayout space="big">
+                <ListLayout>
                     <h1>Restart</h1>
                     <ContentGridLayout>
                         <PrimaryButton onClick={restartServer}>Server</PrimaryButton>
@@ -38,7 +41,7 @@ export default function Administration() {
                 </ListLayout>
             </Box>
             <Box>
-                <ListLayout space="big">
+                <ListLayout>
                     <h1>Config</h1>
                     <pre>
                     {JSON.stringify(config, null, 4)}

@@ -24,9 +24,9 @@ export default function Climate() {
 
     return (
         <Box>
-            <ListLayout space="big">
+            <ListLayout>
                 <h1>Climate</h1>
-                <ContentGridLayout space="big">
+                <ContentGridLayout>
                     <KeyValue value={tempFormatted} icon="thermometer-half" description="Temperature"></KeyValue>
                     <KeyValue value={humidtyFormatted} icon="tint" description="Humidity"></KeyValue>
                 </ContentGridLayout>

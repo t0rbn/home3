@@ -17,7 +17,7 @@
         }
 
         .linkContainer {
-            margin: var(--size-grid-space-big);
+            margin:  var(--size-grid-space);
         }
 
         .linkContainerHidden {
@@ -35,8 +35,12 @@
             width: 100%;
             max-width: var(--size-breakpoint);
             margin: 0 auto;
-            padding: var(--size-grid-space-big);
+            padding: var(--size-grid-space);
             box-sizing: border-box;
+
+            > *:not(:last-child) {
+                margin-bottom: var(--size-grid-space);
+            }
         }
     }
 }

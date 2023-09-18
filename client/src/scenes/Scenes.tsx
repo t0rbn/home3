@@ -21,7 +21,7 @@ export default function Scenes() {
 
     return (
         <Box>
-            <ListLayout space="big">
+            <ListLayout>
                 <h1>Scenes</h1>
                 <ContentGridLayout>
                     {scenes.map(s => <ImageButton image={`/scenes/${s.name.replaceAll(' ', '%20')}.jpg`} key={s.id} onClick={() => context.activateSceneById(s.id)} label={s.name}/>)}

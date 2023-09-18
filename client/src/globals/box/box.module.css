@@ -1,7 +1,8 @@
 .box {
-    padding: var(--size-grid-space-big);
+    padding: var(--size-grid-space);
+    padding-top: var(--size-l);
     background-color: var(--color-elevation-1);
-    border-radius: var(--border-radius-big);
+    border-radius: calc(var(--border-radius-default) + var(--size-grid-space));
     overflow: hidden;
     background-size: cover;
     box-shadow: var(--shadow-default);

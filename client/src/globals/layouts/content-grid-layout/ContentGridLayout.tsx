@@ -3,7 +3,6 @@ import styles from './content-grid-layout.module.css'
 import {classNames, conditionalClassName} from "../../../utils";
 
 interface ContentGridLayoutProps {
-    space?: 'default' | 'big'
     variant?: 'default' | 'small-items'
 
 }
@@ -11,7 +10,6 @@ interface ContentGridLayoutProps {
 export default function ContentGridLayout(props: PropsWithChildren<ContentGridLayoutProps>) {
     const classes = [
         styles.layout,
-        conditionalClassName(props.space === 'big', styles.big),
         conditionalClassName(props.variant === 'small-items', styles.many)
     ]
     return <div className={classNames(...classes)}>{props.children}</div>

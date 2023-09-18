@@ -16,13 +16,10 @@ export default function RoomLights() {
     }, [context.lightGroups, groupId]);
 
     const compareLights = (a: ApiLight, b: ApiLight) => {
-        if ((a.brightness === 0) === (b.brightness === 0)) {
-            if (a.name === b.name) {
-                return 0
-            }
-            return a.name < b.name ? -1 : 1
+        if (a.name === b.name) {
+            return 0
         }
-        return a.brightness ? -1 : 1
+        return a.name < b.name ? -1 : 1
     }
 
     if (!group) {

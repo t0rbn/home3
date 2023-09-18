@@ -1,9 +1,5 @@
 .layout {
     > *:not(:last-child) {
-        margin-bottom: var(--size-grid-space-default);
-    }
-
-    &.big > *:not(:last-child) {
-        margin-bottom: var(--size-grid-space-big);
+        margin-bottom: var(--size-grid-space);
     }
 }
