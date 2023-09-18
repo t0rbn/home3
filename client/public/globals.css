@@ -14,7 +14,7 @@
     --color-text-base: hsl(0, 0%, 77%);
     --color-text-highlight: hsl(0, 0%, 91%);
 
-    --size-unit: .9rem;
+    --size-unit: .95rem;
     --size-xxs: 1px;
     --size-xs: calc(0.25 * var(--size-unit));
     --size-s: calc(0.5 * var(--size-unit));
