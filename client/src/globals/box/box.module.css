@@ -5,7 +5,6 @@
     border-radius: calc(var(--border-radius-default) + var(--size-grid-space));
     overflow: hidden;
     background-size: cover;
-    box-shadow: var(--shadow-default);
 
     &.hasBackgroundImage {
         background-image: linear-gradient(to right, hotpink, transparent);

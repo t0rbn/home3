@@ -22,11 +22,10 @@
     --size-l: calc(1.5 * var(--size-unit));
     --size-xl: calc(2 * var(--size-unit));
 
-    --size-breakpoint: calc(66 * var(--size-unit));
+    --size-breakpoint: 50rem;
     --size-grid-space: var(--size-m);
 
     --border-radius-default: var(--size-m);
-    --border-radius-full: 100vmax;
 
     --shadow-hover: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
     --transform-hover: scale(105%);
@@ -79,8 +78,8 @@ h1 {
 }
 
 h2 {
-    font-size: var(--size-l);
-    line-height: var(--size-l);
+    font-size: var(--size-xl);
+    line-height: var(--size-xl);
     font-weight: bold;
 }
 

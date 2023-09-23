@@ -17,10 +17,18 @@ function RgbColorSelector(props: ColorSelectorProps) {
         (colorSelector.current as any).click();
     }
 
+    const randomColor = () => {
+        const charSet = '1234567890ABCDEF'
+        const color = '#' + new Array(6).fill('').map( () => charSet[Math.floor(charSet.length * Math.random())]).join('')
+        props.onSelected(color)
+        return
+    }
+
     return (
         <div>
             <ContentGridLayout variant="small-items">
                 {colors.map(c => <ColorButton onClick={() => props.onSelected(c)} key={c} color={c}/>)}
+                <PrimaryButton onClick={randomColor}><FaIcon icon="dice" /></PrimaryButton>
                 <PrimaryButton onClick={openCustomSelector}><FaIcon icon="palette" /></PrimaryButton>
             </ContentGridLayout>
             <input type="color" ref={colorSelector} onChange={e => props.onSelected(e.target.value)} style={{display: 'none'}}/>
