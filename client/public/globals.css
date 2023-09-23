@@ -1,18 +1,19 @@
 :root {
-    --theme-hue-primary: 180;
+    --theme-hue-primary: 50;
     --theme-saturation-primary: 0%;
 
-    --theme-hue-interactive: 180;
+    --theme-hue-interactive: 75;
     --theme-saturation-interactive: 0%;
 
-    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 7%);
-    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 14%);
+    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 10%);
+    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 15%);
+    --color-elevation-2: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 20%);
 
-    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 21%);
-    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 24.5%);
+    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 25%);
+    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 30%);
 
-    --color-text-base: hsl(0, 0%, 77%);
-    --color-text-highlight: hsl(0, 0%, 91%);
+    --color-text-base: hsl(0, 0%, 75%);
+    --color-text-highlight: hsl(0, 0%, 90%);
 
     --size-unit: .95rem;
     --size-xxs: 1px;
@@ -21,11 +22,13 @@
     --size-m: calc(1 * var(--size-unit));
     --size-l: calc(1.5 * var(--size-unit));
     --size-xl: calc(2 * var(--size-unit));
+    --size-xxl: calc(3 * var(--size-unit));
 
     --size-breakpoint: 50rem;
     --size-grid-space: var(--size-m);
 
     --border-radius-default: var(--size-m);
+    --border-radius-full: 110vmax;
 
     --shadow-hover: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
     --transform-hover: scale(105%);
@@ -72,14 +75,20 @@ p {
 }
 
 h1 {
-    font-size: var(--size-xl);
-    line-height: var(--size-xl);
+    font-size: var(--size-xxl);
+    line-height: var(--size-xxl);
     font-weight: bold;
 }
 
 h2 {
     font-size: var(--size-xl);
     line-height: var(--size-xl);
+    font-weight: bold;
+}
+
+h3 {
+    font-size: var(--size-l);
+    line-height: var(--size-l);
     font-weight: bold;
 }
 
@@ -124,7 +133,7 @@ input[type="range"] {
         height: 100%;
         padding: 0;
         margin: 0;
-        background-color: var(--color-elevation-0);
+        background-color: var(--color-elevation-1);
         -webkit-appearance: none;
         border-radius: var(--border-radius-full);
     }

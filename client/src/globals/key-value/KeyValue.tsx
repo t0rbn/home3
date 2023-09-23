@@ -1,5 +1,6 @@
 import FaIcon from "../fa-icon/FaIcon"
 import styles from "./key-value.module.css"
+import Box from "../box/Box";
 
 interface KeyValueProps {
     value: string;
@@ -9,14 +10,17 @@ interface KeyValueProps {
 
 export default function KeyValue(props: KeyValueProps) {
     return (
-        <div className={styles.keyValue}>
-            <div className={styles.iconWrapper}>
-                <FaIcon icon={props.icon}/>
+        <Box>
+            <div className={styles.keyValue}>
+                <div className={styles.iconWrapper}>
+                    <FaIcon icon={props.icon}/>
+                </div>
+                <div className={styles.text}>
+                    <span className={styles.value}>{props.value}</span>
+                    {props.description ? <p>{props.description}</p> : null}
+                </div>
             </div>
-            <div className={styles.text}>
-                <span className={styles.value}>{props.value}</span>
-                {props.description ? <p>{props.description}</p> : null}
-            </div>
-        </div>
+        </Box>
+
     )
 }

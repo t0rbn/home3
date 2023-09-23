@@ -3,44 +3,17 @@
     flex-direction: column;
     max-height: 100vh;
 
-    > header {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--color-elevation-1);
+    width: 100%;
+    max-width: var(--size-breakpoint);
+    margin: 0 auto;
+    padding: var(--size-grid-space);
+    box-sizing: border-box;
 
-        > h2 {
-            flex-grow: 1;
-            margin: 0;
-            text-align: center;
-        }
-
-        .linkContainer {
-            margin:  var(--size-grid-space);
-        }
-
-        .linkContainerHidden {
-            opacity: 0;
-        }
+    > *:not(:last-child) {
+        margin-bottom: var(--size-grid-space);
     }
 
-    .contentWrapper {
-        width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: 100%;
-
-        .content {
-            width: 100%;
-            max-width: var(--size-breakpoint);
-            margin: 0 auto;
-            padding: var(--size-grid-space);
-            box-sizing: border-box;
-
-            > *:not(:last-child) {
-                margin-bottom: var(--size-grid-space);
-            }
-        }
+    .linkContainer {
+        margin-bottom: var(--size-xxl);
     }
 }

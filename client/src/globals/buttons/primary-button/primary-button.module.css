@@ -1,11 +1,15 @@
 button.button {
     border: none;
-    border-radius: var(--border-radius-default);
+    border-radius: var(--border-radius-full);
     padding: var(--size-m) var(--size-l);
     background-color: var(--color-elevation-interactive);
     cursor: pointer;
+
     color: var(--color-text-base);
     font: inherit;
+    font-size: var(--size-m);
+    line-height: var(--size-m);
+    font-weight: normal;
 
     @media (pointer: fine) {
         &:hover {

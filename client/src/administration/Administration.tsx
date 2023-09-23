@@ -7,6 +7,7 @@ import config from "../shared/config.json"
 import {resolveApi} from "../utils";
 import {ApiAdministrationAction} from "../../../shared/types/Administration";
 import AppLayout from "../globals/layouts/app-layout/AppLayout";
+import Section from "../globals/section/Section";
 
 export default function Administration() {
 
@@ -30,24 +31,20 @@ export default function Administration() {
     }
 
     return (
-        <AppLayout name="Administration">
-            <Box>
-                <ListLayout>
-                    <h1>Restart</h1>
+        <AppLayout backButton>
+            <Section name="Restart">
                     <ContentGridLayout>
                         <PrimaryButton onClick={restartServer}>Server</PrimaryButton>
                         <PrimaryButton onClick={refresh}>Client</PrimaryButton>
                     </ContentGridLayout>
-                </ListLayout>
-            </Box>
-            <Box>
-                <ListLayout>
-                    <h1>Config</h1>
-                    <pre>
+            </Section>
+            <Section name="Config">
+                <Box>
+                     <pre>
                     {JSON.stringify(config, null, 4)}
                     </pre>
-                </ListLayout>
-            </Box>
+                </Box>
+            </Section>
         </AppLayout>
     )
 }

@@ -1,0 +1,9 @@
+section.section {
+    > h1 {
+        margin-bottom: var(--size-grid-space);
+    }
+
+    &:not(:last-child) {
+        margin-bottom: calc(2 * var(--size-xxl));
+    }
+}
