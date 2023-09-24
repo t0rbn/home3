@@ -1,8 +1,6 @@
 .box {
     padding: var(--size-grid-space);
-    /*background-color: var(--color-elevation-1);*/
     border-radius: calc(var(--border-radius-default) + var(--size-grid-space));
-    overflow: hidden;
 
-    border: var(--size-xxs) solid vaR(--color-elevation-2);
+    border: var(--size-xs) solid vaR(--color-elevation-1);
 }

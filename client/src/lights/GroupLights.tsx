@@ -5,8 +5,9 @@ import AppLayout from "../globals/layouts/app-layout/AppLayout";
 import {useParams} from "react-router-dom";
 import LightControl from "./light-control/LightControl";
 import ListLayout from "../globals/layouts/list-layout/ListLayout";
+import Section from "../globals/section/Section";
 
-export default function RoomLights() {
+export default function GroupLights() {
     const groupId = useParams().id;
 
     const [group, setGroup] = useState<ApiLightsGroup>()
@@ -29,12 +30,12 @@ export default function RoomLights() {
 
     return (
         <AppLayout backButton>
-            <ListLayout>
-                <h1>{group.name}</h1>
-                {group.lights.sort(compareLights).map(l => (<LightControl key={l.id} id={l.id}/>))}
-                {!!group.lights.length || <h3>No active lights</h3>}
-            </ListLayout>
-
+            <Section name={group.name}>
+                <ListLayout>
+                    {group.lights.sort(compareLights).map(l => (<LightControl key={l.id} id={l.id}/>))}
+                    {!!group.lights.length || <h3>No active lights</h3>}
+                </ListLayout>
+            </Section>
         </AppLayout>
     )
 }

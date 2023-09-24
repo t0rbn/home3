@@ -15,6 +15,7 @@
 
 .spinnerWrapper {
     padding: var(--size-xl);
+    position: relative;
 
     .spinner {
         position: absolute;

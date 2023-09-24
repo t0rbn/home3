@@ -1,22 +1,19 @@
 :root {
-    --theme-hue-primary: 50;
+    --theme-hue-primary: 240;
     --theme-saturation-primary: 0%;
 
-    --theme-hue-interactive: 75;
+    --theme-hue-interactive: 260;
     --theme-saturation-interactive: 0%;
 
-    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 10%);
-    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 15%);
-    --color-elevation-2: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 20%);
-
-    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 25%);
-    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 30%);
+    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 14%);
+    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 19%);
+    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 24%);
+    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 34%);
 
     --color-text-base: hsl(0, 0%, 75%);
     --color-text-highlight: hsl(0, 0%, 90%);
 
     --size-unit: .95rem;
-    --size-xxs: 1px;
     --size-xs: calc(0.25 * var(--size-unit));
     --size-s: calc(0.5 * var(--size-unit));
     --size-m: calc(1 * var(--size-unit));
@@ -36,20 +33,32 @@
 
 @media (prefers-color-scheme: light) {
     :root {
-        --theme-saturation-primary: 5%;
+        --theme-saturation-primary: 25%;
         --theme-saturation-interactive: 25%;
 
-        --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 95%);
-        --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 90%);
+        --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 90%);
+        --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 85%);
 
         --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 80%);
-        --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 75%);
+        --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 70%);
 
-        --color-text-base: hsl(0, 0%, 21%);
-        --color-text-highlight: hsl(0, 0%, 14%);
+        --color-text-base: hsl(0, 0%, 20%);
+        --color-text-highlight: hsl(0, 0%, 15%);
 
         --shadow-hover: 0 0 var(--size-m) hsla(0, 0%, 0%, 25%);
     }
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100vw;
+    background-color: var(--color-elevation-0);
+    font-size: var(--size-m);
+    line-height: var(--size-m);
+    color: var(--color-text-base);
+    box-sizing: border-box;
 }
 
 * {
@@ -90,53 +99,6 @@ h3 {
     font-size: var(--size-l);
     line-height: var(--size-l);
     font-weight: bold;
-}
-
-html, body {
-    padding: 0;
-    margin: 0;
-    background-color: var(--color-elevation-0);
-    font-size: var(--size-m);
-    line-height: var(--size-m);
-    color: var(--color-text-base);
-}
-
-input[type="range"] {
-    flex-grow: 1;
-    -webkit-appearance: none;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    display: block;
-    box-sizing: border-box;
-    height: var(--size-xl);
-
-    &::-webkit-slider-thumb {
-        background-color: var(--color-elevation-interactive);
-        -webkit-appearance: none;
-        aspect-ratio: 1;
-        border-radius: var(--border-radius-full);
-        cursor: pointer;
-        height: 100%;
-    }
-
-    @media (pointer: fine) {
-        &::-webkit-slider-thumb:hover {
-            background-color: var(--color-elevation-highlight);
-            transform: var(--transform-hover);
-            box-shadow: var(--shadow-hover);
-        }
-    }
-
-
-    &::-webkit-slider-runnable-track {
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        background-color: var(--color-elevation-1);
-        -webkit-appearance: none;
-        border-radius: var(--border-radius-full);
-    }
 }
 
 @font-face {

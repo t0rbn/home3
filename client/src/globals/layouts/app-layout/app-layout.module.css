@@ -1,19 +1,17 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    max-height: 100vh;
 
-    width: 100%;
-    max-width: var(--size-breakpoint);
-    margin: 0 auto;
     padding: var(--size-grid-space);
     box-sizing: border-box;
+    width: 100%;
 
-    > *:not(:last-child) {
-        margin-bottom: var(--size-grid-space);
-    }
+    .content {
+        width: 100%;
+        max-width: var(--size-breakpoint);
+        margin: 0 auto;
 
-    .linkContainer {
-        margin-bottom: var(--size-xxl);
+        .linkContainer {
+            margin-bottom: var(--size-xxl);
+        }
     }
 }
+

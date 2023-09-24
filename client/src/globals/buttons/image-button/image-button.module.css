@@ -8,7 +8,7 @@ button.imageButton {
     @media (pointer: fine) {
         &:hover {
             > img {
-                filter: brightness(110%);
+                filter: brightness(125%) saturate(125%);
             }
         }
     }

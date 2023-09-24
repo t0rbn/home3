@@ -1,3 +1,5 @@
-.brightnessSelector > input {
-    width: 100%;
+.brightnessSelector {
+    display: flex;
+    flex-direction: row;
+    gap: var(--size-grid-space);
 }

@@ -1,31 +1,9 @@
 :root {
-    --animation-duration-default: 250ms;
+    --animation-duration-default: 200ms;
     --animation-duration-fast: 100ms;
-    --animation-item-delay: 125ms;
+    --animation-item-delay: 100ms;
     --animation-easing: ease-out;
 }
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slide-from-left {
-    from {
-        transform: translateX(var(--size-xl));
-    }
-    to {
-        transform: initial;
-    }
-}
-.animation-slide-in {
-    animation: var(--animation-duration-default) ease-out both slide-from-left, var(--animation-duration-default) linear both fade-in;
-}
-
 
 .animation-sequential-delay {
     &:nth-child(1) {

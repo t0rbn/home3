@@ -1,7 +1,7 @@
 button.button {
     border: none;
     border-radius: var(--border-radius-full);
-    padding: var(--size-m) var(--size-l);
+    padding: var(--size-m) var(--size-xl);
     background-color: var(--color-elevation-interactive);
     cursor: pointer;
 

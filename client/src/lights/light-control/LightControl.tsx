@@ -58,7 +58,7 @@ export default function LightControl(props: LightControlProps) {
         <Box>
             <ListLayout>
                 <h2>{light.name}</h2>
-                <BrightnessSelector current={light!.brightness} onSelected={(v) => setBrightness(v)}/>
+                <BrightnessSelector current={light.brightness} onSelected={(v) => setBrightness(v)}/>
                 {conditionalColorTemperatureSelector()}
                 {conditionalRgbColorSelector()}
             </ListLayout>

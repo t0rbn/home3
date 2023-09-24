@@ -1,34 +1,26 @@
-import {useEffect, useState} from "react";
-import styles from './brightness-selector.module.css'
+import SegmentedButton from "./segmented-button/SegmentedButton";
+import PrimaryButton from "../../../globals/buttons/primary-button/PrimaryButton";
+import FaIcon from "../../../globals/fa-icon/FaIcon";
+import styles from "./brightness-selector.module.css"
 
 interface BrightnessSelectorProps {
-    current: number;
+    current: number
     onSelected: (value: number) => void;
 }
 
 function BrightnessSelector(props: BrightnessSelectorProps) {
-    const [currentValue, setCurrentValue] = useState(props.current * 100);
 
-    useEffect(() => {
-        setCurrentValue(props.current * 100)
-    }, [props])
-
-    const submitValue = () => {
-        props.onSelected(currentValue / 100)
-    }
+    const buttons = [0.1, 0.25, 0.5, 0.75, 1]
+        .map(v => ({
+            label: '',
+            onClick: () => props.onSelected(v),
+            isActive: Math.round(100 * props.current) >= (100 * v)
+        }))
 
     return (
         <div className={styles.brightnessSelector}>
-            {/*<PrimaryButton onClick={() => props.onSelected(currentValue === 0 ? 0.01 : 0)}><FaIcon icon="power-off"></FaIcon></PrimaryButton>*/}
-            <input
-                type="range"
-                min="0"
-                max="100"
-                value={currentValue}
-                onChange={(e: any) => setCurrentValue(e.target.value)}
-                onMouseUp={submitValue}
-                onTouchEnd={submitValue}
-            />
+            <PrimaryButton onClick={() => props.onSelected(0)}><FaIcon icon="power-off"/></PrimaryButton>
+            <SegmentedButton buttons={buttons}/>
         </div>
     )
 

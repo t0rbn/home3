@@ -10,12 +10,14 @@ interface AppLayoutProps {
 export default function AppLayout(props: PropsWithChildren<AppLayoutProps>) {
     return (
         <main className={styles.layout}>
-            {props.backButton ? (
-                <div className={styles.linkContainer}>
-                    <PrimaryButton href="/"><FaIcon icon="chevron-left"/> back</PrimaryButton>
-                </div>
-            ) : null}
-            {props.children}
+            <div className={styles.content}>
+                {props.backButton ? (
+                    <div className={styles.linkContainer}>
+                        <PrimaryButton href="/"><FaIcon icon="chevron-left"/> back</PrimaryButton>
+                    </div>
+                ) : null}
+                {props.children}
+            </div>
         </main>
     )
 }

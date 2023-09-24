@@ -1,0 +1,30 @@
+.buttonGroup {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+    .button {
+        flex-grow: 1;
+        border-radius: 0;
+
+        &:hover {
+            background-color: var(--color-elevation-interactive);
+            box-shadow: none;
+            transform: none;
+        }
+
+        &:first-child {
+            border-top-left-radius: var(--border-radius-full);
+            border-bottom-left-radius: var(--border-radius-full);
+        }
+
+        &:last-child {
+            border-top-right-radius: var(--border-radius-full);
+            border-bottom-right-radius: var(--border-radius-full);
+        }
+
+        &.active {
+            background-color: var(--color-elevation-highlight);
+        }
+    }
+}
