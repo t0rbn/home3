@@ -13,7 +13,7 @@
     --color-text-base: hsl(0, 0%, 75%);
     --color-text-highlight: hsl(0, 0%, 90%);
 
-    --size-unit: .95rem;
+    --size-unit: .9rem;
     --size-xs: calc(0.25 * var(--size-unit));
     --size-s: calc(0.5 * var(--size-unit));
     --size-m: calc(1 * var(--size-unit));
