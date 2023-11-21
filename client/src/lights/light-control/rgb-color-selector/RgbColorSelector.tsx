@@ -10,7 +10,15 @@ interface ColorSelectorProps {
 }
 
 function RgbColorSelector(props: ColorSelectorProps) {
-    const colors = config.tradfri.colors.rgb
+    const colors: Array<string|Array<number>> = config.tradfri.colors.rgb
+
+    const hexColors = colors.map(c => {
+        if (typeof c === 'string') {
+            return c
+        }
+
+        return '#' + c.map(part => (Math.floor(255 * part)).toString(16).padStart(2, '0')).join('')
+    })
 
     const colorSelector = useRef(null);
     const openCustomSelector = () => {
@@ -20,7 +28,7 @@ function RgbColorSelector(props: ColorSelectorProps) {
     return (
         <div>
             <ContentGridLayout variant="small-items">
-                {colors.map(c => <ColorButton onClick={() => props.onSelected(c)} key={c} color={c}/>)}
+                {hexColors.map(c => <ColorButton onClick={() => props.onSelected(c)} key={c} color={c}/>)}
                 <PrimaryButton onClick={openCustomSelector}><FaIcon icon="palette" /></PrimaryButton>
             </ContentGridLayout>
             <input type="color" ref={colorSelector} onChange={e => props.onSelected(e.target.value)} style={{display: 'none'}}/>
