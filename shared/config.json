@@ -28,12 +28,14 @@
         "#f5faf6",
         "#f1e0b5",
         "#efd275",
-        "#ff9500",
+
+        "#ff8000",
         "#ff0000",
         "#00ff00",
-        "#7300ff",
-        "#ae00ff",
-        "#ff00ff"
+        "#0000ff",
+        "80300ff",
+        "#bf00ff",
+        "#ff0080"
       ]
     },
     "actionResponseWaitTimeMs": 2000
