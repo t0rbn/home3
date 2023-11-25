@@ -1,9 +1,9 @@
 button.imageButton {
     padding: 0;
-    background-size: 100%;
-    background-position: center;
     border: none;
     border-radius: var(--border-radius-default);
+    overflow: hidden;
+    position: relative;
 
     @media (pointer: fine) {
         &:hover {
@@ -18,12 +18,17 @@ button.imageButton {
         object-fit: cover;
         object-position: center;
         width: 100%;
-        border-radius: var(--border-radius-default);
     }
 
     > label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: hsla(0, 0%, 25%, .75);
+        backdrop-filter: blur(vaR(--size-s));
         display: block;
-        padding: var(--size-grid-space);
+        padding: var(--size-m);
     }
 }
 

@@ -1,14 +1,14 @@
 :root {
-    --theme-hue-primary: 240;
+    --theme-hue-primary: 250;
     --theme-saturation-primary: 0%;
 
-    --theme-hue-interactive: 260;
+    --theme-hue-interactive: 222;
     --theme-saturation-interactive: 0%;
 
-    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 14%);
-    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 19%);
-    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 24%);
-    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 34%);
+    --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 10%);
+    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 15%);
+    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 25%);
+    --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 30%);
 
     --color-text-base: hsl(0, 0%, 75%);
     --color-text-highlight: hsl(0, 0%, 90%);
@@ -22,10 +22,8 @@
     --size-xxl: calc(3 * var(--size-unit));
 
     --size-breakpoint: 50rem;
-    --size-grid-space: var(--size-m);
 
     --border-radius-default: var(--size-m);
-    --border-radius-full: 110vmax;
 
     --shadow-hover: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
     --transform-hover: scale(105%);

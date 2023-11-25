@@ -1,6 +1,5 @@
 .layout {
-
-    padding: var(--size-grid-space);
+    padding: var(--size-l);
     box-sizing: border-box;
     width: 100%;
 

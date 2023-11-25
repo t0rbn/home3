@@ -1,7 +1,7 @@
 .layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--size-grid-space);
+    gap: var(--size-m);
 
     &.many {
         grid-template-columns: repeat(3, 1fr);

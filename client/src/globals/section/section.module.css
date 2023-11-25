@@ -21,7 +21,7 @@ section.section {
 
 
     > h1 {
-        margin-bottom: var(--size-grid-space);
+        margin-bottom: var(--size-l);
     }
 
     &:not(:last-child) {

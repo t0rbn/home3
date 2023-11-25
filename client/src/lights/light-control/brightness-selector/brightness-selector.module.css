@@ -1,5 +1,5 @@
 .brightnessSelector {
     display: flex;
     flex-direction: row;
-    gap: var(--size-grid-space);
+    gap: var(--size-s);
 }

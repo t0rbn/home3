@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    gap: var(--size-xs);
 
     .button {
         flex-grow: 1;
@@ -14,13 +15,13 @@
         }
 
         &:first-child {
-            border-top-left-radius: var(--border-radius-full);
-            border-bottom-left-radius: var(--border-radius-full);
+            border-top-left-radius: var(--border-radius-default);
+            border-bottom-left-radius: var(--border-radius-default);
         }
 
         &:last-child {
-            border-top-right-radius: var(--border-radius-full);
-            border-bottom-right-radius: var(--border-radius-full);
+            border-top-right-radius: var(--border-radius-default);
+            border-bottom-right-radius: var(--border-radius-default);
         }
 
         &.active {

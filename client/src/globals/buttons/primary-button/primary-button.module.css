@@ -1,6 +1,6 @@
 button.button {
     border: none;
-    border-radius: var(--border-radius-full);
+    border-radius: var(--border-radius-default);
     padding: var(--size-m) var(--size-xl);
     background-color: var(--color-elevation-interactive);
     cursor: pointer;
