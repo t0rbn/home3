@@ -3,7 +3,7 @@ import config from "../../../shared/config.json";
 import PrimaryButton from "../../../globals/buttons/primary-button/PrimaryButton";
 import ColorButton from "../color-button/ColorButton";
 import ContentGridLayout from "../../../globals/layouts/content-grid-layout/ContentGridLayout";
-import FaIcon from "../../../globals/fa-icon/FaIcon";
+import MaterialIcon from "../../../globals/material-icon/MaterialIcon";
 
 interface ColorSelectorProps {
     onSelected: (color: string) => void
@@ -27,9 +27,9 @@ function RgbColorSelector(props: ColorSelectorProps) {
 
     return (
         <div>
-            <ContentGridLayout variant="small-items">
+            <ContentGridLayout cols={6} colsSmall={3}>
                 {hexColors.map(c => <ColorButton onClick={() => props.onSelected(c)} key={c} color={c}/>)}
-                <PrimaryButton onClick={openCustomSelector}><FaIcon icon="palette" /></PrimaryButton>
+                <PrimaryButton onClick={openCustomSelector}><MaterialIcon icon="palette" /></PrimaryButton>
             </ContentGridLayout>
             <input type="color" ref={colorSelector} onChange={e => props.onSelected(e.target.value)} style={{display: 'none'}}/>
         </div>

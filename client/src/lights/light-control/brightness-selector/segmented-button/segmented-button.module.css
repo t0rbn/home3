@@ -3,6 +3,8 @@
     flex-direction: row;
     flex-grow: 1;
     gap: var(--size-xs);
+    border-radius: var(--border-radius-full);
+    overflow: hidden;
 
     .button {
         flex-grow: 1;
@@ -12,16 +14,6 @@
             background-color: var(--color-elevation-interactive);
             box-shadow: none;
             transform: none;
-        }
-
-        &:first-child {
-            border-top-left-radius: var(--border-radius-default);
-            border-bottom-left-radius: var(--border-radius-default);
-        }
-
-        &:last-child {
-            border-top-right-radius: var(--border-radius-default);
-            border-bottom-right-radius: var(--border-radius-default);
         }
 
         &.active {

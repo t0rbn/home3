@@ -1,7 +1,6 @@
 import Box from "../globals/box/Box";
 import ContentGridLayout from "../globals/layouts/content-grid-layout/ContentGridLayout";
 import React from "react";
-import ListLayout from "../globals/layouts/list-layout/ListLayout";
 import PrimaryButton from "../globals/buttons/primary-button/PrimaryButton";
 import config from "../shared/config.json"
 import {resolveApi} from "../utils";
@@ -33,7 +32,7 @@ export default function Administration() {
     return (
         <AppLayout backButton>
             <Section name="Restart">
-                    <ContentGridLayout>
+                    <ContentGridLayout cols={2} colsSmall={2}>
                         <PrimaryButton onClick={restartServer}>Server</PrimaryButton>
                         <PrimaryButton onClick={refresh}>Client</PrimaryButton>
                     </ContentGridLayout>

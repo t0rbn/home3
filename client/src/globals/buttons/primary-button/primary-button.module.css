@@ -1,8 +1,9 @@
 button.button {
     border: none;
-    border-radius: var(--border-radius-default);
+    border-radius: var(--border-radius-full);
     padding: var(--size-m) var(--size-xl);
     background-color: var(--color-elevation-interactive);
+    background-image: var(--gradient-interactive);
     cursor: pointer;
 
     color: var(--color-text-base);

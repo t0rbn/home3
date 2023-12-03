@@ -7,7 +7,7 @@ import LightControl from "./light-control/LightControl";
 import ListLayout from "../globals/layouts/list-layout/ListLayout";
 import Section from "../globals/section/Section";
 
-export default function GroupLights() {
+export default function Group() {
     const groupId = useParams().id;
 
     const [group, setGroup] = useState<ApiLightsGroup>()

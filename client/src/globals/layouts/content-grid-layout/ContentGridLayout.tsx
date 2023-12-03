@@ -1,16 +1,18 @@
-import {PropsWithChildren} from "react";
+import {CSSProperties, PropsWithChildren} from "react";
 import styles from './content-grid-layout.module.css'
-import {classNames, conditionalClassName} from "../../../utils";
 
 interface ContentGridLayoutProps {
-    variant?: 'default' | 'small-items'
-
+    cols?: number,
+    colsSmall?: number,
 }
 
 export default function ContentGridLayout(props: PropsWithChildren<ContentGridLayoutProps>) {
-    const classes = [
-        styles.layout,
-        conditionalClassName(props.variant === 'small-items', styles.many)
-    ]
-    return <div className={classNames(...classes)}>{props.children}</div>
+
+    const cols = {
+        '--cols-count': props.cols || 4,
+        '--cols-count-small': props.colsSmall || 2
+    } as CSSProperties
+
+
+    return <div className={styles.layout} style={cols}>{props.children}</div>
 }

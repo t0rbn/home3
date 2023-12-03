@@ -1,0 +1,43 @@
+.floorPlan {
+    display: grid;
+    aspect-ratio: 4/3;
+    grid-gap: var(--size-m);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.roomPlaceholder {
+    border: var(--size-xs) solid var(--color-elevation-interactive);
+    border-radius: var(--border-radius-default);
+}
+
+.roomButton {
+    color: var(--color-text-base);
+    text-decoration: none;
+    font: inherit;
+    font-size: var(--size-m);
+    line-height: var(--size-m);
+    font-weight: normal;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-elevation-interactive);
+    background-image: var(--gradient-interactive);
+    border-radius: var(--border-radius-default);
+
+    .icon {
+        font-size: var(--size-xl);
+        line-height: var(--size-xl);
+    }
+
+    &:hover {
+        background-color: var(--color-elevation-highlight);
+        color: var(--color-text-highlight);
+
+        transform: var(--transform-hover);
+        box-shadow: var(--shadow-hover);
+    }
+}

@@ -1,4 +1,4 @@
-import FaIcon from "../fa-icon/FaIcon"
+import MaterialIcon from "../material-icon/MaterialIcon"
 import styles from "./key-value.module.css"
 import Box from "../box/Box";
 
@@ -13,7 +13,7 @@ export default function KeyValue(props: KeyValueProps) {
         <Box>
             <div className={styles.keyValue}>
                 <div className={styles.iconWrapper}>
-                    <FaIcon icon={props.icon}/>
+                    <MaterialIcon icon={props.icon} className={styles.icon}/>
                 </div>
                 <div className={styles.text}>
                     <span className={styles.value}>{props.value}</span>

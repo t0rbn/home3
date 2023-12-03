@@ -6,11 +6,10 @@
     --theme-saturation-interactive: 0%;
 
     --color-elevation-0: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 10%);
-    --color-elevation-1: hsl(var(--theme-hue-primary), var(--theme-saturation-primary), 15%);
-    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 25%);
+    --color-elevation-interactive: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 20%);
     --color-elevation-highlight: hsl(var(--theme-hue-interactive), var(--theme-saturation-interactive), 30%);
 
-    --color-text-base: hsl(0, 0%, 75%);
+    --color-text-base: hsl(0, 0%, 70%);
     --color-text-highlight: hsl(0, 0%, 90%);
 
     --size-unit: .9rem;
@@ -24,9 +23,12 @@
     --size-breakpoint: 50rem;
 
     --border-radius-default: var(--size-m);
+    --border-radius-full: 110vmax;
 
     --shadow-hover: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
     --transform-hover: scale(105%);
+
+    --gradient-interactive: linear-gradient(to bottom, transparent, hsla(0, 0%, 0%, 20%))
 }
 
 @media (prefers-color-scheme: light) {

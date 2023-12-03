@@ -12,7 +12,7 @@ export default function WhiteTemperatureSelector(props: WhiteTemperatureSelector
 
     return (
         <div>
-            <ContentGridLayout variant="small-items">
+            <ContentGridLayout cols={3} colsSmall={3}>
                 {predefinedValues.map(colorValue => (
                     <ColorButton key={colorValue.color} onClick={() => props.onSelected(colorValue.value)}
                                  color={colorValue.color}></ColorButton>))}

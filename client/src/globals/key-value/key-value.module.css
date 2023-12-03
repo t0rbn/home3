@@ -13,10 +13,10 @@
         justify-content: center;
         align-items: center;
         background-color: var(--color-text-base);
-        color: var(--color-elevation-1);
-        border-radius: var(--border-radius-default);
+        color: var(--color-elevation-0);
+        border-radius: var(--border-radius-full);
 
-        > i {
+        > .icon {
             font-size: var(--size-xl);
             line-height: var(--size-xl);
         }

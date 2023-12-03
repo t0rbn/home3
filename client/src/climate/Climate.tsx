@@ -21,9 +21,9 @@ export default function Climate() {
     const humidtyFormatted = `${Math.round((data?.humidity ?? -1) * 100)} %`
 
     return (
-        <ContentGridLayout>
-            <KeyValue value={tempFormatted} icon="thermometer-half" description="Temperature"></KeyValue>
-            <KeyValue value={humidtyFormatted} icon="tint" description="Humidity"></KeyValue>
+        <ContentGridLayout cols={2} colsSmall={2}>
+            <KeyValue value={tempFormatted} icon="device_thermostat" description="Temperature"></KeyValue>
+            <KeyValue value={humidtyFormatted} icon="water_drop" description="Humidity"></KeyValue>
         </ContentGridLayout>
     )
 }

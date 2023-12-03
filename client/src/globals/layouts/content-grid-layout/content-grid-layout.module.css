@@ -1,17 +1,12 @@
 .layout {
+    --cols-count: 42;
+    --cols-count-small: 42;
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(var(--cols-count-small), 1fr);
     gap: var(--size-m);
 
-    &.many {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     @media (min-width: 50rem) {
-        grid-template-columns: repeat(3, 1fr);
-        &.many {
-            grid-template-columns: repeat(6, 1fr);
-        }
-
+        grid-template-columns: repeat(var(--cols-count), 1fr);
     }
 }

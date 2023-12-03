@@ -26,6 +26,7 @@ button.imageButton {
         left: 0;
         right: 0;
         background-color: hsla(0, 0%, 25%, .75);
+        background-image: var(--gradient-interactive);
         backdrop-filter: blur(vaR(--size-s));
         display: block;
         padding: var(--size-m);

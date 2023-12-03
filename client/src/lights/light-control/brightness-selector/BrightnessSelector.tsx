@@ -1,6 +1,6 @@
 import SegmentedButton from "./segmented-button/SegmentedButton";
 import PrimaryButton from "../../../globals/buttons/primary-button/PrimaryButton";
-import FaIcon from "../../../globals/fa-icon/FaIcon";
+import MaterialIcon from "../../../globals/material-icon/MaterialIcon";
 import styles from "./brightness-selector.module.css"
 
 interface BrightnessSelectorProps {
@@ -19,7 +19,7 @@ function BrightnessSelector(props: BrightnessSelectorProps) {
 
     return (
         <div className={styles.brightnessSelector}>
-            <PrimaryButton onClick={() => props.onSelected(0)}><FaIcon icon="power-off"/></PrimaryButton>
+            <PrimaryButton onClick={() => props.onSelected(0)}><MaterialIcon icon="mode_off_on"/></PrimaryButton>
             <SegmentedButton buttons={buttons}/>
         </div>
     )
