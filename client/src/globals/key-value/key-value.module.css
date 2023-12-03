@@ -26,7 +26,6 @@
         .value {
             font-size: var(--size-xl);
             line-height: var(--size-xl);
-            /*font-weight: 600;*/
         }
     }
 }

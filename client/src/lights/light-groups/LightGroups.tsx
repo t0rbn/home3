@@ -4,6 +4,7 @@ import {ApiLightsGroup} from "../../../../shared/types/Light";
 import SpinnerBox from "../../globals/spinner/SpinnerBox";
 import styles from "./light-groups.module.css"
 import MaterialIcon from "../../globals/material-icon/MaterialIcon";
+import {Link} from "react-router-dom";
 
 export default function LightGroups() {
     const context = useLightGroupsContext();
@@ -22,10 +23,12 @@ export default function LightGroups() {
         if (!props.name) {
             return <div className={styles.roomPlaceholder} style={gridPosStyles}></div>
         }
-        return <a className={styles.roomButton} style={gridPosStyles} href={'/lights/groups/' + getIdForName(props.name)}>
-            <MaterialIcon icon={props.icon || ''} className={styles.icon} />
-            {props.name}
-        </a>
+        return (
+            <Link to={'/lights/groups/' + getIdForName(props.name)}  className={styles.roomButton} style={gridPosStyles}>
+                <MaterialIcon icon={props.icon || ''} className={styles.icon}/>
+                {props.name}
+            </Link>
+        )
     }
 
     useEffect(() => {

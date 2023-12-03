@@ -1,5 +1,6 @@
 .box {
     padding: var(--size-l);
     border-radius: var(--border-radius-default);
-    border: var(--size-xs) solid var(--color-elevation-interactive);
+    border: var(--size-xxs) solid var(--color-elevation-interactive);
+    box-shadow: var(--shadow-default);
 }

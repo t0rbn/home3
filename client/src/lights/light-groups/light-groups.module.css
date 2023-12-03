@@ -7,8 +7,9 @@
 }
 
 .roomPlaceholder {
-    border: var(--size-xs) solid var(--color-elevation-interactive);
     border-radius: var(--border-radius-default);
+    border: var(--size-xxs) solid var(--color-elevation-interactive);
+    box-shadow: var(--shadow-default);
 }
 
 .roomButton {
@@ -28,6 +29,8 @@
     background-image: var(--gradient-interactive);
     border-radius: var(--border-radius-default);
 
+    box-shadow: var(--shadow-default);
+
     .icon {
         font-size: var(--size-xl);
         line-height: var(--size-xl);
@@ -37,7 +40,6 @@
         background-color: var(--color-elevation-highlight);
         color: var(--color-text-highlight);
 
-        transform: var(--transform-hover);
         box-shadow: var(--shadow-hover);
     }
 }

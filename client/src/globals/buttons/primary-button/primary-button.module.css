@@ -4,6 +4,7 @@ button.button {
     padding: var(--size-m) var(--size-xl);
     background-color: var(--color-elevation-interactive);
     background-image: var(--gradient-interactive);
+    box-shadow: var(--shadow-default);
     cursor: pointer;
 
     color: var(--color-text-base);
@@ -17,7 +18,6 @@ button.button {
             background-color: var(--color-elevation-highlight);
             color: var(--color-text-highlight);
 
-            transform: var(--transform-hover);
             box-shadow: var(--shadow-hover);
         }
     }
