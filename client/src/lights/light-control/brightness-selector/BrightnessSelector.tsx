@@ -10,7 +10,7 @@ interface BrightnessSelectorProps {
 
 function BrightnessSelector(props: BrightnessSelectorProps) {
 
-    const buttons = [0.1, 0.25, 0.5, 0.75, 1]
+    const buttons = [0.01, 0.25, 0.5, 0.75, 1]
         .map(v => ({
             label: '',
             onClick: () => props.onSelected(v),
