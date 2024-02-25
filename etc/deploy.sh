@@ -8,6 +8,7 @@ yarn build
 
 mkdir -p build/standalone/public/_next
 cp -r build/static build/standalone/public/_next
+cp -r public build/standalone
 
 clear
 ssh pi@192.168.0.103 rm -r ~/home3-standalone/*
