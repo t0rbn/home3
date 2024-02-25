@@ -1,10 +1,10 @@
 import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient} from "node-tradfri-client";
-import LogService from "@/services/log-service";
 import config from "../config.json";
 import {TradfriScene} from "@/types/Scenes";
 import {TradfriLight, TradfriGroup} from "@/types/Light";
+import LogService from "@/services/LogService";
 
-export default class TradfriService {
+export default class TrafriService {
     private static connection?: TradfriClient
     private static isInitializingConnection = false;
 
@@ -12,19 +12,10 @@ export default class TradfriService {
     private static lights: Array<Accessory> = []
     private static groupLightsMap = new Map<string, {id: string, name: string, deviceIds: Array<string>}>();
     private static superGroup?: Group
-    private logger = new LogService('TradfriService')
+    private static logger = new LogService('TradfriService')
 
     constructor() {
-        console.log("bumswurst")
-        if (TradfriService.connection || TradfriService.isInitializingConnection) {
-            return
-        }
-        TradfriService.isInitializingConnection = true;
-        TradfriService
-            .initConnection()
-            .then(() => TradfriService.isInitializingConnection = false)
-            .then(() => this.initDataAndListeners())
-            .catch((e) => this.logger.warn(e.message))
+      
     }
 
     static async initConnection(): Promise<void> {
@@ -42,75 +33,90 @@ export default class TradfriService {
         }
 
         logger.log('got gateway ' + gateway.name)
-        TradfriService.connection = new TradfriClient(gateway.name)
+        this.connection = new TradfriClient(gateway.name)
 
         let identity: string
         let psk: string
 
         logger.log('authenticating with gateway')
-        const response = await TradfriService.connection.authenticate(config.tradfri.connection.securityId)
+        const response = await this.connection.authenticate(config.tradfri.connection.securityId)
         identity = response.identity
         psk = response.psk
 
-        await TradfriService.connection.connect(identity, psk)
+        await this.connection.connect(identity, psk)
         logger.log("connected to gateway")
     }
 
-    async initDataAndListeners(): Promise<void> {
-        if (!TradfriService.connection) {
+    static async initDataAndListeners(): Promise<void> {
+        if (!this.connection) {
             return
         }
 
         const deleteScene = (id: number) => {
-            TradfriService.scenes = TradfriService.scenes.filter(s => s.instanceId !== id)
+            this.scenes = this.scenes.filter(s => s.instanceId !== id)
         }
 
         const addOrUpdateScene = (scene: Scene) => {
             this.logger.log(`retrieved information for scene ${scene.name}`)
             deleteScene(scene.instanceId)
-            TradfriService.scenes.push(scene)
+            this.scenes.push(scene)
         }
 
         const deleteLight = (id: number) => {
-            TradfriService.lights = TradfriService.lights.filter(b => b.instanceId !== id)
+            this.lights = this.lights.filter(b => b.instanceId !== id)
         }
 
         const addOrUpdateLight = (device: Accessory) => {
             deleteLight(device.instanceId)
             if (device.type === AccessoryTypes.lightbulb) {
                 this.logger.log(`retrieved information for lightbulb ${device.name}`)
-                TradfriService.lights.push(device)
+                this.lights.push(device)
             }
         }
 
-        TradfriService.connection
+        const groupObserver = this.connection
             .on('scene updated', (_group: number, scene: Scene) => addOrUpdateScene(scene))
             .on('scene removed', (_group: number, instanceId: number) => deleteScene(instanceId))
             .on('group updated', (group: Group) => {
                     if (group.name === 'SuperGroup') {
-                        TradfriService.superGroup = group
+                        this.superGroup = group
                     } else {
                         const data = {
                             id: group.instanceId + '',
                             name: group.name,
                             deviceIds: group.deviceIDs.map(d => '' + d)
                         }
-                        TradfriService.groupLightsMap.set(`${group.instanceId}`, data)
+                        this.groupLightsMap.set(`${group.instanceId}`, data)
                     }
                 }
             )
             .observeGroupsAndScenes()
             .catch()
 
-        TradfriService.connection
+        const deviceObserver = this.connection
             .on('device updated', (device: Accessory) => addOrUpdateLight(device))
             .on('device removed', (instanceId: number) => deleteLight(instanceId))
             .observeDevices()
             .catch()
+
+        return Promise.all([groupObserver, deviceObserver]).then(() => {})
+    }
+    
+    private static async init() {
+        if (this.connection || this.isInitializingConnection) {
+            return
+        }
+        this.isInitializingConnection = true;
+        return this
+            .initConnection()
+            .then(() => this.initDataAndListeners())
+            .then(() => this.isInitializingConnection = false)
+            .then(() => new Promise(r => setTimeout(r, config.tradfri.connection.initTimeoutS * 1000)))
+            .catch((e) => this.logger.warn(e.message))
     }
 
-    private getLight(id: string): TradfriLight | null {
-        const accesory =  TradfriService.lights.find(l => `${l.instanceId}` === id )
+    private static getLight(id: string): TradfriLight | null {
+        const accesory =  this.lights.find(l => `${l.instanceId}` === id )
         if (!accesory || !accesory.alive) {
             return null
         }
@@ -138,8 +144,8 @@ export default class TradfriService {
         }
     }
 
-    private getGroup(id: string): TradfriGroup | null {
-        const group = TradfriService.groupLightsMap.get(id);
+    private static getGroup(id: string): TradfriGroup | null {
+        const group = this.groupLightsMap.get(id);
         if (!group) {
             return null
         }
@@ -150,12 +156,14 @@ export default class TradfriService {
         }
     }
 
-    getGroups(): Array<TradfriGroup> {
-        return Array.from(TradfriService.groupLightsMap.keys()).map((id: string) => this.getGroup(id)).filter(Boolean) as Array<TradfriGroup>
+    static async getGroups(): Promise<Array<TradfriGroup>> {
+        await this.init()
+        return Array.from(this.groupLightsMap.keys()).map((id: string) => this.getGroup(id)).filter(Boolean) as Array<TradfriGroup>
     }
 
-    async setLightBrightness(lightId: string, brightness: number): Promise<void> {
-        const light = TradfriService.lights.filter(light => `${light.instanceId}` === lightId)[0]
+    static async setLightBrightness(lightId: string, brightness: number): Promise<void> {
+        await this.init()
+        const light = this.lights.filter(light => `${light.instanceId}` === lightId)[0]
         if (!light) {
             this.logger.warn('cannot set brightness for unknown bulb')
             throw 'unknown lightbulb'
@@ -166,8 +174,9 @@ export default class TradfriService {
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
-    async setLightColor(lightId: string, hexColor: string): Promise<void> {
-        const light = TradfriService.lights.filter(light => `${light.instanceId}` === lightId)[0]
+    static async setLightColor(lightId: string, hexColor: string): Promise<void> {
+        await this.init()
+        const light = this.lights.filter(light => `${light.instanceId}` === lightId)[0]
         if (!light) {
             this.logger.warn('cannot set color for unknown bulb')
             throw 'unknown lightbulb'
@@ -182,20 +191,22 @@ export default class TradfriService {
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
-    getScenes(): Array<TradfriScene> {
-        return TradfriService.scenes.map((scene: Scene) => ({
+    static async getScenes(): Promise<Array<TradfriScene>> {
+        await this.init()
+        return this.scenes.map((scene: Scene) => ({
             name: scene.name,
             id: `${scene.instanceId}`
         }))
     }
 
-    async setScene(sceneId: string): Promise<void> {
-        if (!TradfriService.superGroup) {
+    static async setScene(sceneId: string): Promise<void> {
+        await this.init()
+        if (!this.superGroup) {
             this.logger.warn("Cannot set scene: no super group")
             return
         }
         this.logger.log("setting scene " + sceneId)
-        await TradfriService.connection?.operateGroup(TradfriService.superGroup, {sceneId: Number.parseInt(sceneId),}, true)
+        await this.connection?.operateGroup(this.superGroup, {sceneId: Number.parseInt(sceneId),}, true)
 
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }

@@ -1,0 +1,22 @@
+@import "../../../globals";
+
+button.button {
+    border: none;
+    border-radius: $border-radius-full;
+    padding: size(.5) size(2);
+    background-color: elevation(2);
+    box-shadow: $shadow-default;
+    cursor: pointer;
+
+    color: inherit;
+    font: inherit;
+    font-size: size(1);
+    line-height: size(1);
+    font-weight: normal;
+
+    @media (pointer: fine) {
+        &:hover {
+            box-shadow: $shadow-hover
+        }
+    }
+}

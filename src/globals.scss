@@ -1,0 +1,26 @@
+$color-background: hsl(0, 0%, 0%);
+$elevation-step-lightness: 10%;
+
+@function elevation($n) {
+  $color: $color-background;
+  @for $_ from 0 through $n {
+    $color: lighten($color, $elevation-step-lightness)
+  }
+  @return $color;
+}
+
+
+$size-unit: 0.95rem;
+@function size($n) {
+  @return $n * $size-unit;
+}
+
+
+$border-radius-default: size(1);
+$border-radius-full: 110vmax;
+
+$breakpoint-m: size(50);
+
+$shadow-default: 0 0 size(.5) hsla(0, 0%, 0%, 50%);
+$shadow-hover: 0 0 size(1) hsla(0, 0%, 0%, 75%);
+

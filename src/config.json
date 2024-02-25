@@ -1,9 +1,9 @@
 {
   "tradfri": {
     "connection": {
-      "securityId": "WqupW3ys67g1PUeh"
+      "securityId": "WqupW3ys67g1PUeh",
+      "initTimeoutS": 1
     },
-    "brightnessSteps": [0, 0.01, 0.25, 0.5, 0.75, 1],
     "colors": {
       "whiteTemperatures": [
         "#f5faf6",
@@ -19,6 +19,6 @@
         [1 ,0, 0.5]
       ]
     },
-    "actionResponseWaitTimeMs": 2000
+    "actionResponseWaitTimeMs": 250
   }
 }

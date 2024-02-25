@@ -1,0 +1,8 @@
+@import "../../globals";
+
+.box {
+  padding: size(1.5);
+  background-color: elevation(1);
+  border-radius: $border-radius-default;
+  box-shadow: $shadow-default;
+}

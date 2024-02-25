@@ -1,0 +1,12 @@
+@import "../../globals";
+
+.navButton {
+  padding: size(1.5);
+  text-align: center;
+  text-decoration: none;
+  color: elevation(10);
+
+  &.active {
+    background-color: elevation(2);
+  }
+}

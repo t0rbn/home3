@@ -1,3 +1,72 @@
-.root {
-  background-color: hotpink;
+@import "../globals";
+
+html.root, html.root > body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+
+  background-color: elevation(0);
+  color: elevation(10);
+
+  font-size: size(1);
+  line-height: size(1);
+  box-sizing: border-box;
+
+  * {
+    font-family: "Comfortaa";
+    font-size: size(1);
+    line-height: size(1);
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h2 {
+    font-size: size(1.25);
+    line-height: size(1.25);
+  }
+
+  h1 {
+    font-size: size(1.5);
+    line-height: size(1.5);
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav {
+    background-color: elevation(1);
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: row;
+    > * {
+      flex-grow: 1;
+    }
+    box-shadow: $shadow-default;
+    overflow: hidden;
+  }
+
+  main {
+    flex-grow: 1;
+    padding: size(2);
+    overflow: scroll;
+
+    > * {
+      max-width: $breakpoint-m;
+      margin: 0 auto;
+    }
+  }
+}
+
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("/fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf");
 }

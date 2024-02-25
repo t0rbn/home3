@@ -1,0 +1,27 @@
+@import "../../globals";
+
+input.slider {
+    appearance: none;
+    background: none;
+    width: 100%;
+
+    $track-height: size(.5);
+    $thumb-height: size(1.5);
+    $thumb-aspect-ratio: 2;
+    cursor: pointer;
+
+    &::-webkit-slider-thumb {
+        appearance: none;
+        height: $thumb-height;
+        aspect-ratio: $thumb-aspect-ratio;
+        margin-top: -0.5 * ($thumb-height - $track-height);
+        border-radius: $border-radius-full;
+        background-color: elevation(3);
+    }
+
+    &::-webkit-slider-runnable-track {
+        height: $track-height;
+        border-radius: $border-radius-full;
+        background-color: elevation(0);
+    }
+}
