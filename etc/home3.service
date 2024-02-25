@@ -1,0 +1,12 @@
+[Unit]
+Description=home dashboard version 3
+
+[Service]
+WorkingDirectory=/home/pi/home3-standalone
+ExecStart=/usr/bin/node /home/pi/home3-standalone/standalone/server.js
+Type=simple
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
