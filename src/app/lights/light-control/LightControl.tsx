@@ -30,7 +30,7 @@ export function LightControl(props: LightControlProps) {
         setDebounceTImeout(setTimeout(() => {
             console.log(newVal)
             setLightBrightness(props.light.id, newVal);
-        }, 500))
+        }, config.tradfri.transitionTimeMs))
     }
 
 

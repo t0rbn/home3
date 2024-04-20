@@ -170,7 +170,7 @@ export default class TrafriService {
         }
 
         const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)))
-        await light.lightList[0].setBrightness(newBrightness, 0)
+        await light.lightList[0].setBrightness(newBrightness, config.tradfri.transitionTimeMs / 1000)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -187,7 +187,7 @@ export default class TrafriService {
             this.logger.warn('color operation not supported by spectrum')
             throw 'color operation not supported'
         }
-        await light.lightList[0].setColor(hexColor.replace('#', ''), 0)
+        await light.lightList[0].setColor(hexColor.replace('#', ''), config.tradfri.transitionTimeMs / 1000)
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
 
@@ -206,7 +206,9 @@ export default class TrafriService {
             return
         }
         this.logger.log("setting scene " + sceneId)
-        await this.connection?.operateGroup(this.superGroup, {sceneId: Number.parseInt(sceneId),}, true)
+        await this.connection?.operateGroup(this.superGroup, {
+            sceneId: Number.parseInt(sceneId)
+        }, true)
 
         await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
     }
