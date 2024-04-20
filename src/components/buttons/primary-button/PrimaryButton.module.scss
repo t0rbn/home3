@@ -3,7 +3,7 @@
 button.button {
     border: none;
     border-radius: $border-radius-full;
-    padding: size(.5) size(2);
+    padding: size(.75) size(2);
     background-color: elevation(2);
     box-shadow: $shadow-default;
     cursor: pointer;

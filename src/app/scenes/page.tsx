@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default async function ScenesPage() {
     const scenes = await getTradfriScenes();
 
-    return <GridContainer cols={4} colsMedium={2}>
+    return <GridContainer cols={3} colsMedium={2}>
         {scenes.map(s => <SceneButton scene={s} key={s.id}/>)}
     </GridContainer>
 }

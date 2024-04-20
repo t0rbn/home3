@@ -9,13 +9,19 @@ interface SliderProps {
 }
 
 export default function Slider(props: SliderProps) {
-    return <input
+    const handleChange = (e: any) => {
+        props.onChange(Number.parseFloat(e.currentTarget.value))
+    }
+
+    return <div className={styles.wrapper}>
+        <input
         type="range"
         min={props.min}
         max={props.max}
         step={props.step}
-        onInput={e => props.onChange(Number.parseFloat(e.currentTarget.value))}
+        onChange={handleChange}
         value={props.value}
         className={styles.slider}
     />
+    </div>
 }

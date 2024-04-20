@@ -18,10 +18,21 @@ export function LightControl(props: LightControlProps) {
     const router = useRouter();
 
     const [brightness, setBrightness] = useState<number>(props.light.brightness)
+
+    const [debounceTImeout, setDebounceTImeout] = useState<any>(null);
     const handleBrightnessChange = (newVal: number) => {
-        setBrightness(newVal);
-        setLightBrightness(props.light.id, newVal);
+        setBrightness(newVal)
+
+        if (debounceTImeout) {
+            clearTimeout(debounceTImeout)
+            setDebounceTImeout(null)
+        }
+        setDebounceTImeout(setTimeout(() => {
+            console.log(newVal)
+            setLightBrightness(props.light.id, newVal);
+        }, 500))
     }
+
 
     const colors = [
         ...(props.light.spectrum !== 'none' ? config.tradfri.colors.whiteTemperatures : []),
@@ -42,17 +53,17 @@ export function LightControl(props: LightControlProps) {
             <h2>{props.light.name}</h2>
             <div>
                 <Slider
-                min={0}
-                max={1}
-                step={.05}
-                value={brightness}
-                onChange={handleBrightnessChange}
-            />
+                    min={0}
+                    max={1}
+                    step={.05}
+                    value={brightness}
+                    onChange={handleBrightnessChange}
+                />
             </div>
 
-            <GridContainer cols={6} colsMedium={3}>
-                {colors.map(c => <PrimaryButton key={c} style={{backgroundColor: c}} onClick={() => handleColorChange(c)}>&nbsp;</PrimaryButton>)}
-            </GridContainer>
+                <GridContainer cols={6} colsMedium={3}>
+                    {colors.map(c => <PrimaryButton key={c} style={{backgroundColor: c}} onClick={() => handleColorChange(c)}>&nbsp;</PrimaryButton>)}
+                </GridContainer>
         </GridContainer>
 
     </Box>
