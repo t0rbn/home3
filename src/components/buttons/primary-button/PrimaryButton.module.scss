@@ -1,11 +1,10 @@
 @import "../../../globals";
 
 button.button {
+    @extend .elevated;
     border: none;
     border-radius: $border-radius-full;
     padding: size(.75) size(2);
-    background-color: elevation(2);
-    box-shadow: $shadow-default;
     cursor: pointer;
 
     color: inherit;

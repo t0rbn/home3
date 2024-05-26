@@ -1,20 +1,15 @@
-$color-background: hsl(250, 0%, 5%);
-$elevation-step-lightness: 10%;
+$color-background: hsl(250, 0%, 15%);
+$color-background-gradient: hsl(250, 0%, 10%);
 
-@function elevation($n) {
-  $color: $color-background;
-  @for $_ from 0 through $n {
-    $color: lighten($color, $elevation-step-lightness)
-  }
-  @return $color;
-}
+$color-elevated-1: hsl(250, 0%, 20%);
+$color-elevated-2: hsl(250, 0%, 30%);
 
+$color-elevated-typo-1: hsl(250, 0%, 80%);
 
 $size-unit: 1rem;
 @function size($n) {
   @return $n * $size-unit;
 }
-
 
 $border-radius-default: size(1);
 $border-radius-full: 110vmax;
@@ -23,3 +18,16 @@ $breakpoint-m: size(50);
 
 $shadow-default: 0 0 size(.25) hsl(0, 0%, 0%);
 $shadow-hover: 0 0 size(1) hsla(0, 0%, 0%, 75%);
+
+
+.elevated {
+  background-color: transparentize($color-elevated-1, 0.1);
+  box-shadow: $shadow-default;
+  backdrop-filter: blur(size(1));
+}
+
+.elevated-2 {
+  @extend .elevated;
+  background-color: transparentize($color-elevated-2, 0.1);
+}
+

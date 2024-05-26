@@ -19,14 +19,14 @@ div.wrapper {
       aspect-ratio: $thumb-aspect-ratio;
       margin-top: -0.5 * ($thumb-height - $track-height);
       border-radius: $border-radius-full;
-      background-color: elevation(3);
+      background-color: $color-elevated-2;
       box-shadow: $shadow-default;
     }
 
     &::-webkit-slider-runnable-track {
       height: $track-height;
       border-radius: $border-radius-full;
-      background-color: elevation(0);
+      background-color: $color-background;
       box-shadow: $shadow-default inset;
     }
   }

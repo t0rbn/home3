@@ -4,9 +4,12 @@
   padding: size(1.5);
   text-align: center;
   text-decoration: none;
-  color: elevation(10);
+  color: $color-elevated-typo-1;
+  box-shadow: none;
 
+  @extend .elevated;
   &.active {
-    background-color: elevation(2);
+    @extend .elevated-2;
+    box-shadow: none;
   }
 }

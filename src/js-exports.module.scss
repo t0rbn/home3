@@ -1,6 +1,6 @@
 @import "globals";
 
 :export {
-  colorBackground: elevation(2);
-  colorText: elevation(10);
+  colorBackground: $color-background;
+  colorText: $color-elevated-typo-1;
 }
