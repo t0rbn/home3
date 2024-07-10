@@ -16,8 +16,6 @@ export function generateImageMetadata() {
 
 // Render PNG Image from SVG (or any other valid JSX), see https://nextjs.org/docs/app/api-reference/functions/image-response
 export default function Icon(params: { id: string }) {
-    const iconColor = scss.colorText;
-
     const containerDivStyle = {
         width: params.id + 'px',
         height: params.id + 'px',

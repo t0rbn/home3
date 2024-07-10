@@ -1,8 +1,9 @@
-$color-background: hsl(250, 0%, 15%);
-$color-background-gradient: hsl(250, 0%, 10%);
+$color-background: hsl(250, 0%, 12%);
+$color-background-gradient: hsl(250, 0%, 6%);
 
-$color-elevated-1: hsl(250, 0%, 20%);
-$color-elevated-2: hsl(250, 0%, 30%);
+
+$color-elevated-1: hsl(250, 0%, 18%);
+$color-elevated-2: hsl(250, 0%, 24%);
 
 $color-elevated-typo-1: hsl(250, 0%, 80%);
 
@@ -21,13 +22,13 @@ $shadow-hover: 0 0 size(1) hsla(0, 0%, 0%, 75%);
 
 
 .elevated {
-  background-color: transparentize($color-elevated-1, 0.1);
+  background-color: transparentize($color-elevated-1, 0.025);
   box-shadow: $shadow-default;
-  backdrop-filter: blur(size(1));
+  //backdrop-filter: blur(size(1));
 }
 
 .elevated-2 {
   @extend .elevated;
-  background-color: transparentize($color-elevated-2, 0.1);
+  background-color: transparentize($color-elevated-2, 0.025);
 }
 
