@@ -1,21 +1,55 @@
 import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient} from "node-tradfri-client";
 import config from "../config.json";
-import {TradfriScene} from "@/types/Scenes";
-import {TradfriLight, TradfriGroup} from "@/types/Light";
+import {TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import LogService from "@/services/LogService";
 
 export default class TrafriService {
     private static connection?: TradfriClient
     private static isInitializingConnection = false;
 
-    private static scenes: Array<Scene> = []
-    private static lights: Array<Accessory> = []
-    private static groupLightsMap = new Map<string, {id: string, name: string, deviceIds: Array<string>}>();
-    private static superGroup?: Group
     private static logger = new LogService('TradfriService')
 
+    private static superGroup: Group
+    private static groups: Array<Omit<TradfriGroup, 'lights' | 'plugs'> & { deviceIds: Array<number> }> = []
+    private static scenes: Array<TradfriScene> = []
+    private static plugs: Array<TradfriPlug> = []
+    private static lights: Array<TradfriLight> = []
+
     constructor() {
-      
+
+    }
+
+    private static mapLight(light: Accessory): TradfriLight | null {
+        if (light.type !== AccessoryTypes.lightbulb) {
+            this.logger.warn(`Cannot map device ${light.instanceId}: not a light bulb`)
+            return null
+        }
+
+        const bulb = light.lightList[0]
+
+        return {
+            name: light.name,
+            id: light.instanceId,
+            brightness: bulb.dimmer,
+            color: bulb.color,
+            spectrum: bulb.spectrum,
+            setBrightness: (b: number) => bulb.setBrightness(100 * b).then(() => {}),
+            setColor: bulb.spectrum === 'none' ? undefined : (v: string) => bulb.setColor(v.replaceAll(/[^0-9a-fA-F]/g, ''))
+        } as TradfriLight
+    }
+
+    private static mapPlug(plug: Accessory): TradfriPlug | null {
+        if (plug.type !== AccessoryTypes.plug) {
+            this.logger.warn(`Cannot map device ${plug.instanceId}: not a plug`)
+            return null
+        }
+
+        return {
+            name: plug.name,
+            id: plug.instanceId,
+            isOn: plug.plugList[0].onOff,
+            toggle: () => plug.plugList[0].toggle().then(() => {})
+        } as TradfriPlug
     }
 
     static async initConnection(): Promise<void> {
@@ -52,56 +86,88 @@ export default class TrafriService {
             return
         }
 
-        const deleteScene = (id: number) => {
-            this.scenes = this.scenes.filter(s => s.instanceId !== id)
-        }
-
         const addOrUpdateScene = (scene: Scene) => {
-            this.logger.log(`retrieved information for scene ${scene.name}`)
-            deleteScene(scene.instanceId)
-            this.scenes.push(scene)
+            const mapped = {
+                name: scene.name,
+                id: scene.instanceId,
+                activate: () => this.superGroup.activateScene(scene.instanceId).then(() => {})
+            } as TradfriScene
+
+            this.scenes = [
+                ...this.scenes.filter(s => s.id !== mapped.id),
+                mapped
+            ]
         }
 
-        const deleteLight = (id: number) => {
-            this.lights = this.lights.filter(b => b.instanceId !== id)
-        }
 
         const addOrUpdateLight = (device: Accessory) => {
-            deleteLight(device.instanceId)
-            if (device.type === AccessoryTypes.lightbulb) {
-                this.logger.log(`retrieved information for lightbulb ${device.name}`)
-                this.lights.push(device)
+            const mapped = this.mapLight(device)
+            if (!mapped) {
+                return;
             }
+
+            this.lights = [
+                ...this.lights.filter(l => l.id !== mapped.id),
+                mapped
+            ]
+        }
+
+        const addOrUpdatePlug = (device: Accessory) => {
+            const mapped = this.mapPlug(device)
+            if (!mapped) {
+                return;
+            }
+
+            this.plugs = [
+                ...this.plugs.filter(p => p.id !== mapped.id),
+                mapped
+            ]
         }
 
         const groupObserver = this.connection
             .on('scene updated', (_group: number, scene: Scene) => addOrUpdateScene(scene))
-            .on('scene removed', (_group: number, instanceId: number) => deleteScene(instanceId))
             .on('group updated', (group: Group) => {
                     if (group.name === 'SuperGroup') {
                         this.superGroup = group
-                    } else {
-                        const data = {
-                            id: group.instanceId + '',
-                            name: group.name,
-                            deviceIds: group.deviceIDs.map(d => '' + d)
-                        }
-                        this.groupLightsMap.set(`${group.instanceId}`, data)
+                        return;
                     }
+
+                    this.groups = [
+                        ...this.groups.filter(g => g.id !== group.instanceId),
+                        {
+                            id: group.instanceId,
+                            name: group.name,
+                            deviceIds: group.deviceIDs
+                        }
+                    ]
                 }
             )
             .observeGroupsAndScenes()
             .catch()
 
         const deviceObserver = this.connection
-            .on('device updated', (device: Accessory) => addOrUpdateLight(device))
-            .on('device removed', (instanceId: number) => deleteLight(instanceId))
+            .on('device updated', (device: Accessory) => {
+                if (!device.alive) {
+                    this.lights = this.lights.filter(l => l.id !== device.instanceId)
+                    this.plugs = this.plugs.filter(l => l.id !== device.instanceId)
+                    return
+                }
+
+                if (device.type === AccessoryTypes.lightbulb) {
+                    addOrUpdateLight(device)
+                    return
+                }
+                if (device.type === AccessoryTypes.plug) {
+                    addOrUpdatePlug(device)
+                    return;
+                }
+            })
             .observeDevices()
             .catch()
 
         return Promise.all([groupObserver, deviceObserver]).then(() => {})
     }
-    
+
     private static async init() {
         if (this.connection || this.isInitializingConnection) {
             return
@@ -111,105 +177,54 @@ export default class TrafriService {
             .initConnection()
             .then(() => this.initDataAndListeners())
             .then(() => this.isInitializingConnection = false)
-            .then(() => new Promise(r => setTimeout(r, config.tradfri.connection.initTimeoutS * 1000)))
+            .then(TrafriService.operationTimeout)
             .catch((e) => this.logger.warn(e.message))
     }
 
-    private static getLight(id: string): TradfriLight | null {
-        const accesory =  this.lights.find(l => `${l.instanceId}` === id )
-        if (!accesory || !accesory.alive) {
-            return null
-        }
-
-        const light = accesory.lightList[0] ?? {}
-        const generalData = {
-            id: accesory.instanceId + '',
-            name: accesory.name,
-            brightness: light.onOff ? (light.dimmer / 100) : 0
-        }
-
-        let spectrumData: any = {spectrum: 'none'}
-
-        if (light.spectrum === 'rgb') {
-            spectrumData = {spectrum: 'rgb', color: `#${light.color}`}
-        }
-
-        if (light.spectrum === 'white') {
-            spectrumData = {spectrum: 'white', whiteTemperature: Math.min(100, Math.max(0, light.colorTemperature / 100))}
-        }
-
-        return {
-            ...generalData,
-            ...spectrumData
-        }
-    }
-
-    private static getGroup(id: string): TradfriGroup | null {
-        const group = this.groupLightsMap.get(id);
-        if (!group) {
-            return null
-        }
-        return {
-            id: group.id,
-            name: group.name,
-            lights: group.deviceIds.map(id => this.getLight(id)).filter(Boolean) as Array<TradfriLight>
-        }
+    private static async operationTimeout() {
+        return new Promise(r => setTimeout(r, config.tradfri.connection.initTimeoutS * 1000))
     }
 
     static async getGroups(): Promise<Array<TradfriGroup>> {
         await this.init()
-        return Array.from(this.groupLightsMap.keys()).map((id: string) => this.getGroup(id)).filter(Boolean) as Array<TradfriGroup>
-    }
-
-    static async setLightBrightness(lightId: string, brightness: number): Promise<void> {
-        await this.init()
-        const light = this.lights.filter(light => `${light.instanceId}` === lightId)[0]
-        if (!light) {
-            this.logger.warn('cannot set brightness for unknown bulb')
-            throw 'unknown lightbulb'
-        }
-
-        const newBrightness = Math.max(0, Math.min(100, Math.round(brightness * 100)))
-        await light.lightList[0].setBrightness(newBrightness, config.tradfri.transitionTimeMs / 1000)
-        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
-    }
-
-    static async setLightColor(lightId: string, hexColor: string): Promise<void> {
-        await this.init()
-        const light = this.lights.filter(light => `${light.instanceId}` === lightId)[0]
-        if (!light) {
-            this.logger.warn('cannot set color for unknown bulb')
-            throw 'unknown lightbulb'
-        }
-
-        const spectrum = light.lightList[0]?.spectrum
-        if (spectrum === 'none') {
-            this.logger.warn('color operation not supported by spectrum')
-            throw 'color operation not supported'
-        }
-        await light.lightList[0].setColor(hexColor.replace('#', ''), config.tradfri.transitionTimeMs / 1000)
-        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
+        return this.groups.map(g => ({
+            ...g,
+            deviceIds: undefined,
+            lights: this.lights.filter(l => g.deviceIds.includes(l.id)).map(l => ({...l, setColor: undefined, setBrightness: undefined})),
+            plugs: this.plugs.filter(p => g.deviceIds.includes(p.id)).map(p => ({...p, toggle: undefined}))
+        }))
     }
 
     static async getScenes(): Promise<Array<TradfriScene>> {
         await this.init()
-        return this.scenes.map((scene: Scene) => ({
-            name: scene.name,
-            id: `${scene.instanceId}`
-        }))
+        return this.scenes.map(s => ({...s, activate: undefined}));
     }
 
-    static async setScene(sceneId: string): Promise<void> {
-        await this.init()
-        if (!this.superGroup) {
-            this.logger.warn("Cannot set scene: no super group")
-            return
+    static async activateScene(sceneId: number) {
+        const fn = this.scenes.find(s => s.id === sceneId)?.activate
+        if (fn) {
+            return fn().then(TrafriService.operationTimeout)
         }
-        this.logger.log("setting scene " + sceneId)
-        await this.connection?.operateGroup(this.superGroup, {
-            sceneId: Number.parseInt(sceneId)
-        }, true)
+    }
 
-        await new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs)) // wait for action to be applied in gateway
+    static async setLightBrightness(lightId: number, newBrightness: number) {
+        const fn = this.lights.find(l => l.id === lightId)?.setBrightness
+        if (fn) {
+            return fn(newBrightness).then(TrafriService.operationTimeout)
+        }
+    }
+
+    static async setLightColor(lightId: number, newColor: string) {
+        const fn = this.lights.find(l => l.id === lightId)?.setColor
+        if (fn) {
+            return fn(newColor).then(TrafriService.operationTimeout)
+        }
+    }
+
+    static async togglePlug(plugId: number) {
+        const fn = this.plugs.find(p => p.id === plugId)?.toggle
+        if (fn) {
+            return fn().then(TrafriService.operationTimeout)
+        }
     }
 }

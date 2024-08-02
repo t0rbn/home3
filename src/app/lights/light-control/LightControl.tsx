@@ -1,14 +1,14 @@
 "use client";
 
-import {TradfriLight} from "@/types/Light";
 import {Box} from "@/components/box/Box";
 import config from "@/config.json"
 import {GridContainer} from "@/components/containers/grid/GridContainer";
 import Slider from "@/components/slider/Slider";
 import {useRouter} from "next/navigation";
-import {setLightBrightness, setLightColor} from "@/actions/tradfri-actions";
 import {useState} from "react";
 import PrimaryButton from "@/components/buttons/primary-button/PrimaryButton";
+import {TradfriLight} from "@/types/Tradfri";
+import {setLightBrightness, setLightColor} from "@/actions/tradfri-actions";
 
 interface LightControlProps {
     light: TradfriLight;
@@ -28,8 +28,7 @@ export function LightControl(props: LightControlProps) {
             setDebounceTImeout(null)
         }
         setDebounceTImeout(setTimeout(() => {
-            console.log(newVal)
-            setLightBrightness(props.light.id, newVal);
+            setLightBrightness(props.light.id, newVal).then(router.refresh)
         }, config.tradfri.transitionTimeMs))
     }
 
@@ -45,7 +44,7 @@ export function LightControl(props: LightControlProps) {
     })
 
     const handleColorChange = (newHexColor: string) => {
-        setLightColor(props.light.id, newHexColor).then(() => router.refresh());
+        setLightColor(props.light.id, newHexColor).then(router.refresh)
     }
 
     return <Box>

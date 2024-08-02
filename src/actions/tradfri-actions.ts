@@ -1,25 +1,15 @@
 "use server";
 
-import {TradfriScene} from "@/types/Scenes";
-import {TradfriGroup} from "@/types/Light";
+import {TradfriGroup, TradfriScene} from "@/types/Tradfri";
 import TrafriService from "@/services/TrafriService";
 
-export async function getTradfriScenes(): Promise<TradfriScene[]> {
-    return TrafriService.getScenes()
-}
+export const getGroups: () => Promise<Array<TradfriGroup>> = async () => TrafriService.getGroups()
 
-export async function activateTradfriScene(id: string): Promise<void> {
-    return TrafriService.setScene(id)
-}
 
-export async function getTradfriGroups(): Promise<TradfriGroup[]> {
-    return TrafriService.getGroups()
-}
+export const getScenes: () => Promise<Array<TradfriScene>> = async () => TrafriService.getScenes()
+export const activateScene = (sceneId: number) => TrafriService.activateScene(sceneId)
 
-export async function setLightBrightness(id: string, brightness: number): Promise<void> {
-    return TrafriService.setLightBrightness(id, brightness)
-}
+export const setLightBrightness = (lightId: number, newBrightness: number)  => TrafriService.setLightBrightness(lightId, newBrightness)
+export const setLightColor = (lightId: number, newColor: string)  => TrafriService.setLightColor(lightId, newColor)
 
-export async function setLightColor(id: string, hexColor: string): Promise<void> {
-    return TrafriService.setLightColor(id, hexColor)
-}
+export const  togglePlug = (plugId: number)  => TrafriService.togglePlug(plugId)
