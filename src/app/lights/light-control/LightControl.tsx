@@ -54,7 +54,7 @@ export function LightControl(props: LightControlProps) {
                 <Slider
                     min={0}
                     max={1}
-                    step={.05}
+                    step={.01}
                     value={brightness}
                     onChange={handleBrightnessChange}
                 />

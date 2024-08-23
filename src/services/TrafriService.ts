@@ -30,7 +30,7 @@ export default class TrafriService {
         return {
             name: light.name,
             id: light.instanceId,
-            brightness: bulb.dimmer,
+            brightness: bulb.dimmer / 100,
             color: bulb.color,
             spectrum: bulb.spectrum,
             setBrightness: (b: number) => bulb.setBrightness(100 * b).then(() => {}),
