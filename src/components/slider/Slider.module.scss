@@ -8,8 +8,7 @@ div.wrapper {
     background: none;
     width: 100%;
 
-    $track-height: size(1);
-    $thumb-height: size(2);
+    $thumb-height: size(2.5);
     $thumb-aspect-ratio: 1;
     cursor: pointer;
 
@@ -17,17 +16,14 @@ div.wrapper {
       appearance: none;
       height: $thumb-height;
       aspect-ratio: $thumb-aspect-ratio;
-      margin-top: -0.5 * ($thumb-height - $track-height);
       border-radius: $border-radius-full;
-      background-color: $color-elevated-2;
-      box-shadow: $shadow-default;
+      @extend .interactive;
     }
 
     &::-webkit-slider-runnable-track {
-      height: $track-height;
+      height: $thumb-height;
       border-radius: $border-radius-full;
-      background-color: $color-background;
-      box-shadow: $shadow-default inset;
+      @extend .dropped;
     }
   }
 }

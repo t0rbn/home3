@@ -18,5 +18,5 @@ export function GridContainer(props: PropsWithChildren<GridContainerProps>) {
 }
 
 export function GridRowSpacer() {
-    return <div>&nbsp;</div>
+    return <div>&nbsp;<br/>&nbsp;</div>
 }

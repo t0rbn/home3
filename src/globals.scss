@@ -1,9 +1,13 @@
-$color-background: hsl(250, 0%, 12%);
-$color-background-gradient: hsl(250, 0%, 6%);
+$hue-base: 200;
+$saturation-base: 0%;
+$lightness-bg: 15%;
+$lightness-step: 7.5%;
 
-
-$color-elevated-1: hsl(250, 0%, 18%);
-$color-elevated-2: hsl(250, 0%, 24%);
+$color-background: hsl($hue-base, $saturation-base, $lightness-bg);
+$color-elevated-full: hsl($hue-base, $saturation-base, $lightness-bg +  $lightness-step);
+$color-elevated-half:hsl($hue-base, $saturation-base, $lightness-bg + (.5 * $lightness-step));
+$color-dropped-full: hsl($hue-base, $saturation-base, $lightness-bg -  $lightness-step);
+$color-dropped-half:hsl($hue-base, $saturation-base, $lightness-bg - (.5 * $lightness-step));
 
 $color-elevated-typo-1: hsl(250, 0%, 80%);
 
@@ -11,24 +15,26 @@ $size-unit: 1rem;
 @function size($n) {
   @return $n * $size-unit;
 }
-
 $border-radius-default: size(1);
 $border-radius-full: 110vmax;
-
 $breakpoint-m: size(50);
 
-$shadow-default: 0 0 size(.25) hsl(0, 0%, 0%);
-$shadow-hover: 0 0 size(1) hsla(0, 0%, 0%, 75%);
 
 
 .elevated {
-  background-color: transparentize($color-elevated-1, 0.025);
-  box-shadow: $shadow-default;
-  //backdrop-filter: blur(size(1));
+  background-color: $color-background;
+  box-shadow: size(.25) size(.25) size(.5) $color-dropped-full,
+  size(-.25) size(-.25) size(.5) $color-elevated-full;
 }
 
-.elevated-2 {
-  @extend .elevated;
-  background-color: transparentize($color-elevated-2, 0.025);
+.dropped {
+  background-color: $color-background;
+  box-shadow: size(.25) size(.25) size(.5) $color-dropped-full inset,
+  size(-.25) size(-.25) size(.5) $color-elevated-full inset;
+}
+
+.interactive {
+  background-image: linear-gradient(to top, $color-elevated-half, $color-elevated-full);
+  box-shadow: 0 0 size(.5) $color-dropped-full;
 }
 

@@ -1,10 +1,10 @@
 @import "../../../globals";
 
 button.button {
-    @extend .elevated;
+    @extend .interactive;
     border: none;
     border-radius: $border-radius-full;
-    padding: size(.75) size(2);
+    padding: size(1);
     cursor: pointer;
 
     color: inherit;
@@ -12,10 +12,4 @@ button.button {
     font-size: size(1);
     line-height: size(1);
     font-weight: normal;
-
-    @media (pointer: fine) {
-        &:hover {
-            box-shadow: $shadow-hover
-        }
-    }
 }

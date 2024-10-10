@@ -23,5 +23,8 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "typescript": "latest"
+  },
+  "resolutions": {
+    "node-aead-crypto": "npm:empty-npm-package"
   }
 }

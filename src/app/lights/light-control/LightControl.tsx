@@ -61,7 +61,7 @@ export function LightControl(props: LightControlProps) {
             </div>
 
                 <GridContainer cols={6} colsMedium={3}>
-                    {colors.map(c => <PrimaryButton key={c} style={{backgroundColor: c}} onClick={() => handleColorChange(c)}>&nbsp;</PrimaryButton>)}
+                    {colors.map(c => <PrimaryButton key={c} style={{backgroundColor: c, backgroundImage: 'linear-gradient(to top, transparent, hsla(0, 0%, 100%, 10%))'}} onClick={() => handleColorChange(c)}>&nbsp;</PrimaryButton>)}
                 </GridContainer>
         </GridContainer>
 

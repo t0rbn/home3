@@ -7,9 +7,9 @@
   color: $color-elevated-typo-1;
   box-shadow: none;
 
-  @extend .elevated;
+  @extend .interactive;
   &.active {
-    @extend .elevated-2;
+    @extend .interactive;
     box-shadow: none;
   }
 }
