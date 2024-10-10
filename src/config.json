@@ -2,7 +2,7 @@
   "tradfri": {
     "connection": {
       "securityId": "WqupW3ys67g1PUeh",
-      "initTimeoutS": 10
+      "initTimeoutS": 1
     },
     "colors": {
       "whiteTemperatures": [
