@@ -1,6 +1,6 @@
 @import "../../../globals";
 
-button.button {
+.button {
     @extend .interactive;
     border: none;
     border-radius: $border-radius-full;

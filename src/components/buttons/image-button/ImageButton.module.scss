@@ -1,29 +1,26 @@
 @import "../../../globals";
 
 button.imageButton {
-    aspect-ratio: 1;
-    border: none;
-    border-radius: $border-radius-default !important;
-    overflow: hidden;
+  border-radius: size(1.75);
+  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
+
+  .imageContainer {
     position: relative;
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+    border-radius: size(1);
+    background-color: hotpink;
+  }
 
-    @media (pointer: fine) {
-        &:hover {
-                filter: brightness(125%) saturate(125%);
-        }
+  @media (pointer: fine) {
+    &:hover img {
+      filter: brightness(125%) saturate(125%);
     }
-
-    > label {
-        position: absolute;
-        bottom: size(1);
-        left:  size(1);
-        right: size(1);
-        border-radius: $border-radius-full;
-        background-color: hsla(0, 0%, 0%, .5);
-        backdrop-filter:  blur(size(1));
-        display: block;
-        padding: size(.5);
-    }
+  }
 }
