@@ -1,15 +1,25 @@
 @import "../../globals";
 
 .navButton {
-  padding: size(1.5);
+  @extend .interactive;
+
   text-align: center;
   text-decoration: none;
   color: $color-typo;
+  padding: size(1);
   box-shadow: none;
+  border: none;
 
-  @extend .interactive;
+  .icon{
+    font-size: size(1.5);
+    line-height: size(1.5);
+  }
+
   &.active {
     @extend .interactive;
+    border: none;
+    background-image: none;
+    background-color: $color-elevated-double;
     box-shadow: none;
   }
 }

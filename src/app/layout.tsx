@@ -8,9 +8,9 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
         <div>{children}</div>
     </main>
     <nav>
-        <NavButton name="Scenes" path="/scenes"/>
-        <NavButton name="Lights" path="/lights"/>
-        <NavButton name="Settings" path="/settings"/>
+        <NavButton icon="home" path="/scenes"/>
+        <NavButton icon="lightbulb" path="/lights"/>
+        <NavButton icon="settings" path="/settings"/>
     </nav>
     </body>
     </html>);
