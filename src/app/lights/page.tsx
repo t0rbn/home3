@@ -1,5 +1,5 @@
 import {Metadata} from "next";
-import {GridContainer, GridRowSpacer} from "@/components/containers/grid/GridContainer";
+import {GridContainer} from "@/components/containers/grid/GridContainer";
 import {LightControl} from "@/app/lights/light-control/LightControl";
 import {Fragment} from "react";
 import {getGroups} from "@/actions/tradfri-actions";
@@ -15,9 +15,12 @@ export default async function LightsPage() {
     return <GridContainer cols={1}>
         {groups.map(g => <Fragment key={g.id}>
             <h1>{g.name}</h1>
-            {g.lights.toSorted((a,b) => a.name.localeCompare(b.name)).map(l => <LightControl light={l} key={l.id}/>)}
-            {g.plugs.toSorted((a,b) => a.name.localeCompare(b.name)).map(l => <PlugControl plug={l} key={l.id}/>)}
-            <GridRowSpacer/>
+
+            {g.lights.toSorted((a, b) => a.name.localeCompare(b.name)).map(l => <LightControl light={l} key={l.id}/>)}
+
+            <GridContainer cols={3} colsMedium={2}>
+                {g.plugs.toSorted((a, b) => a.name.localeCompare(b.name)).map(l => <PlugControl plug={l} key={l.id}/>)}
+            </GridContainer>
         </Fragment>)}
     </GridContainer>
 }

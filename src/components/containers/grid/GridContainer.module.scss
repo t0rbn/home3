@@ -4,6 +4,7 @@
   display: grid;
   grid-auto-flow: row;
   grid-gap: size(1);
+  align-items: flex-start;
 
   @for $i from 1 through 100 {
     &[data-cols="#{$i}"] {

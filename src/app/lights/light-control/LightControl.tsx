@@ -9,6 +9,7 @@ import {useState} from "react";
 import PrimaryButton from "@/components/buttons/primary-button/PrimaryButton";
 import {TradfriLight} from "@/types/Tradfri";
 import {setLightBrightness, setLightColor} from "@/actions/tradfri-actions";
+import jsStyles from "../../../js-exports.module.scss"
 
 interface LightControlProps {
     light: TradfriLight;
@@ -59,11 +60,9 @@ export function LightControl(props: LightControlProps) {
                     onChange={handleBrightnessChange}
                 />
             </div>
-
-                <GridContainer cols={6} colsMedium={3}>
-                    {colors.map(c => <PrimaryButton key={c} style={{backgroundColor: c, backgroundImage: 'linear-gradient(to top, transparent, hsla(0, 0%, 100%, 10%))'}} onClick={() => handleColorChange(c)}>&nbsp;</PrimaryButton>)}
-                </GridContainer>
+            <GridContainer cols={6} colsMedium={3}>
+                {colors.map(c => <PrimaryButton key={c} style={{backgroundColor: c, backgroundImage: jsStyles.gradientColorbutton}} onClick={() => handleColorChange(c)}>&nbsp;</PrimaryButton>)}
+            </GridContainer>
         </GridContainer>
-
     </Box>
 }

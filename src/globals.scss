@@ -1,15 +1,16 @@
 $hue-base: 200;
 $saturation-base: 0%;
-$lightness-bg: 15%;
-$lightness-step: 7.5%;
+$lightness-bg: 12.5%;
+$lightness-step: $lightness-bg / 2;
 
 $color-background: hsl($hue-base, $saturation-base, $lightness-bg);
-$color-elevated-full: hsl($hue-base, $saturation-base, $lightness-bg +  $lightness-step);
-$color-elevated-half:hsl($hue-base, $saturation-base, $lightness-bg + (.5 * $lightness-step));
-$color-dropped-full: hsl($hue-base, $saturation-base, $lightness-bg -  $lightness-step);
-$color-dropped-half:hsl($hue-base, $saturation-base, $lightness-bg - (.5 * $lightness-step));
+$color-elevated-double: hsl($hue-base, $saturation-base, $lightness-bg +  (2* $lightness-step));
+$color-elevated:hsl($hue-base, $saturation-base, $lightness-bg + $lightness-step);
+$color-dropped:hsl($hue-base, $saturation-base, $lightness-bg - $lightness-step);
 
-$color-elevated-typo-1: hsl(250, 0%, 80%);
+$color-typo: hsl($hue-base, $saturation-base, 100% - $lightness-bg);
+
+$gradient-glow: linear-gradient(to bottom, hsla(0, 0%, 0%, 0%), hsla(0%, 0%, 0%, 50%));
 
 $size-unit: 1rem;
 @function size($n) {
@@ -23,18 +24,19 @@ $breakpoint-m: size(50);
 
 .elevated {
   background-color: $color-background;
-  box-shadow: size(.25) size(.25) size(.5) $color-dropped-full,
-  size(-.25) size(-.25) size(.5) $color-elevated-full;
+  border: 1px solid $color-dropped;
+  box-shadow: size(0) size(0) size(1) $color-dropped;
 }
 
 .dropped {
   background-color: $color-background;
-  box-shadow: size(.25) size(.25) size(.5) $color-dropped-full inset,
-  size(-.25) size(-.25) size(.5) $color-elevated-full inset;
+  border: 1px solid $color-dropped;
+  box-shadow: size(.25) size(.25) size(.5) $color-dropped inset,
+  size(-.25) size(-.25) size(.5) $color-elevated inset;
 }
 
 .interactive {
-  background-image: linear-gradient(to top, $color-elevated-half, $color-elevated-full);
-  box-shadow: 0 0 size(.5) $color-dropped-full;
+  @extend .elevated;
+  background-image: linear-gradient(to top, $color-elevated, $color-elevated-double);
 }
 

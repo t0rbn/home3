@@ -1,6 +1,7 @@
 @import "globals";
 
 :export {
-  colorBackground: $color-elevated-typo-1;
+  colorBackground: $color-typo;
   colorText: $color-background;
+  gradientColorbutton: linear-gradient(to bottom, transparent, hsla(0, 0%, 0%, 5 * $lightness-step))
 }
