@@ -1,42 +1,46 @@
 $hue-base: 200;
 $saturation-base: 0%;
-$lightness-bg: 12.5%;
-$lightness-step: $lightness-bg / 2;
+$lightness-bg: 10%;
+$lightness-step: 5%;
 
 $color-background: hsl($hue-base, $saturation-base, $lightness-bg);
 $color-elevated-double: hsl($hue-base, $saturation-base, $lightness-bg +  (2* $lightness-step));
-$color-elevated:hsl($hue-base, $saturation-base, $lightness-bg + $lightness-step);
-$color-dropped:hsl($hue-base, $saturation-base, $lightness-bg - $lightness-step);
+$color-elevated: hsl($hue-base, $saturation-base, $lightness-bg + $lightness-step);
+$color-dropped: hsl($hue-base, $saturation-base, $lightness-bg - $lightness-step);
 
-$color-typo: hsl($hue-base, $saturation-base, 100% - $lightness-bg);
+$color-typo: hsl($hue-base, $saturation-base, 100% - 2 * $lightness-bg);
 
-$gradient-glow: linear-gradient(to bottom, hsla(0, 0%, 0%, 0%), hsla(0%, 0%, 0%, 50%));
+$gradient-glow: linear-gradient(to top, hsla(0, 0%, 0%, 0%), hsla(0%, 0%, 100%, 2 * $lightness-step));
 
 $size-unit: 1rem;
 @function size($n) {
   @return $n * $size-unit;
 }
+
 $border-radius-default: size(1);
 $border-radius-full: 110vmax;
 $breakpoint-m: size(50);
 
 
-
 .elevated {
-  background-color: $color-background;
-  border: 1px solid $color-dropped;
+  background-color: $color-elevated;
   box-shadow: size(0) size(0) size(1) $color-dropped;
+  //box-shadow: size(.25) size(.25) size(.5) $color-dropped ,
+  //size(-.25) size(-.25) size(.5) $color-elevated ;
 }
 
 .dropped {
-  background-color: $color-background;
-  border: 1px solid $color-dropped;
-  box-shadow: size(.25) size(.25) size(.5) $color-dropped inset,
-  size(-.25) size(-.25) size(.5) $color-elevated inset;
+  background-color: transparent;
+  border: 1px solid $color-background;
+  box-shadow: size(.25) size(.25) size(.5) $color-dropped inset ,
+  size(-.25) size(-.25) size(.5) $color-elevated-double inset ;
 }
 
 .interactive {
   @extend .elevated;
-  background-image: linear-gradient(to top, $color-elevated, $color-elevated-double);
+  //background-color: $color-elevated-double;
+  background-image: $gradient-glow;
+  box-shadow: 0 size(.1) size(.25) $color-dropped;
+
 }
 

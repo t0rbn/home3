@@ -16,10 +16,7 @@
   }
 
   &.active {
-    @extend .interactive;
-    border: none;
-    background-image: none;
     background-color: $color-elevated-double;
-    box-shadow: none;
+    border: none;
   }
 }

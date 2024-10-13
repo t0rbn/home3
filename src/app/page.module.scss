@@ -13,7 +13,10 @@ html.root, html.root > body {
   line-height: size(1);
   box-sizing: border-box;
 
-  background-attachment: fixed;
+  h1, h2, h3, h4, h5, h6, p {
+    padding: 0;
+    margin: 0;
+  }
 
   * {
     font-family: "Comfortaa";
@@ -31,11 +34,7 @@ html.root, html.root > body {
   h1 {
     font-size: size(2);
     line-height: size(2);
-  }
-
-  h1, h2, h3, h4, h5, h6, p {
-    padding: 0;
-    margin: 0;
+    padding-top: size(2);
   }
 
   body {

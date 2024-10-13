@@ -44,8 +44,7 @@ export default function Icon(params: { id: string }) {
         </div>,
         {
             width: Number.parseInt(params.id),
-            height:
-                Number.parseInt(params.id)
+            height: Number.parseInt(params.id)
         }
     )
 }

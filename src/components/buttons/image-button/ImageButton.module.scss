@@ -15,12 +15,11 @@ button.imageButton {
     object-position: center;
     overflow: hidden;
     border-radius: size(1);
-    background-color: hotpink;
   }
 
   @media (pointer: fine) {
     &:hover img {
-      filter: brightness(125%) saturate(125%);
+      filter: brightness(110%) saturate(110%);
     }
   }
 }
