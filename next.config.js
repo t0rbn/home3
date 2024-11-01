@@ -16,8 +16,11 @@ const nextConfig = {
             ],
         })
 
+
+        config.infrastructureLogging = { debug: /PackFileCache/ }
+
         return config
     },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
