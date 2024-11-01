@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "n": "^10.0.0",
     "next": "latest",
     "node-loader": "latest",
     "node-tradfri-client": "latest",
