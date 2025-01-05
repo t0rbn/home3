@@ -1,4 +1,4 @@
-@import "../../globals";
+@use "../../globals" as *;
 
 div.wrapper {
   padding: size(.5) 0;

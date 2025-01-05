@@ -10,7 +10,7 @@ $color-dropped: hsl($hue-base, $saturation-base, $lightness-bg - $lightness-step
 
 $color-typo: hsl($hue-base, $saturation-base, 100% - 2 * $lightness-bg);
 
-$gradient-glow: linear-gradient(to top, hsla(0, 0%, 0%, 0%), hsla(0%, 0%, 100%, 2 * $lightness-step));
+$gradient-glow: linear-gradient(to top, hsla(0, 0%, 0%, 0%), hsla(0, 0%, 100%, 2 * $lightness-step));
 
 $size-unit: 1rem;
 @function size($n) {
