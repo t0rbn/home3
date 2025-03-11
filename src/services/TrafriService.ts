@@ -67,8 +67,7 @@ export default class TrafriService {
         }
 
         logger.log('got gateway ' + gateway.name)
-        this.connection = new TradfriClient(gateway.name)
-
+        this.connection = new TradfriClient(gateway.addresses[0])
         let identity: string
         let psk: string
 

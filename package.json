@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "n": "^10.0.0",
     "next": "latest",
     "node-loader": "latest",
     "node-tradfri-client": "latest",
@@ -24,8 +23,5 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "typescript": "latest"
-  },
-  "resolutions": {
-    "node-aead-crypto": "npm:empty-npm-package"
   }
 }
