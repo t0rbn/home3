@@ -8,3 +8,5 @@ export default function Home() {
         <Section level="primary" title="Devices"><GroupedDeviceButtons/></Section>
     </>
 }
+
+export const dynamic = 'force-dynamic'
