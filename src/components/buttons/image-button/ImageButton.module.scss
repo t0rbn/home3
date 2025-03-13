@@ -1,25 +1,56 @@
 @use "../../../globals" as *;
 
-button.imageButton {
-  border-radius: size(1.75);
+.imageButton {
+  appearance: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
-  * {
-    cursor: pointer;
-  }
+  position: relative;
 
   .imageContainer {
-    position: relative;
-    width: 100%;
+    background-position: center center;
+    background-size: 100%;
+    border-radius: $border-radius-full;
     aspect-ratio: 1;
-    object-fit: cover;
-    object-position: center;
-    overflow: hidden;
-    border-radius: size(1);
+    z-index: 2;
+    @extend .transition-default;
   }
 
-  @media (pointer: fine) {
-    &:hover img {
-      filter: brightness(110%) saturate(110%);
+  .hoverContainer {
+    @extend .imageContainer;
+    @extend .transition-default;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform-origin: center center;
+    filter: brightness(500%) blur($size-l);
+    opacity: 0;
+    z-index: 0;
+  }
+
+  @media (hover: hover) {
+
+    &:hover {
+      .imageContainer {
+        background-size: 110%;
+      }
+      .hoverContainer {
+        opacity: unset;
+      }
     }
+  }
+
+  label {
+    padding: $size-m;
+    color: $color-typo;
+    z-index: 2;
   }
 }

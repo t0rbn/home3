@@ -1,5 +1,4 @@
 import {PropsWithChildren} from "react";
-import {StyledContainer} from "@/components/containers/StyledContainer";
 import styles from "./GridContainer.module.scss"
 
 interface GridContainerProps {
@@ -15,4 +14,8 @@ export function GridContainer(props: PropsWithChildren<GridContainerProps>) {
     >
         {props.children}
     </div>
+}
+
+export function GridSpacer() {
+    return <div />
 }

@@ -1,46 +1,46 @@
-$hue-base: 200;
+$hue-base: 300;
 $saturation-base: 0%;
-$lightness-bg: 10%;
-$lightness-step: 5%;
+$lightness-base: 10%;
+$lightness-step: 10%;
 
-$color-background: hsl($hue-base, $saturation-base, $lightness-bg);
-$color-elevated-double: hsl($hue-base, $saturation-base, $lightness-bg +  (2* $lightness-step));
-$color-elevated: hsl($hue-base, $saturation-base, $lightness-bg + $lightness-step);
-$color-dropped: hsl($hue-base, $saturation-base, $lightness-bg - $lightness-step);
+@function color-elevation($n) {
+  @return hsl($hue-base, $saturation-base, $lightness-base + ($lightness-step * $n));
+}
 
-$color-typo: hsl($hue-base, $saturation-base, 100% - 2 * $lightness-bg);
-
-$gradient-glow: linear-gradient(to top, hsla(0, 0%, 0%, 0%), hsla(0, 0%, 100%, 2 * $lightness-step));
+$color-typo: hsl($hue-base, $saturation-base, 80%);
 
 $size-unit: 1rem;
-@function size($n) {
-  @return $n * $size-unit;
-}
+$size-xs: $size-unit * .25;
+$size-s: $size-unit * .5;
+$size-m: $size-unit * 1;
+$size-l: $size-unit * 1.5;
+$size-xl: $size-unit * 2.5;
 
-$border-radius-default: size(1);
+
+$border-radius-default: $size-m;
 $border-radius-full: 110vmax;
-$breakpoint-m: size(50);
-
+$breakpoint-m: 50 * $size-unit;
 
 .elevated {
-  background-color: $color-elevated;
-  box-shadow: size(0) size(0) size(1) $color-dropped;
-  //box-shadow: size(.25) size(.25) size(.5) $color-dropped ,
-  //size(-.25) size(-.25) size(.5) $color-elevated ;
+  background-color: color-elevation(1);
+  color: $color-typo;
 }
 
-.dropped {
-  background-color: transparent;
-  border: 1px solid $color-background;
-  box-shadow: size(.25) size(.25) size(.5) $color-dropped inset ,
-  size(-.25) size(-.25) size(.5) $color-elevated-double inset ;
+.transition-default {
+  transition: all 250ms ease-out;
+
 }
 
 .interactive {
   @extend .elevated;
-  //background-color: $color-elevated-double;
-  background-image: $gradient-glow;
-  box-shadow: 0 size(.1) size(.25) $color-dropped;
+  @extend .transition-default;
+  cursor: pointer;
 
+  @media (hover: hover) {
+    &:hover {
+      //background-color: color-elevation(2);
+      box-shadow: 0 0 $size-l $color-typo;
+    }
+  }
 }
 

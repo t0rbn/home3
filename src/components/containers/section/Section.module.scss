@@ -1,0 +1,13 @@
+@use '../../../globals' as *;
+
+section.section {
+  margin-bottom: $size-xl;
+
+  h1.title, h2.title {
+    margin-bottom: $size-m;
+  }
+
+  &.primary {
+    margin-bottom: $size-xl;
+  }
+}

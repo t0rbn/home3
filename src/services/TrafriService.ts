@@ -16,7 +16,6 @@ export default class TrafriService {
     private static lights: Array<TradfriLight> = []
 
     constructor() {
-
     }
 
     private static mapLight(light: Accessory): TradfriLight | null {
@@ -60,7 +59,6 @@ export default class TrafriService {
             gateway = await discoverGateway()
         } catch (e) {
             logger.warn('Cannot discover gateway')
-            console.log(e)
         }
         if (!gateway) {
             return
@@ -181,7 +179,7 @@ export default class TrafriService {
     }
 
     private static async operationTimeout() {
-        return new Promise(r => setTimeout(r, config.tradfri.connection.initTimeoutS * 1000))
+        return new Promise(r => setTimeout(r, config.tradfri.actionResponseWaitTimeMs))
     }
 
     static async getGroups(): Promise<Array<TradfriGroup>> {
@@ -204,6 +202,11 @@ export default class TrafriService {
         if (fn) {
             return fn().then(TrafriService.operationTimeout)
         }
+    }
+
+    static async getLight(id: number) {
+        await this.init();
+        return this.lights.find(l => l.id === id)
     }
 
     static async setLightBrightness(lightId: number, newBrightness: number) {

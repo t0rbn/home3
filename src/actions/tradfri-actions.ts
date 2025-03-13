@@ -8,6 +8,7 @@ export const getGroups: () => Promise<Array<TradfriGroup>> = async () => TrafriS
 export const getScenes: () => Promise<Array<TradfriScene>> = async () => TrafriService.getScenes()
 export const activateScene = async (sceneId: number) => TrafriService.activateScene(sceneId)
 
+export const getLight = async (lightId: number) => TrafriService.getLight(lightId)
 export const setLightBrightness = async (lightId: number, newBrightness: number) => TrafriService.setLightBrightness(lightId, newBrightness)
 export const setLightColor = async (lightId: number, newColor: string) => TrafriService.setLightColor(lightId, newColor)
 

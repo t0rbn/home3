@@ -1,15 +1,10 @@
 @use "../../../globals" as *;
 
 .button {
-    @extend .interactive;
-    border: none;
-    border-radius: $border-radius-full;
-    padding: size(.75);
-    cursor: pointer;
+  appearance: none;
+  border: none;
+  padding: $size-m;
+  border-radius: $border-radius-full;
 
-    color: inherit;
-    font: inherit;
-    font-size: size(1);
-    line-height: size(1);
-    font-weight: normal;
+  @extend .interactive;
 }

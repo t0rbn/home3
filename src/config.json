@@ -1,8 +1,7 @@
 {
   "tradfri": {
     "connection": {
-      "securityId": "WqupW3ys67g1PUeh",
-      "initTimeoutS": 1
+      "securityId": "WqupW3ys67g1PUeh"
     },
     "colors": {
       "whiteTemperatures": [
@@ -20,7 +19,7 @@
         [1,    0, 0.5]
       ]
     },
-    "actionResponseWaitTimeMs": 500,
+    "actionResponseWaitTimeMs": 2000,
     "transitionTimeMs": 500
   }
 }
