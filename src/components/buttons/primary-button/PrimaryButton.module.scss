@@ -5,6 +5,7 @@
   border: none;
   padding: $size-m;
   border-radius: $border-radius-full;
+  gap: $size-xs;
 
   @extend .interactive;
 }

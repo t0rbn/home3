@@ -10,7 +10,7 @@
   }
 
   &.on {
+    color: color-elevation(0);
     background-color: $color-typo;
-    color: color-elevation(1)
   }
 }

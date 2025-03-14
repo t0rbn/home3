@@ -5,7 +5,7 @@ import {SceneButton} from "@/features/scenes/SceneButton";
 export default async function SceneSelector() {
     const scenes = await getScenes()
 
-    return <GridContainer cols={4} colsMedium={2}>
+    return <GridContainer cols={4} colsMedium={3}>
         {scenes.map(s => <SceneButton scene={s} key={s.id}/>)}
     </GridContainer>
 }

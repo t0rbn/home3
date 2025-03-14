@@ -39,7 +39,7 @@ $breakpoint-m: 50 * $size-unit;
   @media (hover: hover) {
     &:hover {
       //background-color: color-elevation(2);
-      box-shadow: 0 0 $size-l $color-typo;
+      box-shadow: 0 0 $size-l color-elevation(5);
     }
   }
 }
