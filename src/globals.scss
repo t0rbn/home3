@@ -1,6 +1,6 @@
-$hue-base: 300;
-$saturation-base: 0%;
-$lightness-base: 10%;
+$hue-base: 240;
+$saturation-base: 6%;
+$lightness-base: 14%;
 $lightness-step: 10%;
 
 @function color-elevation($n) {
@@ -15,7 +15,6 @@ $size-s: $size-unit * .5;
 $size-m: $size-unit * 1;
 $size-l: $size-unit * 1.5;
 $size-xl: $size-unit * 2.5;
-
 
 $border-radius-default: $size-m;
 $border-radius-full: 110vmax;
@@ -43,4 +42,3 @@ $breakpoint-m: 50 * $size-unit;
     }
   }
 }
-

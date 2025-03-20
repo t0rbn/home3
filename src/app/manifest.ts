@@ -1,6 +1,6 @@
 import {MetadataRoute} from 'next'
 import {FAVICON_SIZES} from "@/app/icon";
-import scss from "../js-exports.module.scss";
+import {theme} from "@/theme";
 
 export default function manifest(): MetadataRoute.Manifest {
     const generateIconMetadata = () => {
@@ -16,8 +16,8 @@ export default function manifest(): MetadataRoute.Manifest {
         short_name: 'home3',
         start_url: '/' ,
         display: 'standalone',
-        background_color: scss.colorBackground,
-        theme_color: scss.colorBackground,
+        background_color: theme.backgroundDefault,
+        theme_color: theme.backgroundDefault,
         icons: generateIconMetadata()
     }
 }

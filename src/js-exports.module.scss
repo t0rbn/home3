@@ -1,7 +1,0 @@
-@use "globals" as *;
-
-:export {
-  colorBackground: color-elevation(0);
-  colorText: $color-typo;
-  gradientColorbutton: linear-gradient(to bottom, transparent, hsla(0, 0%, 0%, 5 * $lightness-step))
-}
