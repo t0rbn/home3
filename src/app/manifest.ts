@@ -8,6 +8,7 @@ export default function manifest(): MetadataRoute.Manifest {
             src: `/icon/${size}`,
             sizes: `${size}x${size}`,
             type: 'image/png',
+            purpose: 'any maskable'
         }))
     }
 
@@ -18,6 +19,6 @@ export default function manifest(): MetadataRoute.Manifest {
         display: 'standalone',
         background_color: theme.backgroundDefault,
         theme_color: theme.backgroundDefault,
-        icons: generateIconMetadata()
+        icons: generateIconMetadata() as any, // type does not allow multiple purposes
     }
 }
