@@ -1,8 +1,10 @@
+"use server"
+
 import {getLight} from "@/actions/tradfri-actions";
 import {notFound} from "next/navigation";
 import {LightControlPageContent} from "@/app/tradfri/lights/[id]/PageContent";
 
-export async function generateMetaData({params}: any) {
+export async function generateMetadata({params}: any) {
     const id = (await params).id;
     const light = await getLight(id)
     return {title: light?.name}

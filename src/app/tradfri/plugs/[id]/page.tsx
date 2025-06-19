@@ -7,7 +7,7 @@ async function getPlugById(id: string) {
     return groups?.flatMap((g) => g.plugs).find((p => `${p.id}` === id))
 }
 
-export async function generateMetaData({params}: any) {
+export async function generateMetadata({params}: any) {
     const id = (await params).id;
     return {title: (await getPlugById(id))?.name}
 }
