@@ -2,7 +2,9 @@
 const nextConfig = {
     output: 'standalone',
     distDir: 'build',
-
+    experimental: {
+        viewTransition: true
+    },
     webpack: (config, options) => {
         config.module.rules.push({
             test: /\.node$/,
@@ -18,7 +20,6 @@ const nextConfig = {
 
 
         // config.infrastructureLogging = { debug: /PackFileCache/ }
-
         return config
     },
 };

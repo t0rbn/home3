@@ -4,7 +4,7 @@
       "securityId": "WqupW3ys67g1PUeh"
     },
     "colors": {
-      "whiteTemperatures": [
+      "white": [
         "#f5faf6",
         "#f1e0b5",
         "#efd275"
@@ -21,5 +21,8 @@
     },
     "actionResponseWaitTimeMs": 2000,
     "transitionTimeMs": 500
+  },
+  "logs": {
+    "maxLiveLogLength": 1000
   }
 }

@@ -1,0 +1,102 @@
+nav.appNavigation {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-xl);
+    flex-shrink: 0;
+    flex-basis: 1;
+
+    padding: var(--size-xl) var(--size-s);
+
+    border-radius: var(--border-radius-default);
+    margin: var(--size-s);
+
+
+    h1, h2, h3 {
+        padding: 0 var(--size-m);
+        margin-bottom: var(--size-s);
+    }
+
+
+    .deviceListSection {
+        margin-top: var(--size-m);
+    }
+
+    .spacer {
+        flex-grow: 1;
+    }
+
+    .navLink {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        padding: var(--size-s) var(--size-xl) var(--size-s) var(--size-m);
+
+        text-decoration: none;
+        color: var(--color-contrast-1);
+        gap: var(--size-s);
+
+        .icon {
+            font-size: var(--size-l);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                background-color: var(--color-elevation-1);
+            }
+        }
+    }
+
+    .mobileCloseSection {
+        display: none;
+
+        input[type=checkbox] {
+            display: none;
+        }
+
+        .menuIcon {
+            font-size: var(--size-xl);
+        }
+
+    }
+}
+
+
+@media (max-width: 1000px) {
+
+    nav.appNavigation {
+
+        /*margin-left: 0;*/
+
+        /*!*display: none;*!*/
+        /*display: block;*/
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        justify-content: center;
+
+
+        .mobileCloseSection {
+            display: unset;
+        }
+
+
+        &:not(:has(input[type=checkbox]:checked)) {
+            top: unset;
+            padding: var(--size-m);
+            border-radius: 0 vaR(--border-radius-default) 0 0;
+
+            margin: 0;
+
+            > *:not(.mobileCloseSection) {
+                display: none;
+            }
+
+        }
+
+
+
+    }
+}

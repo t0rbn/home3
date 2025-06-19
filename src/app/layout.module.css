@@ -1,0 +1,114 @@
+html.root {
+    padding: 0;
+    margin: 0;
+
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: var(--color-elevation-0);
+        color: var(--color-contrast-0);
+        font-family: Inter, serif;
+        font-size: var(--size-m);
+        line-height: 1;
+
+        display: flex;
+        flex-direction: row;
+        height: 100svh;
+
+        > * {
+            overflow: auto;
+        }
+
+    }
+
+    * {
+        font-size: var(--size-m);
+        line-height: 1;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        padding: 0;
+        line-height: 1;
+    }
+
+    h1 {
+        font-size: var(--size-xl);
+        font-weight: 600;
+    }
+
+    h2 {
+        font-size: var(--size-l);
+        font-weight: 600;
+    }
+
+    h3 {
+        font-size: var(--size-m);
+        font-weight: 600;
+    }
+
+
+
+    main {
+        flex-grow: 1;
+        padding: var(--size-m);
+
+
+        div.content {
+            max-width: var(--breakpoint-s);
+            margin: 0 auto;
+            min-height: 100%;
+        }
+    }
+}
+
+
+@font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-display: block;
+    src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
+}
+
+@font-face {
+    font-family: 'Material Symbols';
+    font-style: normal;
+    font-display: block;
+    src: url('/fonts/MaterialSymbols/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf') format('ttf'),
+    url("/fonts/MaterialSymbols/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2") format("woff");
+}
+
+
+/*@keyframes slide-out {*/
+/*    from {*/
+/*        transform: none;*/
+/*    }*/
+/*    to {*/
+/*        transform: translateY(-100%);*/
+/*    }*/
+/*}*/
+
+/*@keyframes slide-in {*/
+/*    from {*/
+/*        transform: translateY(100%);;*/
+/*    }*/
+/*    to {*/
+/*        transform: none;*/
+/*    }*/
+/*}*/
+
+/*@view-transition {*/
+/*    navigation: auto;*/
+/*}*/
+
+/*html.root > body {*/
+/*    view-transition-name: page;*/
+/*}*/
+
+/*html.root::view-transition-new(page) {*/
+/*    animation: 2s ease-in-out both slide-in;*/
+/*}*/
+
+/*html.root::view-transition-old(page) {*/
+/*    animation: 2s ease-in-out both slide-out;*/
+/*}*/

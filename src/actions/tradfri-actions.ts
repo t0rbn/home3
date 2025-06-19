@@ -1,15 +1,18 @@
 "use server";
 
-import {TradfriGroup, TradfriScene} from "@/types/Tradfri";
-import TrafriService from "@/services/TrafriService";
+import {TradfriApiGroup, TradfriApiLight, TradfriApiScene} from "@/types/Tradfri";
+import TradfriService from "@/services/TradfriService";
+import {MockTradfriService} from "@/services/MockTradfriService";
 
-export const getGroups: () => Promise<Array<TradfriGroup>> = async () => TrafriService.getGroups()
+const service = process.env.MOCK_TRADFRI ? MockTradfriService : TradfriService
 
-export const getScenes: () => Promise<Array<TradfriScene>> = async () => TrafriService.getScenes()
-export const activateScene = async (sceneId: number) => TrafriService.activateScene(sceneId)
+export const getGroups: () => Promise<Array<TradfriApiGroup>> = async () => service.getGroups()
 
-export const getLight = async (lightId: number) => TrafriService.getLight(lightId)
-export const setLightBrightness = async (lightId: number, newBrightness: number) => TrafriService.setLightBrightness(lightId, newBrightness)
-export const setLightColor = async (lightId: number, newColor: string) => TrafriService.setLightColor(lightId, newColor)
+export const getScenes: () => Promise<Array<TradfriApiScene>> = async () => service.getScenes()
+export const activateScene = async (sceneId: number) => service.activateScene(sceneId)
 
-export const togglePlug = async (plugId: number) => TrafriService.togglePlug(plugId)
+export const getLight = async (lightId: number) : Promise<TradfriApiLight | null> => service.getLight(lightId)
+export const setLightBrightness = async (lightId: number, newBrightness: number) => service.setLightBrightness(lightId, newBrightness)
+export const setLightColor = async (lightId: number, newColor: string) => service.setLightColor(lightId, newColor)
+
+export const togglePlug = async (plugId: number) => service.togglePlug(plugId)

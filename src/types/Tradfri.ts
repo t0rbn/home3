@@ -1,12 +1,17 @@
 export type TradfriLight = {
-    name: string
-    id: number
-    brightness: number
-    color: string,
+    readonly name: string
+    readonly id: number
+    readonly brightness: number
+    readonly color: string,
     readonly spectrum: 'none' | 'white' | 'rgb'
     setColor?: (color: string) => Promise<void>
     setBrightness?: (brightness: number) => Promise<void>
 }
+export type TradfriApiLight = Omit<TradfriLight, 'setColor' | 'setBrightness' | 'spectrum'> & {
+    availableWhiteColors?: Array<string>
+    availableRgbColors?: Array<string>
+}
+
 
 export type TradfriPlug = {
     name: string
@@ -14,6 +19,8 @@ export type TradfriPlug = {
     isOn: boolean
     toggle?: () => Promise<void>
 }
+export type TradfriApiPlug = Omit<TradfriPlug, 'toggle'> & {}
+
 
 export type TradfriGroup = {
     id: number
@@ -21,9 +28,15 @@ export type TradfriGroup = {
     lights: Array<TradfriLight>
     plugs: Array<TradfriPlug>
 }
+export type TradfriApiGroup = Omit<TradfriGroup, 'lights' | 'plugs'> & {
+    lights: Array<TradfriApiLight>,
+    plugs: Array<TradfriApiPlug>,
+}
+
 
 export type TradfriScene = {
     name: string,
     id: number
     activate?: () => Promise<void>
 }
+export type TradfriApiScene = Omit<TradfriScene, 'activate'> & {}

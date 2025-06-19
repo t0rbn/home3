@@ -1,7 +1,12 @@
+import config from "../config.json";
+
+
 export default class LogService {
 
     private static maxUnitNameLength = 0
     private unitName: string
+
+    private static liveLog: Array<string> = []
 
     constructor(unitName = '') {
         this.unitName = unitName
@@ -9,14 +14,25 @@ export default class LogService {
     }
 
     private printString(symbol: string, text: string): void {
-        console.log(`${symbol} | ${new Date().toLocaleTimeString()} | ${this.unitName.padEnd(LogService.maxUnitNameLength, ' ')} | ${text}`)
+        const msg = `${symbol} [${this.unitName.padEnd(LogService.maxUnitNameLength, ' ')}] ${text}`
+
+        LogService.liveLog.push(msg)
+        if (LogService.liveLog.length > config.logs.maxLiveLogLength) {
+            LogService.liveLog.splice(0, 1)
+        }
+
+        console.log(msg)
     }
 
     log(text: string): void {
-        this.printString(' ', text)
+        this.printString('→', text)
     }
 
     warn(text: string): void {
-        this.printString('!', `\x1b[31m${text}\x1b[0m`)
+        this.printString('⚠️', text)
+    }
+
+    public static getLiveLog(): Array<string> {
+        return LogService.liveLog;
     }
 }

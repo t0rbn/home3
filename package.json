@@ -13,8 +13,7 @@
     "node-loader": "latest",
     "node-tradfri-client": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "sass": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
