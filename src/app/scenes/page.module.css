@@ -6,7 +6,7 @@
     grid-gap: vaR(--size-m);
 }
 
-@media screen and (max-width: 55rem) {
+@media screen and (max-width: 75rem) {
     .scenesContainer {
         grid-template-columns: repeat(2, 1fr);
     }

@@ -1,15 +1,13 @@
 import styles from "./AppNavigation.module.css"
 import {getGroups} from "@/actions/tradfri-actions";
 import {Icon} from "@/components/icon/Icon";
-import globalStyles from "../../globals.module.css"
-import {cns} from "@/utils/cns";
 import {NavLink} from "@/components/navigation/NavLink";
 
 
 export async function AppNavigation() {
     const groups = await getGroups();
 
-    return <nav className={cns(globalStyles.surface, styles.appNavigation)}>
+    return <nav className={styles.appNavigation}>
 
         <section>
             <h2>Home</h2>
@@ -33,7 +31,7 @@ export async function AppNavigation() {
             <NavLink name="Restart" icon="refresh" href="/settings/restart"/>
         </section>
 
-        <section className={styles.mobileCloseSection}>
+        <section className={styles.mobileCloseSection} tabIndex={0}>
             <label>
                 <input type="checkbox" hidden id="mobile-nav"/>
                 <Icon icon="menu" className={styles.menuIcon}/>
