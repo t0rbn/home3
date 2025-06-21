@@ -38,7 +38,6 @@
     border: 0;
     cursor: pointer;
 
-
     --action-button-size: calc(4 * var(--size-xxl));
     border-radius: var(--border-radius-default);
     height: var(--action-button-size);
@@ -46,6 +45,7 @@
 
     font-size: var(--size-m);
     color: var(--color-contrast-1);
+    background-image: var(--gradient-fade);
 
     display: flex;
     flex-direction: column;

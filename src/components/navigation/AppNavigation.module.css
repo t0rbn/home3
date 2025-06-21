@@ -86,7 +86,7 @@ nav.appNavigation {
         top: 0;
         border-radius: 0 var(--border-radius-default) var(--border-radius-default) 0;
         border-left: none;
-        
+
         z-index: 1;
 
         .mobileCloseSection {

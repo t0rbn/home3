@@ -20,7 +20,7 @@ export default function ScenesPage() {
         {scenes?.map((scene) => <button
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
-            className={cns(styles.sceneButton,globalStyles.surface ,globalStyles.hoverable)}
+            className={cns(styles.sceneButton ,globalStyles.surface ,globalStyles.hoverable)}
             style={{backgroundImage: `url("")`}}
         >
             {/* eslint-disable-next-line @next/next/no-img-element */}

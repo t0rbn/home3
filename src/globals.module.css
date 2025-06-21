@@ -16,14 +16,14 @@ html.root {
     --color-contrast-0: hsl(0, 0%, 50%);
     --color-contrast-1: hsl(0, 0%, 90%);
 
-    --shadow-default: 0 0  var(--size-m) hsla(0, 0%, 0%, 50%);
+    --shadow-default: 0 0  var(--size-m) hsla(0, 0%, 0%, 25%);
+    --gradient-fade:  linear-gradient(to bottom,  hsla(0, 0%, 100%, 15%), hsla(0, 0%, 0%, 15%));
 
     --transition-default: all ease .25s
 }
 
 .surface {
     background-color: var(--color-elevation-surface);
-    background-image: linear-gradient(to bottom, transparent, hsla(0, 0%, 0%, 25%));
     border: var(--size-xxs) solid var(--color-elevation-border);
     box-shadow: var(--shadow-default);
     transition: var(--transition-default);
