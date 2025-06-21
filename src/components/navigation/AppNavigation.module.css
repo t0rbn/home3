@@ -45,7 +45,7 @@ nav.appNavigation {
         }
 
         &.navLinkActive {
-            background-color: vaR(--color-contrast-0);
+            background-color: vaR(--color-contrast-1);
             * {
                 color: var(--color-elevation-bg);
             }
@@ -69,17 +69,14 @@ nav.appNavigation {
 }
 
 
-@media (max-width: 66rem) {
-
+@media (max-width: 55rem) {
     nav.appNavigation {
         position: fixed;
-        top: 0;
-        left: 0;
         bottom: 0;
-        justify-content: center;
+        left: 0;
+        top: 0;
         border-radius: 0 var(--border-radius-default) var(--border-radius-default) 0;
         z-index: 1;
-
 
         .mobileCloseSection {
             display: unset;

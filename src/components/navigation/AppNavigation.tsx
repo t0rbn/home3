@@ -10,6 +10,7 @@ export async function AppNavigation() {
     const groups = await getGroups();
 
     return <nav className={cns(globalStyles.surface, styles.appNavigation)}>
+
         <section>
             <h2>Home</h2>
             <NavLink name="Scenes" icon="home" href="/scenes"/>
@@ -38,6 +39,7 @@ export async function AppNavigation() {
                 <Icon icon="menu" className={styles.menuIcon}/>
             </label>
         </section>
+
     </nav>
 }
 
