@@ -2,17 +2,30 @@
 
 import {activateScene, getScenes} from "@/actions/tradfri-actions";
 import {useEffect, useState} from "react";
-import {TradfriScene} from "@/types/Tradfri";
-import {MainActionButton} from "@/components/buttons/Buttons";
-import {ListLayout} from "@/components/layout/Layouts";
+import {TradfriApiScene, TradfriScene} from "@/types/Tradfri";
+import styles from "./page.module.css"
+import globalStyles from "../../globals.module.css"
+import {cns} from "@/utils/cns";
+import {useRouter} from "next/navigation";
 
 export default function ScenesPage() {
-    const [scenes, setScenes] = useState<Array<TradfriScene>>()
+    const router = useRouter()
+
+    const [scenes, setScenes] = useState<Array<TradfriApiScene>>()
     useEffect(() => {
         getScenes().then(setScenes)
     }, [])
 
-    return <ListLayout>
-        {scenes?.map((scene) => <MainActionButton label={scene.name} key={scene.id} onClick={() => activateScene(scene.id)}/>)}
-    </ListLayout>
+    return <div className={styles.scenesContainer}>
+        {scenes?.map((scene) => <button
+            key={scene.id}
+            onClick={() => activateScene(scene.id).then(router.refresh)}
+            className={cns(styles.sceneButton,globalStyles.surface ,globalStyles.hoverable)}
+            style={{backgroundImage: `url("")`}}
+        >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`scenes/${scene.name}.jpg`} alt={scene.name}/>
+            <span>{scene.name}</span>
+        </button>)}
+    </div>
 }

@@ -15,8 +15,11 @@ export interface ButtonProps {
 
 
 export function Button(props: ButtonProps) {
-    return <button className={cns(globalStyles.surface, styles.button)} onClick={props.onClick} style={{backgroundColor: props.color}}>
-
+    return <button
+        className={cns(globalStyles.surface, globalStyles.hoverable, styles.button)}
+        onClick={props.onClick}
+        style={{backgroundColor: props.color}}
+    >
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </button>
@@ -45,7 +48,7 @@ export function ButtonGroup(props: ButtonGroupProps) {
 }
 
 export function MainActionButton(props: ButtonProps & { isActive?: boolean }) {
-    return <button className={cns(globalStyles.surface, styles.mainActionButton)} onClick={props.onClick} style={{backgroundColor: props.color}}>
+    return <button className={cns(globalStyles.surface, globalStyles.hoverable, styles.mainActionButton, props.isActive ? styles.active : null)} onClick={props.onClick} style={{backgroundColor: props.color}}>
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </button>

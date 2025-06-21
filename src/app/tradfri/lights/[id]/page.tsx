@@ -1,5 +1,3 @@
-"use server"
-
 import {getLight} from "@/actions/tradfri-actions";
 import {notFound} from "next/navigation";
 import {LightControlPageContent} from "@/app/tradfri/lights/[id]/PageContent";
@@ -19,5 +17,5 @@ export default async function LightControlPage({params}: { params: Promise<any> 
     }
 
     return <LightControlPageContent light={light}/>
-
 }
+

@@ -55,8 +55,7 @@
 
     &.active {
         background-color: var(--color-contrast-1);
-        color: var(--color-elevation-2);
-        /*box-shadow: 0 0 var(--size-xxl) var(--color-contrast-0);*/
+        color: var(--color-elevation-surface);
     }
 
     .icon {
@@ -86,8 +85,19 @@
 
 
     &.connected > div {
+        padding: var(--size-xxs);
+        background-color: var(--color-elevation-border);
+        overflow: hidden;
+        border-radius: 100vmax;
+
         gap: var(--size-xxs);
         flex-wrap: nowrap;
+        box-shadow: var(--shadow-default);
+
+        > * {
+            border: none;
+            box-shadow: none;
+        }
 
         > *:first-child {
             border-top-right-radius: 0;

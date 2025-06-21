@@ -1,0 +1,40 @@
+.scenesContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: max-content;
+    grid-auto-flow: row;
+    grid-gap: vaR(--size-m);
+}
+
+@media screen and (max-width: 60rem) {
+    .scenesContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.sceneButton {
+    --padding: var(--size-m);
+
+    appearance: none;
+    padding: var(--padding);
+    border-radius: var(--border-radius-default);
+    margin: 0;
+    border: 0;
+    cursor: pointer;
+
+    img {
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: calc(var(--border-radius-default) - var(--padding));
+    }
+
+    span {
+        display: block;
+        color: var(--color-contrast-1);
+        font-size: vaR(--size-m);
+        line-height: 1;
+        margin-top: var(--size-s);
+    }
+
+
+}

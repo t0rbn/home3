@@ -13,7 +13,7 @@ export function PlugControlPageContent(props: { plug: TradfriPlug }) {
     const toggle = useCallback(() => togglePlug(props.plug.id).then(() => router.refresh()), [router, props.plug.id])
 
     return <HorizontalCenterLayout>
-            <MainActionButton onClick={toggle} icon="power"></MainActionButton>
+            <MainActionButton onClick={toggle} icon="power" isActive={props.plug.isOn}></MainActionButton>
             <h1>{props.plug.name}</h1>
     </HorizontalCenterLayout>
 }

@@ -2,13 +2,13 @@ nav.appNavigation {
     display: flex;
     flex-direction: column;
     gap: var(--size-xl);
-    flex-shrink: 0;
-    flex-basis: 1;
 
-    padding: var(--size-xl) var(--size-s);
+    padding: var(--size-l) var(--size-s);
 
     border-radius: var(--border-radius-default);
-    margin: var(--size-s);
+    border: var(--size-xxs) solid var(--color-elevation-border);
+    transition-property: transform;
+    overflow: auto;
 
 
     h1, h2, h3 {
@@ -31,24 +31,30 @@ nav.appNavigation {
         justify-content: flex-start;
         align-items: center;
 
-        padding: var(--size-s) var(--size-xl) var(--size-s) var(--size-m);
+        padding: var(--size-s) var(--size-xxl) var(--size-s) var(--size-m);
+        border-radius: var(--border-radius-default);
+        background-color: var(--color-elevation-surface);
 
         text-decoration: none;
-        color: var(--color-contrast-1);
+        color: var(--color-contrast-1) !important;
         gap: var(--size-s);
+        transition: var(--transition-default);
 
         .icon {
             font-size: var(--size-l);
         }
 
-        @media (hover: hover) {
-            &:hover {
-                background-color: var(--color-elevation-1);
+        &.navLinkActive {
+            background-color: vaR(--color-contrast-0);
+            * {
+                color: var(--color-elevation-bg);
             }
         }
+
     }
 
     .mobileCloseSection {
+        text-align: center;
         display: none;
 
         input[type=checkbox] {
@@ -63,19 +69,16 @@ nav.appNavigation {
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 66rem) {
 
     nav.appNavigation {
-
-        /*margin-left: 0;*/
-
-        /*!*display: none;*!*/
-        /*display: block;*/
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         justify-content: center;
+        border-radius: 0 var(--border-radius-default) var(--border-radius-default) 0;
+        z-index: 1;
 
 
         .mobileCloseSection {
@@ -87,15 +90,12 @@ nav.appNavigation {
             top: unset;
             padding: var(--size-m);
             border-radius: 0 vaR(--border-radius-default) 0 0;
-
-            margin: 0;
+            background-color: vaR(--color-elevation-surface);
 
             > *:not(.mobileCloseSection) {
                 display: none;
             }
-
         }
-
 
 
     }

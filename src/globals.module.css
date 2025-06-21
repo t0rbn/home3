@@ -1,39 +1,35 @@
 html.root {
-  --size-xxs: .125rem;
-  --size-xs: .25rem;
-  --size-s: .5rem;
-  --size-m: 1rem;
-  --size-l: 1.5rem;
-  --size-xl: 2rem;
-  --size-xxl: 3rem;
+    --size-xxs: .125rem;
+    --size-xs: .25rem;
+    --size-s: .5rem;
+    --size-m: 1rem;
+    --size-l: 1.5rem;
+    --size-xl: 2rem;
+    --size-xxl: 3rem;
 
-  --breakpoint-s: 5000rem;
+    --color-elevation-bg: hsl(240, 6%, 12%);
+    --color-elevation-surface: hsl(240, 6%, 20%);
+    --color-elevation-border: hsl(240, 6%, 25%);
 
-  --color-elevation-0:hsl(240, 6%, 14%);
-  --color-elevation-1: hsl(240, 4%, 19%);
-  --color-elevation-2: hsl(240, 4%, 24%);
+    --border-radius-default: var(--size-xxl);
 
-  --border-radius-default: var(--size-xxl);
+    --color-contrast-0: hsl(0, 0%, 50%);
+    --color-contrast-1: hsl(0, 0%, 90%);
 
+    --shadow-default: var(--size-xs) var(--size-xs) var(--size-m) hsla(0, 0%, 0%, 25%);
 
-  --color-contrast-0: hsl(0, 0%, 50%);
-  --color-contrast-1: hsl(0, 0%, 75%);
+    --transition-default: all ease .25s
 }
 
 .surface {
-  --blur: var(--size-xs);
-  --distance: var(--size-xs);
+    background-color: var(--color-elevation-surface);
+    border: var(--size-xxs) solid var(--color-elevation-border);
+    box-shadow: var(--shadow-default);
+    transition: var(--transition-default);
+}
 
-  --intensity-shadow: 25%;
-  --intensity-glow: 5%;
-
-  background-color: var(--color-elevation-1);
-  /*background-image: linear-gradient(-45deg, hsla(0, 0%, 100%, var(--intensity-glow)), transparent);*/
-  box-shadow: var(--distance) var(--distance) var(--blur) hsla(0, 0%, 0%, var(--intensity-shadow));
-
-  @media (hover: hover) {
-    &.hoverable:hover {
-      background-color: var(--color-elevation-2);
+@media (hover: hover) {
+    .hoverable:hover {
+        filter: brightness(125%);
     }
-  }
 }

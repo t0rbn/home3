@@ -1,7 +1,11 @@
 .listLayout {
     display: flex;
     flex-direction: column;
-    gap: var(--size-l);
+    gap: var(--size-m);
+
+    &.space-big {
+        gap: var(--size-l);
+    }
 }
 
 .horizontalCenterLayout {

@@ -7,8 +7,7 @@ export default function manifest(): MetadataRoute.Manifest {
         return FAVICON_SIZES.map(size => ({
             src: `/icon/${size}`,
             sizes: `${size}x${size}`,
-            type: 'image/png',
-            purpose: 'any maskable'
+            type: 'image/png'
         }))
     }
 
@@ -22,3 +21,4 @@ export default function manifest(): MetadataRoute.Manifest {
         icons: generateIconMetadata() as any, // type does not allow multiple purposes
     }
 }
+
