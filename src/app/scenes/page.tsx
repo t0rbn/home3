@@ -2,10 +2,8 @@
 
 import {activateScene, getScenes} from "@/actions/tradfri-actions";
 import {useEffect, useState} from "react";
-import {TradfriApiScene, TradfriScene} from "@/types/Tradfri";
+import {TradfriApiScene} from "@/types/Tradfri";
 import styles from "./page.module.css"
-import globalStyles from "../../globals.module.css"
-import {cns} from "@/utils/cns";
 import {useRouter} from "next/navigation";
 
 export default function ScenesPage() {
@@ -17,11 +15,11 @@ export default function ScenesPage() {
     }, [])
 
     return <div className={styles.scenesContainer}>
-        {scenes?.map((scene) => <button
+        {scenes?.map((scene, index) => <button
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
-            className={cns(styles.sceneButton ,globalStyles.surface ,globalStyles.hoverable)}
-            style={{backgroundImage: `url("")`}}
+            className={styles.sceneButton}
+            style={{animationDelay: `${index * 50}ms`}}
         >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={`scenes/${scene.name}.jpg`} alt={scene.name}/>

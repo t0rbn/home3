@@ -1,6 +1,4 @@
 html.root {
-    --elements-space: var(--size-l);
-
     padding: 0;
     margin: 0;
 
@@ -19,11 +17,21 @@ html.root {
         background-color: var(--color-elevation-bg);
 
         > div {
-            padding: var(--elements-space);
             display: flex;
             flex-direction: row;
             height: 100svh;
-            gap: var(--elements-space);
+
+            main {
+                flex-grow: 1;
+                overflow-y: auto;
+
+                div.content {
+                    max-width: 50rem;
+                    margin: 0 auto;
+                    min-height: 100%;
+                    padding: var(--size-padding-large);
+                }
+            }
         }
     }
 
@@ -50,16 +58,7 @@ html.root {
         font-weight: 600;
     }
 
-    main {
-        flex-grow: 1;
-        overflow: auto;
 
-        div.content {
-            max-width: 50rem;
-            margin: 0 auto;
-            min-height: 100%;
-        }
-    }
 }
 
 
@@ -74,41 +73,5 @@ html.root {
     font-family: 'Material Symbols';
     font-style: normal;
     font-display: block;
-    src: url('/fonts/MaterialSymbols/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].ttf') format('ttf'),
-    url("/fonts/MaterialSymbols/MaterialSymbolsOutlined[FILL,GRAD,opsz,wght].woff2") format("woff");
+    src: url('/fonts/MaterialSymbols/MaterialSymbolsOutlined-VariableFont_FILL,GRAD,opsz,wght.ttf');
 }
-
-
-/*@keyframes slide-out {*/
-/*    from {*/
-/*        transform: none;*/
-/*    }*/
-/*    to {*/
-/*        transform: translateY(-100%);*/
-/*    }*/
-/*}*/
-
-/*@keyframes slide-in {*/
-/*    from {*/
-/*        transform: translateY(100%);;*/
-/*    }*/
-/*    to {*/
-/*        transform: none;*/
-/*    }*/
-/*}*/
-
-/*@view-transition {*/
-/*    navigation: auto;*/
-/*}*/
-
-/*html.root > body {*/
-/*    view-transition-name: page;*/
-/*}*/
-
-/*html.root::view-transition-new(page) {*/
-/*    animation: 2s ease-in-out both slide-in;*/
-/*}*/
-
-/*html.root::view-transition-old(page) {*/
-/*    animation: 2s ease-in-out both slide-out;*/
-/*}*/

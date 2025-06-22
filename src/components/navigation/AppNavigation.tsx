@@ -18,7 +18,7 @@ export async function AppNavigation() {
             <h2>Devices</h2>
             {groups.map((group) => <div key={group.id} className={styles.deviceListSection}>
                 <h3>{group.name}</h3>
-                {group.lights.map(light => <NavLink key={light.id} name={light.name} icon="lightbulb" href={`/tradfri/lights/${light.id}`}/>)}
+                {group.lights.map(light => <NavLink key={light.id} name={light.name} icon="lightbulb_2" href={`/tradfri/lights/${light.id}`}/>)}
                 {group.plugs.map(plug => <NavLink key={plug.id} name={plug.name} icon="power" href={`/tradfri/plugs/${plug.id}`}/>)}
             </div>)}
         </section>

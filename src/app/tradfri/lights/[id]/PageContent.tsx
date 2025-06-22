@@ -55,7 +55,7 @@ export function LightControlPageContent(props: { light: TradfriApiLight }) {
                 onClick={() => brightNess(isOn ? 0 : 0.5)}
                 isActive={isOn}
                 label={`turn ${isOn ? 'off' : 'on'}`}
-                icon="lightbulb"
+                icon="lightbulb_2"
             />
             <h1>{props.light.name}</h1>
         </HorizontalCenterLayout>

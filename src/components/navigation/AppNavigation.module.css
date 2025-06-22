@@ -1,15 +1,19 @@
 nav.appNavigation {
+    --link-padding-x: var(--size-m);
+
     display: flex;
     flex-direction: column;
     gap: var(--size-xl);
 
-    padding: var(--size-l) var(--size-s);
+    padding: var(--size-padding-large) calc(var(--size-padding-large) - var(--link-padding-x));
+    margin: var(--size-padding-large);
+    margin-right: 0;
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+
     flex-shrink: 0;
     background-color: var(--color-elevation-bg);
 
-    border-radius: var(--border-radius-default);
-    border: var(--size-xxs) solid var(--color-elevation-border);
-    transition-property: transform;
     overflow: auto;
 
 
@@ -33,7 +37,7 @@ nav.appNavigation {
         justify-content: flex-start;
         align-items: center;
 
-        padding: var(--size-s) var(--size-xxl) var(--size-s) var(--size-m);
+        padding: var(--size-s) vaR(--link-padding-x);
         border-radius: var(--border-radius-default);
         background-color: var(--color-elevation-bg);
 
@@ -54,9 +58,13 @@ nav.appNavigation {
 
 
         &.navLinkActive {
-            background-color: vaR(--color-contrast-1);
+            background-color: var(--color-contrast-1);
+            background-image: var(--gradient-fade);
             * {
                 color: var(--color-elevation-bg);
+            }
+            .icon {
+                font-variation-settings: 'FILL' 1;
             }
         }
 
@@ -84,10 +92,14 @@ nav.appNavigation {
         bottom: 0;
         left: 0;
         top: 0;
+        margin: 0;
         border-radius: 0 var(--border-radius-default) var(--border-radius-default) 0;
         border-left: none;
+        box-shadow: var(--shadow-default);
+        transition: none;
 
         z-index: 1;
+        animation-name: slide-from-left-mobile;
 
         .mobileCloseSection {
             display: unset;
@@ -96,15 +108,24 @@ nav.appNavigation {
 
         &:not(:has(input[type=checkbox]:checked)) {
             top: unset;
-            padding: var(--size-m);
+            padding: var(--size-padding-default);
             border-radius: 0 vaR(--border-radius-default) 0 0;
-            border-bottom: none;
+            border-left: 0;
+            border-bottom: 0;
+            animation-name: none;
 
             > *:not(.mobileCloseSection) {
                 display: none;
             }
         }
+    }
+}
 
-
+@keyframes slide-from-left-mobile {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: none;
     }
 }

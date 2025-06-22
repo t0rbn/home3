@@ -2,7 +2,6 @@
 
 import {Icon} from "@/components/icon/Icon";
 import styles from "./Buttons.module.css"
-import globalStyles from "../../globals.module.css"
 import {cns} from "@/utils/cns";
 
 export interface ButtonProps {
@@ -16,7 +15,7 @@ export interface ButtonProps {
 
 export function Button(props: ButtonProps) {
     return <button
-        className={cns(globalStyles.surface, globalStyles.hoverable, styles.button)}
+        className={styles.button}
         onClick={props.onClick}
         style={{backgroundColor: props.color}}
     >
@@ -48,7 +47,7 @@ export function ButtonGroup(props: ButtonGroupProps) {
 }
 
 export function MainActionButton(props: ButtonProps & { isActive?: boolean }) {
-    return <button className={cns(globalStyles.surface, globalStyles.hoverable, styles.mainActionButton, props.isActive ? styles.active : null)} onClick={props.onClick} style={{backgroundColor: props.color}}>
+    return <button className={cns(styles.mainActionButton, props.isActive ? styles.active : null)} onClick={props.onClick} style={{backgroundColor: props.color}}>
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </button>

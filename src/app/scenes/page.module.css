@@ -3,7 +3,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: max-content;
     grid-auto-flow: row;
-    grid-gap: vaR(--size-m);
+    grid-gap: vaR(--size-padding-default);
 }
 
 @media screen and (max-width: 75rem) {
@@ -13,20 +13,23 @@
 }
 
 .sceneButton {
-    --padding: var(--size-m);
 
     appearance: none;
-    padding: var(--padding);
+    padding: var(--size-padding-default);
     border-radius: var(--border-radius-default);
+    background-color: var(--color-elevation-surface);
     background-image: var(--gradient-fade) !important;
+
+    border: var(--border-default);
+    box-shadow: var(--shadow-default);
+
     margin: 0;
-    border: 0;
     cursor: pointer;
 
     img {
         width: 100%;
         aspect-ratio: 1;
-        border-radius: calc(var(--border-radius-default) - var(--padding));
+        border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
     }
 
     span {
@@ -37,5 +40,10 @@
         margin-top: var(--size-s);
     }
 
-
+    transition: vaR(--transition-default);
+    @media (hover: hover) {
+        &:hover {
+            filteR: var(--filter-hover);
+        }
+    }
 }
