@@ -99,7 +99,7 @@ nav.appNavigation {
         transition: none;
 
         z-index: 1;
-        animation-name: slide-from-left-mobile;
+        animation: slide-from-left-mobile ease-out var(--duration-default) both;
 
         .mobileCloseSection {
             display: unset;
