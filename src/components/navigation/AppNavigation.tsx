@@ -2,10 +2,19 @@ import styles from "./AppNavigation.module.css"
 import {getGroups} from "@/actions/tradfri-actions";
 import {Icon} from "@/components/icon/Icon";
 import {NavLink} from "@/components/navigation/NavLink";
+import {TradfriApiGroup} from "@/types/Tradfri";
 
 
 export async function AppNavigation() {
     const groups = await getGroups();
+
+    const groupNavItems = (group: TradfriApiGroup) => {
+        const items: Array<{ name: string, comp: any }> = [
+            ...(group.lights.map((light) => ({name: light.name, comp: <NavLink key={light.id} name={light.name} icon="lightbulb_2" href={`/tradfri/lights/${light.id}`}/>}))),
+            ...(group.plugs.map((plug) => ({name: plug.name, comp: <NavLink key={plug.id} name={plug.name} icon="toggle_on" href={`/tradfri/plugs/${plug.id}`}/>})))
+        ]
+        return <>{items.sort((a, b) => a.name.localeCompare(b.name)).map(item => item.comp)}</>
+    }
 
     return <nav className={styles.appNavigation}>
 
@@ -18,8 +27,7 @@ export async function AppNavigation() {
             <h2>Devices</h2>
             {groups.map((group) => <div key={group.id} className={styles.deviceListSection}>
                 <h3>{group.name}</h3>
-                {group.lights.map(light => <NavLink key={light.id} name={light.name} icon="lightbulb_2" href={`/tradfri/lights/${light.id}`}/>)}
-                {group.plugs.map(plug => <NavLink key={plug.id} name={plug.name} icon="power" href={`/tradfri/plugs/${plug.id}`}/>)}
+                {groupNavItems(group)}
             </div>)}
         </section>
 
