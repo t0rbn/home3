@@ -67,7 +67,6 @@ nav.appNavigation {
                 font-variation-settings: 'FILL' 1;
             }
         }
-
     }
 
     .mobileCloseSection {
@@ -81,7 +80,6 @@ nav.appNavigation {
         .menuIcon {
             font-size: var(--size-xl);
         }
-
     }
 }
 

@@ -13,7 +13,6 @@
 }
 
 .sceneButton {
-
     appearance: none;
     padding: var(--size-padding-default);
     border-radius: var(--border-radius-default);

@@ -50,7 +50,7 @@ export class MockTradfriService {
 
     static async getScenes(): Promise<Array<TradfriApiScene>> {
         return [
-            {id: 1, name: 'ALL OFF'},
+            {id: 1, name: 'All off'},
             {id: 2, name: 'Default'},
             {id: 3, name: 'Work'},
             {id: 4, name: 'Movie Night'},

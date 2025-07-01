@@ -3,6 +3,6 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: vaR(--size-s);
+    gap: vaR(--size-padding-default);
     flex-wrap: wrap;
 }
