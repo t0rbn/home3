@@ -59,7 +59,6 @@ nav.appNavigation {
 
         &.navLinkActive {
             background-color: var(--color-contrast-1);
-            background-image: var(--gradient-fade);
             * {
                 color: var(--color-elevation-bg);
             }

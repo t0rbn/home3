@@ -9,11 +9,11 @@ html.root {
 
 
     --color-elevation-bg: hsl(240, 6%, 12%);
-    --color-elevation-surface: hsl(240, 6%, 24%);
-    --color-elevation-border: hsl(240, 6%, 36%);
+    --color-elevation-surface: hsl(240, 6%, 18%);
+    --color-elevation-border: hsl(240, 6%, 24%);
     --color-contrast-0: hsl(0, 0%, 50%);
     --color-contrast-1: hsl(0, 0%, 90%);
-    
+
 
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xl);
@@ -22,9 +22,9 @@ html.root {
     --border-default: var(--size-xxs) solid var(--color-elevation-border);
     --border-radius-default: var(--size-xxl);
 
-    --shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
+    /*--shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);*/
+    --shadow-default: 0 0 var(--size-s) var(--color-elevation-border) inset;
 
-    --gradient-fade: linear-gradient(to bottom, transparent, hsla(0, 0%, 0%, 12%));
     --filter-hover: brightness(125%);
 
     --duration-default: .125s;

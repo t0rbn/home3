@@ -6,10 +6,9 @@
 
     --button-height: var(--size-xxl);
     background-color: var(--color-elevation-surface);
-    background-image: var(--gradient-fade);
     box-shadow: var(--shadow-default);
 
-    border: vaR(--border-default);
+    border: var(--border-default);
     border-radius: 100vmax;
     padding: 0 var(--size-padding-default);
     min-height: var(--button-height);
@@ -51,7 +50,6 @@
     cursor: pointer;
 
     background-color: vaR(--color-elevation-surface);
-    background-image: var(--gradient-fade);
     border: var(--border-default);
     box-shadow: var(--shadow-default);
 
