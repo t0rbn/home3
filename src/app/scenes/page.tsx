@@ -19,10 +19,8 @@ export default function ScenesPage() {
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
             className={styles.sceneButton}
-            style={{animationDelay: `${index * 50}ms`}}
+            style={{animationDelay: `${index * 50}ms`, backgroundImage: `url("/scenes/${scene.name}.jpg")`}}
         >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`scenes/${scene.name}.jpg`} alt={scene.name}/>
             <span>{scene.name}</span>
         </button>)}
     </div>

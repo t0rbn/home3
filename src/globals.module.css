@@ -14,7 +14,6 @@ html.root {
     --color-contrast-0: hsl(0, 0%, 50%);
     --color-contrast-1: hsl(0, 0%, 90%);
 
-
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xl);
 
@@ -22,8 +21,8 @@ html.root {
     --border-default: var(--size-xxs) solid var(--color-elevation-border);
     --border-radius-default: var(--size-xxl);
 
-    /*--shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);*/
-    --shadow-default: 0 0 var(--size-s) var(--color-elevation-border) inset;
+    --shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
+    /*--shadow-default: 0 0 var(--size-s) var(--color-elevation-border) inset;*/
 
     --filter-hover: brightness(125%);
 
