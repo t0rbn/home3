@@ -15,11 +15,10 @@ html.root {
     --color-contrast-1: hsl(0, 0%, 90%);
 
     --size-padding-default: var(--size-m);
-    --size-padding-large: var(--size-xl);
 
     --size-border-default: var(--size-xxs);
     --border-default: var(--size-xxs) solid var(--color-elevation-border);
-    --border-radius-default: var(--size-xxl);
+    --border-radius-default: var(--size-xl);
 
     --shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
     /*--shadow-default: 0 0 var(--size-s) var(--color-elevation-border) inset;*/

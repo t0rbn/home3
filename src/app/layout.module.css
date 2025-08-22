@@ -12,29 +12,19 @@ html.root {
         box-sizing: border-box;
     }
 
+    height: 100%;
+
     body {
+        height: 100%;
         margin: 0;
         background-color: var(--color-elevation-bg);
-
-        > div {
-            display: flex;
-            flex-direction: row;
-            height: 100svh;
-
-            main {
-                flex-grow: 1;
-                overflow-y: auto;
-
-                div.content {
-                    max-width: 50rem;
-                    margin: 0 auto;
-                    min-height: 100%;
-                    padding: var(--size-padding-large);
-                }
-            }
-        }
+        position: relative;
     }
 
+    main {
+        padding: var(--size-padding-default);
+        margin-bottom: calc((4 * var(--size-padding-default)) + vaR(--size-xxl));
+    }
 
 
     h1, h2, h3, h4, h5, h6 {
@@ -57,8 +47,6 @@ html.root {
         font-size: var(--size-m);
         font-weight: 600;
     }
-
-
 }
 
 

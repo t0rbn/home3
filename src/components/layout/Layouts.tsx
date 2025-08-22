@@ -9,6 +9,10 @@ export function ListLayout(props: PropsWithChildren) {
     return <ClassedContainer className={styles.listLayout}>{props.children}</ClassedContainer>
 }
 
+export function GridLayout(props: PropsWithChildren) {
+    return <ClassedContainer className={styles.gridLayout}>{props.children}</ClassedContainer>
+}
+
 export function HorizontalCenterLayout(props: PropsWithChildren) {
     return <ClassedContainer className={styles.horizontalCenterLayout}>{props.children}</ClassedContainer>
 }

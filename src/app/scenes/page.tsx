@@ -5,16 +5,15 @@ import {useEffect, useState} from "react";
 import {TradfriApiScene} from "@/types/Tradfri";
 import styles from "./page.module.css"
 import {useRouter} from "next/navigation";
+import {GridLayout} from "@/components/layout/Layouts";
 
 export default function ScenesPage() {
     const router = useRouter()
 
     const [scenes, setScenes] = useState<Array<TradfriApiScene>>()
-    useEffect(() => {
-        getScenes().then(setScenes)
-    }, [])
+    useEffect(() => {getScenes().then(setScenes)}, [])
 
-    return <div className={styles.scenesContainer}>
+    return <GridLayout>
         {scenes?.map((scene, index) => <button
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
@@ -23,5 +22,5 @@ export default function ScenesPage() {
         >
             <span>{scene.name}</span>
         </button>)}
-    </div>
+    </GridLayout>
 }

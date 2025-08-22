@@ -3,6 +3,7 @@
 import {Icon} from "@/components/icon/Icon";
 import styles from "./Buttons.module.css"
 import {cns} from "@/utils/cns";
+import Link from "next/link";
 
 export interface ButtonProps {
     label?: string,
@@ -51,4 +52,20 @@ export function MainActionButton(props: ButtonProps & { isActive?: boolean }) {
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </button>
+}
+
+interface DeviceLinkButtonProps {
+    icon: string,
+    name: string,
+    status: string
+    href: string,
+    isActive: boolean,
+}
+
+export function DeviceLinkButton(props: DeviceLinkButtonProps) {
+    return <Link href={props.href} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)}>
+        <Icon icon={props.icon} className={styles.icon}/>
+            <strong>{props.name}</strong>
+            <div>{props.status}</div>
+    </Link>
 }
