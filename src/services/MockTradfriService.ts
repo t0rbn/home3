@@ -26,8 +26,8 @@ export class MockTradfriService {
                     {id: 6, name: 'No Spectrum Light 1', brightness: 0.01, availableRgbColors: [], availableWhiteColors: [], color: availableWhiteColors[0]},
                 ],
                 plugs: [
-                    {id: 1, name: 'First Plug', isOn: true},
-                    {id: 2, name: 'Second Plug', isOn: false},
+                    {id: 7, name: 'First Plug', isOn: true},
+                    {id: 8, name: 'Second Plug', isOn: false},
 
                 ]
             }, {

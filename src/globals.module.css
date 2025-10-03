@@ -25,7 +25,7 @@ html.root {
 
     --filter-hover: brightness(125%);
 
-    --duration-default: .125s;
+    --duration-default: 1.25s;
     --transition-default: all ease-out var(--duration-default);
 
 }

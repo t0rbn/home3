@@ -13,11 +13,9 @@ export default async function TradfriPage() {
 
 function Group(props: {group: TradfriApiGroup} ){
     const devices = [
-        ...props.group.lights.map(l => ({name: l.name, component: <DeviceLinkButton icon="lightbulb" name={l.name} status={l.brightness ? `${Math.round(100 * l.brightness)}%` : 'off'} href={`/tradfri/lights/${l.id}`} isActive={!!l.brightness} />})),
-        ...props.group.plugs.map(p =>({name: p.name, component: <DeviceLinkButton icon="toggle_on" name={p.name} status={p.isOn ? 'on' : 'off'} href={`/tradfri/plugs/${p.id}`} isActive={p.isOn} />}))
+        ...props.group.lights.map(l => ({name: l.name, component: <DeviceLinkButton icon="lightbulb" name={l.name} status={l.brightness ? `${Math.round(100 * l.brightness)}%` : 'off'} href={`/tradfri/lights/${l.id}`} isActive={!!l.brightness} key={l.id} />})),
+        ...props.group.plugs.map(p =>({name: p.name, component: <DeviceLinkButton icon="toggle_on" name={p.name} status={p.isOn ? 'on' : 'off'} href={`/tradfri/plugs/${p.id}`} isActive={p.isOn} key={p.id} />}))
     ]
-
-
 
     return <>
         <h1>{ props.group.name}</h1>

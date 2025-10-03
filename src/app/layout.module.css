@@ -6,10 +6,13 @@ html.root {
     line-height: 1;
     color: var(--color-contrast-0);
 
-    * {
+    -webkit-tap-highlight-color: transparent;
 
+    * {
         font-family: Inter, serif;
         box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+
     }
 
     height: 100%;

@@ -20,7 +20,7 @@
     grid-gap: vaR(--size-padding-default);
 }
 
-@media screen and (max-width: 60rem) {
+@media screen and (max-width: 40rem) {
     .gridLayout {
         grid-template-columns: repeat(2, 1fr);
     }
