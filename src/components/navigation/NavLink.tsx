@@ -24,7 +24,7 @@ export function BackLink() {
     }
 
     return <div className={styles.container}>
-        <div className={cns(styles.navLink)} onClick={() => router.back()}>
+        <div className={cns(styles.navLink, styles.backLink)} onClick={() => router.back()}>
             <Icon icon="arrow_back" className={styles.icon}/>
         </div>
     </div>

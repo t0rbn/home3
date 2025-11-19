@@ -54,8 +54,9 @@ export class MockTradfriService {
             {id: 2, name: 'Default'},
             {id: 3, name: 'Work'},
             {id: 4, name: 'Movie Night'},
-            {id: 5, name: 'Blinkenlights'},
-            {id: 6, name: 'Goodnight'}
+            {id: 5, name: 'Lonsch'},
+            {id: 6, name: 'Puff'},
+            {id: 7, name: 'Fortnite'}
         ]
     }
 

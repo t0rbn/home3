@@ -18,9 +18,12 @@ export default function ScenesPage() {
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
             className={styles.sceneButton}
-            style={{animationDelay: `${index * 50}ms`, backgroundImage: `url("/scenes/${scene.name}.jpg")`}}
+            // style={{animationDelay: `${index * 50}ms`, backgroundImage: `url("/scenes/${scene.name}.jpg")`}}
         >
-            <span>{scene.name}</span>
+            <strong>{scene.name}</strong>
+            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} />
+            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} className={styles.backgroundImage}/>
+
         </button>)}
     </GridLayout>
 }

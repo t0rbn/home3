@@ -5,14 +5,13 @@ import {BackLink, NavLink} from "@/components/navigation/NavLink";
 export function AppNavigation() {
     return <nav className={styles.appNavigation}>
 
-        <BackLink />
+        <BackLink/>
 
         <div className={styles.container}>
             <NavLink icon="home" href="/scenes"/>
             <NavLink icon="lightbulb" href="/tradfri"/>
-            <NavLink icon="settings" href="/settings"/>
+            {/*<NavLink icon="settings" href="/settings"/>*/}
         </div>
-
     </nav>
 }
 

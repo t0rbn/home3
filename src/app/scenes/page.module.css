@@ -6,29 +6,47 @@
     box-shadow: var(--shadow-default);
 
     margin: 0;
-    padding: 0;
+    padding: var(--size-padding-default);
+
 
     cursor: pointer;
+
     position: relative;
-    aspect-ratio: 1;
-    background-position: center center;
-    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--size-s);
     overflow: hidden;
 
-    span {
-        position: absolute;
+    * {
+        z-index: 1;
+    }
+    strong {
         display: block;
 
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: transparent;
-        background-image: linear-gradient(to top, hsla(0, 0%, 0%, 0.5) var(--size-xl), hsla(0, 0%, 0%, 0));
-
         color: var(--color-contrast-1);
-        font-size: vaR(--size-m);
-        line-height: 1;
-        padding: var(--size-xxl) 0 var(--size-s) 0;
+        font-size: var(--size-m);
+    }
+
+    img {
+        height: var(--size-xxxl);
+        aspect-ratio: 1;
+        border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
+
+        &.backgroundImage {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            z-index: 0;
+            filter: brightness(0.5) blur(var(--size-m));
+        }
     }
 
     transition: vaR(--transition-default);

@@ -4,6 +4,7 @@ import {Icon} from "@/components/icon/Icon";
 import styles from "./Buttons.module.css"
 import {cns} from "@/utils/cns";
 import Link from "next/link";
+import {PropsWithChildren} from "react";
 
 export interface ButtonProps {
     label?: string,
@@ -54,18 +55,33 @@ export function MainActionButton(props: ButtonProps & { isActive?: boolean }) {
     </button>
 }
 
-interface DeviceLinkButtonProps {
+interface DeviceControlButtonProps {
     icon: string,
     name: string,
     status: string
-    href: string,
+    href?: string,
+    onClick?: () => void
     isActive: boolean,
 }
 
-export function DeviceLinkButton(props: DeviceLinkButtonProps) {
-    return <Link href={props.href} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)}>
-        <Icon icon={props.icon} className={styles.icon}/>
+export function DeviceControlButton(props: DeviceControlButtonProps) {
+    function Container(inProps: PropsWithChildren) {
+        if (props.href) {
+            return <Link href={props.href} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)}>{inProps.children}</Link>
+        }
+        return <button onClick={props.onClick} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)}>{inProps.children}</button>
+    }
+
+    return <Container>
+        <div className={styles.text}>
             <strong>{props.name}</strong>
             <div>{props.status}</div>
-    </Link>
+        </div>
+
+        <div className={styles.iconContainer}>
+            <Icon icon={props.icon} className={styles.icon}/>
+        </div>
+
+
+    </Container>
 }
