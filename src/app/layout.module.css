@@ -22,11 +22,17 @@ html.root {
         margin: 0;
         background-color: var(--color-elevation-bg);
         position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        max-height: 100svh;
     }
 
     main {
+        flex-grow: 1;
         padding: var(--size-padding-default);
-        margin-bottom: calc((4 * var(--size-padding-default)) + vaR(--size-xxl));
+        overflow: auto;
     }
 
 

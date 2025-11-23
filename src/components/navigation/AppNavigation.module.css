@@ -1,56 +1,40 @@
 nav.appNavigation {
-    position: fixed;
-    bottom: var(--size-padding-default);
-    left: 0;
-    right: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--size-padding-default);
-    z-index: 9999;
+    padding: var(--size-padding-default);
+    border-top: var(--border-default);
 
-    .container {
-        padding: var(--size-s);
-        background-color: var(--color-elevation-surface);
-        border-radius: 100vmax;
-        border: var(--border-default);
-        box-shadow: var(--shadow-default);
 
+    .navLink {
+        height: var(--size-xxl);
+
+        flex-grow: 1;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: vaR(--size-padding-default);
 
-        .navLink {
-            height: var(--size-xxl);
-            aspect-ratio: 3;
+        border-radius: 100vmax;
+        padding: var(--size-padding-default) 0;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        text-decoration: none;
+        color: var(--color-contrast-1);
 
-            border-radius: 100vmax;
-            padding: var(--size-padding-default) 0;
+        .icon {
+            font-size: var(--size-xl);
+        }
 
-            text-decoration: none;
-            color: var(--color-contrast-1);
+        &.backLink {
 
-            .icon {
-                font-size: var(--size-xl);
-            }
+        }
 
-            &.backLink {
-                aspect-ratio: 1;
-            }
-
-            &.navLinkActive {
-                background-color: var(--color-contrast-1);
-                color: var(--color-elevation-surface);
-            }
+        &.navLinkActive {
+            background-color: var(--color-contrast-1);
+            color: var(--color-elevation-surface);
         }
     }
+
 
 }

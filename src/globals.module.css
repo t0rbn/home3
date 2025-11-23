@@ -6,12 +6,10 @@ html.root {
     --size-l: 1.5rem;
     --size-xl: 2rem;
     --size-xxl: 3rem;
-    --size-xxxl: 6rem;
 
-
-    --color-elevation-bg: hsl(240, 6%, 12%);
-    --color-elevation-surface: hsl(240, 6%, 18%);
-    --color-elevation-border: hsl(240, 6%, 24%);
+    --color-elevation-bg: hsl(240, 6%, 10%);
+    --color-elevation-surface: hsl(240, 6%, 15%);
+    --color-elevation-border: hsl(240, 6%, 30%);
     --color-contrast-0: hsl(0, 0%, 75%);
     --color-contrast-1: hsl(0, 0%, 90%);
 

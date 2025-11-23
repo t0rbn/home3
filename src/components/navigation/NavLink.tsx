@@ -8,6 +8,7 @@ import {Icon} from "@/components/icon/Icon";
 
 export function NavLink(props: { icon: string, href: string }) {
     const pathName = usePathname();
+
     const active = pathName.startsWith(props.href);
 
     return <Link href={props.href} className={cns(styles.navLink, active ? styles.navLinkActive : null)}>
@@ -16,12 +17,7 @@ export function NavLink(props: { icon: string, href: string }) {
 }
 
 export function BackLink() {
-    const pathName = usePathname();
     const router = useRouter()
-
-    if (pathName.split('/').length <= 2) {
-        return null
-    }
 
     return <div className={styles.container}>
         <div className={cns(styles.navLink, styles.backLink)} onClick={() => router.back()}>

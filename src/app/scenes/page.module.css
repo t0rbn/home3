@@ -13,15 +13,16 @@
 
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: var(--size-s);
     overflow: hidden;
 
     * {
         z-index: 1;
     }
+
     strong {
         display: block;
 
@@ -30,7 +31,7 @@
     }
 
     img {
-        height: var(--size-xxxl);
+        height: calc(2 * var(--size-xxl));
         aspect-ratio: 1;
         border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
 
@@ -45,7 +46,7 @@
             height: 100%;
             border-radius: 0;
             z-index: 0;
-            filter: brightness(0.5) blur(var(--size-m));
+            filter: brightness(0.5) blur(var(--size-xl));
         }
     }
 

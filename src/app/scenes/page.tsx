@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {TradfriApiScene} from "@/types/Tradfri";
 import styles from "./page.module.css"
 import {useRouter} from "next/navigation";
-import {GridLayout} from "@/components/layout/Layouts";
+import {GridLayout, ListLayout} from "@/components/layout/Layouts";
 
 export default function ScenesPage() {
     const router = useRouter()
@@ -20,10 +20,10 @@ export default function ScenesPage() {
             className={styles.sceneButton}
             // style={{animationDelay: `${index * 50}ms`, backgroundImage: `url("/scenes/${scene.name}.jpg")`}}
         >
+            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
             <strong>{scene.name}</strong>
-            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} />
-            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} className={styles.backgroundImage}/>
 
+            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} className={styles.backgroundImage}/>
         </button>)}
     </GridLayout>
 }
