@@ -136,6 +136,12 @@
         > *:not(:first-child):not(:last-child) {
             border-radius: 0;
         }
+
+        .connectedButton {
+            padding-left: var(--size-xs);
+            padding-right: var(--size-xs);
+            min-width: unset;
+        }
     }
 }
 

@@ -17,7 +17,7 @@ export interface ButtonProps {
 
 export function Button(props: ButtonProps) {
     return <button
-        className={styles.button}
+        className={cns(styles.button, props.className)}
         onClick={props.onClick}
         style={{backgroundColor: props.color}}
     >
