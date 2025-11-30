@@ -16,14 +16,17 @@ interface DeviceControlButtonProps {
     href?: string,
     onClick?: () => void
     isActive: boolean,
+    activeColor?: string,
 }
 
 export function DeviceControlButton(props: DeviceControlButtonProps) {
+    const style = props.activeColor && props.isActive ? {backgroundColor: props.activeColor} : undefined
+
     function Container(inProps: PropsWithChildren) {
         if (props.href) {
-            return <Link href={props.href} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)}>{inProps.children}</Link>
+            return <Link href={props.href} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)} style={style}>{inProps.children}</Link>
         }
-        return <button onClick={props.onClick} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)}>{inProps.children}</button>
+        return <button onClick={props.onClick} className={cns(styles.deviceLinkButton, props.isActive ? styles.isActive : null)} style={style}>{inProps.children}</button>
     }
 
     return <Container>

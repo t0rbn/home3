@@ -26,12 +26,10 @@ nav.appNavigation {
             font-size: var(--size-xl);
         }
 
-        &.backLink {
-
-        }
 
         &.navLinkActive {
             background-color: var(--color-contrast-1);
+            background-image: var(--gradient-hightlight);
             color: var(--color-elevation-surface);
         }
     }

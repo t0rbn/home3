@@ -1,6 +1,7 @@
 
 .deviceLinkButton {
     background-color: var(--color-elevation-surface);
+    background-image: var(--gradient-hightlight);
     border: var(--border-default);
     border-radius: var(--border-radius-default);
     box-shadow: var(--shadow-default);
@@ -8,7 +9,7 @@
 
     font-size: var(--size-m);
     line-height: 1;
-    color: var(--color-contrast-1);
+    color: var(--color-contrast-0);
     text-decoration: none;
     cursor: pointer;
 
@@ -20,10 +21,14 @@
     gap: var(--size-xs);
 
     .text {
+        strong {
+            color: var(--color-contrast-1);
+        }
         * {
             display: block;
             text-align: left;
         }
+
         *:not(:last-child) {
             margin-bottom: var(--size-s);
         }
@@ -46,13 +51,16 @@
     }
 
     &.isActive {
-      .iconContainer {
         background-color: var(--color-contrast-1);
-      }
+        color: var(--color-elevation-surface);
 
-      .icon {
-        color: var(--color-elevation-surface)
-      }
+        strong {
+            color: var(--color-elevation-bg)
+        }
+
+        .iconContainer {
+            border-color: var(--color-elevation-surface);
+        }
 
     }
 }

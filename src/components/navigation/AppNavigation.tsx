@@ -14,7 +14,7 @@ export function AppNavigation() {
         }
         return <>
             <NavLink icon="home" href="/scenes"/>
-            <NavLink icon="lightbulb" href="/tradfri"/>
+            <NavLink icon="lightbulb_2" href="/tradfri"/>
         </>
     }
 

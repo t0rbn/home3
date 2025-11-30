@@ -19,7 +19,7 @@ export class MockTradfriService {
                 name: 'First Group',
                 lights: [
                     {id: 1, name: 'RGB Light 1', brightness: 0, availableRgbColors, availableWhiteColors, color: availableRgbColors[0]},
-                    {id: 2, name: 'RGB Light 2', brightness: 1, availableRgbColors, availableWhiteColors, color: availableRgbColors[2]},
+                    {id: 2, name: 'RGB Light 2', brightness: 1, availableRgbColors, availableWhiteColors, color: availableRgbColors[6]},
                     {id: 3, name: 'White Spectrum Light 1', brightness: 0, availableRgbColors: [], availableWhiteColors, color: availableWhiteColors[0]},
                     {id: 4, name: 'White Spectrum Light 2', brightness: 0.5, availableRgbColors: [], availableWhiteColors, color: availableWhiteColors[0]},
                     {id: 5, name: 'No Spectrum Light 1', brightness: 0, availableRgbColors: [], availableWhiteColors: [], color: availableWhiteColors[0]},
@@ -34,7 +34,7 @@ export class MockTradfriService {
                 id: 2,
                 name: 'Group 2',
                 lights: [
-                    {id: 7, name: 'RGB Light', brightness: 0, availableRgbColors, availableWhiteColors, color: availableRgbColors[0]},
+                    {id: 7, name: 'RGB Light', brightness: 0, availableRgbColors, availableWhiteColors, color: availableRgbColors[3]},
                    ],
                 plugs: []
             }, {

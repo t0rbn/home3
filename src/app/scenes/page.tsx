@@ -24,6 +24,7 @@ export default function ScenesPage() {
             <strong>{scene.name}</strong>
 
             <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} className={styles.backgroundImage}/>
+            <div className={styles.gradient} />
         </button>)}
     </GridLayout>
 }

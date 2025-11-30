@@ -8,10 +8,12 @@ html.root {
     --size-xxl: 3rem;
 
     --color-elevation-bg: hsl(240, 6%, 10%);
-    --color-elevation-surface: hsl(240, 6%, 15%);
+    --color-elevation-surface: hsl(240, 6%, 20%);
     --color-elevation-border: hsl(240, 6%, 30%);
-    --color-contrast-0: hsl(0, 0%, 75%);
-    --color-contrast-1: hsl(0, 0%, 90%);
+    --color-contrast-0: hsl(0, 0%, 60%);
+    --color-contrast-1: hsl(0, 0%, 80%);
+
+    --gradient-hightlight: linear-gradient(to bottom, transparent, hsl(0 0 0% / 0.25));
 
     --size-padding-default: var(--size-m);
 
@@ -24,7 +26,7 @@ html.root {
 
     --filter-hover: brightness(125%);
 
-    --duration-default: 1.25s;
+    --duration-default: 0.25s;
     --transition-default: all ease-out var(--duration-default);
 
 }

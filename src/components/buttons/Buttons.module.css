@@ -6,6 +6,7 @@
 
     --button-height: var(--size-xxl);
     background-color: var(--color-elevation-surface);
+    background-image: var(--gradient-hightlight);
     box-shadow: var(--shadow-default);
 
     border: var(--border-default);
@@ -50,6 +51,7 @@
     cursor: pointer;
 
     background-color: vaR(--color-elevation-surface);
+    background-image: var(--gradient-hightlight);
     border: var(--border-default);
     box-shadow: var(--shadow-default);
 
@@ -111,6 +113,7 @@
     &.connected > div {
         padding: var(--size-border-default);
         background-color: var(--color-elevation-border);
+        background-image: var(--gradient-hightlight);
         overflow: hidden;
         border-radius: 100vmax;
 
