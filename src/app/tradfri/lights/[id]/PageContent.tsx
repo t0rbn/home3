@@ -54,7 +54,7 @@ export function LightControlPageContent(props: { light: TradfriApiLight }) {
     return <ListLayout>
         <HorizontalCenterLayout>
             <MainActionButton
-                color={sanitizedColor}
+                color={isOn ?sanitizedColor: undefined}
                 onClick={() => brightNess(isOn ? 0 : 0.5)}
                 isActive={isOn}
                 label={`turn ${isOn ? 'off' : 'on'}`}
