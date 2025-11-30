@@ -19,11 +19,10 @@
     justify-content: space-between;
 
     gap: var(--size-xs);
+    --activeColor: var(--color-contrast-1);
+
 
     .text {
-        strong {
-            color: var(--color-contrast-1);
-        }
         * {
             display: block;
             text-align: left;
@@ -51,15 +50,20 @@
     }
 
     &.isActive {
-        background-color: var(--color-contrast-1);
-        color: var(--color-elevation-surface);
+        /*background-color: var(--color-contrast-1);*/
+        /*color: var(--color-elevation-surface);*/
 
-        strong {
-            color: var(--color-elevation-bg)
+        .text {
+            color: var(--color-contrast-1)
         }
 
         .iconContainer {
             border-color: var(--color-elevation-surface);
+            background-color: var(--activeColor);
+
+            .icon {
+                color: var(--color-elevation-surface);
+            }
         }
 
     }

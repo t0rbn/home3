@@ -3,8 +3,6 @@
 import {Icon} from "@/components/icon/Icon";
 import styles from "./Buttons.module.css"
 import {cns} from "@/utils/cns";
-import Link from "next/link";
-import {PropsWithChildren} from "react";
 
 export interface ButtonProps {
     label?: string,

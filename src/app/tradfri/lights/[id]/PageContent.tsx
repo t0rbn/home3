@@ -49,9 +49,12 @@ export function LightControlPageContent(props: { light: TradfriApiLight }) {
 
     const isOn = props.light.brightness > 0
 
+        const sanitizedColor = props.light?.color.startsWith("#") ? props.light?.color : `#${props.light.color}`
+
     return <ListLayout>
         <HorizontalCenterLayout>
             <MainActionButton
+                color={sanitizedColor}
                 onClick={() => brightNess(isOn ? 0 : 0.5)}
                 isActive={isOn}
                 label={`turn ${isOn ? 'off' : 'on'}`}
