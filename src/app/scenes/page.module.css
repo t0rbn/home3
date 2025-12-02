@@ -46,7 +46,7 @@
             height: 100%;
             border-radius: 0;
             z-index: 0;
-            filter: brightness(.5) blur(var(--size-xl));
+            filter: brightness(.75) blur(var(--size-xl));
         }
     }
 

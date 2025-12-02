@@ -7,13 +7,15 @@ html.root {
     --size-xl: 2rem;
     --size-xxl: 3rem;
 
-    --color-elevation-bg: hsl(240, 6%, 10%);
-    --color-elevation-surface: hsl(240, 6%, 20%);
-    --color-elevation-border: hsl(240, 6%, 30%);
-    --color-contrast-0: hsl(0, 0%, 60%);
-    --color-contrast-1: hsl(0, 0%, 800%);
+    --lightness: 100%;
+    --color-elevation-bg: hsl(240 0% 7.5);
+    --color-elevation-surface: hsl(0 0% var(--lightness) / .05);
+    --color-elevation-border: hsl(0 0% var(--lightness)/ 0.2);
 
-    --gradient-hightlight: linear-gradient(to bottom, transparent, hsl(0 0 0% / 0.2));
+    --color-contrast-0: hsl(0 0% var(--lightness) / 0.75);
+    --color-contrast-1: hsl(0 0% var(--lightness) / 0.9);
+
+    --gradient-hightlight: linear-gradient(to top, transparent, var(--color-elevation-surface));
 
     --size-padding-default: var(--size-m);
 
@@ -21,7 +23,8 @@ html.root {
     --border-default: var(--size-xxs) solid var(--color-elevation-border);
     --border-radius-default: var(--size-xl);
 
-    --shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);
+    --shadow-default: none;
+    /*--shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);*/
     /*--shadow-default: 0 0 var(--size-s) var(--color-elevation-border) inset;*/
 
     --filter-hover: brightness(125%);

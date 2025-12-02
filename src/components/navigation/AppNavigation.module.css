@@ -5,6 +5,7 @@ nav.appNavigation {
     justify-content: center;
     padding: var(--size-padding-default);
     border-top: var(--border-default);
+    background-color: var(--color-elevation-surface);
 
 
     .navLink {
@@ -28,9 +29,10 @@ nav.appNavigation {
 
 
         &.navLinkActive {
-            background-color: var(--color-contrast-1);
+            background-color: var(--color-elevation-surface);
             background-image: var(--gradient-hightlight);
-            color: var(--color-elevation-surface);
+            border: var(--border-default);
+            color: var(--color-contrast-1);
         }
     }
 

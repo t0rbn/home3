@@ -5,6 +5,7 @@ html.root {
     font-size: var(--size-m);
     line-height: 1;
     color: var(--color-contrast-0);
+    color-scheme: light dark;
 
     -webkit-tap-highlight-color: transparent;
 
@@ -21,6 +22,7 @@ html.root {
         height: 100%;
         margin: 0;
         background-color: var(--color-elevation-bg);
+        background-image: var(--gradient-hightlight);
         position: relative;
         display: flex;
         flex-direction: column;

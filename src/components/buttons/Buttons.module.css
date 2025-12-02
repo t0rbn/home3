@@ -71,7 +71,8 @@
 
     &.active {
         background-color: var(--color-contrast-1);
-        color: var(--color-elevation-surface);
+                color: hsl(from var(--color-elevation-surface)h s 0% / 1);
+
 
         .icon {
             font-variation-settings: 'FILL' 1;
@@ -112,18 +113,23 @@
 
     &.connected > div {
         padding: var(--size-border-default);
-        background-color: var(--color-elevation-border);
+        background-color: var(--color-elevation-surface);
         background-image: var(--gradient-hightlight);
         overflow: hidden;
+        border: var(--border-default);
         border-radius: 100vmax;
 
-        gap: var(--size-border-default);
+        gap: 0;
         flex-wrap: nowrap;
         box-shadow: var(--shadow-default);
 
         > * {
             border: none;
             box-shadow: none;
+        }
+
+        > *:not(:last-child) {
+            border-right: var(--border-default);
         }
 
         > *:first-child {
