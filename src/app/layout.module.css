@@ -21,7 +21,6 @@ html.root {
     body {
         height: 100%;
         margin: 0;
-        background-color: var(--color-elevation-bg);
         background-image: var(--gradient-hightlight);
         position: relative;
         display: flex;
@@ -29,6 +28,10 @@ html.root {
         align-items: stretch;
         justify-content: flex-start;
         max-height: 100svh;
+
+        /*--accent-background: var(--color-elevation-bg);*/
+        /*background-color: hsl(from var(--accent-background) h 50% 7.5%);*/
+        background-color: vaR(--color-elevation-bg);
     }
 
     main {

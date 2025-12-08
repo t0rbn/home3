@@ -20,11 +20,17 @@ export default function ScenesPage() {
             className={styles.sceneButton}
             // style={{animationDelay: `${index * 50}ms`, backgroundImage: `url("/scenes/${scene.name}.jpg")`}}
         >
-            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
-            <strong>{scene.name}</strong>
+            <div className={styles.backdrop}>
+                <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
+                <div className={styles.gradient}/>
+            </div>
+            <ListLayout>
+                <div>
+                <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
+                </div>
+                <strong>{scene.name}</strong>
+            </ListLayout>
 
-            <img src={`/scenes/${scene.name}.jpg`} alt={scene.name} className={styles.backgroundImage}/>
-            <div className={styles.gradient} />
         </button>)}
     </GridLayout>
 }
