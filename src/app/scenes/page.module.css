@@ -16,7 +16,7 @@
 
     .backdrop {
         z-index: -1;
-    transition: vaR(--transition-default);
+        transition: vaR(--transition-default);
 
         &, > * {
             position: absolute;
@@ -47,8 +47,8 @@
     }
 
     strong {
-            font-size: var(--size-m);
-        }
+        font-size: var(--size-m);
+    }
 
     @media (hover: hover) {
         &:hover {

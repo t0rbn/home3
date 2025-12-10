@@ -14,13 +14,19 @@
 
 .gridLayout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-template-rows: max-content;
     grid-auto-flow: row;
     grid-gap: vaR(--size-padding-default);
 }
 
-@media screen and (max-width: 60rem) {
+@media screen and (max-width: 75rem) {
+    .gridLayout {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 50rem) {
     .gridLayout {
         grid-template-columns: repeat(2, 1fr);
     }
