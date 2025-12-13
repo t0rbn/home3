@@ -58,3 +58,10 @@
         }
     }
 }
+
+.scenesLayout {
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(auto-fit, minmax(calc(12 * var(--size-m)), 1fr));
+    grid-gap: var(--size-padding-default);
+}

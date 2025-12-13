@@ -7,15 +7,14 @@ html.root {
     --size-xl: 2rem;
     --size-xxl: 3rem;
 
-    --lightness: 100%;
     --color-elevation-bg: hsl(240 0% 7.5);
-    --color-elevation-surface: hsl(0 0% var(--lightness) / .05);
-    --color-elevation-border: hsl(0 0% var(--lightness)/ 0.2);
+    --color-elevation-surface: hsl(0 0% 15% / 0.5);
+    --color-elevation-border: hsl(0 0% 30% / 0.5);
 
-    --color-contrast-0: hsl(0 0% var(--lightness) / 0.75);
-    --color-contrast-1: hsl(0 0% var(--lightness) / 0.9);
+    --color-contrast-0: hsl(0 0% 75% / 0.9);
+    --color-contrast-1: hsl(0 0% 100% / 0.9);
 
-    --gradient-hightlight: linear-gradient(to top, transparent, var(--color-elevation-surface));
+    --gradient-hightlight: linear-gradient(to top, transparent, hsla(0 0% 100% / 0.05));
 
     --size-padding-default: var(--size-m);
 

@@ -22,6 +22,7 @@ html.root {
         height: 100%;
         margin: 0;
         background-image: var(--gradient-hightlight);
+        background-attachment: fixed;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -29,15 +30,13 @@ html.root {
         justify-content: flex-start;
         max-height: 100svh;
 
-        /*--accent-background: var(--color-elevation-bg);*/
-        /*background-color: hsl(from var(--accent-background) h 50% 7.5%);*/
         background-color: vaR(--color-elevation-bg);
     }
 
     main {
         flex-grow: 1;
         padding: var(--size-padding-default);
-        overflow: auto;
+        /*overflow: auto;*/
     }
 
 

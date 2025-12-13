@@ -112,7 +112,6 @@
     }
 
     &.connected > div {
-        padding: var(--size-border-default);
         background-color: var(--color-elevation-surface);
         background-image: var(--gradient-hightlight);
         overflow: hidden;

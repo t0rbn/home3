@@ -13,7 +13,7 @@ export default function ScenesPage() {
     const [scenes, setScenes] = useState<Array<TradfriApiScene>>()
     useEffect(() => {getScenes().then(setScenes)}, [])
 
-    return <GridLayout>
+    return <div className={styles.scenesLayout}>
         {scenes?.map((scene, index) => <button
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
@@ -32,5 +32,5 @@ export default function ScenesPage() {
             </ListLayout>
 
         </button>)}
-    </GridLayout>
+    </div>
 }
