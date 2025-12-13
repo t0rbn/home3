@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {TradfriApiScene} from "@/types/Tradfri";
 import styles from "./page.module.css"
 import {useRouter} from "next/navigation";
-import {GridLayout, ListLayout} from "@/components/layout/Layouts";
+import {ListLayout} from "@/components/layout/Layouts";
 
 export default function ScenesPage() {
     const router = useRouter()
@@ -26,11 +26,10 @@ export default function ScenesPage() {
             </div>
             <ListLayout>
                 <div>
-                <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
+                    <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
                 </div>
                 <strong>{scene.name}</strong>
             </ListLayout>
-
         </button>)}
     </div>
 }

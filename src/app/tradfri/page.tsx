@@ -1,6 +1,6 @@
 import {getGroups} from "@/actions/tradfri-actions";
 import {TradfriApiGroup} from "@/types/Tradfri";
-import {GridLayout, ListLayout} from "@/components/layout/Layouts";
+import {ListLayout} from "@/components/layout/Layouts";
 import {DeviceControlButton, PlugControlButton} from "@/app/tradfri/TradfriButtons";
 
 export default async function TradfriPage() {

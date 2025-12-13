@@ -10,15 +10,3 @@
     align-items: center;
     gap: var(--size-padding-default);
 }
-
-@media screen and (max-width: 75rem) {
-    .gridLayout {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media screen and (max-width: 50rem) {
-    .gridLayout {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
