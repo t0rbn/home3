@@ -37,8 +37,8 @@ nav.appNavigation {
 
         &.navLinkActive {
             background-color: var(--color-elevation-surface);
-            background-image: var(--gradient-hightlight);
             border: var(--border-default);
+            box-shadow: var(--shadow-default);
             color: var(--color-contrast-1);
         }
     }

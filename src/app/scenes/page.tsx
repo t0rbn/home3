@@ -22,7 +22,6 @@ export default function ScenesPage() {
         >
             <div className={styles.backdrop}>
                 <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
-                <div className={styles.gradient}/>
             </div>
             <ListLayout>
                 <div>

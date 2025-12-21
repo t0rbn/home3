@@ -26,14 +26,10 @@
             bottom: 0;
         }
 
-        .gradient {
-            background-image: var(--gradient-hightlight);
-        }
-
         img {
             width: 100%;
             height: 100%;
-            filter: blur(vaR(--size-m)) brightness(.50);
+            filter: blur(vaR(--size-m));
         }
 
 

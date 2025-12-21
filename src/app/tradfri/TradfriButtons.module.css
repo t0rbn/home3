@@ -1,7 +1,6 @@
 
 .deviceLinkButton {
     background-color: var(--color-elevation-surface);
-    background-image: var(--gradient-hightlight);
     border: var(--border-default);
     border-radius: var(--border-radius-default);
     box-shadow: var(--shadow-default);

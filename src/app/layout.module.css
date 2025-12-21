@@ -21,7 +21,6 @@ html.root {
     body {
         height: 100%;
         margin: 0;
-        background-image: var(--gradient-hightlight);
         background-attachment: fixed;
         position: relative;
         display: flex;
