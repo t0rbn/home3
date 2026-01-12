@@ -21,21 +21,19 @@ html.root {
     body {
         height: 100%;
         margin: 0;
-        background-attachment: fixed;
-        position: relative;
         display: flex;
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
         max-height: 100svh;
 
-        background-color: vaR(--color-elevation-bg);
+        background-color: var(--color-elevation-bg);
     }
 
     main {
         flex-grow: 1;
         padding: var(--size-padding-default);
-        /*overflow: auto;*/
+        overflow: auto;
     }
 
 

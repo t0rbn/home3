@@ -7,30 +7,21 @@ html.root {
     --size-xl: 2rem;
     --size-xxl: 3rem;
 
-    --color-elevation-bg: hsl(240 0% 10);
-    --color-elevation-surface:  hsl(0 0% 20% / 0.5);
-    --color-elevation-border:  hsl(0 0% 30%);
-    --color-elevation-glow:  hsl(0 0% 30% / 0.25);
+    --color-elevation-bg: #1D1D20;
+    --color-elevation-surface: #38383C;
+    --color-elevation-half: #28282c;
+    --color-elevation-hover: #49494d;
 
-    --color-contrast-0: hsl(0 0% 75% / 0.9);
-    --color-contrast-1: hsl(0 0% 100% / 0.9);
-
+    --color-contrast-0: hsl(0 0% 50%);
+    --color-contrast-1: hsl(0 0% 100%);
 
     --size-padding-default: var(--size-m);
 
-    --size-border-default: var(--size-xxs);
-    --border-default: var(--size-xxs) solid var(--color-elevation-border);
     --border-radius-default: var(--size-xl);
-
-    --shadow-default: 0 var(--size-s) var(--size-l) var(--color-elevation-glow) inset;
-    /*--shadow-default: 0 var(--size-s) var(--size-l) hotpink inset;*/
-
-    /*--shadow-default: 0 0 var(--size-m) hsla(0, 0%, 0%, 50%);*/
-    /*--shadow-default: 0 0 var(--size-s) var(--color-elevation-border) inset;*/
 
     --filter-hover: brightness(125%);
 
-    --duration-default: 0.25s;
+    --duration-default: 0.125s;
     --transition-default: all ease-out var(--duration-default);
 
 }

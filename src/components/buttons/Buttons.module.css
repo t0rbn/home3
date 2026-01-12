@@ -6,9 +6,7 @@
 
     --button-height: var(--size-xxl);
     background-color: var(--color-elevation-surface);
-    box-shadow: var(--shadow-default);
 
-    border: var(--border-default);
     border-radius: 100vmax;
     padding: 0 var(--size-padding-default);
     min-height: var(--button-height);
@@ -37,7 +35,7 @@
     transition: vaR(--transition-default);
     @media (hover: hover) {
         &:hover {
-            filteR: var(--filter-hover);
+            background-color: var(--color-elevation-hover);
         }
     }
 }
@@ -50,8 +48,6 @@
     cursor: pointer;
 
     background-color: vaR(--color-elevation-surface);
-    border: var(--border-default);
-    box-shadow: var(--shadow-default);
 
     --action-button-size: calc(4 * var(--size-xxl));
     border-radius: var(--border-radius-default);
@@ -84,7 +80,7 @@
     transition: vaR(--transition-default);
     @media (hover: hover) {
         &:hover {
-            filteR: var(--filter-hover);
+            background-color: var(--color-elevation-hover);
         }
     }
 }
@@ -110,22 +106,15 @@
     }
 
     &.connected > div {
-        background-color: var(--color-elevation-surface);
         overflow: hidden;
-        border: var(--border-default);
         border-radius: 100vmax;
 
-        gap: 0;
+        gap: var(--size-xxs);
         flex-wrap: nowrap;
-        box-shadow: var(--shadow-default);
 
         > * {
             border: none;
             box-shadow: none;
-        }
-
-        > *:not(:last-child) {
-            border-right: var(--border-default);
         }
 
         > *:first-child {
@@ -143,8 +132,8 @@
         }
 
         .connectedButton {
-            padding-left: var(--size-xs);
-            padding-right: var(--size-xs);
+            /*padding-left: var(--size-xs);*/
+            /*padding-right: var(--size-xs);*/
             min-width: unset;
         }
     }

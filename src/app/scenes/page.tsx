@@ -18,11 +18,7 @@ export default function ScenesPage() {
             key={scene.id}
             onClick={() => activateScene(scene.id).then(router.refresh)}
             className={styles.sceneButton}
-            // style={{animationDelay: `${index * 50}ms`, backgroundImage: `url("/scenes/${scene.name}.jpg")`}}
         >
-            <div className={styles.backdrop}>
-                <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
-            </div>
             <ListLayout>
                 <div>
                     <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
