@@ -4,10 +4,11 @@ import {PropsWithChildren, useCallback} from "react";
 import Link from "next/link";
 import {cns} from "@/utils/cns";
 import {Icon} from "@/components/icon/Icon";
-import {TradfriApiPlug} from "@/types/Tradfri";
+import {TradfriApiGroup, TradfriApiPlug} from "@/types/Tradfri";
 import {useRouter} from "next/navigation";
 import {togglePlug} from "@/actions/tradfri-actions";
 import styles from "./TradfriButtons.module.css"
+import {ListLayout} from "@/components/layout/Layouts";
 
 interface DeviceControlButtonProps {
     icon: string,
@@ -49,5 +50,18 @@ export function PlugControlButton(props: { plug: TradfriApiPlug }) {
     const toggle = useCallback(() => togglePlug(props.plug.id).then(() => router.refresh()), [router, props.plug.id])
 
     return <DeviceControlButton onClick={toggle} icon="power" isActive={props.plug.isOn} status={props.plug.isOn ? 'on' : 'off'} name={props.plug.name}/>
+}
 
+export function TradfriButtonGroup(props: { group: TradfriApiGroup }) {
+    const devices = [
+        ...props.group.lights.map(l => ({name: l.name, component: <DeviceControlButton activeColor={l.color} icon="lightbulb_2" name={l.name} status={l.brightness ? `${Math.round(100 * l.brightness)}%` : 'off'} href={`/tradfri/lights/${l.id}`} isActive={!!l.brightness} key={l.id}/>})),
+        ...props.group.plugs.map(p => ({name: p.name, component: <PlugControlButton plug={p}/>}))
+    ]
+
+    return <ListLayout>
+        <h1>{props.group.name}</h1>
+        <div className={styles.buttonGroupContainer}>
+            {devices.sort((a, b) => a.name.localeCompare(b.name)).map(d => d.component)}
+        </div>
+    </ListLayout>
 }
