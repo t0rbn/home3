@@ -1,9 +1,9 @@
 nav.appNavigation {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: var(--color-elevation-half);
+    border-top: var(--size-xxs) solid var(--color-elevation-surface);
     padding: var(--size-padding-default);
-    backdrop-filter: blur(var(--size-m));
-    gap: var(--size-padding-default);
+}
+
+button.navButton {
+    flex-grow: 1;
+    font-size: var(--size-l);
 }

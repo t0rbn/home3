@@ -9,7 +9,7 @@ export interface ButtonProps {
     icon?: string,
     image?: string,
     size?: 'default' | 'huge'
-    variant?: 'default' | 'text' | 'outline',
+    variant?: 'default' | 'text' | 'active',
     onClick: () => void,
     className?: string
     style?: any,
@@ -20,7 +20,7 @@ export function Button(props: ButtonProps) {
     const classNames = [
         styles.button,
         props.variant === 'text' ? styles.text : undefined,
-        props.variant === 'outline' ? styles.outline : undefined,
+        props.variant === 'active' ? styles.active : undefined,
         props.size === 'huge' ? styles.huge : undefined,
         props.className
     ]
@@ -33,19 +33,6 @@ export function Button(props: ButtonProps) {
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </button>
-}
-
-export interface ButtonGroupProps {
-    label?: string
-    connected?: boolean;
-    fullWidth?: boolean
-    buttons: Array<ButtonProps>;
-}
-
-export function ButtonGroup(props: ButtonGroupProps) {
-    return <div>
-        IMPLEMENT ME
-    </div>
 }
 
 

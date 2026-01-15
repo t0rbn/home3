@@ -3,11 +3,13 @@
 import styles from "./AppNavigation.module.css"
 import {usePathname, useRouter} from "next/navigation";
 import {Button} from "@/components/buttons/Buttons";
+import {ButtonGroup} from "@/components/buttons/ButtonGroup";
 
 
 export function AppNavigation() {
     const pathName = usePathname();
     const router = useRouter()
+    const isNestedRoute = pathName.split('/').length > 3
 
     const navButton = (href: string, icon: string) => {
         const active = pathName.startsWith(href);
@@ -21,19 +23,18 @@ export function AppNavigation() {
         />
     }
 
-    function Buttons() {
-        if (pathName.split('/').length > 3) {
-            return navButton('BACK', 'arrow_back')
-        }
-        return <>
-            {navButton('/scenes', 'home')}
-            {navButton('/tradfri', 'lightbulb_2')}
-            {navButton('/settings', 'settings')}
-        </>
-    }
-
     return <nav className={styles.appNavigation}>
-        <Buttons/>
+        <ButtonGroup fullWidth>
+            {
+                isNestedRoute
+                    ? navButton('BACK', 'arrow_back')
+                    : <>
+                        {navButton('/scenes', 'home')}
+                        {navButton('/tradfri', 'lightbulb_2')}
+                        {navButton('/settings', 'settings')}
+                    </>
+            }
+        </ButtonGroup>
     </nav>
 }
 

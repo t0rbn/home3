@@ -4,6 +4,10 @@ import globals from "../globals.module.css"
 import {cns} from "@/utils/cns";
 import {AppNavigation} from "@/components/navigation/AppNavigation";
 
+export const metadata = {
+    title: 'home3'
+}
+
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
     // const groups = await getGroups();
     // const colors = groups.flatMap(g => g.lights).filter(l => l.brightness > 0).map(l => sanitizeColor(l.color))

@@ -34,7 +34,7 @@ export class MockTradfriService {
                 id: 2,
                 name: 'Group 2',
                 lights: [
-                    {id: 7, name: 'RGB Light', brightness: 0, availableRgbColors, availableWhiteColors, color: availableRgbColors[3]},
+                    {id: 9, name: 'RGB Light', brightness: 0, availableRgbColors, availableWhiteColors, color: availableRgbColors[3]},
                    ],
                 plugs: []
             }, {
@@ -42,7 +42,7 @@ export class MockTradfriService {
                 name: '3rd Group',
                 lights: [],
                 plugs: [
-                    {id: 3, name: 'Another Plug', isOn: true},
+                    {id: 10, name: 'Another Plug', isOn: true},
                 ]
             }
         ];

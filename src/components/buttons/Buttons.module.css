@@ -5,7 +5,6 @@
 
     border: var(--size-xxs) solid transparent;
     border-radius: var(--border-radius-default);
-
     background-color: var(--color-elevation-surface);
 
     padding: var(--size-padding-default);
@@ -14,6 +13,7 @@
     align-items: center;
     justify-content: center;
     gap: var(--size-s);
+    min-width: calc(2 * var(--size-xxl));
 
     font-size: var(--size-m);
     line-height: 1;
@@ -36,23 +36,18 @@
     @media (hover: hover) {
         &:hover {
             background-color: var(--color-elevation-hover);
-            border-radius: var(--size-m);
+            border-radius: var(--border-radius-hover);
         }
     }
 
-    &.outline {
-        background-color: transparent;
-        border-color: var(--color-contrast-0);
-
-        @media (hover:hover) {
-            &:hover {
-                border-color: var(--color-contrast-1);
-            }
-        }
-    }
 
     &.text {
         background-color: transparent;
+    }
+
+    &.active {
+        background-color: var(--color-elevation-active);
+        color: var(--color-elevation-surface);
     }
 
     &.huge {
@@ -61,6 +56,7 @@
 
         .icon {
             font-size: var(--size-xxl);
+            margin: 0 var(--size-xxl);
             line-height: 1;
         }
 
@@ -69,5 +65,4 @@
             height: auto;
         }
     }
-
 }

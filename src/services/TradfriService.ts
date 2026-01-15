@@ -3,7 +3,7 @@ import config from "../config.json";
 import {TradfriApiGroup, TradfriApiLight, TradfriApiScene, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import LogService from "@/services/LogService";
 
-export default class TradfriService {
+export class TradfriService {
     private static connection?: TradfriClient
     private static isInitializingConnection = false;
 
@@ -14,6 +14,8 @@ export default class TradfriService {
     private static scenes: Array<TradfriScene> = []
     private static plugs: Array<TradfriPlug> = []
     private static lights: Array<TradfriLight> = []
+
+    private static eh = crypto.randomUUID();
 
     constructor() {
     }
