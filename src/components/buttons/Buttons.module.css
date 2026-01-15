@@ -1,142 +1,73 @@
 .button {
+    box-sizing: border-box;
     appearance: none;
-    margin: 0;
-    border: 0;
     cursor: pointer;
 
-    --button-height: var(--size-xxl);
+    border: var(--size-xxs) solid transparent;
+    border-radius: var(--border-radius-default);
+
     background-color: var(--color-elevation-surface);
 
-    border-radius: 100vmax;
-    padding: 0 var(--size-padding-default);
-    min-height: var(--button-height);
-    min-width: calc(2 * var(--button-height));
-
-    line-height: var(--button-height);
-
-    font-size: var(--size-m);
-    color: var(--color-contrast-1);
-
+    padding: var(--size-padding-default);
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: var(--size-m);
-
-
-    .icon {
-        font-size: var(--size-l);
-    }
-
-    &:empty {
-        padding: 0;
-    }
-
-    transition: vaR(--transition-default);
-    @media (hover: hover) {
-        &:hover {
-            background-color: var(--color-elevation-hover);
-        }
-    }
-}
-
-.mainActionButton {
-    appearance: none;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    cursor: pointer;
-
-    background-color: vaR(--color-elevation-surface);
-
-    --action-button-size: calc(4 * var(--size-xxl));
-    border-radius: var(--border-radius-default);
-    height: var(--action-button-size);
-    width: var(--action-button-size);
-
-    font-size: var(--size-m);
-    color: var(--color-contrast-1);
-
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: var(--size-s);
 
-    &.active {
-        background-color: var(--color-contrast-1);
-                color: hsl(from var(--color-elevation-surface)h s 0% / 1);
+    font-size: var(--size-m);
+    line-height: 1;
+    color: var(--color-contrast-1);
+    transition: var(--transition-default);
 
+    .image {
+        height: var(--size-xxl);
+        width: var(--size-xxl);
+        border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
+    }
 
-        .icon {
-            font-variation-settings: 'FILL' 1;
-        }
+    &:has(.image) {
+        justify-content: flex-start;
     }
 
     .icon {
-        font-size: var(--size-xxl);
     }
 
-    transition: vaR(--transition-default);
     @media (hover: hover) {
         &:hover {
             background-color: var(--color-elevation-hover);
+            border-radius: var(--size-m);
         }
     }
-}
 
+    &.outline {
+        background-color: transparent;
+        border-color: var(--color-contrast-0);
 
-.buttonGroup {
-    > label {
-        display: block;
-        margin-bottom: var(--size-s);
+        @media (hover:hover) {
+            &:hover {
+                border-color: var(--color-contrast-1);
+            }
+        }
     }
 
-    > div {
-        display: flex;
-        flex-direction: row;
+    &.text {
+        background-color: transparent;
+    }
+
+    &.huge {
+        flex-direction: column;
         gap: var(--size-padding-default);
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: wrap;
-    }
 
-    &.fullWidth > div > * {
-        flex-grow: 1;
-    }
-
-    &.connected > div {
-        overflow: hidden;
-        border-radius: 100vmax;
-
-        gap: var(--size-xxs);
-        flex-wrap: nowrap;
-
-        > * {
-            border: none;
-            box-shadow: none;
+        .icon {
+            font-size: var(--size-xxl);
+            line-height: 1;
         }
 
-        > *:first-child {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-        }
-
-        > *:last-child {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-        }
-
-        > *:not(:first-child):not(:last-child) {
-            border-radius: 0;
-        }
-
-        .connectedButton {
-            /*padding-left: var(--size-xs);*/
-            /*padding-right: var(--size-xs);*/
-            min-width: unset;
+        .image {
+            width: 100%;
+            height: auto;
         }
     }
+
 }
-
-

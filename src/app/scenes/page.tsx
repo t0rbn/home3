@@ -6,6 +6,7 @@ import {TradfriApiScene} from "@/types/Tradfri";
 import styles from "./page.module.css"
 import {useRouter} from "next/navigation";
 import {ListLayout} from "@/components/layout/Layouts";
+import {Button} from "@/components/buttons/Buttons";
 
 export default function ScenesPage() {
     const router = useRouter()
@@ -14,17 +15,12 @@ export default function ScenesPage() {
     useEffect(() => {getScenes().then(setScenes)}, [])
 
     return <div className={styles.scenesLayout}>
-        {scenes?.map((scene, index) => <button
-            key={scene.id}
-            onClick={() => activateScene(scene.id).then(router.refresh)}
-            className={styles.sceneButton}
-        >
-            <ListLayout>
-                <div>
-                    <img src={`/scenes/${scene.name}.jpg`} alt={scene.name}/>
-                </div>
-                <strong>{scene.name}</strong>
-            </ListLayout>
-        </button>)}
+        {scenes?.map((s) => <Button
+            key={s.id}
+            onClick={() => activateScene(s.id).then(router.refresh)}
+            image={`/scenes/${s.name}.jpg`}
+            label={s.name}
+            size="huge"
+        />)}
     </div>
 }

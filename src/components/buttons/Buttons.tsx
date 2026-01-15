@@ -7,18 +7,29 @@ import {cns} from "@/utils/cns";
 export interface ButtonProps {
     label?: string,
     icon?: string,
+    image?: string,
+    size?: 'default' | 'huge'
+    variant?: 'default' | 'text' | 'outline',
     onClick: () => void,
     className?: string
-    color?: string;
+    style?: any,
 }
 
 
 export function Button(props: ButtonProps) {
+    const classNames = [
+        styles.button,
+        props.variant === 'text' ? styles.text : undefined,
+        props.variant === 'outline' ? styles.outline : undefined,
+        props.size === 'huge' ? styles.huge : undefined,
+        props.className
+    ]
     return <button
-        className={cns(styles.button, props.className)}
         onClick={props.onClick}
-        style={{backgroundColor: props.color}}
+        className={cns(...classNames)}
+        style={props.style}
     >
+        {props.image ? <img src={props.image} alt={props.label} className={styles.image}/> : null}
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </button>
@@ -28,28 +39,13 @@ export interface ButtonGroupProps {
     label?: string
     connected?: boolean;
     fullWidth?: boolean
-    buttons: Array<ButtonProps & { key?: string }>;
+    buttons: Array<ButtonProps>;
 }
 
 export function ButtonGroup(props: ButtonGroupProps) {
-    return <div className={cns(styles.buttonGroup, props.connected ? styles.connected : null, props.fullWidth ? styles.fullWidth : null)}>
-        {props.label ? <label>{props.label}</label> : null}
-        <div>
-            {props.buttons.map((button) => (
-                <Button
-                    {...button}
-                    key={button.key || `${button.label}${button.key}`}
-                    className={props.connected ? styles.connectedButton : undefined}
-                />)
-            )}
-        </div>
+    return <div>
+        IMPLEMENT ME
     </div>
 }
 
-export function MainActionButton(props: ButtonProps & { isActive?: boolean }) {
-    return <button className={cns(styles.mainActionButton, props.isActive ? styles.active : null)} onClick={props.onClick} style={{backgroundColor: props.color}}>
-        {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
-        {props.label ?? null}
-    </button>
-}
 
