@@ -25,6 +25,10 @@
     &.connected {
         gap: var(--size-xxs);
 
+        > * {
+            position: relative;
+        }
+
         > :not(:first-child) {
             border-top-left-radius: 0;
             border-bottom-left-radius: 0

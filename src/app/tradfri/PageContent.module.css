@@ -28,13 +28,15 @@
     line-height: 1;
 
     transition: var(--transition-default);
+    position:relative;
 
     @media(hover: hover) {
         &:hover {
             background-color: var(--color-elevation-hover);
             box-shadow: var(--box-shadow-hover);
-            transform: var(--transform-hover);
             border-radius: var(--border-radius-hover);
+            z-index: var(--z-index-hover);
+            transform: var(--transform-hover);
         }
     }
 

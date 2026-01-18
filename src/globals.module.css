@@ -20,11 +20,12 @@ html.root {
     --border-radius-default: var(--size-l);
     --border-radius-hover: var(--size-m);
 
-    --duration-default: .125s;
+    --duration-default: .25s;
 
-    --transition-default: all ease-out var(--duration-default);
+    --transition-default: all ease-out var(--duration-default), transform  linear(0, 1.5, 1) var(--duration-default);
 
-    --transform-hover: scale(1.02);
-    --box-shadow-hover: 0 0 var(--size-m) hsl(0 0 0 / .5);
+    --transform-hover: scale(1.025);
+    --box-shadow-hover: 0 0 var(--size-m)  hsl(0 0 0 / .75);
+    --z-index-hover: 2;
 }
 

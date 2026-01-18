@@ -2,6 +2,7 @@
     box-sizing: border-box;
     appearance: none;
     cursor: pointer;
+    position: relative;
 
     border: var(--size-xxs) solid transparent;
     border-radius: var(--border-radius-default);
@@ -37,12 +38,12 @@
         &:hover {
             background-color: var(--color-elevation-hover);
             border-radius: var(--border-radius-hover);
-            transform: var(--transform-hover);
             box-shadow: var(--box-shadow-hover);
+            z-index: var(--z-index-hover);
+            transform: var(--transform-hover);
         }
     }
-
-
+    
     &.text {
         background-color: transparent;
     }
