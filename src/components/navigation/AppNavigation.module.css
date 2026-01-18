@@ -1,9 +1,14 @@
 nav.appNavigation {
     border-top: var(--size-xxs) solid var(--color-elevation-surface);
-    padding: var(--size-padding-default);
+    padding: var(--size-padding-default) var(--size-padding-large);
 }
 
 button.navButton {
     flex-grow: 1;
     font-size: var(--size-l);
+
+    &:hover {
+        box-shadow: initial;
+        transform: none;
+    }
 }

@@ -32,7 +32,7 @@ html.root {
 
     main {
         flex-grow: 1;
-        padding: var(--size-padding-default);
+        padding: var(--size-padding-large);
         overflow: auto;
     }
 
