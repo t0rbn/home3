@@ -1,6 +1,6 @@
 nav.appNavigation {
     border-top: var(--size-xxs) solid var(--color-elevation-surface);
-    padding: var(--size-padding-default) var(--size-padding-large);
+    padding: var(--size-padding-default);
 }
 
 button.navButton {

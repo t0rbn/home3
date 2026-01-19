@@ -24,7 +24,7 @@ html.root {
 
     --transition-default: all ease-out var(--duration-default), transform  linear(0, 1.5, 1) var(--duration-default);
 
-    --transform-hover: scale(1.025);
+    --transform-hover: scale(1.01);
     --box-shadow-hover: 0 0 var(--size-m)  hsl(0 0 0 / .75);
     --z-index-hover: 2;
 }
