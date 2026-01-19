@@ -1,5 +1,4 @@
 import {MetadataRoute} from 'next'
-import {theme} from "@/theme";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
