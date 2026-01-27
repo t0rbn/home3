@@ -2,6 +2,6 @@
     aspect-ratio: 1;
 
     &.on {
-        color: var(--color-elevation-bg)
+        color: var(--color-bg)
     }
 }

@@ -7,13 +7,13 @@ html.root {
     --size-xl: 2rem;
     --size-xxl: 3rem;
 
-    --color-elevation-bg: light-dark(#fff, #1d1d20);
-    --color-elevation-surface: light-dark(#ebebed, #2e2e32);
-    --color-elevation-hover: light-dark(#dedee0, #3d3d40);
-    --color-elevation-active: light-dark(hsl(240, 3%, 20%), hsl(240, 3%, 80%));
+    --color-bg: #1D1D20;
+    --color-surface: #343437;
+    --color-hover: #48484c;
+    --color-active: #ffffff;
 
-    --color-contrast-0: light-dark(hsl(0 0% 50%),hsl(0 0% 50%));
-    --color-contrast-1: light-dark(hsl(0 0% 20%),hsl(0 0% 80%));
+    --color-contrast-0: #99999b;
+    --color-contrast-1: #ffffff;
 
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xxl);
@@ -22,10 +22,10 @@ html.root {
 
     --duration-default: .25s;
 
-    --transition-default: all ease-out var(--duration-default), transform  linear(0, 1.5, 1) var(--duration-default);
+    --transition-default: all ease-out var(--duration-default), transform linear(0, 1.5, 1) var(--duration-default);
 
-    --transform-hover: scale(1.01);
-    --box-shadow-hover: 0 0 var(--size-m)  hsl(0 0 0 / .75);
+
     --z-index-hover: 2;
+    --z-index-overlay: 10;
 }
 

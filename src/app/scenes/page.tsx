@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import {TradfriApiScene} from "@/types/Tradfri";
 import styles from "./page.module.css"
 import {useRouter} from "next/navigation";
-import {ListLayout} from "@/components/layout/Layouts";
 import {Button} from "@/components/buttons/Buttons";
 
 export default function ScenesPage() {

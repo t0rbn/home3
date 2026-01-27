@@ -6,7 +6,7 @@
 
     border: var(--size-xxs) solid transparent;
     border-radius: var(--border-radius-default);
-    background-color: var(--color-elevation-surface);
+    background-color: var(--color-surface);
 
     padding: var(--size-padding-default);
     display: flex;
@@ -36,11 +36,9 @@
 
     @media (hover: hover) {
         &:hover {
-            background-color: var(--color-elevation-hover);
+            background-color: var(--color-hover);
             border-radius: var(--border-radius-hover);
-            box-shadow: var(--box-shadow-hover);
             z-index: var(--z-index-hover);
-            transform: var(--transform-hover);
         }
     }
     
@@ -49,8 +47,8 @@
     }
 
     &.active {
-        background-color: var(--color-elevation-active);
-        color: var(--color-elevation-surface);
+        background-color: var(--color-active);
+        color: var(--color-surface);
     }
 
     &.huge {

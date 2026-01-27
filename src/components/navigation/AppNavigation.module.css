@@ -1,5 +1,7 @@
 nav.appNavigation {
-    border-top: var(--size-xxs) solid var(--color-elevation-surface);
+    position: relative;
+    z-index: var(--z-index-overlay);
+    border-top: var(--size-xxs) solid var(--color-surface);
     padding: var(--size-padding-default);
 }
 
@@ -8,7 +10,6 @@ button.navButton {
     font-size: var(--size-l);
 
     &:hover {
-        box-shadow: initial;
         transform: none;
     }
 }

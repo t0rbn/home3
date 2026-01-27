@@ -27,7 +27,7 @@ html.root {
         justify-content: flex-start;
         max-height: 100svh;
 
-        background-color: var(--color-elevation-bg);
+        background-color: var(--color-bg);
     }
 
     main {

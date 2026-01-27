@@ -1,14 +1,18 @@
 .linkGroup {
+
+    border-radius: var(--border-radius-default);
+    background-color: var(--color-border);
+
     > *:not(:last-child) {
         margin-bottom: var(--size-xxs)
     }
 
-    >:first-child {
+    > :first-child {
         border-top-left-radius: var(--border-radius-default);
         border-top-right-radius: var(--border-radius-default);
     }
 
-    >:last-child {
+    > :last-child {
         border-bottom-left-radius: var(--border-radius-default);
         border-bottom-right-radius: var(--border-radius-default);
     }
@@ -20,7 +24,8 @@
     justify-content: space-between;
 
     padding: var(--size-padding-default);
-    background-color: var(--color-elevation-surface);
+    background-color: var(--color-surface);
+    border-color: var(--color-surface);
 
     color: var(--color-contrast-0);
     text-decoration: none;
@@ -28,15 +33,11 @@
     line-height: 1;
 
     transition: var(--transition-default);
-    position:relative;
+    position: relative;
 
-    @media(hover: hover) {
+    @media (hover: hover) {
         &:hover {
-            background-color: var(--color-elevation-hover);
-            box-shadow: var(--box-shadow-hover);
-            border-radius: var(--border-radius-hover);
-            z-index: var(--z-index-hover);
-            transform: var(--transform-hover);
+            background-color: var(--color-hover);
         }
     }
 
@@ -44,16 +45,17 @@
         strong {
             margin-bottom: var(--size-xs);
         }
+
         > * {
             display: block;
         }
     }
 
     .iconContainer {
-        --active-color: var(--color-elevation-active);
-        background-color: var(--color-elevation-bg);
+        --active-color: var(--color-active);
         color: var(--color-contrast-1);
 
+        border: var(--size-xxs) solid var(--color-bg);
         border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
 
         display: flex;
@@ -73,7 +75,7 @@
 
         .iconContainer {
             background-color: var(--active-color);
-            color: var(--color-elevation-bg)
+            color: var(--color-bg)
         }
     }
 }
