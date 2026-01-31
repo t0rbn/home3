@@ -1,5 +1,5 @@
 html.root {
-    --size-xxs: .125rem;
+    --size-xxs: 1px;
     --size-xs: .25rem;
     --size-s: .5rem;
     --size-m: 1rem;
@@ -7,25 +7,27 @@ html.root {
     --size-xl: 2rem;
     --size-xxl: 3rem;
 
-    --color-bg: #1D1D20;
-    --color-surface: #343437;
-    --color-hover: #48484c;
-    --color-active: #ffffff;
-
-    --color-contrast-0: #99999b;
-    --color-contrast-1: #ffffff;
-
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xxl);
     --border-radius-default: var(--size-l);
     --border-radius-hover: var(--size-m);
 
-    --duration-default: .25s;
-
-    --transition-default: all ease-out var(--duration-default), transform linear(0, 1.5, 1) var(--duration-default);
-
-
     --z-index-hover: 2;
     --z-index-overlay: 10;
+
+    --color-bg: #1D1D20;
+    --color-surface: #343437;
+    --color-hover: #48484c;
+    --color-active: #ffffff;
+
+    --color-shadow: hsl(0 0% 0% / .5);
+
+    --color-contrast-0: #99999b;
+    --color-contrast-1: #ffffff;
+
+    --duration-default: .1s;
+    --transition-default: all ease-out var(--duration-default), transform linear(0, 1.5, 1) var(--duration-default);
+
+    --shadow-default: 0 var(--size-xxs) var(--size-xs) var(--color-shadow);
 }
 

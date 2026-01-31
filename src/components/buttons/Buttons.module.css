@@ -21,6 +21,9 @@
     color: var(--color-contrast-1);
     transition: var(--transition-default);
 
+    box-shadow: var(--shadow-default);
+
+
     .image {
         height: var(--size-xxl);
         width: var(--size-xxl);
@@ -44,6 +47,7 @@
     
     &.text {
         background-color: transparent;
+        box-shadow: none;
     }
 
     &.active {

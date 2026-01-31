@@ -1,7 +1,8 @@
 .linkGroup {
 
     border-radius: var(--border-radius-default);
-    background-color: var(--color-border);
+    background-color: var(--color-shadow);
+    box-shadow: var(--shadow-default);
 
     > *:not(:last-child) {
         margin-bottom: var(--size-xxs)
