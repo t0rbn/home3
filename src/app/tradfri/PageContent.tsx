@@ -75,7 +75,7 @@ export function TradfriPageContent(props: { groups: Array<TradfriApiGroup> }) {
         </ListLayout>
     }
 
-    return <ListLayout largeGap animated>
+    return <ListLayout largeGap>
         {props.groups.map(g => <TradfriButtonGroup group={g} key={g.id}/>)}
     </ListLayout>
 }

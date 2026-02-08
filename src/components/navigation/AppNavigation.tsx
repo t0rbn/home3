@@ -1,11 +1,9 @@
 "use client";
 
 import styles from "./AppNavigation.module.css"
-import animations from "@/animations.module.css";
 import {usePathname, useRouter} from "next/navigation";
 import {Button} from "@/components/buttons/Buttons";
 import {ButtonGroup} from "@/components/buttons/ButtonGroup";
-import {cns} from "@/utils/cns";
 
 
 export function AppNavigation() {
@@ -25,7 +23,7 @@ export function AppNavigation() {
         />
     }
 
-    return <nav className={cns(styles.appNavigation, animations.animationSlideFull)}>
+    return <nav className={styles.appNavigation}>
         <ButtonGroup fullWidth>
             {
                 isNestedRoute
