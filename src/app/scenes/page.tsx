@@ -1,25 +1,13 @@
-"use client";
-
-import {activateScene, getScenes} from "@/actions/tradfri-actions";
-import {useEffect, useState} from "react";
-import {TradfriApiScene} from "@/types/Tradfri";
+import {getScenes} from "@/actions/tradfri-actions";
 import styles from "./page.module.css"
-import {useRouter} from "next/navigation";
-import {Button} from "@/components/buttons/Buttons";
+import animations from "@/animations.module.css";
+import {cns} from "@/utils/cns";
+import {SceneButton} from "@/app/scenes/SceneButton";
 
-export default function ScenesPage() {
-    const router = useRouter()
+export default async function ScenesPage() {
+    const scenes = await getScenes()
 
-    const [scenes, setScenes] = useState<Array<TradfriApiScene>>()
-    useEffect(() => {getScenes().then(setScenes)}, [])
-
-    return <div className={styles.scenesLayout}>
-        {scenes?.map((s) => <Button
-            key={s.id}
-            onClick={() => activateScene(s.id).then(router.refresh)}
-            image={`/scenes/${s.name}.jpg`}
-            label={s.name}
-            size="huge"
-        />)}
+    return <div className={cns(styles.scenesLayout, animations.animationPopFade, animations.animationStaggered)}>
+        {scenes?.map((s) => <SceneButton scene={s} key={s.id}/>)}
     </div>
 }

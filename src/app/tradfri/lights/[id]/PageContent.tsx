@@ -37,7 +37,7 @@ export function LightControlPageContent(props: { light: TradfriApiLight }) {
 
     const actionButtonStyle = isOn ? {'backgroundColor': sanitizedColor} : undefined
 
-    return <ListLayout largeGap>
+    return <ListLayout largeGap animated>
         <HorizontalCenterLayout>
             <Button
                 onClick={() => brightNess(isOn ? 0 : 0.5)}
