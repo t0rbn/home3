@@ -3,6 +3,11 @@ nav.appNavigation {
     z-index: var(--z-index-overlay);
     border-top: var(--size-xxs) solid var(--color-surface);
     padding: var(--size-padding-default);
+    transition: var(--transition-default);
+
+    @starting-style {
+        transform: translateY(100%);
+    }
 }
 
 button.navButton {

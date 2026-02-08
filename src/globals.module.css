@@ -28,6 +28,6 @@ html.root {
     --duration-default: .1s;
     --transition-default: all ease-out var(--duration-default), transform linear(0, 1.5, 1) var(--duration-default);
 
-    --shadow-default: 0 var(--size-xxs) var(--size-xs) var(--color-shadow);
+    --shadow-default: 0 var(--size-xxs) var(--size-xxs) var(--color-shadow);
 }
 
