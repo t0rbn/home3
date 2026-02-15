@@ -17,9 +17,7 @@ export default class LogService {
         const msg = `${symbol} [${this.unitName.padEnd(LogService.maxUnitNameLength, ' ')}] ${text}`
 
         LogService.liveLog.push(msg)
-        if (LogService.liveLog.length > config.logs.maxLiveLogLength) {
-            LogService.liveLog.splice(0, 1)
-        }
+        LogService.liveLog.splice(-1 * config.logs.maxLiveLogLength)
 
         console.log(msg)
     }
