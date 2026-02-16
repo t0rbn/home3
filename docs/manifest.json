@@ -2,7 +2,7 @@
   "name": "home3",
   "short_name": "home3",
   "display": "standalone",
-  "start_url": "/",
+  "start_url": "/home3",
   "scope": "/",
   "background_color": "#1d1d20",
   "theme_color": "#1d1d20",
@@ -20,13 +20,13 @@
       "purpose": "maskable"
     },
     {
-      "src": "icon.png",
+      "src": "./icon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "icon.png",
+      "src": "./icon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
