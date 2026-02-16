@@ -31,7 +31,6 @@ export function AppNavigation() {
                     : <>
                         {navButton('/scenes', 'home')}
                         {navButton('/tradfri', 'lightbulb_2')}
-                        {navButton('/settings', 'settings')}
                     </>
             }
         </ButtonGroup>
