@@ -4,7 +4,7 @@
    fill="#e3e3e3"
    version="1.1"
    id="svg1"
-   sodipodi:docname="icon.svg"
+   sodipodi:docname="icon_maskable.svg"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    width="128"
    height="128"
@@ -106,46 +106,53 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="true"
      inkscape:deskcolor="#000000"
-     inkscape:zoom="12.144531"
-     inkscape:cx="62.950146"
-     inkscape:cy="72.378258"
-     inkscape:window-width="3840"
+     inkscape:zoom="4.2937402"
+     inkscape:cx="118.66111"
+     inkscape:cy="26.084485"
+     inkscape:window-width="2794"
      inkscape:window-height="2088"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
+     inkscape:window-x="20"
+     inkscape:window-y="20"
+     inkscape:window-maximized="0"
      inkscape:current-layer="layer1"
      borderlayer="true" />
   <g
      inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="mask"
+     style="display:none"
+     sodipodi:insensitive="true">
+    <circle
+       style="opacity:1;fill:#2aff80;fill-opacity:1;stroke-width:2.50669"
+       id="path4"
+       cx="64"
+       cy="-896"
+       r="64" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
      id="layer5"
      inkscape:label="BG"
-     style="display:inline"
      sodipodi:insensitive="true">
     <rect
-       style="display:inline;opacity:1;fill:url(#radialGradient8);stroke-width:3.17894"
+       style="opacity:1;fill:url(#radialGradient8);stroke-width:3.17894"
        id="rect6"
        width="128"
        height="128"
        x="0"
-       y="-960"
-       rx="64"
-       ry="64" />
+       y="-960" />
     <rect
-       style="display:inline;fill:url(#linearGradient8);stroke-width:3.17894"
+       style="fill:url(#linearGradient8);stroke-width:3.17894"
        id="rect6-0"
        width="128"
        height="128"
        x="0"
-       y="-960"
-       rx="64"
-       ry="64" />
+       y="-960" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer4"
-     inkscape:label="filament"
-     sodipodi:insensitive="true">
+     inkscape:label="filament">
     <path
        id="path5-0"
        style="fill:#ffffff;fill-opacity:1;stroke-width:0.5;filter:url(#filter6)"
@@ -163,15 +170,15 @@
        id="rect2-5"
        style="fill:url(#linearGradient6);fill-opacity:1;stroke-width:0.999993"
        inkscape:label="left"
-       d="M -264.00127 -861.00389 C -263.62506 -861.12042 -263.22542 -861.1836 -262.80992 -861.1836 C -260.59395 -861.1836 -258.81037 -859.40006 -258.81037 -857.18406 L -258.81089 -795.21501 C -261.34317 -793.57562 -264.01317 -792.10219 -266.80991 -790.81508 L -266.80949 -857.18402 C -266.80949 -858.98452 -265.63151 -860.49895 -264.00127 -861.00389 z M -325.32441 -844.57221 C -323.66012 -844.95005 -321.88275 -844.22751 -320.98251 -842.66823 L -287.78193 -785.1612 C -290.84143 -784.86856 -293.88401 -784.8012 -296.89171 -784.94444 L -296.8936 -784.94393 L -327.90997 -838.66865 C -329.01796 -840.58777 -328.36509 -843.02416 -326.446 -844.13216 C -326.08618 -844.33991 -325.70848 -844.48502 -325.32441 -844.57221 z "
+       d="M -264.00127 -861.00389 C -263.62506 -861.12042 -263.22542 -861.1836 -262.80992 -861.1836 C -260.59395 -861.1836 -258.81037 -859.40006 -258.81037 -857.18406 L -258.80989 -765.18421 C -258.80989 -762.96821 -260.59349 -761.18463 -262.80946 -761.18463 C -265.02543 -761.18463 -266.80901 -762.96817 -266.80901 -765.18417 L -266.80949 -857.18402 C -266.80949 -858.98452 -265.63151 -860.49895 -264.00127 -861.00389 z M -325.32441 -844.57221 C -323.66012 -844.95005 -321.88275 -844.22751 -320.98251 -842.66823 L -274.98355 -762.99378 C -273.87556 -761.07467 -274.52843 -758.63828 -276.44751 -757.53028 C -278.3666 -756.42228 -280.80302 -757.0751 -281.91101 -758.99421 L -327.90997 -838.66865 C -329.01796 -840.58777 -328.36509 -843.02416 -326.446 -844.13216 C -326.08618 -844.33991 -325.70848 -844.48502 -325.32441 -844.57221 z "
        transform="matrix(-0.96592494,0.25882237,0.25881573,0.96592671,0,0)" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="helpers"
-     style="display:none"
-     sodipodi:insensitive="true">
+     sodipodi:insensitive="true"
+     style="display:none">
     <rect
        style="opacity:1;fill:#ff00ff;fill-opacity:1;stroke-width:1.41421"
        id="rect3"
@@ -194,9 +201,4 @@
        x="0"
        y="-960" />
   </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer3"
-     inkscape:label="mask"
-     style="display:inline" />
 </svg>
