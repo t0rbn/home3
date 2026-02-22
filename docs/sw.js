@@ -1,10 +1,6 @@
 const CACHE_NAME = 'home3-cache-v1';
 const ASSETS_TO_CACHE = [
   '/',
-  '/index.html',
-  '/index.css',
-  '/manifest.json',
-  '/redirect.js'
 ];
 
 self.addEventListener('install', (event) => {

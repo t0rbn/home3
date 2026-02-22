@@ -1,16 +1,21 @@
 "use client"
 
 import {TradfriApiGroup} from "@/types/Tradfri";
-import {togglePlug} from "@/actions/tradfri-actions";
 import {ListLayout} from "@/components/layout/Layouts";
 import Link from "next/link";
 import styles from "./PageContent.module.css"
 import {cns} from "@/utils/cns";
 import {Icon} from "@/components/icon/Icon";
 import {useRouter} from "next/navigation";
+import {apiUrl} from "@/utils/apiUrl";
 
 export function TradfriPageContent(props: { groups: Array<TradfriApiGroup> }) {
     const router = useRouter()
+
+    const togglePlug = async (plugId: number) => {
+        await fetch(apiUrl(`/tradfri/api/plugs/${plugId}`), {method: 'POST'})
+         router.refresh()
+    }
 
     function LinkButton(p: {
         href?: string,
@@ -59,7 +64,7 @@ export function TradfriPageContent(props: { groups: Array<TradfriApiGroup> }) {
                             name: p.name,
                             component: <LinkButton
                                 key={p.name}
-                                onClick={() => togglePlug(p.id).then(router.refresh)}
+                                onClick={() => togglePlug(p.id)}
                                 name={p.name}
                                 status={p.isOn ? 'on' : 'off'}
                                 icon="power"

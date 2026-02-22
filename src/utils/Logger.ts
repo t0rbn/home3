@@ -1,18 +1,18 @@
 import config from "../config.json";
 
 
-export default class LogService {
+export default class Logger {
 
     private static maxUnitNameLength = 0
     private unitName: string
 
     constructor(unitName = '') {
         this.unitName = unitName
-        LogService.maxUnitNameLength = Math.max(LogService.maxUnitNameLength, unitName.length)
+        Logger.maxUnitNameLength = Math.max(Logger.maxUnitNameLength, unitName.length)
     }
 
     private printString(symbol: string, text: string): void {
-        const msg = `${symbol} [${this.unitName.padEnd(LogService.maxUnitNameLength, ' ')}] ${text}`
+        const msg = `${symbol} [${this.unitName.padEnd(Logger.maxUnitNameLength, ' ')}] ${text}`
         console.log(msg)
     }
 

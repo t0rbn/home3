@@ -1,13 +1,14 @@
 import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient} from "node-tradfri-client";
-import config from "../config.json";
+import config from "../../../config.json";
 import {TradfriApiGroup, TradfriApiLight, TradfriApiScene, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
-import LogService from "@/services/LogService";
+import Logger from "@/utils/Logger";
+import {MockTradfriService} from "@/app/tradfri/api/MockTradfriService";
 
 export class TradfriService {
     private static connection?: TradfriClient
     private static isInitializingConnection = false;
 
-    private static logger = new LogService('TradfriService')
+    private static logger = new Logger('TradfriService')
 
     private static superGroup: Group
     private static groups: Array<Omit<TradfriGroup, 'lights' | 'plugs'> & { deviceIds: Array<number> }> = []
@@ -15,9 +16,9 @@ export class TradfriService {
     private static plugs: Array<TradfriPlug> = []
     private static lights: Array<TradfriLight> = []
 
-    private static eh = crypto.randomUUID();
 
     constructor() {
+
     }
 
     private static mapLight(light: Accessory): TradfriLight | null {
@@ -54,7 +55,7 @@ export class TradfriService {
     }
 
     private static async initConnection(): Promise<void> {
-        const logger = new LogService("TradfriService")
+        const logger = new Logger("TradfriService")
         logger.log('discovering tradfri gateway')
         let gateway
         try {

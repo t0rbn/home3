@@ -2,21 +2,37 @@
 
 import {TradfriApiLight} from "@/types/Tradfri";
 import {Button} from "@/components/buttons/Buttons";
-import {setLightBrightness, setLightColor} from "@/actions/tradfri-actions";
 import {useCallback} from "react";
 import {useRouter} from "next/navigation";
 import styles from "./PageContent.module.css"
 import {HorizontalCenterLayout, ListLayout} from "@/components/layout/Layouts";
 import {ButtonGroup} from "@/components/buttons/ButtonGroup";
 import {cns} from "@/utils/cns";
+import {apiUrl} from "@/utils/apiUrl";
 
 export function LightControlPageContent(props: { light: TradfriApiLight }) {
     const router = useRouter()
 
     const isOn = props.light.brightness > 0
     const sanitizedColor = props.light?.color.startsWith("#") ? props.light?.color : `#${props.light.color}`
-    const brightNess = useCallback((brightness: number) => setLightBrightness(props.light.id, brightness).then(() => router.refresh()), [router, props.light.id])
-    const color = useCallback((color: string) => setLightColor(props.light.id, color).then(() => router.refresh()), [router, props.light.id])
+
+    const brightNess = useCallback((brightness: number) => {
+        const body = {
+            action: 'brightness',
+            value: brightness,
+        }
+        fetch(apiUrl(`/tradfri/api/lights/${props.light.id}`), {method: 'POST', body: JSON.stringify(body)})
+            .then(() => router.refresh())
+    }, [router, props.light.id])
+
+    const color = useCallback((color: string) => {
+        const body = {
+            action: 'color',
+            value: color,
+        }
+        fetch(apiUrl(`/tradfri/api/lights/${props.light.id}`), {method: 'POST', body: JSON.stringify(body)})
+            .then(() => router.refresh())
+    }, [router, props.light.id])
 
     function ColorButton(props: { color: string }) {
         return <Button
