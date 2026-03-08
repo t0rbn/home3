@@ -25,9 +25,11 @@ html.root {
     --color-contrast-0: #99999b;
     --color-contrast-1: #ffffff;
 
-    --duration-default: .1s;
-    --transition-default: all ease-out var(--duration-default), transform linear(0, 1.5, 1) var(--duration-default);
+    --duration-default: .2s;
+    --transition-default: all ease-out var(--duration-default), transform ease-out var(--duration-default);
+
 
     --shadow-default: 0 var(--size-xxs) var(--size-xxs) var(--color-shadow);
+
 }
 

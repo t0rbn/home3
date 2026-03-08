@@ -3,4 +3,11 @@
     grid-auto-rows: max-content;
     grid-template-columns: repeat(auto-fit, minmax(calc(12 * var(--size-m)), 1fr));
     grid-gap: var(--size-padding-default);
+
+    transition: var(--transition-default);
+    @starting-style {
+        filter: blur(var(--size-l));
+        transform: scale(0.9);
+        opacity: 0;
+    }
 }

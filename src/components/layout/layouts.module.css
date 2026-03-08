@@ -6,6 +6,16 @@
     &.large {
         gap: var(--size-padding-large);
     }
+
+    &.animated  {
+        transition: var(--transition-default);
+        @starting-style {
+            filter: blur(var(--size-l));
+            transform: scale(0.9);
+            opacity: 0;
+        }
+    }
+
 }
 
 .horizontalCenterLayout {

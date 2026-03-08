@@ -28,6 +28,7 @@ html.root {
         max-height: 100svh;
 
         background-color: var(--color-bg);
+        overflow-y: hidden;
     }
 
     main {
