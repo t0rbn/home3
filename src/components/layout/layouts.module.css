@@ -7,13 +7,49 @@
         gap: var(--size-padding-large);
     }
 
-    &.animated  {
-        transition: var(--transition-default);
-        @starting-style {
-            filter: blur(var(--size-l));
-            transform: scale(0.9);
-            opacity: 0;
+    &.animated {
+        > * {
+            transition: var(--transition-default);
+            @starting-style {
+                filter: blur(var(--size-l));
+
+                transform: translateY(var(--size-xxl));
+                opacity: 0;
+            }
+
+            &:nth-child(2) {
+                transition-delay: calc(.25 * var(--duration-default))
+            }
+
+            &:nth-child(3) {
+                transition-delay: calc(.5 * var(--duration-default))
+            }
+
+            &:nth-child(4) {
+                transition-delay: calc(.75 * var(--duration-default))
+            }
+
+            &:nth-child(5) {
+                transition-delay: calc(1 * var(--duration-default))
+            }
+
+            &:nth-child(6) {
+                transition-delay: calc(1.25 * var(--duration-default))
+            }
+
+            &:nth-child(7) {
+                transition-delay: calc(1.5 * var(--duration-default))
+            }
+
+            &:nth-child(8) {
+                transition-delay: calc(1.75 * var(--duration-default))
+            }
+
+            &:nth-child(n+9) {
+                transition-delay: calc(2 * var(--duration-default))
+            }
         }
+
     }
 
 }

@@ -10,12 +10,12 @@ html.root {
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xxl);
     --border-radius-default: var(--size-l);
-    --border-radius-hover: var(--size-m);
+    --border-radius-hover: var(--size-xl);
 
     --z-index-hover: 2;
     --z-index-overlay: 10;
 
-    --color-bg: #1D1D20;
+    --color-bg: #222226;
     --color-surface: #343437;
     --color-hover: #48484c;
     --color-active: #ffffff;
