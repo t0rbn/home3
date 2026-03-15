@@ -25,10 +25,6 @@
         [1,    0,  0.5]
       ]
     },
-    "actionResponseWaitTimeMs": 2000,
-    "transitionTimeMs": 500
-  },
-  "logs": {
-    "maxLiveLogLength": 1000
+    "actionResponseWaitTimeMs": 2000
   }
 }
