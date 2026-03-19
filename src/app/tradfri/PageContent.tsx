@@ -1,7 +1,7 @@
 "use client"
 
 import {TradfriApiGroup} from "@/types/Tradfri";
-import {ListLayout} from "@/components/layout/Layouts";
+import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
 import Link from "next/link";
 import styles from "./PageContent.module.css"
 import {cns} from "@/utils/cns";

@@ -5,7 +5,8 @@ import {Button} from "@/components/buttons/Buttons";
 import {useCallback} from "react";
 import {useRouter} from "next/navigation";
 import styles from "./PageContent.module.css"
-import {HorizontalCenterLayout, ListLayout} from "@/components/layout/Layouts";
+import {HorizontalCenterLayout} from "@/components/layout/HorizontalCenterLayout/HorizontalCenterLayout";
+import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
 import {ButtonGroup} from "@/components/buttons/ButtonGroup";
 import {cns} from "@/utils/cns";
 import {apiUrl} from "@/utils/apiUrl";
