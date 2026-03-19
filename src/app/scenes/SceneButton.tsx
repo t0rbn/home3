@@ -17,6 +17,5 @@ export function SceneButton(props: { scene: TradfriApiScene }) {
         onClick={handleClick}
         image={`/scenes/${props.scene.name}.jpg`}
         label={props.scene.name}
-        size="huge"
     />
 }
