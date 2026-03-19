@@ -8,7 +8,6 @@ export interface ButtonProps {
     label?: string,
     icon?: string,
     image?: string,
-    size?: 'default' | 'huge'
     variant?: 'default' | 'text' | 'active',
     onClick: () => void,
     className?: string
@@ -21,7 +20,7 @@ export function Button(props: ButtonProps) {
         styles.button,
         props.variant === 'text' ? styles.text : undefined,
         props.variant === 'active' ? styles.active : undefined,
-        props.size === 'huge' ? styles.huge : undefined,
+        // props.size === 'huge' ? styles.huge : undefined,
         props.className
     ]
     return <button

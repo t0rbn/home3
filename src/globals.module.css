@@ -15,15 +15,15 @@ html.root {
     --z-index-hover: 2;
     --z-index-overlay: 10;
 
-    --color-bg: #222226;
-    --color-surface: #343437;
-    --color-hover: #48484c;
-    --color-active: #ffffff;
+    --color-bg: light-dark(#fafafb, #222226);
+    --color-surface: light-dark(#ffffff, #343437);
+    --color-hover: light-dark(#d3d3d5, #49494d);
+    --color-active: light-dark(#000000, #ffffff);
 
     --color-shadow: hsl(0 0% 0% / .5);
 
-    --color-contrast-0: #99999b;
-    --color-contrast-1: #ffffff;
+    --color-contrast-0: light-dark( hsl(240, 1%, 40%), #99999b);
+    --color-contrast-1: light-dark(#000000, #ffffff);
 
     --duration-default: .2s;
     --transition-default: all ease-out var(--duration-default), transform ease-out var(--duration-default);

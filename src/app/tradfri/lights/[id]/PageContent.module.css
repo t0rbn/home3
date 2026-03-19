@@ -1,7 +1,28 @@
-.actionButton {
+.heroIcon {
+
+    border-radius: var(--border-radius-default);
+    height: calc(4 * var(--size-xxl));
     aspect-ratio: 1;
+    border: var(--size-xxs) solid var(--color-hover);
+    transition: var(--transition-default);
+
+    .icon {
+        transition: var(--transition-default);
+
+        color: var(--color-contrast-0);
+        font-size: calc(2 * var(--size-xxl));
+        line-height: calc(4 * var(--size-xxl));
+        text-align: center;
+        display: block;
+    }
 
     &.on {
-        color: var(--color-bg)
+        /*background-image: linear-gradient(to bottom, transparent, var(--color-shadow));*/
+        border-color: transparent;
+
+        .icon {
+            color: var(--color-bg)
+        }
     }
+
 }

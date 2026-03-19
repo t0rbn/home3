@@ -1,7 +1,7 @@
 nav.appNavigation {
     position: relative;
     z-index: var(--z-index-overlay);
-    border-top: var(--size-xxs) solid var(--color-surface);
+    border-top: var(--size-xxs) solid var(--color-hover);
     padding: var(--size-padding-default);
     transition: var(--transition-default);
 

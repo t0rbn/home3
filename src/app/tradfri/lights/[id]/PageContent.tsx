@@ -4,12 +4,13 @@ import {TradfriApiLight} from "@/types/Tradfri";
 import {Button} from "@/components/buttons/Buttons";
 import {useCallback} from "react";
 import {useRouter} from "next/navigation";
-import styles from "./PageContent.module.css"
 import {HorizontalCenterLayout} from "@/components/layout/HorizontalCenterLayout/HorizontalCenterLayout";
 import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
 import {ButtonGroup} from "@/components/buttons/ButtonGroup";
-import {cns} from "@/utils/cns";
 import {apiUrl} from "@/utils/apiUrl";
+import {Icon} from "@/components/icon/Icon";
+import styles from "./PageContent.module.css"
+import {cns} from "@/utils/cns";
 
 export function LightControlPageContent(props: { light: TradfriApiLight }) {
     const router = useRouter()
@@ -48,22 +49,16 @@ export function LightControlPageContent(props: { light: TradfriApiLight }) {
             onClick={() => brightNess(p.value)}
             icon={p.icon}
             label={p.label}
-            variant={props.light.brightness >= p.value ? 'active' : 'default'}
+            variant={(p.value ? (props.light.brightness >= p.value) : !!props.light.brightness) ? 'active' : 'default'}
         />
     }
 
-    const actionButtonStyle = isOn ? {'backgroundColor': sanitizedColor} : undefined
 
     return <ListLayout largeGap animated>
         <HorizontalCenterLayout>
-            <Button
-                onClick={() => brightNess(isOn ? 0 : 0.5)}
-                style={actionButtonStyle}
-                className={cns(styles.actionButton, isOn ? styles.on : undefined)}
-                label={`turn ${isOn ? 'off' : 'on'}`}
-                icon="lightbulb_2"
-                size="huge"
-            />
+            <div className={cns(styles.heroIcon, props.light.brightness ? styles.on : undefined)} style={{backgroundColor: (props.light.brightness && sanitizedColor) || undefined}}>
+                <Icon icon="light" className={styles.icon}/>
+            </div>
             <h1>{props.light.name}</h1>
         </HorizontalCenterLayout>
 
@@ -73,11 +68,9 @@ export function LightControlPageContent(props: { light: TradfriApiLight }) {
             connected>
             {
                 [
-                    {icon: 'dark_mode', value: 0.01},
-                    {label: '25%', value: 0.25},
-                    {label: '50%', value: 0.5},
-                    {label: '75%', value: 0.75},
-                    {label: '100%', value: 1},
+                    {icon: 'power_settings_new', value: 0},
+                    {value: 0.01}, {value: 0.25}, {value: 0.5}, {value: 0.75},
+                    {icon: 'light_mode', value: 1},
                 ].map((p) => <BrightnessButton {...p} key={p.value}/>)
             }
 

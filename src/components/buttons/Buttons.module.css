@@ -25,17 +25,19 @@
 
 
     .image {
-        height: var(--size-xxl);
-        width: var(--size-xxl);
+        width: 100%;
+        height: auto;
+        object-fit: cover;
         border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
     }
 
     &:has(.image) {
+        flex-direction: column;
         justify-content: flex-start;
+
+        gap: var(--size-padding-default);
     }
 
-    .icon {
-    }
 
     @media (hover: hover) {
         &:hover {
@@ -44,7 +46,7 @@
             z-index: var(--z-index-hover);
         }
     }
-    
+
     &.text {
         background-color: transparent;
         box-shadow: none;
@@ -53,23 +55,5 @@
     &.active {
         background-color: var(--color-active);
         color: var(--color-surface);
-    }
-
-    &.huge {
-        flex-direction: column;
-        gap: var(--size-padding-default);
-
-        .icon {
-            font-size: var(--size-xxl);
-            margin: 0 var(--size-xxl);
-            line-height: 1;
-        }
-
-        .image {
-            width: 100%;
-            height: auto;
-            /*aspect-ratio: 2 !important;*/
-            object-fit: cover;
-        }
     }
 }
