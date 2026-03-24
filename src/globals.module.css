@@ -15,7 +15,7 @@ html.root {
     --z-index-hover: 2;
     --z-index-overlay: 10;
 
-    --color-bg: light-dark(#fafafb, #222226);
+    --color-bg: light-dark(hsl(240, 100%, 77%), #000075);
     --color-surface: light-dark(#ffffff, #343437);
     --color-hover: light-dark(#d3d3d5, #49494d);
     --color-active: light-dark(#000000, #ffffff);
