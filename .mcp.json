@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tradfri": {
+      "type": "http",
+      "url": "http://localhost:3000/tradfri/mcp/mcp"
+    }
+  }
+}

@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "mcp-handler": "^1.1.0",
     "next": "latest",
     "node-loader": "latest",
     "node-tradfri-client": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "latest",
