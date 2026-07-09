@@ -7,6 +7,8 @@ import {TradfriDevice} from "@/types/Tradfri";
 import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
 import Link from "next/link";
 import {Icon} from "@/components/icon/Icon";
+import {Suspense} from "react";
+import {connection} from "next/server";
 
 
 export async function AppNavigation() {
@@ -36,19 +38,21 @@ export async function AppNavigation() {
     ]
 
     return <nav className={styles.appNavigation}>
-        <ListLayout largeGap>
-            {navItems.map((section) => <ListLayout key={section.heading}>
-                <strong>{section.heading}</strong>
-                <div>{section.links.map((l) => <NavButton key={l.href} {...l} />)}</div>
-            </ListLayout>)}
-        </ListLayout>
+        <Suspense fallback={<div>Loading...</div>}>
+            <ListLayout largeGap>
+                {navItems.map((section) => <ListLayout key={section.heading}>
+                    <strong>{section.heading}</strong>
+                    <div>{section.links.map((l) => <NavButton key={l.href} {...l} />)}</div>
+                </ListLayout>)}
+            </ListLayout>
+        </Suspense>
     </nav>
 }
 
 export async function AppNavigationSideBar() {
     return <div className={styles.sidebar}>
         <div className={styles.desktop}>
-            <AppNavigation />
+            <AppNavigation/>
         </div>
         <div className={styles.mobile}>
             <Link href="/menu" className={styles.link}><Icon icon="menu" className={styles.icon}/></Link>
