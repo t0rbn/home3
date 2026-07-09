@@ -25,6 +25,6 @@
         [1,    0,  0.5]
       ]
     },
-    "actionResponseWaitTimeMs": 2000
+    "actionResponseWaitTimeMs": 250
   }
 }

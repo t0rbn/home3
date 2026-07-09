@@ -23,6 +23,10 @@
 
     box-shadow: var(--shadow-default);
 
+    .icon {
+        font-size: var(--size-l);
+        line-height: var(--size-m);
+    }
 
     .image {
         width: 100%;

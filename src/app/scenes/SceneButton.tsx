@@ -1,15 +1,15 @@
 "use client"
 
-import {TradfriApiScene} from "@/types/Tradfri";
+import {TradfriScene} from "@/types/Tradfri";
 import {useRouter} from "next/navigation";
 import {Button} from "@/components/buttons/Buttons";
-import {apiUrl} from "@/utils/apiUrl";
+import {activateScene} from "@/app/tradfri/TradfriService";
 
-export function SceneButton(props: { scene: TradfriApiScene }) {
+export function SceneButton(props: { scene: TradfriScene }) {
     const router = useRouter()
+
     const handleClick = async () => {
-        await fetch(apiUrl('/tradfri/api/scenes/'), {method: 'POST', body: `${props.scene.id}`})
-        router.refresh()
+        activateScene(props.scene.id).then(() => router.refresh())
     }
 
     return <Button

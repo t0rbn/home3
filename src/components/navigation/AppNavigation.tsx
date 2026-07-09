@@ -1,39 +1,59 @@
-"use client";
+"use server";
 
 import styles from "./AppNavigation.module.css"
-import {usePathname, useRouter} from "next/navigation";
-import {Button} from "@/components/buttons/Buttons";
-import {ButtonGroup} from "@/components/buttons/ButtonGroup";
+import {getGroups} from "@/app/tradfri/TradfriService";
+import {NavButton, NavButtonProps} from "@/components/navigation/NavButton";
+import {TradfriDevice} from "@/types/Tradfri";
+import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
+import Link from "next/link";
+import {Icon} from "@/components/icon/Icon";
 
 
-export function AppNavigation() {
-    const pathName = usePathname();
-    const router = useRouter()
-    const isNestedRoute = pathName.split('/').length > 3
+export async function AppNavigation() {
+    const groups = await getGroups();
 
-    const navButton = (href: string, icon: string) => {
-        const active = pathName.startsWith(href);
-        const handler = href === 'BACK' ? () => router.back() : () => router.push(href)
+    const deviceToNavButton = (device: TradfriDevice): NavButtonProps => {
+        const typeIconMap: Record<TradfriDevice['type'], string> = {
+            'light': 'lightbulb_2',
+            'plug': 'outlet'
+        }
 
-        return <Button
-            variant={active ? 'active' : 'text'}
-            className={styles.navButton}
-            onClick={handler}
-            icon={icon}
-        />
+        return {
+            name: device.name,
+            icon: typeIconMap[device.type],
+            href: `/tradfri/${device.id}`,
+        }
     }
 
+    const navItems: Array<{ heading: string, links: Array<NavButtonProps> }> = [
+        {
+            heading: 'Home',
+            links: [
+                {icon: 'grid_view', name: 'Scenes', href: '/scenes'}
+            ]
+        },
+        ...groups.map((g) => ({heading: g.name, links: g.devices.map(d => deviceToNavButton(d))}))
+    ]
+
     return <nav className={styles.appNavigation}>
-        <ButtonGroup fullWidth>
-            {
-                isNestedRoute
-                    ? navButton('BACK', 'arrow_back')
-                    : <>
-                        {navButton('/scenes', 'home')}
-                        {navButton('/tradfri', 'lightbulb_2')}
-                    </>
-            }
-        </ButtonGroup>
+        <ListLayout largeGap>
+            {navItems.map((section) => <ListLayout key={section.heading}>
+                <strong>{section.heading}</strong>
+                <div>{section.links.map((l) => <NavButton key={l.href} {...l} />)}</div>
+            </ListLayout>)}
+        </ListLayout>
     </nav>
+}
+
+export async function AppNavigationSideBar() {
+    return <div className={styles.sidebar}>
+        <div className={styles.desktop}>
+            <AppNavigation />
+        </div>
+        <div className={styles.mobile}>
+            <Link href="/menu" className={styles.link}><Icon icon="menu" className={styles.icon}/></Link>
+        </div>
+
+    </div>
 }
 

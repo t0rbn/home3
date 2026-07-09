@@ -1,0 +1,4 @@
+.heroIcon {
+    padding-top: var(--size-xxl);
+    font-size: calc(var(--size-m) * 7.5)
+}

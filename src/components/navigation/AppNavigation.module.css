@@ -1,20 +1,85 @@
 nav.appNavigation {
-    position: relative;
-    z-index: var(--z-index-overlay);
-    border-top: var(--size-xxs) solid var(--color-hover);
     padding: var(--size-padding-default);
-    transition: var(--transition-default);
 
-    @starting-style {
-        transform: translateY(100%);
+    strong {
+        color: vaR(--color-contrast-1);
+        padding: var(--size-xs);
     }
 }
 
-button.navButton {
-    flex-grow: 1;
-    font-size: var(--size-l);
+.navButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    gap: var(--size-xs);
 
-    &:hover {
-        transform: none;
+    color: var(--color-contrast-0);
+    text-decoration: none;
+    font-size: vaR(--size-m);
+    line-height: 1;
+    padding: var(--size-s) vaR(--size-xl) var(--size-s) var(--size-s);
+    border-radius: var(--border-radius-default);
+    white-space: nowrap;
+
+    .icon {
+        font-size: var(--size-l)
+    }
+
+    &.active {
+        background-color: var(--color-active);
+        color: var(--color-bg);
+    }
+
+    transition: vaR(--transition-default);
+    @media (hover: hover) {
+        &:hover {
+            background-color: vaR(--color-hover);
+            color: var(--color-contrast-1)
+        }
+    }
+}
+
+.sidebar {
+    height: 100%;
+
+    .mobile {
+        display: none;
+        position: fixed;
+        right: var(--size-padding-default);
+        bottom: var(--size-padding-default);
+        z-index: var(--z-index-overlay);
+
+        .link {
+            display: block;
+            background-color: var(--color-surface);
+            color: var(--color-contrast-1);
+            height: var(--size-xxl);
+            aspect-ratio: 1;
+            text-align: center;
+            border-radius: var(--border-radius-default);
+            border: var(--size-xxs) solid var(--color-surface);
+            box-shadow: var(--shadow-default);
+
+            .icon {
+                font-size: var(--size-xl);
+                line-height: var(--size-xxl);
+            }
+        }
+    }
+
+    .desktop {
+        height: 100%;
+        border-right: var(--size-xxs) solid var(--color-surface);
+    }
+
+    @media screen and (max-width: 50rem) {
+        .desktop {
+            display: none;
+        }
+
+        .mobile {
+            display: block;
+        }
     }
 }
