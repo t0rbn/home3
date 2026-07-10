@@ -5,6 +5,7 @@ import {cns} from "@/utils/cns";
 import {AppNavigation, AppNavigationSideBar} from "@/components/navigation/AppNavigation";
 import Link from "next/link";
 import {Icon} from "@/components/icon/Icon";
+import {Suspense} from "react";
 
 export const metadata = {
     title: 'home3'
@@ -13,7 +14,9 @@ export const metadata = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
     return <html lang="en" className={cns(styles.root, globals.root)}>
     <body>
-    <AppNavigationSideBar/>
+    <Suspense>
+        <AppNavigationSideBar/>
+    </Suspense>
     <main>{children}</main>
     </body>
     </html>

@@ -5,10 +5,7 @@ import {getGroups} from "@/app/tradfri/TradfriService";
 import {NavButton, NavButtonProps} from "@/components/navigation/NavButton";
 import {TradfriDevice} from "@/types/Tradfri";
 import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
-import Link from "next/link";
-import {Icon} from "@/components/icon/Icon";
-import {Suspense} from "react";
-import {connection} from "next/server";
+import {Button} from "@/components/buttons/Buttons";
 
 
 export async function AppNavigation() {
@@ -38,14 +35,12 @@ export async function AppNavigation() {
     ]
 
     return <nav className={styles.appNavigation}>
-        <Suspense fallback={<div>Loading...</div>}>
-            <ListLayout largeGap>
-                {navItems.map((section) => <ListLayout key={section.heading}>
-                    <strong>{section.heading}</strong>
-                    <div>{section.links.map((l) => <NavButton key={l.href} {...l} />)}</div>
-                </ListLayout>)}
-            </ListLayout>
-        </Suspense>
+        <ListLayout largeGap>
+            {navItems.map((section) => <ListLayout key={section.heading}>
+                <strong>{section.heading}</strong>
+                <div>{section.links.map((l) => <NavButton key={l.href} {...l} />)}</div>
+            </ListLayout>)}
+        </ListLayout>
     </nav>
 }
 
@@ -55,7 +50,7 @@ export async function AppNavigationSideBar() {
             <AppNavigation/>
         </div>
         <div className={styles.mobile}>
-            <Link href="/menu" className={styles.link}><Icon icon="menu" className={styles.icon}/></Link>
+            <Button href="/menu" className={styles.menuFab} icon="menu"/>
         </div>
 
     </div>

@@ -5,6 +5,7 @@ import {cns} from "@/utils/cns";
 import styles from "./AppNavigation.module.css";
 import {Icon} from "@/components/icon/Icon";
 import {usePathname, useRouter} from "next/navigation";
+import {Button} from "@/components/buttons/Buttons";
 
 export interface NavButtonProps {
     name: string,
@@ -16,10 +17,11 @@ export function NavButton(props: NavButtonProps) {
     const pathName = usePathname();
     const active = pathName.startsWith(props.href);
 
-    return <Link
+    return <Button
+        variant={active ? 'active' : 'text'}
         href={props.href}
-        className={cns(styles.navButton, active ? styles.active : null)}>
-        <Icon className={styles.icon} icon={props.icon} />
-        {props.name}
-    </Link>
+        className={styles.navButton}
+        icon={props.icon}
+        label={props.name}
+    />
 }

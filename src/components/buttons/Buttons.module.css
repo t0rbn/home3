@@ -19,6 +19,8 @@
     font-size: var(--size-m);
     line-height: 1;
     color: var(--color-contrast-1);
+    text-wrap: nowrap;
+    text-decoration: none;
     transition: var(--transition-default);
 
     box-shadow: var(--shadow-default);
@@ -51,7 +53,7 @@
         }
     }
 
-    &.text {
+    &.text:not(:hover) {
         background-color: transparent;
         box-shadow: none;
     }
