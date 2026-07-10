@@ -6,11 +6,11 @@
     grid-template-columns: repeat(var(--column-count), 1fr);
     grid-gap: var(--size-padding-default);
 
-    @media screen and (min-width: 75rem) {
+    @media screen and (min-width: 50rem) {
     --column-count: 3;
     }
 
-    @media screen and (min-width: 100rem) {
+    @media screen and (min-width: 75rem) {
         --column-count: 5;
 
     }

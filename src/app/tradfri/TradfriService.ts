@@ -4,7 +4,7 @@ import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient}
 import config from "@/config.json";
 import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import Logger from "@/utils/Logger";
-import {cacheLife, cacheTag, updateTag} from "next/cache";
+import {cacheTag, updateTag} from "next/cache";
 
 const logger = new Logger('TradfriService')
 
@@ -120,7 +120,7 @@ function mapGroup(group: Group): TradfriGroup {
             .filter(a => group.deviceIDs.includes(a.instanceId))
             .map(d => mapDevice(d))
             .filter(Boolean)
-            .sort((a,b) => (a?.name ?? '').localeCompare(b?.name || '')) as Array<TradfriDevice>
+            .sort((a, b) => (a?.name ?? '').localeCompare(b?.name || '')) as Array<TradfriDevice>
     }
 }
 
@@ -134,7 +134,7 @@ function mapDevice(accessory: Accessory): TradfriDevice | null {
             type: 'light',
             id: accessory.instanceId,
             name: accessory.name,
-            brightness: accessory.lightList[0].onOff ?  accessory.lightList[0].dimmer * 0.01 : 0,
+            brightness: accessory.lightList[0].onOff ? accessory.lightList[0].dimmer * 0.01 : 0,
             color: `#${accessory.lightList[0].color}`,
             spectrum: accessory.lightList[0].spectrum
         } as TradfriLight
@@ -170,7 +170,6 @@ export async function getGroups(): Promise<Array<TradfriGroup>> {
 export async function getScenes(): Promise<Array<TradfriScene>> {
     "use cache"
     cacheTag('scenes')
-    cacheLife('max')
 
     await init()
     return scenes.map(g => mapScene(g))
