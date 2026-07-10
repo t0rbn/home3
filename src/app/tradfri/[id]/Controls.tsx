@@ -38,6 +38,7 @@ export function LightControls(props: { light: TradfriLight }) {
                 ].map((b) => <Button
                     key={b.value}
                     icon={b.icon}
+                    ariaLabel={"Brightness " + b.value}
                     onClick={() => setLightBrightness(props.light.id, b.value).then(router.refresh)}
                     variant={(b.value === 0 ? props.light.brightness : (props.light.brightness >= b.value)) ? 'active' : 'default'}
                 />)
@@ -50,6 +51,7 @@ export function LightControls(props: { light: TradfriLight }) {
                     key={w}
                     onClick={() => setLightColor(props.light.id, w).then(router.refresh)}
                     label="&nbsp;"
+                    ariaLabel={`Color ${w}`}
                     style={{backgroundColor: w}}
                 />)}
             </ButtonGroup>
@@ -61,6 +63,7 @@ export function LightControls(props: { light: TradfriLight }) {
                     key={c}
                     onClick={() => setLightColor(props.light.id, c).then(router.refresh)}
                     label="&nbsp;"
+                    ariaLabel={`Color ${c}`}
                     style={{backgroundColor: c}}
                 />)}
             </ButtonGroup>

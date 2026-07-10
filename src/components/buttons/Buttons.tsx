@@ -7,6 +7,7 @@ import Link from "next/link";
 
 export type ButtonProps = {
     label?: string,
+    ariaLabel?: string,
     icon?: string,
     image?: string,
     variant?: 'default' | 'text' | 'active',
@@ -40,10 +41,10 @@ export function Button(props: ButtonProps) {
     }
 
     if (props.href) {
-        return <Link href={props.href} {...spreadProps}>{content}</Link>
+        return <Link href={props.href} {...spreadProps} aria-label={props.ariaLabel}>{content}</Link>
     }
     if (props.onClick) {
-        return <button onClick={() => props.onClick()} {...spreadProps}>{content}</button>
+        return <button onClick={() => props.onClick()} {...spreadProps} aria-label={props.ariaLabel}>{content}</button>
     }
     return null
 }
