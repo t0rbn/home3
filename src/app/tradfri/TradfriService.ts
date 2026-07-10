@@ -4,7 +4,6 @@ import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient}
 import config from "@/config.json";
 import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import Logger from "@/utils/Logger";
-import {cacheTag, updateTag} from "next/cache";
 
 const logger = new Logger('TradfriService')
 
@@ -160,24 +159,16 @@ function mapScene(scene: Scene): TradfriScene {
 }
 
 export async function getGroups(): Promise<Array<TradfriGroup>> {
-    "use cache"
-    cacheTag('devices')
-
     await init()
     return groups.filter(g => g.name !== SUPER_GROUP_KEY).map(g => mapGroup(g))
 }
 
 export async function getScenes(): Promise<Array<TradfriScene>> {
-    "use cache"
-    cacheTag('scenes')
-
     await init()
     return scenes.map(g => mapScene(g))
 }
 
 export async function activateScene(sceneId: number): Promise<void> {
-    updateTag('devices')
-
     await init()
     const scene = scenes.find(s => s.instanceId === sceneId)
     if (!scene) {
@@ -188,32 +179,23 @@ export async function activateScene(sceneId: number): Promise<void> {
 }
 
 export async function getDevice(id: number): Promise<TradfriDevice> {
-    "use cache"
-    cacheTag('devices')
-
     await init()
     return mapDevice(accessories.find(device => device.instanceId === id)!)!
 }
 
 export async function setLightBrightness(lightId: number, newBrightness: number): Promise<void> {
-    updateTag('devices')
-
     await init()
     await accessories.find(a => a.instanceId === lightId && a.type === AccessoryTypes.lightbulb)?.lightList[0].setBrightness(newBrightness * 100, 0)
     await operationTimeout()
 }
 
 export async function setLightColor(lightId: number, newColor: string): Promise<void> {
-    updateTag('devices')
-
     await init()
     await accessories.find(a => a.instanceId === lightId && a.type === AccessoryTypes.lightbulb)?.lightList[0].setColor(newColor.replaceAll(/[^0-9a-fA-F]/gi, ''), 0)
     await operationTimeout()
 }
 
 export async function togglePlug(plugId: number): Promise<void> {
-    updateTag('devices')
-
     await init()
     await accessories.find(a => a.instanceId === plugId && a.type === AccessoryTypes.plug)?.plugList[0].toggle()
     await operationTimeout()
