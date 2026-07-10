@@ -171,9 +171,6 @@ export async function getScenes(): Promise<Array<TradfriScene>> {
     "use cache"
     cacheTag('scenes')
     cacheLife('max')
-    if (!scenes.length) {
-        updateTag('scenes')
-    }
 
     await init()
     return scenes.map(g => mapScene(g))
