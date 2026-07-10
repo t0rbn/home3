@@ -7,7 +7,7 @@ import {ButtonGroup} from "@/components/buttons/ButtonGroup";
 import {Button} from "@/components/buttons/Buttons";
 import {TradfriLight, TradfriPlug} from "@/types/Tradfri";
 import {useRouter} from "next/navigation";
-import {Activity} from "react";
+import {Activity, startTransition, useOptimistic} from "react";
 import config from "@/config.json"
 import {rgbArrayToHex} from "@/utils/colorUtils";
 import {Icon} from "@/components/icon/Icon";
@@ -17,9 +17,27 @@ import {cns} from "@/utils/cns";
 export function LightControls(props: { light: TradfriLight }) {
     const router = useRouter();
 
+    const [optimisticBrightness, setOptimisticBrightness] = useOptimistic(props.light.brightness)
+    const [optimisticColor, setOptimisticColor] = useOptimistic(props.light.color)
+
+    const handleBrightnessChange = (brightness: number) => {
+        startTransition(() => {
+            setOptimisticBrightness(brightness)
+            setLightBrightness(props.light.id, brightness).then(router.refresh)
+        })
+    }
+
+    const handleColorChange = (color: string) => {
+        startTransition(() => {
+            setOptimisticColor(color)
+            setLightColor(props.light.id, color).then(router.refresh)
+        })
+    }
+
     return <ListLayout largeGap>
         <HorizontalCenterLayout>
-            <div className={cns(props.light.brightness > 0 ? styles.lightHeroContainer : null)} style={{'--light-accent-color' : props.light.color} as any}>
+            <div className={cns(props.light.brightness > 0 ? styles.lightHeroContainer : null)}
+                 style={{'--light-accent-color': optimisticColor} as any}>
                 <Icon icon="lightbulb_2" className={styles.heroIcon}/>
             </div>
             <h1>{props.light.name}</h1>
@@ -39,8 +57,8 @@ export function LightControls(props: { light: TradfriLight }) {
                     key={b.value}
                     icon={b.icon}
                     ariaLabel={"Brightness " + b.value}
-                    onClick={() => setLightBrightness(props.light.id, b.value).then(router.refresh)}
-                    variant={(b.value === 0 ? props.light.brightness : (props.light.brightness >= b.value)) ? 'active' : 'default'}
+                    onClick={() => handleBrightnessChange(b.value)}
+                    variant={(b.value === 0 ? optimisticBrightness : (optimisticBrightness >= b.value)) ? 'active' : 'default'}
                 />)
             }
         </ButtonGroup>
@@ -49,7 +67,7 @@ export function LightControls(props: { light: TradfriLight }) {
             <ButtonGroup label="White Spectrum">
                 {config.tradfri.colors.white.map((w) => <Button
                     key={w}
-                    onClick={() => setLightColor(props.light.id, w).then(router.refresh)}
+                    onClick={() => handleColorChange(w)}
                     label="&nbsp;"
                     ariaLabel={`Color ${w}`}
                     style={{backgroundColor: w}}
@@ -61,7 +79,7 @@ export function LightControls(props: { light: TradfriLight }) {
             <ButtonGroup label="RGB">
                 {config.tradfri.colors.rgb.map(rgbArrayToHex).map((c) => <Button
                     key={c}
-                    onClick={() => setLightColor(props.light.id, c).then(router.refresh)}
+                    onClick={() => handleColorChange(c)}
                     label="&nbsp;"
                     ariaLabel={`Color ${c}`}
                     style={{backgroundColor: c}}
