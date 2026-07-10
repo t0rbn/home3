@@ -6,9 +6,11 @@ import {NavButton, NavButtonProps} from "@/components/navigation/NavButton";
 import {TradfriDevice} from "@/types/Tradfri";
 import {ListLayout} from "@/components/layout/ListLayout/ListLayout";
 import {Button} from "@/components/buttons/Buttons";
+import {connection} from "next/server";
 
 
 export async function AppNavigation() {
+    await connection();
     const groups = await getGroups();
 
     const deviceToNavButton = (device: TradfriDevice): NavButtonProps => {
