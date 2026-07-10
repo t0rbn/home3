@@ -4,7 +4,7 @@ import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient}
 import config from "@/config.json";
 import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import Logger from "@/utils/Logger";
-import {refresh, revalidatePath} from "next/cache";
+import {cacheLife, cacheTag, updateTag} from "next/cache";
 
 const logger = new Logger('TradfriService')
 
@@ -116,7 +116,11 @@ function mapGroup(group: Group): TradfriGroup {
     return {
         name: group.name,
         id: group.instanceId,
-        devices: accessories.filter(a => group.deviceIDs.includes(a.instanceId)).map(d => mapDevice(d)).filter(Boolean) as Array<TradfriDevice>
+        devices: accessories
+            .filter(a => group.deviceIDs.includes(a.instanceId))
+            .map(d => mapDevice(d))
+            .filter(Boolean)
+            .sort((a,b) => (a?.name ?? '').localeCompare(b?.name || '')) as Array<TradfriDevice>
     }
 }
 
@@ -130,7 +134,7 @@ function mapDevice(accessory: Accessory): TradfriDevice | null {
             type: 'light',
             id: accessory.instanceId,
             name: accessory.name,
-            brightness: accessory.lightList[0].dimmer * 0.01,
+            brightness: accessory.lightList[0].onOff ?  accessory.lightList[0].dimmer * 0.01 : 0,
             color: `#${accessory.lightList[0].color}`,
             spectrum: accessory.lightList[0].spectrum
         } as TradfriLight
@@ -156,16 +160,28 @@ function mapScene(scene: Scene): TradfriScene {
 }
 
 export async function getGroups(): Promise<Array<TradfriGroup>> {
+    "use cache"
+    cacheTag('devices')
+
     await init()
     return groups.filter(g => g.name !== SUPER_GROUP_KEY).map(g => mapGroup(g))
 }
 
 export async function getScenes(): Promise<Array<TradfriScene>> {
+    "use cache"
+    cacheTag('scenes')
+    cacheLife('max')
+    if (!scenes.length) {
+        updateTag('scenes')
+    }
+
     await init()
     return scenes.map(g => mapScene(g))
 }
 
 export async function activateScene(sceneId: number): Promise<void> {
+    updateTag('devices')
+
     await init()
     const scene = scenes.find(s => s.instanceId === sceneId)
     if (!scene) {
@@ -176,23 +192,32 @@ export async function activateScene(sceneId: number): Promise<void> {
 }
 
 export async function getDevice(id: number): Promise<TradfriDevice> {
+    "use cache"
+    cacheTag('devices')
+
     await init()
     return mapDevice(accessories.find(device => device.instanceId === id)!)!
 }
 
 export async function setLightBrightness(lightId: number, newBrightness: number): Promise<void> {
+    updateTag('devices')
+
     await init()
     await accessories.find(a => a.instanceId === lightId && a.type === AccessoryTypes.lightbulb)?.lightList[0].setBrightness(newBrightness * 100, 0)
     await operationTimeout()
 }
 
 export async function setLightColor(lightId: number, newColor: string): Promise<void> {
+    updateTag('devices')
+
     await init()
     await accessories.find(a => a.instanceId === lightId && a.type === AccessoryTypes.lightbulb)?.lightList[0].setColor(newColor.replaceAll(/[^0-9a-fA-F]/gi, ''), 0)
     await operationTimeout()
 }
 
 export async function togglePlug(plugId: number): Promise<void> {
+    updateTag('devices')
+
     await init()
     await accessories.find(a => a.instanceId === plugId && a.type === AccessoryTypes.plug)?.plugList[0].toggle()
     await operationTimeout()
