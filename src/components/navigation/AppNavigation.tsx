@@ -14,7 +14,7 @@ export async function AppNavigation() {
     const deviceToNavButton = (device: TradfriDevice): NavButtonProps => {
         const typeIconMap: Record<TradfriDevice['type'], string> = {
             'light': 'lightbulb_2',
-            'plug': 'outlet'
+            'plug': 'toggle_on'
         }
 
         return {

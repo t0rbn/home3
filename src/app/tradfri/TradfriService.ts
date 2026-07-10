@@ -131,7 +131,7 @@ function mapDevice(accessory: Accessory): TradfriDevice | null {
             id: accessory.instanceId,
             name: accessory.name,
             brightness: accessory.lightList[0].dimmer * 0.01,
-            color: accessory.lightList[0].color,
+            color: `#${accessory.lightList[0].color}`,
             spectrum: accessory.lightList[0].spectrum
         } as TradfriLight
     }

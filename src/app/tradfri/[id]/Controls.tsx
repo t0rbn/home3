@@ -12,13 +12,16 @@ import config from "@/config.json"
 import {rgbArrayToHex} from "@/utils/colorUtils";
 import {Icon} from "@/components/icon/Icon";
 import styles from "./page.module.css"
+import {cns} from "@/utils/cns";
 
 export function LightControls(props: { light: TradfriLight }) {
     const router = useRouter();
 
     return <ListLayout largeGap>
         <HorizontalCenterLayout>
-            <Icon icon="lightbulb_2" className={styles.heroIcon}/>
+            <div className={cns(props.light.brightness > 0 ? styles.lightHeroContainer : null)} style={{'--light-accent-color' : props.light.color} as any}>
+                <Icon icon="lightbulb_2" className={styles.heroIcon}/>
+            </div>
             <h1>{props.light.name}</h1>
         </HorizontalCenterLayout>
 
@@ -71,14 +74,14 @@ export function PlugControls(props: { plug: TradfriPlug }) {
 
     return <ListLayout largeGap>
         <HorizontalCenterLayout>
-            <Icon icon="outlet" className={styles.heroIcon}/>
+            <Icon icon="power" className={styles.heroIcon}/>
             <h1>{props.plug.name}</h1>
         </HorizontalCenterLayout>
         <ButtonGroup fullWidth>
             <Button
                 onClick={() => togglePlug(props.plug.id).then(router.refresh)}
                 label={props.plug.isOn ? 'Turn Off' : 'Turn On'}
-                icon="power"
+                icon="toggle_on"
                 variant={(props.plug.isOn ? 'active' : 'default')}
             />
         </ButtonGroup>
