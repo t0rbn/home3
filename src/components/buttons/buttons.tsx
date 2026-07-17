@@ -1,7 +1,7 @@
 "use client";
 
-import {Icon} from "@/components/icon/Icon";
-import styles from "./Buttons.module.css"
+import {Icon} from "@/components/icon/icon";
+import styles from "./buttons.module.css"
 import {cns} from "@/utils/cns";
 import Link from "next/link";
 
@@ -30,7 +30,7 @@ export function Button(props: ButtonProps) {
     ]
 
     const content = <>
-        {props.image ? <img src={props.image} alt={props.label} className={styles.image}/> : null}
+        {props.image ? <img src={props.image} alt={props.label} className={styles.image} loading="lazy" /> : null}
         {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
         {props.label ?? null}
     </>

@@ -1,4 +1,4 @@
-import styles from "./Icon.module.css"
+import styles from "./icon.module.css"
 import {cns} from "@/utils/cns";
 
 interface IconProps {

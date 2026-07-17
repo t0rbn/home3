@@ -15,12 +15,12 @@ html.root {
     --z-index-hover: 2;
     --z-index-overlay: 10;
 
-    --color-bg: light-dark(#fafafb, #222226);
+    --color-bg: light-dark(hsl(240 11% 95%), #222226);
     --color-surface: light-dark(#ffffff, #343437);
     --color-hover: light-dark(#d3d3d5, #49494d);
-    --color-active: light-dark(#000000, #ffffff);
+    --color-active: light-dark(#3584e4, #ffffff);
 
-    --color-shadow: hsl(0 0% 0% / .5);
+    --color-shadow: hsl(0 0% 0% / .25);
 
     --color-contrast-0: light-dark( hsl(240, 1%, 40%), #99999b);
     --color-contrast-1: light-dark(#000000, #ffffff);
@@ -29,7 +29,6 @@ html.root {
     --transition-default: all ease-out var(--duration-default), transform ease-out var(--duration-default);
 
 
-    --shadow-default: 0 var(--size-xxs) var(--size-xxs) var(--color-shadow);
-
+    --shadow-default: 0 var(--size-xxs) var(--size-xs) var(--color-shadow);
 }
 

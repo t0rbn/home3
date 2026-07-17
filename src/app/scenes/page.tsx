@@ -1,15 +1,14 @@
-import styles from "./page.module.css"
-import {SceneButton} from "@/app/scenes/SceneButton";
-import {connection, NextRequest} from "next/server";
-import {TradfriScene} from "@/types/Tradfri";
-import {getScenes} from "@/app/tradfri/TradfriService";
+import {SceneButton} from "@/app/scenes/scene-button";
+import {GridLayout} from "@/components/layout/layouts";
+import {getScenes} from "@/app/TradfriService";
+import {connection} from "next/server";
 
-export default async function ScenesPage(req: NextRequest) {
+export default async function ScenesPage() {
     await connection();
-
     const scenes = await getScenes()
 
-    return <div className={styles.scenesLayout}>
-        {scenes?.map((s) => <SceneButton scene={s} key={s.id}/>)}
-    </div>
+    return <GridLayout>
+        {scenes.map(s => <SceneButton scene={s} key={s.id}/>)}
+    </GridLayout>
+
 }

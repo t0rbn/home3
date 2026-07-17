@@ -1,0 +1,9 @@
+.deviceButton {
+    flex-direction: column !important;
+    padding: var(--size-padding-large);
+
+    > * {
+        font-size: var(--size-xxl) !important;
+        line-height: 1 !important;
+    }
+}

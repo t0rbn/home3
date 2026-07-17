@@ -1,5 +1,5 @@
 import styles from "./loading.module.css"
-import {Icon} from "@/components/icon/Icon";
+import {Icon} from "@/components/icon/icon";
 
 export default async function LoadingPage() {
     return <div className={styles.loadingLayout}>

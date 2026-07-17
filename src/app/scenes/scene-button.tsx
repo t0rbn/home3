@@ -2,8 +2,8 @@
 
 import {TradfriScene} from "@/types/Tradfri";
 import {useRouter} from "next/navigation";
-import {Button} from "@/components/buttons/Buttons";
-import {activateScene} from "@/app/tradfri/TradfriService";
+import {Button} from "@/components/buttons/buttons";
+import {activateScene} from "@/app/TradfriService";
 
 export function SceneButton(props: { scene: TradfriScene }) {
     const router = useRouter()

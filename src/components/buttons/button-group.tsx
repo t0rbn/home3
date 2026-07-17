@@ -1,5 +1,5 @@
-import {Button, ButtonProps} from "@/components/buttons/Buttons";
-import styles from "./ButtonGroup.module.css"
+import {Button, ButtonProps} from "@/components/buttons/buttons";
+import styles from "./button-group.module.css"
 import {PropsWithChildren} from "react";
 import {cns} from "@/utils/cns";
 

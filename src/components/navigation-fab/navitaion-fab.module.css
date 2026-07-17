@@ -1,0 +1,13 @@
+.fabButton {
+    aspect-ratio: 1;
+}
+
+.navigationFab {
+    position: fixed;
+    bottom: var(--size-padding-large);
+    right: var(--size-padding-large);
+
+    * {
+        font-size: var(--size-xl) !important;
+    }
+}

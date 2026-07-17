@@ -1,9 +1,0 @@
-.listLayout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--size-padding-default);
-
-    &.large {
-        gap: var(--size-padding-large);
-    }
-}
