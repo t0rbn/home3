@@ -9,6 +9,7 @@ import {useRouter} from "next/navigation";
 import config from "@/config.json"
 import {rgbArrayToHex} from "@/utils/colorUtils";
 import {ColorInput} from "@/components/color-input/color-input";
+import {GridLayout, ListLayout} from "@/components/layout/layouts";
 
 export function BrightnessControls(props: { light: TradfriLight }) {
     const router = useRouter();
@@ -31,7 +32,7 @@ export function BrightnessControls(props: { light: TradfriLight }) {
         {icon: 'brightness_7', value: 1}
     ]
 
-    return <ButtonGroup label="Brightness" connected fullWidth>
+    return <ButtonGroup label="Brightness">
         {stops.map(stop => <Button
             key={stop.value}
             label=""
@@ -47,12 +48,13 @@ export function WhiteSpectrumControls(props: { light: TradfriLight }) {
     const router = useRouter();
     const handleChange = (c: string) => setLightColor(props.light.id, c).then(router.refresh)
 
-    return <ButtonGroup connected fullWidth label="White Spectrum">
+    return <ButtonGroup label="White Spectrum">
         {
             config.tradfri.colors.white.map(w => <Button
                 label="&nbsp;"
                 onClick={() => handleChange(w)}
                 style={{backgroundColor: w}}
+                key={w}
             />)
         }
     </ButtonGroup>
@@ -62,14 +64,18 @@ export function RgbControls(props: { light: TradfriLight }) {
     const router = useRouter();
     const handleChange = (c: string) => setLightColor(props.light.id, c).then(router.refresh)
 
-    return <ButtonGroup label="RGB">
-        {
-            config.tradfri.colors.rgb.map(rgbArrayToHex).map(c => <Button
-                label="&nbsp;"
-                onClick={() => handleChange(c)}
-                style={{backgroundColor: c}}
-            />)
-        }
-        <ColorInput onSelected={handleChange} />
-    </ButtonGroup>
+    return <ListLayout>
+        <label>RGB</label>
+        <GridLayout>
+            {
+                config.tradfri.colors.rgb.map(rgbArrayToHex).map(c => <Button
+                    label="&nbsp;"
+                    onClick={() => handleChange(c)}
+                    style={{backgroundColor: c}}
+                    key={c}
+                />)
+            }
+            <ColorInput onSelected={handleChange}/>
+        </GridLayout>
+    </ListLayout>
 }

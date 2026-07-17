@@ -21,8 +21,9 @@ export function NavigationFab() {
     const displayedRoutes = routes.filter((route: RouteItem) => route.href !== pathName)
 
     return <nav className={styles.navigationFab}>
-        <ButtonGroup connected>
+        <ButtonGroup>
             {displayedRoutes.map((route: RouteItem) => <Button
+                variant="active"
                 icon={route.icon}
                 href={route.href}
                 className={styles.fabButton} key={route.href}

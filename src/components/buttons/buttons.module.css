@@ -14,7 +14,6 @@
     align-items: center;
     justify-content: center;
     gap: var(--size-s);
-    min-width: calc(2 * var(--size-xxl));
 
     font-size: var(--size-m);
     line-height: 1;
