@@ -39,17 +39,28 @@ interface DefaultButtonProps {
     icon?: string,
     label?: string,
 }
+
 export function Button(props: BaseButtonProps & DefaultButtonProps) {
     const {icon, label, className, ...baseProps} = props
-
-    const allClasses = cns(
-        styles.defaultButton,
-        className
-    )
+    const allClasses = cns(styles.defaultButton, className)
 
     return <BaseButton {...baseProps} ariaLabel={props.label ?? baseProps.ariaLabel} className={allClasses}>
-        {icon && <Icon icon={icon} className={styles.defaultButtonIcon}/>}
+        {icon &&
+            <Icon icon={icon} className={styles.defaultButtonIcon} variant={props.isActive ? 'filled' : 'outlined'}/>}
         {label && <label>{label}</label>}
         {(!label && !icon) && <>&nbsp;</>}
+    </BaseButton>
+}
+
+interface ImageButtonProps {
+    image: string,
+    label: string
+}
+export function ImageButton(props: BaseButtonProps & ImageButtonProps) {
+    const {image, label, className, ...baseProps} = props
+    const allClasses = cns(styles.imageButton, className)
+
+    return <BaseButton {...baseProps} ariaLabel={props.label} className={allClasses} style={{backgroundImage: `url("${image}")`}}>
+        <label>{props.label}</label>
     </BaseButton>
 }

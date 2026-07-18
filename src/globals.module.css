@@ -10,7 +10,7 @@ html.root {
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xxl);
 
-    --border-radius-default: var(--size-m);
+    --border-radius-default: var(--size-xl);
 
     --z-index-hover: 2;
     --z-index-overlay: 10;

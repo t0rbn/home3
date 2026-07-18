@@ -68,6 +68,35 @@
     }
 }
 
+.imageButton {
+    aspect-ratio: 1;
+    background-position: center;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    align-items: stretch;
+    justify-content: flex-end;
+
+    @media (hover: hover) {
+        &:hover {
+            background-size: 110%;
+
+        }
+    }
+
+    label {
+        color: var(--color-contrast-1);
+        padding: vaR(--size-padding-default);
+        padding-top: var(--size-padding-large);
+        background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% / .5));
+        display: block;
+    }
+
+
+}
+
 
 
 

@@ -124,7 +124,7 @@ function mapGroup(group: Group): TradfriGroup {
 }
 
 function mapDevice(accessory: Accessory): TradfriDevice | null {
-    if (!accessory.alive) {
+    if (!accessory?.alive) {
         return null;
     }
 
