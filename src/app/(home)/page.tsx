@@ -9,7 +9,6 @@ export default async function MainPage() {
     const scenes = await getScenes();
     const groups = await getGroups();
 
-
     return <List bigSpace>
         <List>
             <h1>Scenes</h1>

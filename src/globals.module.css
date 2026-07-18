@@ -16,7 +16,6 @@ html.root {
     --z-index-overlay: 10;
 
     --color-bg: hsl(0 0% 10%);
-    --color-surface: hsl(0 0% 15%);
     --color-interactive: hsl(0 0% 20%);
     --color-interactive-hover: hsl(0 0% 25%);
     --color-active: hsl(0 0% 90%);
@@ -25,7 +24,7 @@ html.root {
     /*--color-contrast-0: hotpink;*/
     --color-contrast-1: hsl(0 0% 100%);
 
-    --duration-default: .25s;
-    --transition-default: all ease-out var(--duration-default), transform ease-out var(--duration-default);
+    --transition-default: all ease-out .1s;
+    --transition-starting: all ease-out .25s;
 }
 
