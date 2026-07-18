@@ -2,46 +2,32 @@ html.root {
     padding: 0;
     margin: 0;
 
-    font-size: var(--size-m);
-    line-height: 1;
-    color: var(--color-contrast-0);
-    color-scheme: light dark;
-
+    zing: border-box;
     -webkit-tap-highlight-color: transparent;
 
-    * {
-        font-family: Inter, serif;
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
 
-    }
-
+    /*color-scheme: light dark;*/
 
     body {
         margin: 0;
-
-        display: grid;
-        grid-template-columns: min-content 1fr;
-        grid-template-rows: 100svh;
         background-color: var(--color-bg);
-
-        > * {
-            overflow: auto;
-        }
-
-    }
-
-    main {
-        flex-grow: 1;
-        grid-column-start: 2;
         padding: var(--size-padding-default);
-    }
 
+        color: var(--color-contrast-0);
+        font-family: Inter, serif;
+        font-size: var(--size-m);
+        line-height: 1;
+
+        * {
+            box-sizing: border-box;
+        }
+    }
 
     h1, h2, h3, h4, h5, h6 {
         margin: 0;
         padding: 0;
         line-height: 1;
+        color: var(--color-contrast-1);
     }
 
     h1 {

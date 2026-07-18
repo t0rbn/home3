@@ -4,7 +4,7 @@ import {Button} from "@/components/buttons/buttons";
 import {useEffect, useRef} from "react";
 
 interface ColorInputProps {
-    label?: string,
+    ariaLabel?: string,
     icon?: string,
     onSelected: (hex: string) => void,
 }
@@ -26,7 +26,7 @@ export function ColorInput(props: ColorInputProps) {
     return <>
         <input ref={inputRef} type="color" hidden/>
         <Button
-            label={props.label}
+            aria-label={props.ariaLabel}
             icon={props.icon ?? "palette"}
             onClick={() => inputRef.current?.click()}
         />

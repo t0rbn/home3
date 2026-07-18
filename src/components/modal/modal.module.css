@@ -1,0 +1,34 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: var(--size-padding-default);
+    padding-bottom: 0;
+    background-color: hsl(0 0% 0% / .5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    .modal {
+        width: 100%;
+        max-width: 50rem;
+        background-color: var(--color-bg);
+        position: relative;
+        padding: var(--size-padding-large);
+        border-top-right-radius: var(--border-radius-default);
+        border-top-left-radius: var(--border-radius-default);
+
+        .closeLink {
+            font: inherit;
+            color: inherit;
+            font-size: vaR(--size-xl);
+            position: absolute;
+            top: var(--size-padding-large);
+            right: var(--size-padding-large);
+        }
+    }
+}

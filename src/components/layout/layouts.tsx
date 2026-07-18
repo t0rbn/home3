@@ -1,21 +1,30 @@
-import {PropsWithChildren} from "react";
+import {CSSProperties, PropsWithChildren} from "react";
 import styles from "./layouts.module.css"
 import {cns} from "@/utils/cns";
 
-export function GridLayout(props: PropsWithChildren) {
-    return <div className={styles.gridLayout}>
+type LayoutProps = PropsWithChildren<{
+    className?: string,
+    style?: CSSProperties
+}>
+
+
+function Layout(props: LayoutProps & { layoutClass: string }) {
+    return <div className={cns(props.layoutClass, props.className)} style={props.style}>
         {props.children}
     </div>
 }
 
-export function HorizontalCenterLayout(props: PropsWithChildren) {
-    return <div className={styles.horizontalCenterLayout}>{props.children}</div>
+export function Grid(props: LayoutProps) {
+    return <Layout layoutClass={styles.grid} {...props}>
+        {props.children}
+    </Layout>
 }
 
-export function ListLayout(props: PropsWithChildren<{ largeGap?: boolean }>) {
-    const classNames = [
-        styles.listLayout,
-        props.largeGap ? styles.large : undefined,
-    ]
-    return <div key="foo" className={cns(...classNames)}>{props.children}</div>
+interface ListProps {
+    bigSpace?: boolean
+}
+export function List(props: LayoutProps & ListProps) {
+    return <Layout layoutClass={cns(styles.list, [styles.bigSpace, !!props.bigSpace])} {...props}>
+        {props.children}
+    </Layout>
 }

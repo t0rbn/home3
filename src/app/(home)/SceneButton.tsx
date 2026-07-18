@@ -1,21 +1,15 @@
 "use client"
 
 import {TradfriScene} from "@/types/Tradfri";
-import {useRouter} from "next/navigation";
 import {Button} from "@/components/buttons/buttons";
 import {activateScene} from "@/app/TradfriService";
+import {useRouter} from "next/navigation";
 
 export function SceneButton(props: { scene: TradfriScene }) {
     const router = useRouter()
-
-    const handleClick = async () => {
+    const handleClick = () => {
         activateScene(props.scene.id).then(() => router.refresh())
     }
 
-    return <Button
-        key={props.scene.id}
-        onClick={handleClick}
-        image={`/scenes/${props.scene.name}.jpg`}
-        label={props.scene.name}
-    />
+    return <Button label={props.scene.name} onClick={handleClick}/>
 }

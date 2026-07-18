@@ -176,6 +176,7 @@ export async function activateScene(sceneId: number): Promise<void> {
     }
 
     await getSuperGroup().activateScene(sceneId)
+    await operationTimeout()
 }
 
 export async function getDevice(id: number): Promise<TradfriDevice> {

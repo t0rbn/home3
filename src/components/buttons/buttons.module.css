@@ -1,64 +1,74 @@
-.button {
-    box-sizing: border-box;
+.buttonGroupConnected {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--size-xxs);
+
+    > * {
+        flex-grow: 1;
+        flex-basis: 0;
+
+        &:not(:first-child) {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:not(:last-child) {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+}
+
+
+.baseButton {
     appearance: none;
+    border: none;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    text-decoration: none;
+
     cursor: pointer;
-    position: relative;
-
-    border: var(--size-xxs) solid transparent;
+    background-color: var(--color-interactive);
+    padding: var(--size-m);
     border-radius: var(--border-radius-default);
-    background-color: var(--color-surface);
 
-    padding: var(--size-padding-default);
+    > * {
+        cursor: inherit;
+    }
+
+    &:hover {
+        background-color: var(--color-interactive-hover);
+    }
+
+    &.active {
+        color: var(--color-bg);
+        background-color: var(--color-active);
+    }
+}
+
+.defaultButton {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: var(--size-s);
+    gap: var(--size-xs);
+    /*border-radius: 100vmax;*/
 
-    font-size: var(--size-m);
-    line-height: 1;
-    color: var(--color-contrast-1);
-    text-wrap: nowrap;
-    text-decoration: none;
-    transition: var(--transition-default);
-
-    box-shadow: var(--shadow-default);
-
-    .icon {
-        font-size: var(--size-l);
+    .defaultButtonIcon {
+        font-size: var(--size-xl);
         line-height: var(--size-m);
     }
 
-    .image {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
-    }
-
-    &:has(.image) {
-        flex-direction: column;
+    &:has(.defaultButtonIcon):has(label) {
         justify-content: flex-start;
-
-        gap: var(--size-padding-default);
-    }
-
-
-    @media (hover: hover) {
-        &:hover {
-            background-color: var(--color-hover);
-            border-radius: var(--border-radius-hover);
-            z-index: var(--z-index-hover);
-        }
-    }
-
-    &.text:not(:hover) {
-        background-color: transparent;
-        box-shadow: none;
-    }
-
-    &.active {
-        background-color: var(--color-active);
-        color: var(--color-surface);
     }
 }
+
+
+
+
+

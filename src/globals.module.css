@@ -9,26 +9,23 @@ html.root {
 
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xxl);
-    --border-radius-default: var(--size-l);
-    --border-radius-hover: var(--size-xl);
+
+    --border-radius-default: var(--size-m);
 
     --z-index-hover: 2;
     --z-index-overlay: 10;
 
-    --color-bg: light-dark(hsl(240 11% 95%), #222226);
-    --color-surface: light-dark(#ffffff, #343437);
-    --color-hover: light-dark(#d3d3d5, #49494d);
-    --color-active: light-dark(#3584e4, #ffffff);
+    --color-bg: hsl(0 0% 10%);
+    --color-surface: hsl(0 0% 15%);
+    --color-interactive: hsl(0 0% 20%);
+    --color-interactive-hover: hsl(0 0% 25%);
+    --color-active: hsl(0 0% 90%);
 
-    --color-shadow: hsl(0 0% 0% / .25);
+    --color-contrast-0: hsl(0 0% 75%);
+    /*--color-contrast-0: hotpink;*/
+    --color-contrast-1: hsl(0 0% 100%);
 
-    --color-contrast-0: light-dark( hsl(240, 1%, 40%), #99999b);
-    --color-contrast-1: light-dark(#000000, #ffffff);
-
-    --duration-default: .2s;
+    --duration-default: .25s;
     --transition-default: all ease-out var(--duration-default), transform ease-out var(--duration-default);
-
-
-    --shadow-default: 0 var(--size-xxs) var(--size-xs) var(--color-shadow);
 }
 

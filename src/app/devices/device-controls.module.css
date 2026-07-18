@@ -1,7 +1,0 @@
-.deviceButton {
-    flex-direction: column !important;
-    > * {
-        font-size: var(--size-xl) !important;
-        line-height: 1 !important;
-    }
-}

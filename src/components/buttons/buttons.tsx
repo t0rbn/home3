@@ -1,18 +1,16 @@
 "use client";
 
-import {Icon} from "@/components/icon/icon";
 import styles from "./buttons.module.css"
 import {cns} from "@/utils/cns";
 import Link from "next/link";
+import {PropsWithChildren} from "react";
+import {Icon} from "@/components/icon/icon";
 
-export type ButtonProps = {
-    label?: string,
+export type BaseButtonProps = {
     ariaLabel?: string,
-    icon?: string,
-    image?: string,
-    variant?: 'default' | 'text' | 'active',
     className?: string
     style?: any,
+    isActive?: boolean,
 } & ({
     href: string,
     onClick?: never,
@@ -21,32 +19,37 @@ export type ButtonProps = {
     href?: never,
 })
 
-export function Button(props: ButtonProps) {
-    const classNames = [
-        styles.button,
-        props.variant === 'text' ? styles.text : undefined,
-        props.variant === 'active' ? styles.active : undefined,
-        props.className
-    ]
-
-    const content = <>
-        {props.image ? <img src={props.image} alt={props.label} className={styles.image} loading="lazy" /> : null}
-        {props.icon ? <Icon icon={props.icon} className={styles.icon}/> : null}
-        {props.label ?? null}
-    </>
-
-    const spreadProps = {
-        className: cns(...classNames),
+function BaseButton(props: PropsWithChildren<BaseButtonProps>) {
+    const commonProps = {
+        'aria-label': props.ariaLabel,
+        className: cns(styles.baseButton, [styles.active, !!props.isActive], props.className),
         style: props.style,
     }
 
     if (props.href) {
-        return <Link href={props.href} {...spreadProps} aria-label={props.ariaLabel}>{content}</Link>
+        return <Link href={props.href} {...commonProps}>{props.children}</Link>
     }
     if (props.onClick) {
-        return <button onClick={() => props.onClick()} {...spreadProps} aria-label={props.ariaLabel}>{content}</button>
+        return <button onClick={() => props.onClick()} {...commonProps}>{props.children}</button>
     }
     return null
 }
 
+interface DefaultButtonProps {
+    icon?: string,
+    label?: string,
+}
+export function Button(props: BaseButtonProps & DefaultButtonProps) {
+    const {icon, label, className, ...baseProps} = props
 
+    const allClasses = cns(
+        styles.defaultButton,
+        className
+    )
+
+    return <BaseButton {...baseProps} ariaLabel={props.label ?? baseProps.ariaLabel} className={allClasses}>
+        {icon && <Icon icon={icon} className={styles.defaultButtonIcon}/>}
+        {label && <label>{label}</label>}
+        {(!label && !icon) && <>&nbsp;</>}
+    </BaseButton>
+}

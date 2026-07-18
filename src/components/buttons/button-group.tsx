@@ -1,15 +1,25 @@
-import styles from "./button-group.module.css"
 import {PropsWithChildren} from "react";
+import styles from "./buttons.module.css"
+import {Grid, List} from "@/components/layout/layouts";
+import {cns} from "@/utils/cns";
 
-export interface ButtonGroupProps {
-    label?: string
+interface ButtonGroupProps {
+    label?: string,
+    connected?: boolean,
 
 }
-
 export function ButtonGroup(props: PropsWithChildren<ButtonGroupProps>) {
-    return <div className={styles.buttonGroupWrapper}>
-        {props.label && <label>{props.label}</label>}
-        <div className={styles.buttonGroup}>{props.children}</div>
-    </div>
-}
 
+
+    function Wrapper() {
+        if (props.connected) {
+            return <div className={styles.buttonGroupConnected}>{props.children}</div>
+        }
+        return <Grid>{props.children}</Grid>
+    }
+
+    return <List>
+        {props.label && <label>{props.label}</label>}
+        <Wrapper />
+    </List>
+}
