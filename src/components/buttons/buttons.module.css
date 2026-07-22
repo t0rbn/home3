@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: var(--size-xxs);
+    gap: var(--size-xs);
 
     > * {
         flex-grow: 1;

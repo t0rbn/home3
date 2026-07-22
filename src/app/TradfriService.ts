@@ -4,6 +4,7 @@ import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient}
 import config from "@/config.json";
 import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import Logger from "@/utils/Logger";
+import {orderScenes, recordActivation} from "@/app/SceneActivationTracker";
 
 const logger = new Logger('TradfriService')
 
@@ -165,7 +166,7 @@ export async function getGroups(): Promise<Array<TradfriGroup>> {
 
 export async function getScenes(): Promise<Array<TradfriScene>> {
     await init()
-    return scenes.map(g => mapScene(g))
+    return orderScenes(scenes.map(g => mapScene(g)))
 }
 
 export async function activateScene(sceneId: number): Promise<void> {
@@ -176,6 +177,7 @@ export async function activateScene(sceneId: number): Promise<void> {
     }
 
     await getSuperGroup().activateScene(sceneId)
+    recordActivation(sceneId)
     await operationTimeout()
 }
 
