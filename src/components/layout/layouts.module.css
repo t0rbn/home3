@@ -14,6 +14,10 @@
     @media screen and (min-width: 60rem) {
         --grid-columns: 4;
     }
+
+    @media screen and (min-width: 80rem) {
+        --grid-columns: 5;
+    }
 }
 
 

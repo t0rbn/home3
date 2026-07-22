@@ -2,9 +2,11 @@
 
 import {TradfriDevice, TradfriLight, TradfriPlug} from "@/types/Tradfri";
 import {Button} from "@/components/buttons/buttons";
-import {startTransition, useOptimistic, useState} from "react";
+import {startTransition, useOptimistic} from "react";
 import {useRouter} from "next/navigation";
 import {togglePlug} from "@/app/TradfriService";
+import styles from "./page.module.css"
+import {cns} from "@/utils/cns";
 
 function PlugButton(props: { plug: TradfriPlug }) {
     const router = useRouter();
@@ -27,11 +29,12 @@ function PlugButton(props: { plug: TradfriPlug }) {
 
 function LightButton(props: { light: TradfriLight }) {
     return <Button
+        className={cns([styles.lightButton, props.light.brightness > 0])}
         href={`/${props.light.id}`}
         label={props.light.name}
         icon="lightbulb_2"
         isActive={props.light.brightness > 0}
-        style={{'--color-active': props.light.color}}
+        style={{'--light-color': props.light.color}}
     />
 }
 

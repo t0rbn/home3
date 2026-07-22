@@ -3,6 +3,7 @@ import {connection} from "next/server";
 import {getGroups, getScenes} from "@/app/TradfriService";
 import {SceneButton} from "@/app/(home)/SceneButton";
 import {DeviceButton} from "@/app/(home)/DeviceButton";
+import styles from "./page.module.css"
 
 export default async function MainPage() {
     await connection()
@@ -12,7 +13,7 @@ export default async function MainPage() {
     return <List bigSpace>
         <List>
             <h1>Scenes</h1>
-            <Grid>{scenes.map(s => <SceneButton scene={s} key={s.id}/>)}</Grid>
+            <Grid className={styles.scenesGrid}>{scenes.map(s => <SceneButton scene={s} key={s.id}/>)}</Grid>
         </List>
 
         <List>

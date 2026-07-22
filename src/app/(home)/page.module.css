@@ -1,0 +1,20 @@
+div.scenesGrid {
+    > *:nth-child(1) {
+        grid-column-end: span 2;
+        aspect-ratio: 2;
+    }
+
+}
+
+.lightButton {
+    --lightness-active: 80%;
+
+    @media (prefers-color-scheme: light) {
+        --lightness-active: 50%;
+    }
+
+    --light-color: hotpink;
+    --color-active: hsl(from var(--light-color) h s var(--lightness-active));
+    /*--light-color:*/
+    /*background-color: var(--color-interactive);*/
+}

@@ -2,15 +2,14 @@ html.root {
     padding: 0;
     margin: 0;
 
-    zing: border-box;
+    box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 
-
-    /*color-scheme: light dark;*/
+    color-scheme: light dark;
 
     body {
         margin: 0;
-        background-color: var(--color-bg);
+        background-color: hsl(from var(--color-bg) h s l / 1);
         padding: var(--size-padding-default);
 
         color: var(--color-contrast-0);
@@ -28,21 +27,22 @@ html.root {
         padding: 0;
         line-height: 1;
         color: var(--color-contrast-1);
+        font-weight: normal;
     }
 
     h1 {
         font-size: var(--size-xl);
-        font-weight: 600;
+        /*font-weight: 600;*/
     }
 
     h2 {
         font-size: var(--size-l);
-        font-weight: 600;
+        /*font-weight: 600;*/
     }
 
     h3 {
         font-size: var(--size-m);
-        font-weight: 600;
+        /*font-weight: 600;*/
     }
 }
 

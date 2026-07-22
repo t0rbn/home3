@@ -10,7 +10,7 @@ html.root {
     --size-padding-default: var(--size-m);
     --size-padding-large: var(--size-xxl);
 
-    --border-radius-default: var(--size-xl);
+    --border-radius-default: vaR(--size-xl);
 
     --z-index-hover: 2;
     --z-index-overlay: 10;
@@ -18,13 +18,26 @@ html.root {
     --color-bg: hsl(0 0% 10%);
     --color-interactive: hsl(0 0% 20%);
     --color-interactive-hover: hsl(0 0% 25%);
-    --color-active: hsl(0 0% 90%);
+    --color-active: var(--color-contrast-0);
 
-    --color-contrast-0: hsl(0 0% 75%);
+    --color-contrast-0: hsl(0 0% 80%);
     /*--color-contrast-0: hotpink;*/
     --color-contrast-1: hsl(0 0% 100%);
 
     --transition-default: all ease-out .1s;
     --transition-starting: all ease-out .25s;
+}
+
+@media (prefers-color-scheme: light) {
+    html.root {
+        color-scheme: light;
+
+        --color-bg: hsl(0 0% 100%);
+        --color-interactive: hsl(0 0% 90%);
+        --color-interactive-hover: hsl(0 0% 80%);
+
+        --color-contrast-0: hsl(0 0% 20%);
+        --color-contrast-1: hsl(0 0% 0%);
+    }
 }
 

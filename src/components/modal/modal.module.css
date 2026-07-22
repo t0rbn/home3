@@ -6,7 +6,7 @@
     right: 0;
     padding: var(--size-padding-default);
     padding-bottom: 0;
-    background-color: hsl(0 0% 0% / .5);
+    background-color: hsl(0 0% 0% / .25);
     backdrop-filter: blur(var(--size-s));
 
     display: flex;
@@ -31,6 +31,8 @@
         padding: var(--size-padding-large);
         border-top-right-radius: var(--border-radius-default);
         border-top-left-radius: var(--border-radius-default);
+        border: var(--size-xxs) solid var(--color-interactive);
+        border-bottom: none;
         transition: var(--transition-starting);
 
         .closeLink {

@@ -56,11 +56,12 @@ interface ImageButtonProps {
     image: string,
     label: string
 }
+
 export function ImageButton(props: BaseButtonProps & ImageButtonProps) {
     const {image, label, className, ...baseProps} = props
     const allClasses = cns(styles.imageButton, className)
 
-    return <BaseButton {...baseProps} ariaLabel={props.label} className={allClasses} style={{backgroundImage: `url("${image}")`}}>
+    return <BaseButton {...baseProps} ariaLabel={props.label} className={allClasses} style={{'--image-bg': `url("${image}")`}}>
         <label>{props.label}</label>
     </BaseButton>
 }

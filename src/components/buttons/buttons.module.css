@@ -33,7 +33,12 @@
 
     cursor: pointer;
     background-color: var(--color-interactive);
+    background-image: linear-gradient(to bottom, hsl(0 0% 100% /.1), hsl(0 0% 0% / .25));
     padding: var(--size-m);
+    font-size: var(--size-m);
+    overflow: hidden;
+
+    box-shadow: 0 0 var(--size-xs) hsl(0 0% 100% / .25) inset;
     border-radius: var(--border-radius-default);
 
     > * {
@@ -41,6 +46,7 @@
     }
 
     transition: vaR(--transition-default);
+
     &:hover {
         background-color: var(--color-interactive-hover);
     }
@@ -80,6 +86,10 @@
     align-items: stretch;
     justify-content: flex-end;
 
+    --image-bg: none;
+    background-image: var(--image-bg);
+
+
     @media (hover: hover) {
         &:hover {
             background-size: 110%;
@@ -87,14 +97,13 @@
     }
 
     label {
-        color: var(--color-contrast-1);
+        color: #fff;
         padding: vaR(--size-padding-default);
-        padding-top: var(--size-padding-large);
+        padding-top: var(--size-xxl);
+        /*font-size: var(--size-m);*/
         background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% / .5));
         display: block;
     }
-
-
 }
 
 
