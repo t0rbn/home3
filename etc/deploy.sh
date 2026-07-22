@@ -21,4 +21,4 @@ cp -r public build/standalone
 
 ssh -S "$SSH_CTRL" "$HOST" rm -r /home/alarm/home3-standalone/*
 scp -o ControlPath="$SSH_CTRL" -r build/* "$HOST":~/home3-standalone
-ssh -S "$SSH_CTRL" "$HOST" sudo systemctl restart home3.service
+ssh -t -S "$SSH_CTRL" "$HOST" sudo systemctl restart home3.service
