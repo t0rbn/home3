@@ -2,8 +2,8 @@
 Description=home dashboard version 3
 
 [Service]
-WorkingDirectory=/home/pi/home3-standalone
-ExecStart=/usr/bin/node /home/pi/home3-standalone/standalone/server.js
+WorkingDirectory=/home/alarm/home3-standalone
+ExecStart=/usr/bin/node /home/alarm/home3-standalone/standalone/server.js
 Type=simple
 Restart=always
 RestartSec=3

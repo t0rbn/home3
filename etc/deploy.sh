@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST=pi@192.168.0.103
+HOST=alarm@192.168.0.104
 SSH_CTRL=/tmp/deploy-ssh-%r@%h:%p
 
 # Open a single shared SSH connection up front (prompts for the password once).
@@ -19,6 +19,6 @@ mkdir -p build/standalone/public/_next
 cp -r build/static build/standalone/public/_next
 cp -r public build/standalone
 
-ssh -S "$SSH_CTRL" "$HOST" rm -r /home/pi/home3-standalone/*
+ssh -S "$SSH_CTRL" "$HOST" rm -r /home/alarm/home3-standalone/*
 scp -o ControlPath="$SSH_CTRL" -r build/* "$HOST":~/home3-standalone
 ssh -S "$SSH_CTRL" "$HOST" sudo systemctl restart home3.service
