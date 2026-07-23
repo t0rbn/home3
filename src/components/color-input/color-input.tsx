@@ -26,7 +26,7 @@ export function ColorInput(props: ColorInputProps) {
     return <>
         <input ref={inputRef} type="color" hidden/>
         <Button
-            aria-label={props.ariaLabel}
+            ariaLabel={props.ariaLabel ?? "Pick a color"}
             icon={props.icon ?? "palette"}
             onClick={() => inputRef.current?.click()}
         />

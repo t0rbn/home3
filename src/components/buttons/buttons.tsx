@@ -35,16 +35,15 @@ function BaseButton(props: PropsWithChildren<BaseButtonProps>) {
     return null
 }
 
-interface DefaultButtonProps {
-    icon?: string,
-    label?: string,
-}
+type LabelledButtonProps =
+    | { label: string, ariaLabel?: string }
+    | { label?: undefined, ariaLabel: string }
 
-export function Button(props: BaseButtonProps & DefaultButtonProps) {
-    const {icon, label, className, ...baseProps} = props
+export function Button(props: BaseButtonProps & {icon?: string} & LabelledButtonProps) {
+    const {icon, label, ariaLabel, className, ...baseProps} = props
     const allClasses = cns(styles.defaultButton, className)
 
-    return <BaseButton {...baseProps} ariaLabel={props.label ?? baseProps.ariaLabel} className={allClasses}>
+    return <BaseButton {...baseProps} ariaLabel={label ?? ariaLabel} className={allClasses}>
         {icon &&
             <Icon icon={icon} className={styles.defaultButtonIcon} variant={props.isActive ? 'filled' : 'outlined'}/>}
         {label && <label>{label}</label>}

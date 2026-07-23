@@ -33,6 +33,7 @@ export function BrightnessControls(props: { light: TradfriLight }) {
         {
             stops.map(stop => <Button
                 icon={stop.icon}
+                ariaLabel={stop.icon ? 'Turn off' : `Set brightness to ${stop.value * 100}%`}
                 onClick={() => handleClick(stop.value)}
                 isActive={stop.activeFn ? stop.activeFn() : optimisticBrightness >= stop.value}
                 key={stop.value}
@@ -52,6 +53,7 @@ export function WhiteSpectrumControls(props: { light: TradfriLight }) {
     return <ButtonGroup label="White Spectrum" connected>
         {
             config.tradfri.colors.white.map(c => <Button
+                ariaLabel={`Set white color ${c}`}
                 onClick={() => handleClick(c)}
                 style={{backgroundColor: c}}
                 key={c}
@@ -71,6 +73,7 @@ export function RGBControls(props: { light: TradfriLight }) {
     return <ButtonGroup label="RGB Spectrum">
         {
             config.tradfri.colors.rgb.map(rgbArrayToHex).map(c => <Button
+                ariaLabel={`Set RGB color ${c}`}
                 onClick={() => handleClick(c)}
                 style={{backgroundColor: c}}
                 key={c}
