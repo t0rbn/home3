@@ -1,15 +1,27 @@
 div.scenesGrid {
-    > *:nth-child(1) {
-        grid-column-end: span 2;
-        aspect-ratio: 2;
+    @media screen and (min-width: 40rem) {
+        > *:nth-child(1) {
+            aspect-ratio: unset;
+            grid-column-end: span 2;
+        }
     }
+
+
+    @media screen and (min-width: 80rem) {
+        > *:nth-child(2) {
+            grid-column-end: span 2;
+            aspect-ratio: unset;
+
+        }
+    }
+
 }
 
 .lightButton {
-    --lightness-active: 80%;
+    --lightness-active: 75%;
 
     @media (prefers-color-scheme: light) {
-        --lightness-active: 50%;
+        --lightness-active: 25%;
     }
 
     --light-color: hotpink;

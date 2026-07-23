@@ -3,11 +3,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: var(--size-xs);
+    gap: var(--size-xxs);
+    box-shadow: var(--shadow-default);
+    border-radius: var(--border-radius-default);
 
-    > * {
+    > button {
         flex-grow: 1;
         flex-basis: 0;
+        box-shadow: none;
 
         &:not(:first-child) {
             border-top-left-radius: 0;
@@ -37,8 +40,8 @@
     padding: var(--size-m);
     font-size: var(--size-m);
     overflow: hidden;
+    box-shadow: var(--shadow-default);
 
-    box-shadow: 0 0 var(--size-xs) hsl(0 0% 100% / .25) inset;
     border-radius: var(--border-radius-default);
 
     > * {

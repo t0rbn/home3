@@ -6,7 +6,7 @@
     right: 0;
     padding: var(--size-padding-default);
     padding-bottom: 0;
-    background-color: hsl(0 0% 0% / .25);
+    background-color: hsl(0 0% 0% / .5);
     backdrop-filter: blur(var(--size-s));
 
     display: flex;
