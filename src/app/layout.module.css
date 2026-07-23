@@ -13,7 +13,7 @@ html.root {
         padding: var(--size-padding-default);
 
         color: var(--color-contrast-0);
-        font-family: Inter, serif;
+        font-family: "Inter", serif;
         font-size: var(--size-m);
         line-height: 1;
 
@@ -44,19 +44,4 @@ html.root {
         font-size: var(--size-m);
         /*font-weight: 600;*/
     }
-}
-
-
-@font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-display: block;
-    src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
-}
-
-@font-face {
-    font-family: 'Material Symbols';
-    font-style: normal;
-    font-display: block;
-    src: url('/fonts/MaterialSymbols/MaterialSymbolsRounded-VariableFont_FILL,GRAD,opsz,wght.ttf');
 }
