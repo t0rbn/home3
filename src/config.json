@@ -22,6 +22,7 @@
         [1,    0,  0.5]
       ]
     },
+    "priorityScenes": ["Default", "All off", "Work"],
     "actionResponseWaitTimeMs": 2000
   }
 }

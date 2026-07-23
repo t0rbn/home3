@@ -4,7 +4,6 @@ import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient}
 import config from "@/config.json";
 import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
 import Logger from "@/utils/Logger";
-import {orderScenes, recordActivation} from "@/app/SceneActivationTracker";
 
 const logger = new Logger('TradfriService')
 
@@ -166,7 +165,22 @@ export async function getGroups(): Promise<Array<TradfriGroup>> {
 
 export async function getScenes(): Promise<Array<TradfriScene>> {
     await init()
-    return orderScenes(scenes.map(g => mapScene(g)))
+    const s = scenes.map(mapScene)
+
+    return s.sort((a, b) => {
+        const getIndex = (s: TradfriScene) => config.tradfri.priorityScenes.includes(s.name) ? config.tradfri.priorityScenes.indexOf(s.name) : -1;
+        const indexA = getIndex(a)
+        const indexB = getIndex(b)
+
+        if (indexA === -1 && indexB === -1) {
+            a.name.localeCompare(b.name)
+        }
+
+        if (indexA === -1 || indexB === -1) {
+            return indexA < indexB ? 1 : -1
+        }
+        return indexA - indexB
+    })
 }
 
 export async function activateScene(sceneId: number): Promise<void> {
@@ -177,7 +191,6 @@ export async function activateScene(sceneId: number): Promise<void> {
     }
 
     await getSuperGroup().activateScene(sceneId)
-    recordActivation(sceneId)
     await operationTimeout()
 }
 
