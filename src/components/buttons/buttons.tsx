@@ -35,19 +35,17 @@ function BaseButton(props: PropsWithChildren<BaseButtonProps>) {
     return null
 }
 
-type LabelledButtonProps =
-    | { label: string, ariaLabel?: string }
-    | { label?: undefined, ariaLabel: string }
+interface IconButtonProps {
+    icon?: string
+    ariaLabel: string,
+}
 
-export function Button(props: BaseButtonProps & {icon?: string} & LabelledButtonProps) {
-    const {icon, label, ariaLabel, className, ...baseProps} = props
+export function IconButton(props: BaseButtonProps & IconButtonProps) {
+    const {icon, ariaLabel, className, ...baseProps} = props
     const allClasses = cns(styles.defaultButton, className)
 
-    return <BaseButton {...baseProps} ariaLabel={label ?? ariaLabel} className={allClasses}>
-        {icon &&
-            <Icon icon={icon} className={styles.defaultButtonIcon} variant={props.isActive ? 'filled' : 'outlined'}/>}
-        {label && <label>{label}</label>}
-        {(!label && !icon) && <>&nbsp;</>}
+    return <BaseButton {...baseProps} ariaLabel={ariaLabel} className={allClasses}>
+        {icon ? <Icon icon={icon} className={styles.defaultButtonIcon} variant={props.isActive ? 'filled' : 'outlined'}/> : <span>&nbsp;</span>}
     </BaseButton>
 }
 
@@ -62,5 +60,23 @@ export function ImageButton(props: BaseButtonProps & ImageButtonProps) {
 
     return <BaseButton {...baseProps} ariaLabel={props.label} className={allClasses} style={{'--image-bg': `url("${image}")`}}>
         <label>{props.label}</label>
+    </BaseButton>
+}
+
+interface StateButtonProps {
+    icon: string,
+    label: string,
+    statusLine?: string
+}
+
+export function StateButton(props: BaseButtonProps & StateButtonProps) {
+    const {icon, label, statusLine, className, ...baseProps} = props
+    return <BaseButton {...baseProps} className={cns(styles.stateButton, className)} ariaLabel={`${label}: ${statusLine}`}>
+        <div className={styles.stateButtonIconContainer}>
+            <Icon icon={icon} className={styles.stateButtonIcon} variant={props.isActive ? 'filled' : 'outlined'}/>
+        </div>
+            <strong>{label}</strong>
+            <span>{statusLine}</span>
+
     </BaseButton>
 }

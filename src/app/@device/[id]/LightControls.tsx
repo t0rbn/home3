@@ -1,7 +1,7 @@
 "use client"
 
 import {TradfriLight} from "@/types/Tradfri";
-import {Button} from "@/components/buttons/buttons";
+import {IconButton} from "@/components/buttons/buttons";
 import {ButtonGroup} from "@/components/buttons/button-group";
 import {useRouter} from "next/navigation";
 import {startTransition, useOptimistic} from "react";
@@ -31,7 +31,7 @@ export function BrightnessControls(props: { light: TradfriLight }) {
 
     return <ButtonGroup label="Brightness" connected>
         {
-            stops.map(stop => <Button
+            stops.map(stop => <IconButton
                 icon={stop.icon}
                 ariaLabel={stop.icon ? 'Turn off' : `Set brightness to ${stop.value * 100}%`}
                 onClick={() => handleClick(stop.value)}
@@ -52,7 +52,7 @@ export function WhiteSpectrumControls(props: { light: TradfriLight }) {
 
     return <ButtonGroup label="White Spectrum" connected>
         {
-            config.tradfri.colors.white.map(c => <Button
+            config.tradfri.colors.white.map(c => <IconButton
                 ariaLabel={`Set white color ${c}`}
                 onClick={() => handleClick(c)}
                 style={{backgroundColor: c}}
@@ -72,7 +72,7 @@ export function RGBControls(props: { light: TradfriLight }) {
 
     return <ButtonGroup label="RGB Spectrum">
         {
-            config.tradfri.colors.rgb.map(rgbArrayToHex).map(c => <Button
+            config.tradfri.colors.rgb.map(rgbArrayToHex).map(c => <IconButton
                 ariaLabel={`Set RGB color ${c}`}
                 onClick={() => handleClick(c)}
                 style={{backgroundColor: c}}

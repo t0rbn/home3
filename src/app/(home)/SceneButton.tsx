@@ -1,7 +1,7 @@
 "use client"
 
 import {TradfriScene} from "@/types/Tradfri";
-import {Button, ImageButton} from "@/components/buttons/buttons";
+import {IconButton, ImageButton} from "@/components/buttons/buttons";
 import {activateScene} from "@/app/TradfriService";
 import {useRouter} from "next/navigation";
 

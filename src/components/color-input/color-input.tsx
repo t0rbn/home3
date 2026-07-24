@@ -1,6 +1,6 @@
 "use client";
 
-import {Button} from "@/components/buttons/buttons";
+import {IconButton} from "@/components/buttons/buttons";
 import {useEffect, useRef} from "react";
 
 interface ColorInputProps {
@@ -25,7 +25,7 @@ export function ColorInput(props: ColorInputProps) {
 
     return <>
         <input ref={inputRef} type="color" hidden/>
-        <Button
+        <IconButton
             ariaLabel={props.ariaLabel ?? "Pick a color"}
             icon={props.icon ?? "palette"}
             onClick={() => inputRef.current?.click()}

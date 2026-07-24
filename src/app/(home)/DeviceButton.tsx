@@ -1,7 +1,7 @@
 "use client";
 
 import {TradfriDevice, TradfriLight, TradfriPlug} from "@/types/Tradfri";
-import {Button} from "@/components/buttons/buttons";
+import {IconButton, StateButton} from "@/components/buttons/buttons";
 import {startTransition, useOptimistic} from "react";
 import {useRouter} from "next/navigation";
 import {togglePlug} from "@/app/TradfriService";
@@ -18,9 +18,10 @@ function PlugButton(props: { plug: TradfriPlug }) {
         router.refresh()
     })
 
-    return <Button
+    return <StateButton
         onClick={handleClick}
         label={props.plug.name}
+        statusLine={optimisticOn ? 'on' : 'off'}
         icon={optimisticOn ? 'toggle_on' : 'toggle_off'}
         isActive={optimisticOn}
     />
@@ -28,10 +29,11 @@ function PlugButton(props: { plug: TradfriPlug }) {
 }
 
 function LightButton(props: { light: TradfriLight }) {
-    return <Button
+    return <StateButton
         className={cns([styles.lightButton, props.light.brightness > 0])}
         href={`/${props.light.id}`}
         label={props.light.name}
+        statusLine={props.light.brightness ? (`${Math.round(100 * props.light.brightness)}%`) : 'off'}
         icon="lightbulb_2"
         isActive={props.light.brightness > 0}
         style={{'--light-color': props.light.color}}
