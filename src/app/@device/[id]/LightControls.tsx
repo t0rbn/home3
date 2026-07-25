@@ -21,7 +21,7 @@ export function BrightnessControls(props: { light: TradfriLight }) {
     })
 
     const stops = [
-        {icon: 'power_settings_new', value: 0, activeFn: () => !!props.light.brightness},
+        {icon: 'power_settings_new', value: 0, activeFn: () => !!optimisticBrightness},
         {value: 0.01},
         {value: 0.25},
         {value: 0.5},
