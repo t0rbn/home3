@@ -124,7 +124,7 @@
         justify-content: center;
         height: var(--size-xxl);
         aspect-ratio: 1;
-        background-color: hsl(0 0% 0% / .25);
+        background-color: hsl(0 0% 0% / .5);
         border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
 
         .stateButtonIcon {
@@ -134,7 +134,7 @@
 
     &.active {
         .stateButtonIconContainer {
-            background-color: hsl(0 0% 100% / .25);
+            background-color: hsl(0 0% 100% / .5);
         }
     }
 }
