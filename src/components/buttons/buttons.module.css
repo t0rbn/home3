@@ -103,7 +103,7 @@
         padding: vaR(--size-padding-default);
         padding-top: var(--size-xxl);
         /*font-size: var(--size-m);*/
-        background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% / .75));
+        background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% /.5));
         display: block;
     }
 }
