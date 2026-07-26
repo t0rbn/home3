@@ -36,12 +36,11 @@
 
     cursor: pointer;
     background-color: var(--color-interactive);
-    background-image: linear-gradient(to bottom, hsl(0 0% 100% /.1), hsl(0 0% 0% / .2));
+    background-image: linear-gradient(to bottom, hsl(0 0% 100% /.1), hsl(0 0% 0% / .25));
     padding: var(--size-m);
     font-size: var(--size-m);
     overflow: hidden;
     box-shadow: var(--shadow-default);
-
     border-radius: var(--border-radius-default);
 
     > * {
@@ -51,7 +50,7 @@
     transition: vaR(--transition-default);
 
     &:hover {
-        background-color: var(--color-interactive-hover);
+        filter: var(--filter-hover)
     }
 
     &.active {
@@ -95,7 +94,7 @@
 
     @media (hover: hover) {
         &:hover {
-            background-size: 110%;
+            background-size: 105%;
         }
     }
 
@@ -104,7 +103,7 @@
         padding: vaR(--size-padding-default);
         padding-top: var(--size-xxl);
         /*font-size: var(--size-m);*/
-        background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% / .5));
+        background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% / .75));
         display: block;
     }
 }
