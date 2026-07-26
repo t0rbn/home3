@@ -32,6 +32,7 @@ function LightButton(props: { light: TradfriLight }) {
     return <StateButton
         className={cns([styles.lightButton, props.light.brightness > 0])}
         href={`/${props.light.id}`}
+        scroll={false}
         label={props.light.name}
         statusLine={props.light.brightness ? (`${Math.round(100 * props.light.brightness)}%`) : 'off'}
         icon="lightbulb_2"

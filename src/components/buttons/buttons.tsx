@@ -13,6 +13,7 @@ export type BaseButtonProps = {
     isActive?: boolean,
 } & ({
     href: string,
+    scroll?: boolean,
     onClick?: never,
 } | {
     onClick: () => void;
@@ -27,7 +28,7 @@ function BaseButton(props: PropsWithChildren<BaseButtonProps>) {
     }
 
     if (props.href) {
-        return <Link href={props.href} {...commonProps}>{props.children}</Link>
+        return <Link href={props.href} scroll={props.scroll} {...commonProps}>{props.children}</Link>
     }
     if (props.onClick) {
         return <button onClick={() => props.onClick()} {...commonProps}>{props.children}</button>
