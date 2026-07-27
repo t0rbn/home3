@@ -15,6 +15,5 @@ export default async function DevicePage(args: { params: Promise<{ id: string }>
         <BrightnessControls light={light} />
         <WhiteSpectrumControls light={light} />
         <RGBControls light={light} />
-
     </List>
 }

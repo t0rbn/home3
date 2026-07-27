@@ -15,9 +15,11 @@ function Layout(props: LayoutProps & { layoutClass: string }) {
 }
 
 export function Grid(props: LayoutProps) {
-    return <Layout layoutClass={styles.grid} {...props}>
-        {props.children}
-    </Layout>
+    return <div className={styles.gridContainer}>
+        <Layout layoutClass={styles.grid} {...props}>
+            {props.children}
+        </Layout>
+    </div>
 }
 
 interface ListProps {
