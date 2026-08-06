@@ -29,7 +29,7 @@
         padding: var(--size-padding-large);
         border-top-right-radius: var(--border-radius-default);
         border-top-left-radius: var(--border-radius-default);
-        border: var(--size-xxs) solid var(--color-interactive);
+        border: var(--size-xxs) solid var(--color-border);
         border-bottom: none;
         transition: var(--transition-starting);
 

@@ -2,10 +2,9 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
-    grid-gap: vaR(--size-padding-default);
+    grid-gap: var(--size-padding-large);
 
     @media screen and  (min-width: 75rem ) {
-        grid-gap: var(--size-padding-large);
         grid-template-columns: 1fr 25rem;
     }
 }
