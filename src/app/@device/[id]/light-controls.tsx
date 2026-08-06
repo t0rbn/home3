@@ -1,13 +1,13 @@
 "use client"
 
-import {TradfriLight} from "@/types/Tradfri";
+import {TradfriLight} from "@/types/tradfri";
 import {IconButton} from "@/components/buttons/buttons";
 import {ButtonGroup} from "@/components/buttons/button-group";
 import {useRouter} from "next/navigation";
 import {startTransition, useOptimistic} from "react";
-import {setLightBrightness, setLightColor} from "@/app/TradfriService";
+import {setLightBrightness, setLightColor} from "@/app/tradfri-service";
 import config from '@/config.json'
-import {rgbArrayToHex} from "@/utils/colorUtils";
+import {rgbArrayToHex} from "@/utils/color-utils";
 import {ColorInput} from "@/components/color-input/color-input";
 
 export function BrightnessControls(props: { light: TradfriLight }) {

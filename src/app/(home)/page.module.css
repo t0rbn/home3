@@ -1,23 +1,44 @@
-div.scenesGrid {
+.layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: vaR(--size-padding-default);
 
-    @container  (min-inline-size: 40rem) {
-        > *:nth-child(1) {
-            grid-column-end: span 2;
-            grid-row-end: span 2;
-        }
+    @media screen and  (min-width: 75rem ) {
+        grid-gap: var(--size-padding-large);
+        grid-template-columns: 1fr 25rem;
     }
-
-    /*@container  (min-inline-size: 60rem) {*/
-    /*}*/
 }
 
-.lightButton {
-    --lightness-active: 75%;
+/*.scenesGrid {*/
+/*    @container (min-inline-size: 75rem) {*/
+/*        > :first-child {*/
+/*            grid-column-end: span 2;*/
+/*            grid-row-end: span 2;*/
+/*        }*/
 
-    @media (prefers-color-scheme: light) {
-        --lightness-active: 25%;
+/*        > :nth-child(2), > :nth-child(3) {*/
+/*            grid-column-end: span 2;*/
+/*            aspect-ratio: unset;*/
+/*        }*/
+
+
+/*    }*/
+/*}*/
+
+
+.deviceList {
+    gap: var(--size-xxs);
+    border: var(--size-xxs) solid var(--color-border);
+    background-color: var(--color-border);
+    border-radius: var(--border-radius-default);
+    box-shadow: var(--shadow-default);
+    overflow: hidden;
+
+    * {
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
     }
 
-    --light-color: hotpink;
-    --color-active: hsl(from var(--light-color) h s var(--lightness-active));
 }

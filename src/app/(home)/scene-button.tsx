@@ -1,8 +1,8 @@
 "use client"
 
-import {TradfriScene} from "@/types/Tradfri";
+import {TradfriScene} from "@/types/tradfri";
 import {IconButton, ImageButton} from "@/components/buttons/buttons";
-import {activateScene} from "@/app/TradfriService";
+import {activateScene} from "@/app/tradfri-service";
 import {useRouter} from "next/navigation";
 
 export function SceneButton(props: { scene: TradfriScene }) {

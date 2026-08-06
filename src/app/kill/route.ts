@@ -1,4 +1,4 @@
-import Logger from "@/utils/Logger";
+import Logger from "@/utils/logger";
 import {connection} from "next/server";
 
 export async function GET() {

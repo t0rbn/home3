@@ -1,6 +1,6 @@
 import {List} from "@/components/layout/layouts";
-import {BrightnessControls, RGBControls, WhiteSpectrumControls} from "@/app/@device/[id]/LightControls";
-import {getDevice} from "@/app/TradfriService";
+import {BrightnessControls, RGBControls, WhiteSpectrumControls} from "@/app/@device/[id]/light-controls";
+import {getDevice} from "@/app/tradfri-service";
 import {notFound} from "next/navigation";
 
 export default async function DevicePage(args: { params: Promise<{ id: string }> }) {
@@ -17,3 +17,5 @@ export default async function DevicePage(args: { params: Promise<{ id: string }>
         <RGBControls light={light} />
     </List>
 }
+
+export const instant = false

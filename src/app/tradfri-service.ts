@@ -2,8 +2,8 @@
 
 import {Accessory, AccessoryTypes, discoverGateway, Group, Scene, TradfriClient} from "node-tradfri-client";
 import config from "@/config.json";
-import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/Tradfri";
-import Logger from "@/utils/Logger";
+import {TradfriDevice, TradfriGroup, TradfriLight, TradfriPlug, TradfriScene} from "@/types/tradfri";
+import Logger from "@/utils/logger";
 
 const logger = new Logger('TradfriService')
 

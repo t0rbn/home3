@@ -2,14 +2,11 @@ html.root {
     padding: 0;
     margin: 0;
 
-    box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
-
-    color-scheme: light dark;
 
     body {
         margin: 0;
-        background-color: hsl(from var(--color-bg) h s l / 1);
+        background-color: var(--color-bg);
         padding: var(--size-padding-default);
 
         color: var(--color-contrast-0);

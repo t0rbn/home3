@@ -3,8 +3,9 @@
 import styles from "./buttons.module.css"
 import {cns} from "@/utils/cns";
 import Link from "next/link";
-import {PropsWithChildren} from "react";
+import {CSSProperties, PropsWithChildren} from "react";
 import {Icon} from "@/components/icon/icon";
+import {List} from "@/components/layout/layouts";
 
 export type BaseButtonProps = {
     ariaLabel?: string,
@@ -68,16 +69,18 @@ interface StateButtonProps {
     icon: string,
     label: string,
     statusLine?: string
+    activeColor?: string,
 }
 
 export function StateButton(props: BaseButtonProps & StateButtonProps) {
     const {icon, label, statusLine, className, ...baseProps} = props
     return <BaseButton {...baseProps} className={cns(styles.stateButton, className)} ariaLabel={`${label}: ${statusLine}`}>
-        <div className={styles.stateButtonIconContainer}>
+        <div className={styles.stateButtonIconContainer} style={{'--color-active': props.activeColor} as CSSProperties}>
             <Icon icon={icon} className={styles.stateButtonIcon} variant={props.isActive ? 'filled' : 'outlined'}/>
         </div>
+        <div className={styles.stateButtonLabel}>
             <strong>{label}</strong>
             <span>{statusLine}</span>
-
+        </div>
     </BaseButton>
 }

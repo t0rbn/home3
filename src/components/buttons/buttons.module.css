@@ -6,11 +6,14 @@
     gap: var(--size-xxs);
     box-shadow: var(--shadow-default);
     border-radius: var(--border-radius-default);
+    border: var(--size-xxs) solid var(--color-border);
+    background-color: vaR(--color-border);
 
     > button {
         flex-grow: 1;
         flex-basis: 0;
         box-shadow: none;
+        border: none;
 
         &:not(:first-child) {
             border-top-left-radius: 0;
@@ -27,7 +30,6 @@
 
 .baseButton {
     appearance: none;
-    border: none;
     margin: 0;
     font: inherit;
     color: inherit;
@@ -36,11 +38,11 @@
 
     cursor: pointer;
     background-color: var(--color-interactive);
-    background-image: linear-gradient(to bottom, hsl(0 0% 100% /.1), hsl(0 0% 0% / .25));
     padding: var(--size-m);
     font-size: var(--size-m);
     overflow: hidden;
     box-shadow: var(--shadow-default);
+    border: var(--size-xxs) solid var(--color-border);
     border-radius: var(--border-radius-default);
 
     > * {
@@ -102,7 +104,6 @@
         color: #fff;
         padding: vaR(--size-padding-default);
         padding-top: var(--size-xxl);
-        /*font-size: var(--size-m);*/
         background-image: linear-gradient(to bottom, transparent, hsl(0 0% 0% /.5));
         display: block;
     }
@@ -111,10 +112,10 @@
 
 .stateButton {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: var(--size-s);
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--size-padding-default);
 
     .stateButtonIconContainer {
         display: flex;
@@ -123,7 +124,8 @@
         justify-content: center;
         height: var(--size-xxl);
         aspect-ratio: 1;
-        background-color: hsl(0 0% 0% / .5);
+
+        background-color: var(--color-bg);
         border-radius: calc(var(--border-radius-default) - var(--size-padding-default));
 
         .stateButtonIcon {
@@ -132,8 +134,22 @@
     }
 
     &.active {
+        background-color: var(--color-interactive);
+        color: var(--color-contrast-0);
+
         .stateButtonIconContainer {
-            background-color: hsl(0 0% 100% / .5);
+            background-color: var(--color-active);
+            color: var(--color-bg)
+        }
+    }
+
+    .stateButtonLabel {
+        > * {
+            display: block;
+        }
+
+        > strong {
+            margin-bottom: vaR(--size-xs);
         }
     }
 }
