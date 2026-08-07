@@ -3,27 +3,16 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     grid-gap: var(--size-padding-large);
-
-    @media screen and  (min-width: 75rem ) {
-        grid-template-columns: 1fr 25rem;
-    }
 }
 
-/*.scenesGrid {*/
-/*    @container (min-inline-size: 75rem) {*/
-/*        > :first-child {*/
-/*            grid-column-end: span 2;*/
-/*            grid-row-end: span 2;*/
-/*        }*/
+@media screen and  (min-width: 75rem ) {
+    .layout {
+        grid-template-columns: 1fr 25rem;
+    }
 
-/*        > :nth-child(2), > :nth-child(3) {*/
-/*            grid-column-end: span 2;*/
-/*            aspect-ratio: unset;*/
-/*        }*/
-
-
-/*    }*/
-/*}*/
+    /*.scenesGrid {*/
+    /*}*/
+}
 
 
 .deviceList {
