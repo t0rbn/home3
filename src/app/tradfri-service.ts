@@ -211,6 +211,12 @@ export async function setLightColor(lightId: number, newColor: string): Promise<
     await operationTimeout()
 }
 
+export async function setLightColorTemperature(lightId: number, value: number): Promise<void> {
+    await init()
+    await accessories.find(a => a.instanceId === lightId && a.type === AccessoryTypes.lightbulb)?.lightList[0].setColorTemperature(value * 100, 0)
+    await operationTimeout()
+}
+
 export async function togglePlug(plugId: number): Promise<void> {
     await init()
     await accessories.find(a => a.instanceId === plugId && a.type === AccessoryTypes.plug)?.plugList[0].toggle()

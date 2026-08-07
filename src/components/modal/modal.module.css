@@ -23,10 +23,10 @@
 
     .modal {
         width: 100%;
-        max-width: 50rem;
+        max-width: 75rem;
         background-color: var(--color-bg);
         position: relative;
-        padding: var(--size-padding-large);
+        padding: var(--size-padding-large) var(--size-padding-default) var(--size-padding-default) var(--size-padding-default);
         border-top-right-radius: var(--border-radius-default);
         border-top-left-radius: var(--border-radius-default);
         border: var(--size-xxs) solid var(--color-border);

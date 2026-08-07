@@ -19,6 +19,10 @@
     @container  (min-inline-size: 60rem) {
         --grid-columns: 4;
     }
+
+    @container  (min-inline-size: 80rem) {
+        --grid-columns: 5;
+    }
 }
 
 

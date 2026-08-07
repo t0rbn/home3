@@ -5,7 +5,7 @@ import {IconButton} from "@/components/buttons/buttons";
 import {ButtonGroup} from "@/components/buttons/button-group";
 import {useRouter} from "next/navigation";
 import {startTransition, useOptimistic} from "react";
-import {setLightBrightness, setLightColor} from "@/app/tradfri-service";
+import {setLightBrightness, setLightColor, setLightColorTemperature} from "@/app/tradfri-service";
 import config from '@/config.json'
 import {rgbArrayToHex} from "@/utils/color-utils";
 import {ColorInput} from "@/components/color-input/color-input";
@@ -44,17 +44,19 @@ export function BrightnessControls(props: { light: TradfriLight }) {
 
 export function WhiteSpectrumControls(props: { light: TradfriLight }) {
     const router = useRouter();
-    const handleClick = (c: string) => setLightColor(props.light.id, c).then(router.refresh)
+    const handleClick = (value: number) => setLightColorTemperature(props.light.id, value).then(router.refresh)
 
-    if (props.light.spectrum === 'none') {
+    if (props.light.spectrum !== 'white') {
         return null
     }
 
+    const whites = config.tradfri.colors.white
+
     return <ButtonGroup label="White Spectrum" connected>
         {
-            config.tradfri.colors.white.map(c => <IconButton
-                ariaLabel={`Set white color ${c}`}
-                onClick={() => handleClick(c)}
+            whites.map((c, i) => <IconButton
+                ariaLabel={`Set color temperature ${c}`}
+                onClick={() => handleClick(whites.length > 1 ? i / (whites.length - 1) : 0)}
                 style={{backgroundColor: c}}
                 key={c}
             />)
@@ -62,7 +64,7 @@ export function WhiteSpectrumControls(props: { light: TradfriLight }) {
     </ButtonGroup>
 }
 
-export function RGBControls(props: { light: TradfriLight }) {
+export function RgbSpectrumControls(props: { light: TradfriLight }) {
     const router = useRouter();
     const handleClick = (c: string) => setLightColor(props.light.id, c).then(router.refresh)
 
@@ -70,7 +72,18 @@ export function RGBControls(props: { light: TradfriLight }) {
         return null
     }
 
-    return <ButtonGroup label="RGB Spectrum">
+    return <>
+        <ButtonGroup label="White Spectrum" connected>
+            {
+                config.tradfri.colors.white.map(c => <IconButton
+                    ariaLabel={`Set white color ${c}`}
+                    onClick={() => handleClick(c)}
+                    style={{backgroundColor: c}}
+                    key={c}
+                />)
+            }
+        </ButtonGroup>
+        <ButtonGroup label="RGB">
         {
             config.tradfri.colors.rgb.map(rgbArrayToHex).map(c => <IconButton
                 ariaLabel={`Set RGB color ${c}`}
@@ -81,4 +94,5 @@ export function RGBControls(props: { light: TradfriLight }) {
         }
         <ColorInput onSelected={handleClick} />
     </ButtonGroup>
+        </>
 }

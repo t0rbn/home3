@@ -1,5 +1,5 @@
 import {List} from "@/components/layout/layouts";
-import {BrightnessControls, RGBControls, WhiteSpectrumControls} from "@/app/@device/[id]/light-controls";
+import {BrightnessControls, RgbSpectrumControls, WhiteSpectrumControls} from "@/app/@device/[id]/light-controls";
 import {getDevice} from "@/app/tradfri-service";
 import {notFound} from "next/navigation";
 
@@ -12,9 +12,9 @@ export default async function DevicePage(args: { params: Promise<{ id: string }>
 
     return <List bigSpace>
         <h1>{light.name}</h1>
-        <BrightnessControls light={light} />
-        <WhiteSpectrumControls light={light} />
-        <RGBControls light={light} />
+        <BrightnessControls light={light}/>
+        {light.spectrum === 'white' && <WhiteSpectrumControls light={light}/>}
+        {light.spectrum === 'rgb' && <RgbSpectrumControls light={light}/>}
     </List>
 }
 
